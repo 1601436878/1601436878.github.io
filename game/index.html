@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>2048</title>
+	 <link rel="shortcut icon" href="favicon.ico">
+	 <link rel="stylesheet" type="text/css" href="css/style.css">
+	 <meta charset="UTF-8"/>
+	 <script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+</head>
+<body>
+<div id="container">
+	<div class="header"><h1 class="2048-title">2048</h1></div>
+	<div class="title">
+		<span>Join the numbers and get to the 2048 tile!</span>
+		<span class="start"><a href="javascript:init()">new game</a><span>
+	</div>
+	
+	<div class="game-container" id="game-container">
+
+			<div class="game-col" id="0-0"></div>
+			<div class="game-col" id="0-1"></div>
+			<div class="game-col" id="0-2"></div>
+			<div class="game-col" id="0-3"></div>
+
+			<div class="game-col" id="1-0"></div>
+			<div class="game-col" id="1-1"></div>
+			<div class="game-col" id="1-2"></div>
+			<div class="game-col" id="1-3"></div>
+
+			<div class="game-col" id="2-0"></div>
+			<div class="game-col" id="2-1"></div>
+			<div class="game-col" id="2-2"></div>
+			<div class="game-col" id="2-3"></div>
+
+			<div class="game-col" id="3-0"></div>
+			<div class="game-col" id="3-1"></div>
+			<div class="game-col" id="3-2"></div>
+			<div class="game-col" id="3-3"></div>
+	</div>
+
+	<div class="end">Design by Twilight</div>
+
+	<img src="http://i1.piimg.com/584041/687f484c4fe86e36.jpg">
+</div>
+
+</body>
+
+<script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="js/init.js"></script>
+<script type="text/javascript" src="js/number-cell.js"></script>
+<script type="text/javascript" src="js/key_control.js"></script>
+<script type="text/javascript" src="js/move.js"></script>
+
+</html>
