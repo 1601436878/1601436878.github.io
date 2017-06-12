@@ -1,5 +1,6 @@
 // 判断按键的类型----判断方向
 function keyDirect(){
+	event.preventDefault();
 	var keyNum = event.keyCode;
 	var dir ;
 	if(keyNum == 37){
@@ -22,6 +23,18 @@ $(window).keydown(function(){
 	generateNode();
 	reFreshNum();
 });
+
+// 交换两个方块的位置
+function swap(a,b){
+	var top1 = a.css("top");
+	var left1 = a.css("left");
+	var top2 = b.css("top");
+	var left2 = b.css("left");
+	a.animate({
+		top:top2,
+		left:left2
+	});
+}
 
 
 // 0:左 1:上  2:右  3:下

@@ -53,16 +53,17 @@ function reFreshNum(){
 	for(var i = 0 ; i < 4 ; i++){
 		for(var j = 0 ; j < 4 ; j++){
 			if(contain[i][j] == 0){
-				numbercells[i][j].html("");
 				// numbercells[i][j].css("top",getPosTop(i,j)+50+"px");
 				// numbercells[i][j].css("left",getPosLeft(i,j)+50+"px");
 				// numbercells[i][j].css("width",0);
 				// numbercells[i][j].css("height",0);
+				numbercells[i][j].html("");
+				numbercells[i][j].css("background-color","#CDC1B4")
 				numbercells[i][j].animate({
 					top:getPosTop(i,j)+50+"px",
 					left:getPosLeft(i,j)+50+"px",
-					width:0,
-					height:0
+					width:0+"px",
+					height:0+"px"
 				},200);
 			}else{
 				// numbercells[i][j].css("top",getPosTop(i,j)+"px");
@@ -78,6 +79,41 @@ function reFreshNum(){
 				numbercells[i][j].css("background-color",getColor(contain[i][j]))
 
 				numbercells[i][j].html(contain[i][j]);
+			}
+
+			console.log("num:%d  x :%s  y:%s",contain[i][j],numbercells[i][j].css("left"),numbercells[i][j].css("top"))
+		}
+	}	console.log("------------------------------")
+}
+function reFreshNum0(){
+	// 给所有的方块设定位置，有数字的方块加上样式，没有数字的方块的大小是0，位置一层方块的中心一点
+	$(".number-cell").remove();
+	var father = $("#game-container");
+
+	for(var i = 0 ; i < 4 ; i++){
+		for(var j = 0 ; j < 4 ; j++){
+			numbercell = $("<div class='number-cell'></div>");
+			if(contain[i][j] == 0){
+				father.append(numbercell);
+				numbercell.html("");
+				numbercell.css("background-color","#CDC1B4")
+				numbercell.animate({
+					top:getPosTop(i,j)+"px",
+					left:getPosLeft(i,j)+"px",
+					width:100+"px",
+					height:100+"px"
+				},200);
+			}else{
+				father.append(numbercell);
+				numbercell.animate({
+					top:getPosTop(i,j)+"px",
+					left:getPosLeft(i,j)+"px",
+					width:"100px",
+					height:"100px"
+				},200);
+				numbercell.css("background-color",getColor(contain[i][j]))
+
+				numbercell.html(contain[i][j]);
 			}
 
 			console.log("num:%d  x :%s  y:%s",contain[i][j],numbercells[i][j].css("left"),numbercells[i][j].css("top"))
