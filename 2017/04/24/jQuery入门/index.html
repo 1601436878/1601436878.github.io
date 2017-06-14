@@ -10,7 +10,7 @@
     
     <title>
         
-            html_表单 | 
+            jQuery入门 | 
         
         Twilight&#39;s Blog
     </title>
@@ -36,7 +36,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="wangchao">
     <meta name="description" content="null">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="null,jQuery">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
@@ -62,9 +62,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://twilight.net.cn">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="html_表单 | Twilight&#39;s Blog">
+    <meta property="og:title" content="jQuery入门 | Twilight&#39;s Blog">
     <meta property="og:description" content="null">
-    
+    <meta property="og:article:tag" content="jQuery"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -246,7 +246,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#form"><span class="post-toc-number">1.</span> <span class="post-toc-text">form</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#input"><span class="post-toc-number">2.</span> <span class="post-toc-text">input</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单行文本框"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">单行文本框</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#密码框"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">密码框</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单选框"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">单选框</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#下拉框"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">下拉框</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多选框"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">多选框</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件上传"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">文件上传</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#按钮"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">按钮</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文本域"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">文本域</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#隐藏域"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">隐藏域</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#表单外框"><span class="post-toc-number">2.10.</span> <span class="post-toc-text">表单外框</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#标注内容"><span class="post-toc-number">2.11.</span> <span class="post-toc-text">标注内容</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#导入jQuery"><span class="post-toc-number">1.</span> <span class="post-toc-text">导入jQuery</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#加载完成后自动执行"><span class="post-toc-number">2.</span> <span class="post-toc-text">加载完成后自动执行</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#jQuery对象与dom对象的转换"><span class="post-toc-number">3.</span> <span class="post-toc-text">jQuery对象与dom对象的转换</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#jQuery转换成dom"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">jQuery转换成dom</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#dom对象转换为jQuery"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">dom对象转换为jQuery</span></a></li></ol></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -283,7 +283,7 @@
         
     
             <p class="article-headline-p">
-                html_表单
+                jQuery入门
             </p>
         </div>
 
@@ -302,7 +302,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>wangchao</strong>
-        <span>1月 21, 2017</span>
+        <span>4月 24, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -326,7 +326,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        
+        <a class="post_tag-link" href="/tags/jQuery/">jQuery</a>
     </ul>
     
 
@@ -340,7 +340,7 @@
     <!-- Leancloud Views -->
         <a class="post_share-link" href="#">
             <li class="mdl-menu__item">
-                <span id="/2017/01/21/html-表单/" class="leancloud-views_num" data-flag-title="html_表单">
+                <span id="/2017/04/24/jQuery入门/" class="leancloud-views_num" data-flag-title="jQuery入门">
      &nbsp;浏览量
 </span>
 
@@ -352,7 +352,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=html_表单&url=http://twilight.net.cn//2017/01/21/html-表单/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=jQuery入门&url=http://twilight.net.cn//2017/04/24/jQuery入门/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -361,7 +361,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=html_表单&url=http://twilight.net.cn//2017/01/21/html-表单/index.html&via=wangchao" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=jQuery入门&url=http://twilight.net.cn//2017/04/24/jQuery入门/index.html&via=wangchao" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -370,7 +370,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2017/01/21/html-表单/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2017/04/24/jQuery入门/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -379,7 +379,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2017/01/21/html-表单/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2017/04/24/jQuery入门/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -391,7 +391,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=html_表单&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2017/01/21/html-表单/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=jQuery入门&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2017/04/24/jQuery入门/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -409,44 +409,26 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p><em>客户端和服务端信息交流的途径</em></p>
-<h2 id="form"><a href="#form" class="headerlink" title="form"></a>form</h2><p><strong>创建一个表单，容器，表单元素必须在form种才能起作用。</strong><br><b><br>action: 规定当提交表单时，向何处发送表单数据。action=URL(传递目标，处理表单信息的服务器端应用程序)<br><a id="more"></a><br>method: 规定如何发送表单数据(POST/GET)<br>name: 规定表单的名称。<br>target: _blank/_parent/_self/_top/framename 规定在何处打开 action URL。<br></b></p>
+        <h1 id="导入jQuery"><a href="#导入jQuery" class="headerlink" title="导入jQuery"></a>导入jQuery</h1><p>使用jQuery只需加上一行代码：<br><code>&lt;script src=&quot;JS/jquery-2.1.1.min.js&quot;&gt;&lt;/script&gt;</code><br>jQuery中用\$选择元素，\$ 代表jQuery对象，二者是相等的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert($ == jQuery);    // true</div></pre></td></tr></table></figure></p>
+<h1 id="加载完成后自动执行"><a href="#加载完成后自动执行" class="headerlink" title="加载完成后自动执行"></a>加载完成后自动执行</h1><p>在js中常见<br><code>window.onload=function(){...}</code><br>表示在页面加载完成后执行，jQuery也有类似的方式。具体有三种方式：</p>
+<ol>
+<li><b>\$(document).ready(function(){})</b></li>
+<li><b>\$(function(){})&nbsp;&nbsp;&nbsp;(1的简写)</b></li>
+<li><b>jQuery(function(){})&nbsp;&nbsp;&nbsp;(jQuery等同于\$)</b></li>
+</ol>
+<p>与js中的onload不同，jQuery不会等待所有元素都加载完成后再执行。执行速度比onload快。</p>
+<ul>
+<li>window.onload只能加载一次，jQuery可加载多次</li>
+</ul>
+<h1 id="jQuery对象与dom对象的转换"><a href="#jQuery对象与dom对象的转换" class="headerlink" title="jQuery对象与dom对象的转换"></a>jQuery对象与dom对象的转换</h1><p>获取jQuery对象</p>
 <blockquote>
-<p>post 传递大量信息<br>get将值附加在URL后适合传递少量信息</p>
+<p>var $t1 = $(‘#t1’);</p>
 </blockquote>
-<h2 id="input"><a href="#input" class="headerlink" title="input"></a>input</h2><p>定义输入域，用户可在其中输入数据。<br>type和name属性是必须的，其他属性是可选的（所有表单元素都是这样）<br>没有结束标签</p>
-<hr>
-<h3 id="单行文本框"><a href="#单行文本框" class="headerlink" title="单行文本框"></a><font color="red">单行文本框</font></h3><p><strong><i>input name=’text’</i></strong><br><b><br>value=’初始值’<br>size=’显示字符数’<br>maxlength=’最多容纳字符数’<br>readonly=’readonly’只能读，不可修改<br>disabled=’disabled’不可操作<br></b></p>
-<h3 id="密码框"><a href="#密码框" class="headerlink" title="密码框"></a><font color="red">密码框</font></h3><p><strong><em>input type=’password’ value=’初始值’ size=’显示字符数’</em></strong><br><em>与文本框类似</em></p>
-<p><img src="http://p1.bpimg.com/1949/4ee0521f322779c1.png" alt="密码框"></p>
-<h3 id="单选框"><a href="#单选框" class="headerlink" title="单选框"></a><font color="red">单选框</font></h3><p>input type=’radio’ </p>
-<p><b><br>value 单选框的值<br>name 名称，不同的选项名称必须相同<br>checked 默认选中(checked=’checked’)<br></b></p>
-<p><img src="http://p1.bpimg.com/1949/536d9aa343d67db9.png" alt="单选框"></p>
-<h3 id="下拉框"><a href="#下拉框" class="headerlink" title="下拉框"></a><font color="red">下拉框</font></h3><p>&lt;select name=’下拉框名称’&gt;<br>&lt;option selected=’selected’ value=’项目的值’&gt;列表显示的值&lt;/option&gt;<br>&lt;/select&gt;</p>
-<p><img src="http://p1.bpimg.com/1949/8ee3f1231fb6e78b.png" alt="下拉框"></p>
-<p>下拉分组: &lt;optgroup label=’分组名称’&gt;&lt;/optgroup&gt;</p>
-<p><img src="http://p1.bpimg.com/584041/82b3fef162504e12.png" alt="分组下拉框"></p>
-<p>size 显示的行数<br>multiple是否允许多选</p>
-<p><img src="http://p1.bpimg.com/584041/4cd5ae57cd848146.png" alt="下拉多选"></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> 籍贯：</div><div class="line"> <span class="tag">&lt;<span class="name">select</span> <span class="attr">size</span>=<span class="string">'3'</span> <span class="attr">multiple</span>=<span class="string">'multiple'</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">option</span>&gt;</span>合肥<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">option</span>&gt;</span>南京<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">option</span>&gt;</span>合肥<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">option</span>&gt;</span>南京<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">select</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="多选框"><a href="#多选框" class="headerlink" title="多选框"></a><font color="red">多选框</font></h3><p>input type=”checkbox” name=”Car”</p>
-<p>value 项目的值<br>name必须相同</p>
-<h3 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a><font color="red">文件上传</font></h3><p>input type=’file’</p>
-<p><img src="http://p1.bpimg.com/584041/fcf5c3ae02675865.png" alt="文件上传"></p>
-<h3 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a><font color="red">按钮</font></h3><p>input type=’submit’ 提交<br>input type=’reset’重置(清空所有输入的内容)<br>input type=’button’普通按钮</p>
-<p><img src="http://p1.bpimg.com/584041/0800aba25566b1e4.png" alt="按钮"></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'submit'</span> <span class="attr">value</span>=<span class="string">'提交2'</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'reset'</span> <span class="attr">value</span>=<span class="string">'重置2'</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'button'</span><span class="attr">value</span>=<span class="string">'普通按钮'</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="文本域"><a href="#文本域" class="headerlink" title="文本域"></a><font color="red">文本域</font></h3><p>&lt;textarea&gt;… &lt;/textarea&gt;<br>cols =’每行显示的字符数’<br>rows =’每列显示的字符数’</p>
-<p><img src="http://p1.bpimg.com/584041/561ee832b76e6e3c.png" alt="文本域"></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">cols</span>=<span class="string">'15'</span> <span class="attr">rows</span>=<span class="string">'6'</span>&gt;</span> <span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="隐藏域"><a href="#隐藏域" class="headerlink" title="隐藏域"></a><font color="red">隐藏域</font></h3><p>input type=’hidden’<br>看不见的组件</p>
-<h3 id="表单外框"><a href="#表单外框" class="headerlink" title="表单外框"></a><font color="red">表单外框</font></h3><p>fieldset 定义围绕在表单周围的边框<br>legend 标题</p>
-<p><img src="http://p1.bpimg.com/584041/16a51f5e11076235.png" alt="外框"></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">legend</span>&gt;</span>性别<span class="tag">&lt;/<span class="name">legend</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">'man'</span>&gt;</span>男<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'radio'</span> <span class="attr">value</span>=<span class="string">'man'</span> <span class="attr">id</span>=<span class="string">'man'</span> <span class="attr">name</span>=<span class="string">'sex'</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">'women'</span>&gt;</span>女<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'radio'</span> <span class="attr">value</span>=<span class="string">'women'</span> <span class="attr">id</span>=<span class="string">'women'</span> <span class="attr">name</span>=<span class="string">'sex'</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="标注内容"><a href="#标注内容" class="headerlink" title="标注内容"></a><font color="red">标注内容</font></h3><p>label 元素不会向用户呈现任何特殊效果。不过，它为鼠标用户改进了可用性。如果您在 label 元素内点击文本，就会触发此控件。就是说，当用户选择该标签时，浏览器就会自动将焦点转到和标签相关的表单控件上。</p>
-<p><strong>label标签的 for 属性应当与相关元素的 id 属性相同。</strong></p>
-<p><img src="http://p1.bpimg.com/584041/8597005875a38950.png" alt="label"></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">性别:</div><div class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">'man'</span>&gt;</span>男<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'radio'</span> <span class="attr">value</span>=<span class="string">'man'</span> <span class="attr">name</span>=<span class="string">'sex'</span> <span class="attr">id</span>=<span class="string">'man'</span> <span class="attr">checked</span>=<span class="string">'checked'</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">'women'</span>&gt;</span>女<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'radio'</span> <span class="attr">value</span>=<span class="string">'women'</span> <span class="attr">name</span>=<span class="string">'sex'</span> <span class="attr">id</span>=<span class="string">'women'</span> &gt;</span></div></pre></td></tr></table></figure>
+<h2 id="jQuery转换成dom"><a href="#jQuery转换成dom" class="headerlink" title="jQuery转换成dom"></a>jQuery转换成dom</h2><ol>
+<li>$t1[0]</li>
+<li>$t1.get(0)</li>
+</ol>
+<h2 id="dom对象转换为jQuery"><a href="#dom对象转换为jQuery" class="headerlink" title="dom对象转换为jQuery"></a>dom对象转换为jQuery</h2><p>var $t1 = $(t1); </p>
 
     
 
@@ -464,7 +446,7 @@
     <!-- 使用 changyan -->
     <div id="changyan-comment">
         <!--PC和WAP自适应版-->
-<div id="SOHUCS" sid="2017/01/21/html-表单/"  ></div>
+<div id="SOHUCS" sid="2017/04/24/jQuery入门/"  ></div>
 <script type="text/javascript">
 (function(){
 var appid = 'cysVH2p6S';
@@ -493,7 +475,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/01/23/CSS-选择器/" id="post_nav-newer" class="prev-content">
+        <a href="/2017/06/03/2017-06-03/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -507,7 +489,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 
     <!-- Next Nav -->
     
-        <a href="/2016/12/29/html_meta_body/" id="post_nav-older" class="next-content">
+        <a href="/2017/04/15/Servlet-ServletConfig/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
