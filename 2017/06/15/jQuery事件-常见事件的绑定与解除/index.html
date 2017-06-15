@@ -10,7 +10,7 @@
     
     <title>
         
-            CSS-精灵图 | 
+            jQuery事件---常见事件的绑定与解除 | 
         
         Twilight&#39;s Blog
     </title>
@@ -36,7 +36,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="wangchao">
     <meta name="description" content="null">
-    <meta name="keywords" content="null,CSS">
+    <meta name="keywords" content="null,jQuery">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
@@ -62,9 +62,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://twilight.net.cn">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="CSS-精灵图 | Twilight&#39;s Blog">
+    <meta property="og:title" content="jQuery事件---常见事件的绑定与解除 | Twilight&#39;s Blog">
     <meta property="og:description" content="null">
-    <meta property="og:article:tag" content="CSS"> 
+    <meta property="og:article:tag" content="jQuery"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -246,7 +246,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#绑定事件"><span class="post-toc-number">1.</span> <span class="post-toc-text">绑定事件</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#jquery-用-bind-为元素绑定事件"><span class="post-toc-number">2.</span> <span class="post-toc-text">jquery 用 bind() 为元素绑定事件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#可以一次绑定多个事件"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">可以一次绑定多个事件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#通过键值对"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">通过键值对</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#删除事件"><span class="post-toc-number">3.</span> <span class="post-toc-text">删除事件</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#鼠标进入-移出事件"><span class="post-toc-number">4.</span> <span class="post-toc-text">鼠标进入/移出事件</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#键盘事件"><span class="post-toc-number">5.</span> <span class="post-toc-text">键盘事件</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#获得焦点事件"><span class="post-toc-number">6.</span> <span class="post-toc-text">获得焦点事件</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#复合事件"><span class="post-toc-number">7.</span> <span class="post-toc-text">复合事件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hover"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">hover()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#toggle"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">toggle()</span></a></li></ol></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -283,7 +283,7 @@
         
     
             <p class="article-headline-p">
-                CSS-精灵图
+                jQuery事件---常见事件的绑定与解除
             </p>
         </div>
 
@@ -302,7 +302,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>wangchao</strong>
-        <span>3月 24, 2017</span>
+        <span>6月 15, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -326,7 +326,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/CSS/">CSS</a>
+        <a class="post_tag-link" href="/tags/jQuery/">jQuery</a>
     </ul>
     
 
@@ -340,7 +340,7 @@
     <!-- Leancloud Views -->
         <a class="post_share-link" href="#">
             <li class="mdl-menu__item">
-                <span id="/2017/03/24/CSS-精灵图/" class="leancloud-views_num" data-flag-title="CSS-精灵图">
+                <span id="/2017/06/15/jQuery事件-常见事件的绑定与解除/" class="leancloud-views_num" data-flag-title="jQuery事件---常见事件的绑定与解除">
      &nbsp;浏览量
 </span>
 
@@ -352,7 +352,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=CSS-精灵图&url=http://twilight.net.cn//2017/03/24/CSS-精灵图/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=jQuery事件---常见事件的绑定与解除&url=http://twilight.net.cn//2017/06/15/jQuery事件-常见事件的绑定与解除/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -361,7 +361,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=CSS-精灵图&url=http://twilight.net.cn//2017/03/24/CSS-精灵图/index.html&via=wangchao" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=jQuery事件---常见事件的绑定与解除&url=http://twilight.net.cn//2017/06/15/jQuery事件-常见事件的绑定与解除/index.html&via=wangchao" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -370,7 +370,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2017/03/24/CSS-精灵图/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2017/06/15/jQuery事件-常见事件的绑定与解除/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -379,7 +379,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2017/03/24/CSS-精灵图/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2017/06/15/jQuery事件-常见事件的绑定与解除/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -391,7 +391,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=CSS-精灵图&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2017/03/24/CSS-精灵图/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=jQuery事件---常见事件的绑定与解除&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2017/06/15/jQuery事件-常见事件的绑定与解除/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -409,15 +409,86 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>之前就发现一些网站吧所有的小图标拼接在一张图片中，但是一直不知道这是怎么做到的，今天特地了解了一下，才知道这种用法叫做精灵图。他的优点是可以减少浏览器请求的次数，把所有图片拼接在一张图中就只需要请求一次，当浏览器需要用到图片时再从大图片中解析。这样可以加快访问的次数。先来看看效果图：<br><a id="more"></a><br><img src="http://p1.bpimg.com/584041/fd7809c23e8a9679.png" alt=""></p>
-<p>拼接的图片：<br><img src="http://p1.bpimg.com/584041/233e042c8598717c.png" alt=""></p>
-<p>他的原理是，先规定好每个小图标的大小，创建一个和小图标大小相同的容器，再通过移动背景图片的方法将大图中需要的部分暴露在这个容器中。就是说这张图片就像被一块布遮住，只是在想要的地方留了一个空，好让背景图片暴露出来，这样只要将将背景图片一道合适的位置就可以只显示我们想要的部分。</p>
-<p><img src="http://p1.bpimg.com/584041/fc81b3f3c240d018.png" alt=""></p>
-<p>具体步骤：<br>1，创建合适大小的容器<br>2，将拼接的大图作为容器的背景，并设置为no-repeat<br>3，改变背景的位置</p>
-<p>对于改变背景的位置我们需要知道小图标在大图片的的坐标（以大图的左上角为原点），例如如果小图标在大图中的坐标是(10,20)，那么将背景图片向左移动10px,向上移动20px就可以抵消小图标在大图的位置。<br>获取这个坐标可以用PS中的切片工具，将小图标选择出来后右击选择编辑即可看到小图标的坐标</p>
-<p><img src="http://p1.bpimg.com/584041/6f7e2920c764dd60.png" alt=""></p>
-<p>完整源码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">	&lt;head&gt;</div><div class="line">		&lt;style&gt;</div><div class="line">		*&#123;</div><div class="line">			margin:0;</div><div class="line">			padding:0;</div><div class="line">		&#125;</div><div class="line">		.div0&#123;</div><div class="line">			margin:10px;</div><div class="line"></div><div class="line">		&#125;</div><div class="line">		.demo1,.demo2,.demo3,.demo4,.demo5,.demo6&#123;</div><div class="line">			display:inline-block;</div><div class="line">			width:17px;</div><div class="line">			height:17px;</div><div class="line">			background-color:transparent;</div><div class="line">			background-image:url(ico.png);</div><div class="line">			background-repeat:no-repeat;</div><div class="line">		&#125;</div><div class="line">		.demo1&#123;	background-position:-38px -37px;&#125;</div><div class="line">		.demo2&#123;	background-position:-62px -37px;&#125;</div><div class="line">		.demo3&#123;	background-position:-86px -37px;&#125;</div><div class="line">		.demo4&#123;	background-position:-110px -37px;&#125;</div><div class="line">		.demo5&#123;	background-position:-134px -37px;&#125;</div><div class="line">		.demo6&#123;	background-position:-159px -37px;&#125;</div><div class="line">		ul&#123;</div><div class="line">			list-style:none;</div><div class="line">		&#125;</div><div class="line">		ul li &#123;</div><div class="line">			margin:10px;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		&lt;/style&gt;</div><div class="line">	&lt;/head&gt;</div><div class="line"></div><div class="line">	&lt;body&gt;</div><div class="line">	&lt;div class=&quot;div0&quot;&gt;</div><div class="line">		&lt;ul&gt;</div><div class="line">			&lt;li&gt;&lt;div class=&quot;demo1&quot;&gt;&lt;/div&gt; 图标1&lt;/li&gt;</div><div class="line">			&lt;li&gt;&lt;div class=&quot;demo2&quot;&gt;&lt;/div&gt; 图标2&lt;/li&gt;</div><div class="line">			&lt;li&gt;&lt;div class=&quot;demo3&quot;&gt;&lt;/div&gt; 图标3&lt;/li&gt;</div><div class="line">			&lt;li&gt;&lt;div class=&quot;demo4&quot;&gt;&lt;/div&gt; 图标4&lt;/li&gt;</div><div class="line">			&lt;li&gt;&lt;div class=&quot;demo5&quot;&gt;&lt;/div&gt; 图标5&lt;/li&gt;</div><div class="line">			&lt;li&gt;&lt;div class=&quot;demo6&quot;&gt;&lt;/div&gt; 图标6&lt;/li&gt;</div><div class="line">		&lt;/ul&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line"></div><div class="line">	&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+        <h1 id="绑定事件"><a href="#绑定事件" class="headerlink" title="绑定事件"></a>绑定事件</h1><p>常见事件有：click dbclick mousedown mouseup mousemove mouseover mouseout change select submit keydown keypress keyup blur focus load resize scroll error… </p>
+<h1 id="jquery-用-bind-为元素绑定事件"><a href="#jquery-用-bind-为元素绑定事件" class="headerlink" title="jquery 用 bind() 为元素绑定事件"></a>jquery 用 bind() 为元素绑定事件</h1><p>bind(type,[data],function)</p>
+<ul>
+<li>type 表示事件类型，是事件名称的字符串</li>
+<li>data 是<strong>可选</strong>的作为event.data 属性传递一个额外的数据</li>
+<li>fn 表示绑定到指定元素的处理函数<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(function()&#123;</div><div class="line">	$(&quot;input&quot;).bind(&quot;click&quot;,test);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>将元素与指定函数绑定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(function()&#123;</div><div class="line">	$(&quot;input&quot;).bind(&quot;click&quot;,test);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">function test()&#123;</div><div class="line">	alert(&quot;#&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="可以一次绑定多个事件"><a href="#可以一次绑定多个事件" class="headerlink" title="可以一次绑定多个事件"></a>可以一次绑定多个事件</h2><ul>
+<li>bind(‘evevt1 event2 ‘，function()) 绑定多个事件</li>
+</ul>
+<p>同时绑定鼠标移入和移出事件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(function()&#123;</div><div class="line">	$(&quot;input&quot;).bind(&quot;mouseover mouseout&quot;,function()&#123;</div><div class="line">		$(&quot;div&quot;).html(function(index,value)&#123;</div><div class="line">			return (value+index);</div><div class="line">		&#125;);</div><div class="line">	&#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="通过键值对"><a href="#通过键值对" class="headerlink" title="通过键值对"></a>通过键值对</h2><p>双引号可加可不加<br><em>bind({<br>    event1:function(){},<br>    event2:function(){}<br>})</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$(function()&#123;</div><div class="line">	$(&quot;input&quot;).bind(&#123;</div><div class="line">		mouseover:function()&#123;</div><div class="line">			alert(&quot;移入&quot;);</div><div class="line">		&#125;,</div><div class="line">		mouseout:function()&#123;</div><div class="line">			alert(&quot;移出&quot;);</div><div class="line">		&#125;</div><div class="line">	&#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h1 id="删除事件"><a href="#删除事件" class="headerlink" title="删除事件"></a>删除事件</h1><ul>
+<li>unbind() 删除当前元素所有的事件</li>
+<li>unlind(‘事件’) 删除指定事件</li>
+<li>unbind(‘事件’,fn) 删除事件绑定的特定函数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$(function()&#123;</div><div class="line">	$(&quot;input&quot;).bind(&#123;</div><div class="line">		mouseover:function()&#123;</div><div class="line">			alert(&quot;移入&quot;);</div><div class="line">		&#125;,</div><div class="line">		mouseout:function()&#123;</div><div class="line">			alert(&quot;移出&quot;);</div><div class="line">		&#125;</div><div class="line">	&#125;);</div><div class="line">	</div><div class="line">	$(&quot;input&quot;).unbind(&quot;mouseover&quot;);		// 移除mouseover事件</div><div class="line">	$(&quot;input&quot;).unbind();				// 移除改元素的所有事件</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>移出元素上绑定的指定函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(function()&#123;</div><div class="line">	$(&quot;input&quot;).bind(&quot;mouseover&quot;,test);		</div><div class="line">	$(&quot;input&quot;).unbind(&quot;mouseover&quot;,test);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<ul>
+<li>click(fn) 鼠标click(单击)事件</li>
+<li>dblclick(fn) 鼠标dblclick(双击)事件</li>
+<li>mousedown(fn) 鼠标mousedown(点击后)事件</li>
+<li>mouseup(fn) 鼠标mouseup(点击弹起)事件</li>
+<li>mouseover(fn) 鼠标mouseover(鼠标移入)事件</li>
+<li>mouseout(fn) 鼠标mouseout(鼠标移出)事件</li>
+<li>mousemove(fn) 鼠标mousemove(鼠标移动)事件</li>
+<li>mouseenter(fn) 鼠标mouseenter(鼠标穿过)事件</li>
+<li>mouseleave(fn) 鼠标mouseleave(鼠标穿出)事件</li>
+<li>keydown(fn) 键盘keydown(键盘按下)事件</li>
+<li>keyup(fn) 键盘keyup(键盘按下弹起)事件</li>
+<li>keypress(fn) 键盘keypress(键盘按下)事件</li>
+<li>unload(fn) 文档 当卸载本页面时绑定一个要执行的函数</li>
+<li>resize(fn) 文档resize(文档改变大小)事件</li>
+<li>scroll(fn) 文档scroll(滚动条拖动)事件</li>
+<li>focus(fn) 表单 focus(焦点激活)事件</li>
+<li>blur(fn) 表单blur(焦点丢失)事件</li>
+<li>focusin(fn) 表单 触发每一个匹配元素的 focusin(焦点激活)事件</li>
+<li>focusout(fn) 表单 触发每一个匹配元素的 focusout(焦点丢失)事件</li>
+<li>select(fn) <strong>表单</strong>select(文本选定)事件</li>
+<li>change(fn) <strong>表单</strong>change(值改变)事件</li>
+<li>submit(fn) 表单submit(表单提交)事件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 单击事件</div><div class="line">	$(&quot;input&quot;).click(function()&#123;</div><div class="line">		alert(&quot;#&quot;);</div><div class="line">	&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 双击事件</div><div class="line">	function dbtest()&#123;</div><div class="line">		alert(&quot;双击&quot;);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	$(&quot;input&quot;).dblclick(dbtest);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 鼠标按下弹起事件</div><div class="line">	$(&quot;input&quot;).mousedown(function()&#123;</div><div class="line">		alert(&quot;down&quot;);</div><div class="line">	&#125;);</div><div class="line">	$(&quot;input&quot;).mouseup(function()&#123;</div><div class="line">		alert(&quot;up&quot;)</div><div class="line">	&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 浏览器窗口改变大小时触发</div><div class="line">	$(window).resize(function()&#123;</div><div class="line">		alert(&quot;resize&quot;);</div><div class="line">	&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 滚动条事件</div><div class="line">	$(document).scroll(function()&#123;</div><div class="line">		alert(&quot;scroll&quot;);</div><div class="line">	&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// b表单文本被选中事件</div><div class="line">	$(&quot;textarea&quot;).select(function()&#123;</div><div class="line">		alert(&quot;文本被选中&quot;);</div><div class="line">	&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 表单文本被更改事件</div><div class="line">	$(&quot;textarea&quot;).change(function()&#123;</div><div class="line">		alert(&quot;文本被更改&quot;);</div><div class="line">	&#125;);</div></pre></td></tr></table></figure>
+<h1 id="鼠标进入-移出事件"><a href="#鼠标进入-移出事件" class="headerlink" title="鼠标进入/移出事件"></a>鼠标进入/移出事件</h1><ul>
+<li>mouseover/mouseout  鼠标移入移出（<strong>穿过子元素会触发</strong>）</li>
+<li>mouseenter/mouseleave 鼠标穿入/穿出(<strong>穿过子元素不会触发</strong>)</li>
+</ul>
+<p><img src="http://i2.muimg.com/584041/44e900625395455c.png" alt="鼠标事件"></p>
+<p>给大div绑定鼠标移入和移出事件，当鼠标进入绿色div时，会输出两个0.因为移入绿色div时同时发生了移出大div和移入小div，会触发两次事件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$(&quot;div&quot;).eq(0).mouseover(function()&#123;</div><div class="line">	$(&quot;.p&quot;).eq(0).html(function (index,value)&#123;</div><div class="line">		return value + index ;</div><div class="line">	&#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">$(&quot;div&quot;).eq(0).mouseout(function()&#123;</div><div class="line">	$(&quot;.p&quot;).eq(0).html(function (index,value)&#123;</div><div class="line">		return value + index ;</div><div class="line">	&#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h1 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h1><p>keydown/keyup 和 heypress</p>
+<ul>
+<li>keydown/keyup 返回键码keyCode</li>
+<li>keypress 返回字符编码 charCode<br>如果类型错误会返回0</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$(window).keyup(function()&#123;alert(event.keyCode);&#125;);</div><div class="line">$(window).keypress(function()&#123;alert(event.charCode);&#125;);</div></pre></td></tr></table></figure>
+<h1 id="获得焦点事件"><a href="#获得焦点事件" class="headerlink" title="获得焦点事件"></a>获得焦点事件</h1><ul>
+<li>focus() / flur()  光标激活和丢失（当前元素，不包含子元素）</li>
+<li>focusin() / focusout() 光标激活和丢失（包含子元素）</li>
+<li><strong>PS: </strong><br><strong>1. 只用于表单</strong><br><strong>2. 点击控件时才会转移焦点</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(&quot;.div&quot;).focusin(function()&#123;</div><div class="line">	$(&quot;.p&quot;).html(function(index,value)&#123;</div><div class="line">		return value+&quot;1&quot;;</div><div class="line">	&#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="复合事件"><a href="#复合事件" class="headerlink" title="复合事件"></a>复合事件</h1><ul>
+<li>ready(function) 当DOM加载完毕时触发</li>
+<li><strong>hover（fn1,fn2） 移入和移出时在fn1 和fn2 之间切换</strong>（mouseenter和mouseleaver的结合）</li>
+<li>toggle(fn1,fn2,fn3)已弃用。在多个样式之间切换</li>
+</ul>
+<h2 id="hover"><a href="#hover" class="headerlink" title="hover()"></a>hover()</h2><p>移入和移出时改变颜色：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(&quot;div&quot;).hover(function()&#123;</div><div class="line">	$(this).css(&quot;background-color&quot;,&quot;red&quot;);</div><div class="line">&#125;,function()&#123;</div><div class="line">	$(this).css(&quot;background-color&quot;,&quot;blue&quot;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="toggle"><a href="#toggle" class="headerlink" title="toggle()"></a>toggle()</h2><p>自己完成toggle() ，每次点击切换一个样式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var count = 0 ; </div><div class="line">$(&quot;.div&quot;).click(function()&#123;</div><div class="line">	if(count == 0 )&#123;</div><div class="line">		$(this).css(&quot;background-color&quot;,&quot;red&quot;);</div><div class="line">		count ++ ;</div><div class="line">	&#125;</div><div class="line">	else if (count == 1 )&#123;</div><div class="line">		$(this).css(&quot;background-color&quot;,&quot;green&quot;);</div><div class="line">		count ++ ;</div><div class="line">	&#125;</div><div class="line">	else if (count == 2)&#123;</div><div class="line">		$(this).css(&quot;background-color&quot;,&quot;yellow&quot;);</div><div class="line">		count=0 ;</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><strong>PS : div默认是不能选中的，使用鼠标点击无法获得焦点，如果需要获得焦点可以加上tabindex=”1”属性</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;div&quot; style=&quot;width:200px;height:200px; background-color:yellow;&quot; tabindex=&quot;1&quot;&gt;</div><div class="line">	&lt;input type=&quot;text&quot; class=&quot;input&quot;/&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
 
     
 
@@ -435,7 +506,7 @@
     <!-- 使用 changyan -->
     <div id="changyan-comment">
         <!--PC和WAP自适应版-->
-<div id="SOHUCS" sid="2017/03/24/CSS-精灵图/"  ></div>
+<div id="SOHUCS" sid="2017/06/15/jQuery事件-常见事件的绑定与解除/"  ></div>
 <script type="text/javascript">
 (function(){
 var appid = 'cysVH2p6S';
@@ -464,21 +535,13 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/04/06/Servlet入门/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/03/24/javascript-操作表单/" id="post_nav-older" class="next-content">
+        <a href="/2017/06/15/查找和关闭占用特定端口的进程/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
