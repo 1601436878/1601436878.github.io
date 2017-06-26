@@ -270,17 +270,8 @@
                 
     <!-- Paradox Post Header -->
     
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-            <script>
-    var randomNum = Math.floor(Math.random() * 19 + 1);
-
-    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
-    $('.post_thumbnail-random').addClass('lazy');
-</script>
-
-        
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://img.pconline.com.cn/images/upload/upc/tx/wallpaper/1207/27/c0/12571618_1343368587822.jpg)">
     
             <p class="article-headline-p">
                 Servlet-监听器（ServletContext、Request、Session）
@@ -476,6 +467,7 @@
 </ul>
 <p>由于钝化需要将对象序列化，所以还需要实现Serializable接口。代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">package com.twilight.entity;</div><div class="line"></div><div class="line">import java.io.Serializable;</div><div class="line"></div><div class="line">import javax.servlet.http.HttpSessionActivationListener;</div><div class="line">import javax.servlet.http.HttpSessionBindingEvent;</div><div class="line">import javax.servlet.http.HttpSessionBindingListener;</div><div class="line">import javax.servlet.http.HttpSessionEvent;</div><div class="line"></div><div class="line">public class User implements HttpSessionBindingListener ,HttpSessionActivationListener ,Serializable &#123;</div><div class="line">	private String userName ;</div><div class="line">	private String password ;</div><div class="line">	</div><div class="line"></div><div class="line">	public void valueBound(HttpSessionBindingEvent arg0) &#123;</div><div class="line">		System.out.println(&quot;HttpSessionBindingListener_valueBound_&quot;+arg0.getName());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void valueUnbound(HttpSessionBindingEvent arg0) &#123;</div><div class="line">		System.out.println(&quot;HttpSessionBindingListener_valueUnbound+&quot;+arg0.getName());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public String getUserName() &#123;</div><div class="line">		return userName;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void setUserName(String userName) &#123;</div><div class="line">		this.userName = userName;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public String getPassword() &#123;</div><div class="line">		return password;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void setPassword(String password) &#123;</div><div class="line">		this.password = password;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	</div><div class="line">	public void sessionDidActivate(HttpSessionEvent se) &#123;</div><div class="line">		System.out.println(&quot;HttpSessionActivationListener_sessionDidActivate_&quot;+se.getSource());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void sessionWillPassivate(HttpSessionEvent se) &#123;</div><div class="line">		System.out.println(&quot;HttpSessionActivationListener_sessionWillPassivate_&quot;+se.getSource());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 钝化</div><div class="line">HttpSessionActivationListener_sessionWillPassivate_org.apache.catalina.session.StandardSessionFacade@720a366b</div><div class="line"></div><div class="line">// 活化</div><div class="line">HttpSessionActivationListener_sessionDidActivate_org.apache.catalina.session.StandardSessionFacade@798aa3f4</div></pre></td></tr></table></figure></p>
+<p>钝化后的文件保存在 Tomcat\work\Catalina\localhost\项目名\SESSIONS.ser文件中，服务器启动后文件被反序列化，然后被删除</p>
 
     
 
