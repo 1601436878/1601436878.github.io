@@ -10,7 +10,7 @@
     
     <title>
         
-            IO流（2） | 
+            Servlet-监听器获得当前在线人数 | 
         
         Twilight&#39;s Blog
     </title>
@@ -36,7 +36,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="wangchao">
     <meta name="description" content="null">
-    <meta name="keywords" content="null,Java">
+    <meta name="keywords" content="null,Servlet">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
@@ -62,9 +62,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://twilight.net.cn">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="IO流（2） | Twilight&#39;s Blog">
+    <meta property="og:title" content="Servlet-监听器获得当前在线人数 | Twilight&#39;s Blog">
     <meta property="og:description" content="null">
-    <meta property="og:article:tag" content="Java"> 
+    <meta property="og:article:tag" content="Servlet"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -246,7 +246,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#节点流："><span class="post-toc-number">1.</span> <span class="post-toc-text">节点流：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#处理流"><span class="post-toc-number">2.</span> <span class="post-toc-text">处理流</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#对象序列化："><span class="post-toc-number">3.</span> <span class="post-toc-text">对象序列化：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#重定向"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">重定向</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#案例一"><span class="post-toc-number">1.</span> <span class="post-toc-text">案例一</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#案例二"><span class="post-toc-number">2.</span> <span class="post-toc-text">案例二</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -270,20 +270,11 @@
                 
     <!-- Paradox Post Header -->
     
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-            <script>
-    var randomNum = Math.floor(Math.random() * 19 + 1);
-
-    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
-    $('.post_thumbnail-random').addClass('lazy');
-</script>
-
-        
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://i1.buimg.com/584041/4e081729efdfa9c2.jpg)">
     
             <p class="article-headline-p">
-                IO流（2）
+                Servlet-监听器获得当前在线人数
             </p>
         </div>
 
@@ -302,7 +293,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>wangchao</strong>
-        <span>11月 30, 2016</span>
+        <span>6月 26, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -326,7 +317,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Java/">Java</a>
+        <a class="post_tag-link" href="/tags/Servlet/">Servlet</a>
     </ul>
     
 
@@ -340,7 +331,7 @@
     <!-- Leancloud Views -->
         <a class="post_share-link" href="#">
             <li class="mdl-menu__item">
-                <span id="/2016/11/30/IO流(2)/" class="leancloud-views_num" data-flag-title="IO流（2）">
+                <span id="/2017/06/26/Servlet-监听器获得当前在线人数/" class="leancloud-views_num" data-flag-title="Servlet-监听器获得当前在线人数">
      &nbsp;浏览量
 </span>
 
@@ -352,7 +343,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=IO流（2）&url=http://twilight.net.cn//2016/11/30/IO流(2)/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Servlet-监听器获得当前在线人数&url=http://twilight.net.cn//2017/06/26/Servlet-监听器获得当前在线人数/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -361,7 +352,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=IO流（2）&url=http://twilight.net.cn//2016/11/30/IO流(2)/index.html&via=wangchao" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Servlet-监听器获得当前在线人数&url=http://twilight.net.cn//2017/06/26/Servlet-监听器获得当前在线人数/index.html&via=wangchao" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -370,7 +361,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2016/11/30/IO流(2)/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2017/06/26/Servlet-监听器获得当前在线人数/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -379,7 +370,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2016/11/30/IO流(2)/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2017/06/26/Servlet-监听器获得当前在线人数/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -391,7 +382,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=IO流（2）&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2016/11/30/IO流(2)/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=Servlet-监听器获得当前在线人数&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2017/06/26/Servlet-监听器获得当前在线人数/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -409,31 +400,12 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h4 id="节点流："><a href="#节点流：" class="headerlink" title="节点流："></a><strong>节点流</strong>：</h4><p>字节数组输入流 ByteArrayInputStream<br>字节数组输出流 ByteArrayOutputStream<br><a id="more"></a></p>
-<blockquote>
-<p>将字节数组转化成流<br>ByteArrayInputStream(byte [] )<br>不用关闭<br>toByteArray() 输出到字节数组</p>
-</blockquote>
-<h4 id="处理流"><a href="#处理流" class="headerlink" title="处理流"></a><strong>处理流</strong></h4><p>输入流：DataInputStream(InputStream x)  readXXX()<br>输出流：DataOutputStream(OutputStream x) writeXXX() </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// DataInputStream/DataOutputStream 写入到文件/从文件读取</div><div class="line">	public static void main (String [] args) throws IOException&#123;</div><div class="line">		File file = new File(&quot;D:/桌面/DataInputStream.txt&quot;);</div><div class="line">		DataInputStream input = new DataInputStream(new FileInputStream(file));</div><div class="line">//		DataOutputStream output = new DataOutputStream(new FileOutputStream(file));</div><div class="line">		int a = 100;</div><div class="line">		double b = 200;</div><div class="line">		String c = &quot;string&quot;;</div><div class="line">//		output.writeInt(a);</div><div class="line">//		output.writeDouble(b);</div><div class="line">//		output.writeUTF(c);</div><div class="line">		int d = input.readInt();</div><div class="line">		double e = input.readDouble();</div><div class="line">		String f = input.readUTF();</div><div class="line">		System.out.println(d);</div><div class="line">		System.out.println(e);</div><div class="line">		System.out.println(f);</div><div class="line">//		output.close();</div><div class="line">//		input.close();</div><div class="line">		</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<h4 id="对象序列化："><a href="#对象序列化：" class="headerlink" title="对象序列化："></a><strong>对象序列化</strong>：</h4><p>ObjectInputStream -&gt;  readObject()<br>ObjectOutputStream -&gt; writeObject()<br>先序列化后反序列化,对象必须使用java.io.Seriallizable接口<br>不是所有属性都需要序列化，用transient表示不需要序列化的属性</p>
-<blockquote>
-<p>可变参数只能放在新蔡的最后一个位置（Closeable …）<br>…可变参数，处理方式与数组一致<br>try- with-resource</p>
-</blockquote>
-<hr>
-<p>####<strong>打印流和输入流</strong><br>system.out<br>system.in<br>printStream<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">PrintStream ps = System.out</div><div class="line">ps.println();</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ps = new PrintStream(new BufferedOutputStream(new FileOutputStream(src)))</div><div class="line">ps.println(); //输出到文件</div></pre></td></tr></table></figure>
-<blockquote>
-<p>System.out<br>System.err<br>System.in 键盘输入</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">PrintStream output = new PrintStream(new FileOutputStream(new File(&quot;D:/桌面/2.txt&quot;)));</div><div class="line">output.print(&quot;printStream&quot;);</div></pre></td></tr></table></figure>
-<blockquote>
-<p>InputStream in = System.in;//system.in 实际上是一个InputStream流</p>
-</blockquote>
-<h5 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a><strong>重定向</strong></h5><p>setIn()<br>setOut()<br>setErr()</p>
-<blockquote>
-<p>System.setOut(new PrintStream(new FileOutputStream(“”)));<br>System.out.println(“2333”);<br>System.setOut(new PrintStream(new FileOutputStream(new FileDescripter.out)));//返回控制台</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">System.setOut(new PrintStream(new FileOutputStream(&quot;D:/桌面/3.txt&quot;)));</div><div class="line">System.out.println(&quot;重定向&quot;);</div></pre></td></tr></table></figure>
+        <h1 id="案例一"><a href="#案例一" class="headerlink" title="案例一"></a>案例一</h1><p>使用监听器获得当前在线的人数。用变量count表示当前在线人数。在HttpSessionListener每次调用sessionCreated方法时更新count，并保存在ServletContext中。之后需要使用时从ServletContext中获取即可。<a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">@WebListener</div><div class="line">public class MySessionListener implements HttpSessionListener  &#123;</div><div class="line">	private int count = 0 ;</div><div class="line">	</div><div class="line">	@Override</div><div class="line">	public void sessionCreated(HttpSessionEvent se) &#123;</div><div class="line">		count++;</div><div class="line">		se.getSession().getServletContext().setAttribute(&quot;count&quot;,  count);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void sessionDestroyed(HttpSessionEvent se) &#123;</div><div class="line">		count--;</div><div class="line">		se.getSession().getServletContext().setAttribute(&quot;count&quot;, count);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="案例二"><a href="#案例二" class="headerlink" title="案例二"></a>案例二</h1><p>下面这个例子，除了获得在线的人数，还可以需要获得一些其他信息</p>
+<p>ServletRequestListener监听器，对于每一次请求，获得请求的相关信息，并保存在ArrayList中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">package listener;</div><div class="line"></div><div class="line">import java.text.SimpleDateFormat;</div><div class="line">import java.util.ArrayList;</div><div class="line">import java.util.Date;</div><div class="line"></div><div class="line">import javax.servlet.ServletRequestEvent;</div><div class="line">import javax.servlet.ServletRequestListener;</div><div class="line">import javax.servlet.annotation.WebListener;</div><div class="line">import javax.servlet.http.HttpServletRequest;</div><div class="line">import javax.servlet.http.HttpSession;</div><div class="line"></div><div class="line">import util.SessionUtil;</div><div class="line">import entity.User;</div><div class="line"></div><div class="line">@WebListener</div><div class="line">public class MyServletRequestListener implements ServletRequestListener &#123;</div><div class="line">	ArrayList&lt;User&gt; userList = null ;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void requestDestroyed(ServletRequestEvent arg0) &#123;</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void requestInitialized(ServletRequestEvent arg0) &#123;</div><div class="line">		HttpServletRequest request = (HttpServletRequest)arg0.getServletRequest();</div><div class="line">		HttpSession session = request.getSession();</div><div class="line">		</div><div class="line">		userList = (ArrayList&lt;User&gt;)arg0.getServletContext().getAttribute(&quot;userList&quot;);</div><div class="line">		if(userList == null)&#123;</div><div class="line">			userList = new ArrayList();</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		</div><div class="line">		String sessionId = session.getId();</div><div class="line">		String Ip = request.getLocalAddr();</div><div class="line">		String time = new SimpleDateFormat(&quot;yy-MM-dd hh:mm:ss&quot;).format(new Date());</div><div class="line">		User user = new User();</div><div class="line">		user.setFirstTime(time);</div><div class="line">		user.setIp(Ip);</div><div class="line">		user.setSessionID(sessionId);</div><div class="line">		</div><div class="line">		if(SessionUtil.getSessionByID(userList, sessionId)==null)&#123;</div><div class="line">			userList.add(user);</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		arg0.getServletContext().setAttribute(&quot;userList&quot;, userList);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>HttpSessionListener监听器，更新count的值，并在用户退出时删除ArrayList中的用户数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">package listener;</div><div class="line"></div><div class="line">import java.util.ArrayList;</div><div class="line"></div><div class="line">import javax.servlet.annotation.WebListener;</div><div class="line">import javax.servlet.http.HttpSessionEvent;</div><div class="line">import javax.servlet.http.HttpSessionListener;</div><div class="line"></div><div class="line">import util.SessionUtil;</div><div class="line">import entity.User;</div><div class="line"></div><div class="line">@WebListener</div><div class="line">public class MyHttpSessionListener implements HttpSessionListener &#123;</div><div class="line">	private int count = 0 ;</div><div class="line">	</div><div class="line">	@Override</div><div class="line">	public void sessionCreated(HttpSessionEvent arg0) &#123;</div><div class="line">		count++;</div><div class="line">		arg0.getSession().getServletContext().setAttribute(&quot;count&quot;, count);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void sessionDestroyed(HttpSessionEvent arg0) &#123;</div><div class="line">		count--;</div><div class="line">		arg0.getSession().getServletContext().setAttribute(&quot;count&quot;, count);</div><div class="line">		</div><div class="line">		String id = arg0.getSession().getId();</div><div class="line">		ArrayList&lt;User&gt; userList = (ArrayList&lt;User&gt;)arg0.getSession().getServletContext().getAttribute(&quot;userList&quot;);</div><div class="line">		</div><div class="line">		if(SessionUtil.getSessionByID(userList, id) != null)&#123;</div><div class="line">			User user = SessionUtil.getSessionByID(userList,id);</div><div class="line">			userList.remove(user);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>效果如下：<br><img src="http://i1.buimg.com/584041/30cf5df490547f17.jpg" alt=""></p>
+
     
 
     
@@ -450,7 +422,7 @@
     <!-- 使用 changyan -->
     <div id="changyan-comment">
         <!--PC和WAP自适应版-->
-<div id="SOHUCS" sid="2016/11/30/IO流(2)/"  ></div>
+<div id="SOHUCS" sid="2017/06/26/Servlet-监听器获得当前在线人数/"  ></div>
 <script type="text/javascript">
 (function(){
 var appid = 'cysVH2p6S';
@@ -479,21 +451,13 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2016/12/04/Java线程/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2016/11/30/IO流/" id="post_nav-older" class="next-content">
+        <a href="/2017/06/26/Servlet-监听器（ServletContext、Request、Session）/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
