@@ -10,7 +10,7 @@
     
     <title>
         
-            Servlet 使用RequestDispathcher调派请求 | 
+            Servlet-监听器（ServletContext、Request、Session） | 
         
         Twilight&#39;s Blog
     </title>
@@ -62,7 +62,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://twilight.net.cn">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Servlet 使用RequestDispathcher调派请求 | Twilight&#39;s Blog">
+    <meta property="og:title" content="Servlet-监听器（ServletContext、Request、Session） | Twilight&#39;s Blog">
     <meta property="og:description" content="null">
     <meta property="og:article:tag" content="Servlet"> 
 
@@ -246,7 +246,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#RequestDispathcher"><span class="post-toc-number">1.</span> <span class="post-toc-text">RequestDispathcher</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#include"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">include()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#forward"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">forward()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#请求范围属性"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">请求范围属性</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#sendRedirect"><span class="post-toc-number">2.</span> <span class="post-toc-text">sendRedirect()</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ServletContextListener"><span class="post-toc-number">1.</span> <span class="post-toc-text">ServletContextListener</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ServletContext"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">ServletContext</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置监听器"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">配置监听器</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#HttpSessionListener"><span class="post-toc-number">2.</span> <span class="post-toc-text">HttpSessionListener</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#控制失效时间"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">控制失效时间</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置监听器-1"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">配置监听器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#作用"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">作用</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ServletRequestListener"><span class="post-toc-number">3.</span> <span class="post-toc-text">ServletRequestListener</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置监听器-2"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">配置监听器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#作用-1"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">作用</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#对象中增加和删除属性的事件监听器"><span class="post-toc-number">4.</span> <span class="post-toc-text">对象中增加和删除属性的事件监听器</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#HttpSession-中对象状态（绑定、解除）"><span class="post-toc-number">5.</span> <span class="post-toc-text">HttpSession 中对象状态（绑定、解除）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#HttpSessionBindingListener"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">HttpSessionBindingListener</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#钝化和活化"><span class="post-toc-number">6.</span> <span class="post-toc-text">钝化和活化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么时候钝化"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">什么时候钝化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#HttpSessionActivationListener"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">HttpSessionActivationListener</span></a></li></ol></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -283,7 +283,7 @@
         
     
             <p class="article-headline-p">
-                Servlet 使用RequestDispathcher调派请求
+                Servlet-监听器（ServletContext、Request、Session）
             </p>
         </div>
 
@@ -302,7 +302,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>wangchao</strong>
-        <span>4月 09, 2017</span>
+        <span>6月 26, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -340,7 +340,7 @@
     <!-- Leancloud Views -->
         <a class="post_share-link" href="#">
             <li class="mdl-menu__item">
-                <span id="/2017/04/09/Servlet-使用RequestDispathcher调派请求/" class="leancloud-views_num" data-flag-title="Servlet 使用RequestDispathcher调派请求">
+                <span id="/2017/06/26/Servlet-监听器（ServletContext、Request、Session）/" class="leancloud-views_num" data-flag-title="Servlet-监听器（ServletContext、Request、Session）">
      &nbsp;浏览量
 </span>
 
@@ -352,7 +352,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Servlet 使用RequestDispathcher调派请求&url=http://twilight.net.cn//2017/04/09/Servlet-使用RequestDispathcher调派请求/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Servlet-监听器（ServletContext、Request、Session）&url=http://twilight.net.cn//2017/06/26/Servlet-监听器（ServletContext、Request、Session）/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -361,7 +361,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Servlet 使用RequestDispathcher调派请求&url=http://twilight.net.cn//2017/04/09/Servlet-使用RequestDispathcher调派请求/index.html&via=wangchao" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Servlet-监听器（ServletContext、Request、Session）&url=http://twilight.net.cn//2017/06/26/Servlet-监听器（ServletContext、Request、Session）/index.html&via=wangchao" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -370,7 +370,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2017/04/09/Servlet-使用RequestDispathcher调派请求/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2017/06/26/Servlet-监听器（ServletContext、Request、Session）/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -379,7 +379,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2017/04/09/Servlet-使用RequestDispathcher调派请求/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2017/06/26/Servlet-监听器（ServletContext、Request、Session）/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -391,7 +391,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=Servlet 使用RequestDispathcher调派请求&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2017/04/09/Servlet-使用RequestDispathcher调派请求/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=Servlet-监听器（ServletContext、Request、Session）&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2017/06/26/Servlet-监听器（ServletContext、Request、Session）/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -409,31 +409,73 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="RequestDispathcher"><a href="#RequestDispathcher" class="headerlink" title="RequestDispathcher"></a>RequestDispathcher</h1><p>使用HttpServletRequest的getRequestDispatcher(“Servlet-URL”) 获得对象</p>
-<blockquote>
-<p>RequestDispatcher dispatch = req.getRequestDispatcher(“/Test1”);</p>
-</blockquote>
-<h2 id="include"><a href="#include" class="headerlink" title="include()"></a>include()</h2><p>将另一个servlet包括进进目前的操作流程中。<br><a id="more"></a><br>以下代码会输出<br><em>Dispatch</em><br><em>Test1 </em><br><em>Done</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/Dispatch</div><div class="line">	protected void doGet(HttpServletRequest req, HttpServletResponse resp)</div><div class="line">			throws ServletException, IOException &#123;</div><div class="line">			</div><div class="line">		PrintWriter output = resp.getWriter();</div><div class="line">		output.println(&quot;Dispatch&lt;br/&gt;&quot;);</div><div class="line">		RequestDispatcher dispatch = req.getRequestDispatcher(&quot;/Test1&quot;);</div><div class="line">		dispatch.include(req, resp);;</div><div class="line">		</div><div class="line">		output.println(&quot;Done&lt;br/&gt;&quot;);</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/Test1</div><div class="line">	protected void doGet(HttpServletRequest req, HttpServletResponse resp)</div><div class="line">			throws ServletException, IOException &#123;</div><div class="line">			PrintWriter output = resp.getWriter();</div><div class="line">			output.println(&quot;Test1&lt;br/&gt;&quot;);</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<h2 id="forward"><a href="#forward" class="headerlink" title="forward()"></a>forward()</h2><p>将请求转发给另一个servlet，只是服务器端的转发，对于客户端并无任何影响</p>
-<p><strong>PS:调用forWard()之前不能有任何相应确认，如果设置了相应但还未确认(例如println()后还没有flush())，则所有相应会被忽略.如果已经有相应确认，会报出<i>java.lang.IllegalStateException<i>异常</i></i></strong></p>
-<p>以下代码会转向Test1，而忽略之forward之前的println输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">PrintWriter output = resp.getWriter();</div><div class="line">output.println(&quot;Dispatch&lt;br/&gt;&quot;);</div><div class="line">RequestDispatcher dispatch = req.getRequestDispatcher(&quot;/Test1&quot;);</div><div class="line">dispatch.forward(req, resp);;</div><div class="line"></div><div class="line">output.println(&quot;Done&lt;br/&gt;&quot;);</div></pre></td></tr></table></figure></p>
-<p>以下代码会直接报错，因为已经有相应确认<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">PrintWriter output = resp.getWriter();</div><div class="line">output.println(&quot;Dispatch&lt;br/&gt;&quot;);</div><div class="line">output.flush();	</div><div class="line">RequestDispatcher dispatch = req.getRequestDispatcher(&quot;/Test1&quot;);</div><div class="line">dispatch.forward(req, resp);;</div><div class="line"></div><div class="line">output.println(&quot;Done&lt;br/&gt;&quot;);</div></pre></td></tr></table></figure></p>
-<h2 id="请求范围属性"><a href="#请求范围属性" class="headerlink" title="请求范围属性"></a>请求范围属性</h2><p>当调派请求的过程中有需要共享的属性，可以使用HttpServletRequest的方法</p>
-<ol><br><li> <strong>setAttribute() 指定名称与对象</strong> </li><br><li> <strong>getAttribute() 指定名称获取对象</strong> </li><br><li> <strong>getAttributeNames() 获取所有属性名称</strong> </li><br><li> <strong>removeAttribute() 移除属性</strong> </li><br></ol>
-
-
-<p>以下代码的Test1通过getAttribute(“name”)获取到name的集合，需要通过强制转换后才能使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/Dispatch</div><div class="line">	protected void doGet(HttpServletRequest req, HttpServletResponse resp)</div><div class="line">			throws ServletException, IOException &#123;</div><div class="line">		PrintWriter output = resp.getWriter();</div><div class="line">		List&lt;String&gt; list = new  ArrayList&lt;&gt;();</div><div class="line">		list.add(&quot;Tom&quot;);</div><div class="line">		list.add(&quot;jerry&quot;);</div><div class="line"></div><div class="line">		req.setAttribute(&quot;name&quot;, list);		// 传入字符串和对象</div><div class="line"></div><div class="line">		RequestDispatcher dispatch = req.getRequestDispatcher(&quot;/Test1&quot;);</div><div class="line">		dispatch.forward(req, resp);</div><div class="line">		</div><div class="line">		output.println(&quot;Done&lt;br/&gt;&quot;);</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/Test1</div><div class="line">	protected void doGet(HttpServletRequest req, HttpServletResponse resp)</div><div class="line">			throws ServletException, IOException &#123;</div><div class="line">			PrintWriter output = resp.getWriter();</div><div class="line">			output.println(&quot;Test1&lt;br/&gt;&quot;);</div><div class="line">			List name = (List)req.getAttribute(&quot;name&quot;);</div><div class="line">			output.println(name.get(1)+&quot;&lt;/br/&gt;&quot;);</div><div class="line">			</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<h1 id="sendRedirect"><a href="#sendRedirect" class="headerlink" title="sendRedirect()"></a>sendRedirect()</h1><p>要求浏览器重新请求一个URL，客户端的地址栏会改变<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">protected void doGet(HttpServletRequest req, HttpServletResponse resp)</div><div class="line">		throws ServletException, IOException &#123;</div><div class="line">	String url = req.getParameter(&quot;url&quot;);</div><div class="line">	resp.sendRedirect(url);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在跳转之前不可以有相应被确认,否则会产生<em>java.lang.IllegalStateException</em> 异常<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">protected void doGet(HttpServletRequest req, HttpServletResponse resp)</div><div class="line">		throws ServletException, IOException &#123;</div><div class="line">	PrintWriter output = resp.getWriter();</div><div class="line">	output.println(&quot;2333&quot;);</div><div class="line">	output.flush();</div><div class="line">	String url = req.getParameter(&quot;url&quot;);</div><div class="line">	resp.sendRedirect(url);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>跳转时可以附带参数,方式类比于GET方式的URL<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String name = req.getParameter(&quot;name&quot;);</div><div class="line">PrintWriter output = resp.getWriter();</div><div class="line">resp.sendRedirect(&quot;http://localhost:8080/Test/Redirect_Para?name=&quot;+name);</div></pre></td></tr></table></figure></p>
-<p>PS:</p>
-<font color="red"><b><br><ol><br><li>只能用转向方式来访问WEB-INF目录下的JSP,不用采用重定向的方式请求该目录里面的任何资源</li><br><li>同一个请求周期中，HttpServletResponse的getWriter()与getOutputStream()只能择一使用，否则会丢出IllegalStateException</li><br><ol><br><b></b></ol></ol></b></font>
-
-
-
+        <h1 id="ServletContextListener"><a href="#ServletContextListener" class="headerlink" title="ServletContextListener"></a>ServletContextListener</h1><p>ServletContext对象创建和销毁时触发的监听器<br>该对象有两个方法,分别是contextInitialized() 和contextDestroyed() 对应着ServletContext对象的创建与销毁。一个ServletContext可以有多个listener<br><a id="more"></a></p>
+<h2 id="ServletContext"><a href="#ServletContext" class="headerlink" title="ServletContext"></a>ServletContext</h2><p>一个web应用对应着一个ServletContext，ServletContext的根目录为当前web应用的webRoot目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class FirstListener implements ServletContextListener &#123;</div><div class="line"></div><div class="line">	public void contextDestroyed(ServletContextEvent arg0) &#123;</div><div class="line">		System.out.println(&quot;###contextDestroy&quot;);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void contextInitialized(ServletContextEvent arg0) &#123;</div><div class="line">		ServletContext context = arg0.getServletContext();</div><div class="line">		for(Object temp : context.getResourcePaths(&quot;/&quot;))&#123;</div><div class="line">			System.out.println(temp);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/index.jsp</div><div class="line">/WEB-INF/</div><div class="line">/META-INF/</div></pre></td></tr></table></figure></p>
+<h2 id="配置监听器"><a href="#配置监听器" class="headerlink" title="配置监听器"></a>配置监听器</h2><p>在web.xml中添加一下内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;listener&gt;</div><div class="line">    &lt;listener-class&gt;com.twilight.listener.FirstListener&lt;/listener-class&gt;</div><div class="line">&lt;/listener&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="HttpSessionListener"><a href="#HttpSessionListener" class="headerlink" title="HttpSessionListener"></a>HttpSessionListener</h1><p>在浏览器中访问<a href="http://localhost:8080/FirstFilter" target="_blank" rel="external">http://localhost:8080/FirstFilter</a> 时会创建session，tomcat会输出sessionCreated，一段时间后session会自动失效，然后tomcat会输出sessionDestroyed<br>一个Session对应多个listener</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public void sessionCreated(HttpSessionEvent arg0) &#123;</div><div class="line">	System.out.println(&quot;sessionCreated&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public void sessionDestroyed(HttpSessionEvent arg0) &#123;</div><div class="line">	System.out.println(&quot;sessionDestroyed&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="控制失效时间"><a href="#控制失效时间" class="headerlink" title="控制失效时间"></a>控制失效时间</h2><p>在web.xml 中配置session-timeout 以分钟为单位。当时间是0或复数时表示永久存在。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;session-config&gt;</div><div class="line">	&lt;session-timeout&gt;1&lt;/session-timeout&gt;</div><div class="line">&lt;/session-config&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="配置监听器-1"><a href="#配置监听器-1" class="headerlink" title="配置监听器"></a>配置监听器</h2><p>在web.xml中添加一下内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;listener&gt;</div><div class="line">    &lt;listener-class&gt;com.twilight.listener.MyHttpSessionListener&lt;/listener-class&gt;</div><div class="line">&lt;/listener&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><ul>
+<li>统计在线人数</li>
+<li>记录访问日志</li>
+</ul>
+<h1 id="ServletRequestListener"><a href="#ServletRequestListener" class="headerlink" title="ServletRequestListener"></a>ServletRequestListener</h1><p>表示用户请求的监听<br>两个方法：requestInitialized() 和requestDestroyed()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public void requestDestroyed(ServletRequestEvent arg0) &#123;</div><div class="line">	System.out.println(&quot;requestDestroyed&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public void requestInitialized(ServletRequestEvent arg0) &#123;</div><div class="line">	System.out.println(&quot;requestInitialized&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结果是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">requestInitialized</div><div class="line">sessionCreated</div><div class="line">requestDestroyed</div></pre></td></tr></table></figure></p>
+<h2 id="配置监听器-2"><a href="#配置监听器-2" class="headerlink" title="配置监听器"></a>配置监听器</h2><p>在web.xml中添加一下内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;listener&gt;</div><div class="line">	&lt;listener-class&gt;com.twilight.listener.MyServletRequestListener&lt;/listener-class&gt;</div><div class="line">&lt;/listener&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h2><ul>
+<li>读取参数</li>
+<li>记录访问历史</li>
+</ul>
+<h1 id="对象中增加和删除属性的事件监听器"><a href="#对象中增加和删除属性的事件监听器" class="headerlink" title="对象中增加和删除属性的事件监听器"></a>对象中增加和删除属性的事件监听器</h1><p>三个事件都有对应的属性监听器：</p>
+<ul>
+<li><strong>ServletContext</strong> —  <strong>ServletContextAttributeListener</strong></li>
+<li><strong>HttpSession</strong> — <strong>HttpSessionAttributeListener</strong></li>
+<li><strong>ServletRequest</strong> —  <strong>ServletRequestAttributeListener</strong></li>
+</ul>
+<p>每个属性监听器都有三个方法：</p>
+<ul>
+<li>attributeAdded    () 监听属性的增加</li>
+<li>attributeRemoved() 监听属性的移除</li>
+<li>attributeReplaced() 监听属性的替换</li>
+</ul>
+<p>ServletRequestAttributeListener 代码如下，其他监听器代码类似：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public class MyServletRequestAttributeListener implements</div><div class="line">		ServletRequestAttributeListener &#123;</div><div class="line"></div><div class="line">	public void attributeAdded(ServletRequestAttributeEvent arg0) &#123;</div><div class="line">		System.out.println(&quot;ServletRequestAttributeListener_attributeAdded_&quot;+arg0.getName());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void attributeRemoved(ServletRequestAttributeEvent arg0) &#123;</div><div class="line">		System.out.println(&quot;ServletRequestAttributeListener_attributeRemoved_&quot;+arg0.getName());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void attributeReplaced(ServletRequestAttributeEvent arg0) &#123;</div><div class="line">		System.out.println(&quot;ServletRequestAttributeListener_attributeReplaced_&quot;+arg0.getName());</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>addAttribute.jsp模拟增加属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">request.setAttribute(&quot;ServletRequest&quot;, &quot;ServletRequestValue&quot;);</div><div class="line">session.setAttribute(&quot;Session&quot;, &quot;SessionValue&quot;);</div><div class="line">session.getServletContext().setAttribute(&quot;ServletContext&quot;, &quot;ServletContextValue&quot;);</div></pre></td></tr></table></figure></p>
+<p>removeAttribute.jsp 模拟移除属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">request.removeAttribute(&quot;ServletRequest&quot;);</div><div class="line">session.removeAttribute(&quot;Session&quot;);</div><div class="line">session.getServletContext().removeAttribute(&quot;ServletContext&quot;);</div></pre></td></tr></table></figure></p>
+<p>第一次访问addAttribute.jsp:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">requestInitialized</div><div class="line">ServletRequestAttributeListener_attributeReplaced_org.apache.catalina.ASYNC_SUPPORTED</div><div class="line">ServletRequestAttributeListener_attributeAdded_ServletRequest</div><div class="line">HttpSessionAttributeListener_attributeAdded_Session</div><div class="line">ServletContextAttributeListener_attributeAdded_ServletContext</div><div class="line">requestDestroyed</div></pre></td></tr></table></figure></p>
+<p>重复访问,发现只有Request是add，因为之前的Request已经失效，此时的Request是新创建的对象：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">requestInitialized</div><div class="line">ServletRequestAttributeListener_attributeReplaced_org.apache.catalina.ASYNC_SUPPORTED</div><div class="line">ServletRequestAttributeListener_attributeAdded_ServletRequest</div><div class="line">HttpSessionAttributeListener_attributeReplaced_Session</div><div class="line">ServletContextAttributeListener_attributeReplaced_ServletContext</div><div class="line">requestDestroyed</div></pre></td></tr></table></figure></p>
+<p>访问removeAttribute.jsp,此时之前的Request对象已经被销毁，所以不会看到request被remove<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">requestInitialized</div><div class="line">ServletRequestAttributeListener_attributeReplaced_org.apache.catalina.ASYNC_SUPPORTED</div><div class="line">HttpSessionAttributeListener_attributeRemoved_Session</div><div class="line">ServletContextAttributeListener_attributeRemoved_ServletContext</div><div class="line">requestDestroyed</div></pre></td></tr></table></figure></p>
+<h1 id="HttpSession-中对象状态（绑定、解除）"><a href="#HttpSession-中对象状态（绑定、解除）" class="headerlink" title="HttpSession 中对象状态（绑定、解除）"></a>HttpSession 中对象状态（绑定、解除）</h1><ul>
+<li>绑定 ：将对象保存到session中</li>
+<li>解除 ：从session中移除对象</li>
+</ul>
+<h2 id="HttpSessionBindingListener"><a href="#HttpSessionBindingListener" class="headerlink" title="HttpSessionBindingListener"></a>HttpSessionBindingListener</h2><p>该类类似一个javabean保存一些需要的信息，它有两个必须的方法：</p>
+<ul>
+<li><strong>valueBound() </strong> <strong>绑定</strong></li>
+<li><strong>valueUnbound() </strong> <strong>解绑定</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">package com.twilight.entity;</div><div class="line"></div><div class="line">import javax.servlet.http.HttpSessionBindingEvent;</div><div class="line">import javax.servlet.http.HttpSessionBindingListener;</div><div class="line"></div><div class="line">public class User implements HttpSessionBindingListener &#123;</div><div class="line">	private String userName ;</div><div class="line">	private String password ;</div><div class="line">	</div><div class="line"></div><div class="line">	public void valueBound(HttpSessionBindingEvent arg0) &#123;</div><div class="line">		System.out.println(&quot;HttpSessionBindingListener_valueBound_&quot;+arg0.getName());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void valueUnbound(HttpSessionBindingEvent arg0) &#123;</div><div class="line">		System.out.println(&quot;HttpSessionBindingListener_valueUnbound+&quot;+arg0.getName());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public String getUserName() &#123;</div><div class="line">		return userName;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void setUserName(String userName) &#123;</div><div class="line">		this.userName = userName;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public String getPassword() &#123;</div><div class="line">		return password;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void setPassword(String password) &#123;</div><div class="line">		this.password = password;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>该类不需要注册，可以直接使用<strong>，因为他可以认为只是一个继承了HttpSessionBindingListener接口的Javabean</strong>，使用方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">session.setAttribute(&quot;userObj&quot;, new User());</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">session.removeAttribute(&quot;userObj&quot;);</div></pre></td></tr></table></figure>
+<p>结果是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 绑定</div><div class="line">requestInitialized</div><div class="line">HttpSessionBindingListener_valueBound_userObj</div><div class="line">requestDestroyed</div><div class="line"></div><div class="line">// 解绑定</div><div class="line">requestInitialized</div><div class="line">HttpSessionBindingListener_valueUnbound+userObj</div><div class="line">requestDestroyed</div></pre></td></tr></table></figure></p>
+<h1 id="钝化和活化"><a href="#钝化和活化" class="headerlink" title="钝化和活化"></a>钝化和活化</h1><ul>
+<li>钝化 将session序列化到磁盘</li>
+<li>活化 将序列化的对象反序列化到内存中</li>
+</ul>
+<h2 id="什么时候钝化"><a href="#什么时候钝化" class="headerlink" title="什么时候钝化"></a>什么时候钝化</h2><ul>
+<li>当tomcat服务器关闭或重启时，会将当前的session对象钝化</li>
+<li>当web应用被重新加载时（reload）钝化</li>
+</ul>
+<p><strong>当tomcat服务器重启开启时，重新加载文件道内存并删除本地文件</strong></p>
+<h2 id="HttpSessionActivationListener"><a href="#HttpSessionActivationListener" class="headerlink" title="HttpSessionActivationListener"></a>HttpSessionActivationListener</h2><p>实现钝化和话的接口，具体方法有两个：</p>
+<ul>
+<li><strong>sessionWillPassivate</strong> <strong>钝化</strong></li>
+<li><strong>sessionDidActivate</strong> <strong>活化</strong></li>
+</ul>
+<p>由于钝化需要将对象序列化，所以还需要实现Serializable接口。代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">package com.twilight.entity;</div><div class="line"></div><div class="line">import java.io.Serializable;</div><div class="line"></div><div class="line">import javax.servlet.http.HttpSessionActivationListener;</div><div class="line">import javax.servlet.http.HttpSessionBindingEvent;</div><div class="line">import javax.servlet.http.HttpSessionBindingListener;</div><div class="line">import javax.servlet.http.HttpSessionEvent;</div><div class="line"></div><div class="line">public class User implements HttpSessionBindingListener ,HttpSessionActivationListener ,Serializable &#123;</div><div class="line">	private String userName ;</div><div class="line">	private String password ;</div><div class="line">	</div><div class="line"></div><div class="line">	public void valueBound(HttpSessionBindingEvent arg0) &#123;</div><div class="line">		System.out.println(&quot;HttpSessionBindingListener_valueBound_&quot;+arg0.getName());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void valueUnbound(HttpSessionBindingEvent arg0) &#123;</div><div class="line">		System.out.println(&quot;HttpSessionBindingListener_valueUnbound+&quot;+arg0.getName());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public String getUserName() &#123;</div><div class="line">		return userName;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void setUserName(String userName) &#123;</div><div class="line">		this.userName = userName;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public String getPassword() &#123;</div><div class="line">		return password;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void setPassword(String password) &#123;</div><div class="line">		this.password = password;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	</div><div class="line">	public void sessionDidActivate(HttpSessionEvent se) &#123;</div><div class="line">		System.out.println(&quot;HttpSessionActivationListener_sessionDidActivate_&quot;+se.getSource());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void sessionWillPassivate(HttpSessionEvent se) &#123;</div><div class="line">		System.out.println(&quot;HttpSessionActivationListener_sessionWillPassivate_&quot;+se.getSource());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 钝化</div><div class="line">HttpSessionActivationListener_sessionWillPassivate_org.apache.catalina.session.StandardSessionFacade@720a366b</div><div class="line"></div><div class="line">// 活化</div><div class="line">HttpSessionActivationListener_sessionDidActivate_org.apache.catalina.session.StandardSessionFacade@798aa3f4</div></pre></td></tr></table></figure></p>
 
     
 
@@ -451,7 +493,7 @@
     <!-- 使用 changyan -->
     <div id="changyan-comment">
         <!--PC和WAP自适应版-->
-<div id="SOHUCS" sid="2017/04/09/Servlet-使用RequestDispathcher调派请求/"  ></div>
+<div id="SOHUCS" sid="2017/06/26/Servlet-监听器（ServletContext、Request、Session）/"  ></div>
 <script type="text/javascript">
 (function(){
 var appid = 'cysVH2p6S';
@@ -480,21 +522,13 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/04/15/JSP-jsp-useBean介绍/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/04/08/Servlet上传文件/" id="post_nav-older" class="next-content">
+        <a href="/2017/06/20/jQuery动画-自定义动画animate/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
