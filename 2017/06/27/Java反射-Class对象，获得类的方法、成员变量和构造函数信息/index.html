@@ -246,7 +246,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Class类"><span class="post-toc-number">1.</span> <span class="post-toc-text">Class类</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Class类"><span class="post-toc-number">1.</span> <span class="post-toc-text">Class类</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#动态加载类"><span class="post-toc-number">2.</span> <span class="post-toc-text">动态加载类</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#获得类类型的信息"><span class="post-toc-number">3.</span> <span class="post-toc-text">获得类类型的信息</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Method对象"><span class="post-toc-number">4.</span> <span class="post-toc-text">Method对象</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#获得成员变量的信息"><span class="post-toc-number">5.</span> <span class="post-toc-text">获得成员变量的信息</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#获得构造方法"><span class="post-toc-number">6.</span> <span class="post-toc-text">获得构造方法</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -402,133 +402,51 @@
     
         <h1 id="Class类"><a href="#Class类" class="headerlink" title="Class类"></a>Class类</h1><p>任何一个类都是Class类的实例，而我们常见的对象，是用普通的类实例化出来的，也就是Class类的实例的实例。一个普通的类Foo的Class实例有三种表示方式：<a id="more"></a></p>
 <ul>
-<li><p>1、知道类名获取Foo的Class实例</p>
-<figure class="highlight plain"><figcaption><span>c1 = Foo.class;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- 2、通过Foo对象获得Foo的Class实例</div><div class="line">```Class c2 = foo.getClass();</div></pre></td></tr></table></figure>
+<li>1、知道类名获取Foo的Class实例<br><code>Class c1 = Foo.class;</code></li>
+<li>2、通过Foo对象获得Foo的Class实例<br><code>Class c2 = foo.getClass();</code></li>
+<li>3、通过forName()获得实例<br><code>Class c3 = Class.forName(&quot;test.reflect.Foo&quot;);</code></li>
+</ul>
+<p>这三者是相等的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">System.out.println(c1 == c2&amp;&amp;c2 == c3);</div><div class="line">// True</div></pre></td></tr></table></figure></p>
+<p>可以用Class的实例创建Foo的实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Foo foo2 = (Foo)c1.newInstance();</div></pre></td></tr></table></figure></p>
+<h1 id="动态加载类"><a href="#动态加载类" class="headerlink" title="动态加载类"></a>动态加载类</h1><ul>
+<li><p>静态加载类。编译时加载类，在编译时刻就需要加载所有的可能的使用到的类。所有的类都会加载，不管有没有被使用</p>
 </li>
-<li><p>3、通过forName()获得实例</p>
-<figure class="highlight plain"><figcaption><span>c3 = Class.forName("test.reflect.Foo");```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">这三者是相等的：</div></pre></td></tr></table></figure>
+<li><p>动态加载类。运行时加载类 </p>
 </li>
 </ul>
-<p>System.out.println(c1 == c2&amp;&amp;c2 == c3);<br>// True<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">可以用Class的实例创建Foo的实例：</div></pre></td></tr></table></figure></p>
-<p>Foo foo2 = (Foo)c1.newInstance();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># 动态加载类</div><div class="line">- 静态加载类。编译时加载类，在编译时刻就需要加载所有的可能的使用到的类。所有的类都会加载，不管有没有被使用</div><div class="line"></div><div class="line">- 动态加载类。运行时加载类 </div><div class="line"></div><div class="line">使用Class.forName()动态加载类</div></pre></td></tr></table></figure></p>
-<pre><code>public static void main(String [] args){
-    try{
-        Class c = Class.forName(args[0]);
-        // OfficeUtil 是接口
-        OfficeUtil obj = (OfficeUtil)c.newInstance();
-        obj.print();
-    }
-    catch(Exception e){
-        e.printStackTrace();
-    }
-}
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">使用了OfficeUtil接口的Word类</div></pre></td></tr></table></figure>
-<p>class Word implements OfficeUtil{<br>    public void print(){<br>        System.out.println(“Word”);<br>    }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">使用了OfficeUtil接口的Excel类</div></pre></td></tr></table></figure></p>
-<p>class Excel implements OfficeUtil{<br>    public void print(){<br>        System.out.println(“Excel”);<br>    }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">OfficeUtil接口</div></pre></td></tr></table></figure></p>
-<p>interface OfficeUtil{<br>    public void print();<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># 获得类类型的信息</div><div class="line">通过Class类的对象获得某个类的信息</div><div class="line">- getName()  返回类类型的名称</div><div class="line">- getSimpleName() 返回类类型的名称的简写</div><div class="line"></div><div class="line">获得类名：</div></pre></td></tr></table></figure></p>
-<pre><code>Class c1 = int.class;
-Class c2 = String.class;
-Class c3 = void.class;
-Class c4 = double.class;
-Class c5 = Double.class;
-System.out.println(c1.getName());
-System.out.println(c2.getName());
-System.out.println(c3.getName());
-System.out.println(c4.getName());
-System.out.println(c5.getName());
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">结果：</div></pre></td></tr></table></figure>
-<pre><code>int
-java.lang.String
-void
-double
-java.lang.Double
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">getSimpleName()和getName():</div></pre></td></tr></table></figure>
-<p>java.lang.String    // getName()<br>String                // getSimpleName()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># Method对象</div><div class="line">方法也是对象，一个成员方法就是一个Method对象实例。method实例有以下常用方法：</div><div class="line">- getReturnType() 获得返回值，返回的是 Class&lt;?&gt;</div><div class="line">- getParameterTypes 获得参数列表类型的类类型集合 返回的是Class&lt;?&gt;[]</div><div class="line">- getName 获得方法名，返回 String</div></pre></td></tr></table></figure></p>
-<pre><code>public static void printClassMethodMessage(Object obj){
-    // 获得对象的类类型
-    Class data = obj.getClass();
-    // 获得类类型的名称
-    System.out.println(&quot;类名（getName）:&quot;+data.getName());
-
-    /**
-     * Method类，一个成员方法就是一个Method对象实例。方法也是对象
-     * getDeclaredMethods(); 返回所有方法，但是不包括继承的方法
-     * getmethods() 返回继承的方法和自己定义的public方法
-     */
-    Method [] methods = data.getMethods();
-    for(Method temp : methods){
-        // 获得返回值类型
-        Class returnType = temp.getReturnType();
-        System.out.print(returnType.getSimpleName()+&quot; &quot;);
-        // 获得方法名
-        System.out.print(temp.getName()+&quot;(&quot;);
-        // 获得参数数组
-        Class [] params = temp.getParameterTypes();
-        for(Class param : params){
-            System.out.print(param.getSimpleName()+&quot;,&quot;);
-        }
-        System.out.println(&quot;)&quot;);
-    }
-}
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">测试类：</div></pre></td></tr></table></figure>
-<pre><code>public static void main(String[] args) {
-    ClassUtil.printClassMethodMessage(&quot;bbb&quot;);
-}
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">结果是：</div></pre></td></tr></table></figure>
-<p>类名（getName）:java.lang.String<br>boolean equals(Object,)<br>String toString()<br>int hashCode()<br>int compareTo(String,)<br>int compareTo(Object,)<br>int indexOf(String,int,)<br>int indexOf(String,)<br>int indexOf(int,int,)<br>int indexOf(int,)<br>String valueOf(int,)<br>String valueOf(long,)<br>String valueOf(float,)<br>String valueOf(boolean,)<br>String valueOf(char[],)<br>String valueOf(char[],int,int,)<br>String valueOf(Object,)<br>String valueOf(char,)<br>String valueOf(double,)<br>…<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># 获得成员变量的信息</div><div class="line">Field对象表示成员变量。每一个变量都是一个Field对象</div><div class="line">- getFields()  获得public变量。返回Field[]</div><div class="line">- getDeclaredFields() 获得所有变量，但不包括继承的变量 。返回Field[]</div><div class="line">- getType获得 变量的类型。返回Class&lt;?&gt;</div><div class="line">- getName() 变量名。返回 String</div><div class="line"></div><div class="line">获得所有的成员变量</div></pre></td></tr></table></figure></p>
-<pre><code>public static void printClassFieldMessage(Object obj){
-    Class data = obj.getClass();
-    // 获得所有成员变量
-    Field []  fields = data.getDeclaredFields();
-    for(Field field:fields){
-        System.out.println(field.getType().getName() +&quot; &quot;);
-        System.out.println(field.getName());
-    }
-}
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">结果是：</div></pre></td></tr></table></figure>
-<pre><code>[C 
-value
-int 
-hash
-long 
-serialVersionUID
-[Ljava.io.ObjectStreamField; 
-serialPersistentFields
-java.util.Comparator 
-CASE_INSENSITIVE_ORDER
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># 获得构造方法</div><div class="line">Constructor类的实例化对象，表示构造函数 </div><div class="line"></div><div class="line">获得构造函数：</div></pre></td></tr></table></figure>
-<pre><code>public static void printClassConFieldMessage(Object obj){
-    Class data = obj.getClass();
-    // 获得所有的构造函数
-    Constructor[] cons = data.getConstructors();
-    for(Constructor con:cons){
-        // 获得函数名
-        System.out.print(con.getName()+&quot;(&quot;);
-        // 获得参数列表
-        Class [] params = con.getParameterTypes();
-        for(Class param : params){
-            System.out.print(param.getName()+&quot;,&quot;);
-        }
-        System.out.println(&quot;)&quot;);
-    }
-}
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">结果：</div></pre></td></tr></table></figure>
-<pre><code>java.lang.String([B,int,int,)
-java.lang.String([B,java.nio.charset.Charset,)
-java.lang.String([B,java.lang.String,)
-java.lang.String([B,int,int,java.nio.charset.Charset,)
-java.lang.String([B,int,int,java.lang.String,)
-java.lang.String(java.lang.StringBuilder,)
-java.lang.String(java.lang.StringBuffer,)
-java.lang.String([B,)
-java.lang.String([I,int,int,)
-java.lang.String()
-java.lang.String([C,)
-java.lang.String(java.lang.String,)
-java.lang.String([C,int,int,)
-java.lang.String([B,int,)
-java.lang.String([B,int,int,int,)
-</code></pre><p>```</p>
+<p>使用Class.forName()动态加载类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public static void main(String [] args)&#123;</div><div class="line">	try&#123;</div><div class="line">		Class c = Class.forName(args[0]);</div><div class="line">		// OfficeUtil 是接口</div><div class="line">		OfficeUtil obj = (OfficeUtil)c.newInstance();</div><div class="line">		obj.print();</div><div class="line">	&#125;</div><div class="line">	catch(Exception e)&#123;</div><div class="line">		e.printStackTrace();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用了OfficeUtil接口的Word类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Word implements OfficeUtil&#123;</div><div class="line">	public void print()&#123;</div><div class="line">		System.out.println(&quot;Word&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用了OfficeUtil接口的Excel类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Excel implements OfficeUtil&#123;</div><div class="line">	public void print()&#123;</div><div class="line">		System.out.println(&quot;Excel&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>OfficeUtil接口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">interface OfficeUtil&#123;</div><div class="line">	public void print();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="获得类类型的信息"><a href="#获得类类型的信息" class="headerlink" title="获得类类型的信息"></a>获得类类型的信息</h1><p>通过Class类的对象获得某个类的信息</p>
+<ul>
+<li>getName()  返回类类型的名称</li>
+<li>getSimpleName() 返回类类型的名称的简写</li>
+</ul>
+<p>获得类名：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Class c1 = int.class;</div><div class="line">Class c2 = String.class;</div><div class="line">Class c3 = void.class;</div><div class="line">Class c4 = double.class;</div><div class="line">Class c5 = Double.class;</div><div class="line">System.out.println(c1.getName());</div><div class="line">System.out.println(c2.getName());</div><div class="line">System.out.println(c3.getName());</div><div class="line">System.out.println(c4.getName());</div><div class="line">System.out.println(c5.getName());</div></pre></td></tr></table></figure></p>
+<p>结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">int</div><div class="line">java.lang.String</div><div class="line">void</div><div class="line">double</div><div class="line">java.lang.Double</div></pre></td></tr></table></figure></p>
+<p>getSimpleName()和getName():<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">java.lang.String    // getName()</div><div class="line">String				// getSimpleName()</div></pre></td></tr></table></figure></p>
+<h1 id="Method对象"><a href="#Method对象" class="headerlink" title="Method对象"></a>Method对象</h1><p>方法也是对象，一个成员方法就是一个Method对象实例。method实例有以下常用方法：</p>
+<ul>
+<li>getReturnType() 获得返回值，返回的是 Class&lt;?&gt;</li>
+<li>getParameterTypes 获得参数列表类型的类类型集合 返回的是Class&lt;?&gt;[]</li>
+<li>getName 获得方法名，返回 String</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public static void printClassMethodMessage(Object obj)&#123;</div><div class="line">	// 获得对象的类类型</div><div class="line">	Class data = obj.getClass();</div><div class="line">	// 获得类类型的名称</div><div class="line">	System.out.println(&quot;类名（getName）:&quot;+data.getName());</div><div class="line">	</div><div class="line">	/**</div><div class="line">	 * Method类，一个成员方法就是一个Method对象实例。方法也是对象</div><div class="line">	 * getDeclaredMethods(); 返回所有方法，但是不包括继承的方法</div><div class="line">	 * getmethods() 返回继承的方法和自己定义的public方法</div><div class="line">	 */</div><div class="line">	Method [] methods = data.getMethods();</div><div class="line">	for(Method temp : methods)&#123;</div><div class="line">		// 获得返回值类型</div><div class="line">		Class returnType = temp.getReturnType();</div><div class="line">		System.out.print(returnType.getSimpleName()+&quot; &quot;);</div><div class="line">		// 获得方法名</div><div class="line">		System.out.print(temp.getName()+&quot;(&quot;);</div><div class="line">		// 获得参数数组</div><div class="line">		Class [] params = temp.getParameterTypes();</div><div class="line">		for(Class param : params)&#123;</div><div class="line">			System.out.print(param.getSimpleName()+&quot;,&quot;);</div><div class="line">		&#125;</div><div class="line">		System.out.println(&quot;)&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>测试类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args) &#123;</div><div class="line">	ClassUtil.printClassMethodMessage(&quot;bbb&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结果是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">类名（getName）:java.lang.String</div><div class="line">boolean equals(Object,)</div><div class="line">String toString()</div><div class="line">int hashCode()</div><div class="line">int compareTo(String,)</div><div class="line">int compareTo(Object,)</div><div class="line">int indexOf(String,int,)</div><div class="line">int indexOf(String,)</div><div class="line">int indexOf(int,int,)</div><div class="line">int indexOf(int,)</div><div class="line">String valueOf(int,)</div><div class="line">String valueOf(long,)</div><div class="line">String valueOf(float,)</div><div class="line">String valueOf(boolean,)</div><div class="line">String valueOf(char[],)</div><div class="line">String valueOf(char[],int,int,)</div><div class="line">String valueOf(Object,)</div><div class="line">String valueOf(char,)</div><div class="line">String valueOf(double,)</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<h1 id="获得成员变量的信息"><a href="#获得成员变量的信息" class="headerlink" title="获得成员变量的信息"></a>获得成员变量的信息</h1><p>Field对象表示成员变量。每一个变量都是一个Field对象</p>
+<ul>
+<li>getFields()  获得public变量。返回Field[]</li>
+<li>getDeclaredFields() 获得所有变量，但不包括继承的变量 。返回Field[]</li>
+<li>getType获得 变量的类型。返回Class&lt;?&gt;</li>
+<li>getName() 变量名。返回 String</li>
+</ul>
+<p>获得所有的成员变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public static void printClassFieldMessage(Object obj)&#123;</div><div class="line">	Class data = obj.getClass();</div><div class="line">	// 获得所有成员变量</div><div class="line">	Field []  fields = data.getDeclaredFields();</div><div class="line">	for(Field field:fields)&#123;</div><div class="line">		System.out.println(field.getType().getName() +&quot; &quot;);</div><div class="line">		System.out.println(field.getName());</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结果是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[C </div><div class="line">value</div><div class="line">int </div><div class="line">hash</div><div class="line">long </div><div class="line">serialVersionUID</div><div class="line">[Ljava.io.ObjectStreamField; </div><div class="line">serialPersistentFields</div><div class="line">java.util.Comparator </div><div class="line">CASE_INSENSITIVE_ORDER</div></pre></td></tr></table></figure></p>
+<h1 id="获得构造方法"><a href="#获得构造方法" class="headerlink" title="获得构造方法"></a>获得构造方法</h1><p>Constructor类的实例化对象，表示构造函数 </p>
+<p>获得构造函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public static void printClassConFieldMessage(Object obj)&#123;</div><div class="line">	Class data = obj.getClass();</div><div class="line">	// 获得所有的构造函数</div><div class="line">	Constructor[] cons = data.getConstructors();</div><div class="line">	for(Constructor con:cons)&#123;</div><div class="line">		// 获得函数名</div><div class="line">		System.out.print(con.getName()+&quot;(&quot;);</div><div class="line">		// 获得参数列表</div><div class="line">		Class [] params = con.getParameterTypes();</div><div class="line">		for(Class param : params)&#123;</div><div class="line">			System.out.print(param.getName()+&quot;,&quot;);</div><div class="line">		&#125;</div><div class="line">		System.out.println(&quot;)&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">java.lang.String([B,int,int,)</div><div class="line">java.lang.String([B,java.nio.charset.Charset,)</div><div class="line">java.lang.String([B,java.lang.String,)</div><div class="line">java.lang.String([B,int,int,java.nio.charset.Charset,)</div><div class="line">java.lang.String([B,int,int,java.lang.String,)</div><div class="line">java.lang.String(java.lang.StringBuilder,)</div><div class="line">java.lang.String(java.lang.StringBuffer,)</div><div class="line">java.lang.String([B,)</div><div class="line">java.lang.String([I,int,int,)</div><div class="line">java.lang.String()</div><div class="line">java.lang.String([C,)</div><div class="line">java.lang.String(java.lang.String,)</div><div class="line">java.lang.String([C,int,int,)</div><div class="line">java.lang.String([B,int,)</div><div class="line">java.lang.String([B,int,int,int,)</div></pre></td></tr></table></figure></p>
 
     
 
