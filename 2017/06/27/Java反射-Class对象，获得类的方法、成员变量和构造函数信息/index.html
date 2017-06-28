@@ -408,12 +408,7 @@
 </ul>
 <p>这三者是相等的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">System.out.println(c1 == c2&amp;&amp;c2 == c3);</div><div class="line">// True</div></pre></td></tr></table></figure></p>
 <p>可以用Class的实例创建Foo的实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Foo foo2 = (Foo)c1.newInstance();</div></pre></td></tr></table></figure></p>
-<h1 id="动态加载类"><a href="#动态加载类" class="headerlink" title="动态加载类"></a>动态加载类</h1><ul>
-<li><p>静态加载类。编译时加载类，在编译时刻就需要加载所有的可能的使用到的类。所有的类都会加载，不管有没有被使用</p>
-</li>
-<li><p>动态加载类。运行时加载类 </p>
-</li>
-</ul>
+<h1 id="动态加载类"><a href="#动态加载类" class="headerlink" title="动态加载类"></a>动态加载类</h1><p>1、静态加载类。编译时加载类，在编译时刻就需要加载所有的可能的使用到的类。所有的类都会加载，不管有没有被使用<br>2、动态加载类。运行时加载类 </p>
 <p>使用Class.forName()动态加载类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public static void main(String [] args)&#123;</div><div class="line">	try&#123;</div><div class="line">		Class c = Class.forName(args[0]);</div><div class="line">		// OfficeUtil 是接口</div><div class="line">		OfficeUtil obj = (OfficeUtil)c.newInstance();</div><div class="line">		obj.print();</div><div class="line">	&#125;</div><div class="line">	catch(Exception e)&#123;</div><div class="line">		e.printStackTrace();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>使用了OfficeUtil接口的Word类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Word implements OfficeUtil&#123;</div><div class="line">	public void print()&#123;</div><div class="line">		System.out.println(&quot;Word&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>使用了OfficeUtil接口的Excel类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Excel implements OfficeUtil&#123;</div><div class="line">	public void print()&#123;</div><div class="line">		System.out.println(&quot;Excel&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -618,6 +613,18 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
     <!-- Pages  -->
     
         <li>
+            <a href="/tags" title="标签云">
+                
+                    <i class="material-icons sidebar-material-icons">cloud</i>
+                
+                标签云
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
             <a href="/about" title="About">
                 
                     <i class="material-icons sidebar-material-icons">person</i>
@@ -628,9 +635,9 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
         
     
         <li>
-            <a href="/Social" title="Social">
+            <a href="/links" title="Social">
                 
-                    <i class="material-icons sidebar-material-icons">person</i>
+                    <i class="material-icons sidebar-material-icons">equalizer</i>
                 
                 Social
             </a>
@@ -638,11 +645,11 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
         
     
         <li>
-            <a href="/game" title="game">
+            <a href="/game" title="Game">
                 
-                    <i class="material-icons sidebar-material-icons">person</i>
+                    <i class="material-icons sidebar-material-icons">apps</i>
                 
-                game
+                Game
             </a>
         </li>
         
