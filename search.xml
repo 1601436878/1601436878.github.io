@@ -3,16 +3,87 @@
   
     
     <entry>
+      <title><![CDATA[MySQL---外键、添加删除约束、ON DELETE参照、添加|删除|修改数据表列定义]]></title>
+      <url>/2017/07/03/MySQL-%E5%A4%96%E9%94%AE%E3%80%81%E6%B7%BB%E5%8A%A0%E5%88%A0%E9%99%A4%E7%BA%A6%E6%9D%9F%E3%80%81ON-DELETE%E5%8F%82%E7%85%A7%E3%80%81%E6%B7%BB%E5%8A%A0-%E5%88%A0%E9%99%A4-%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%88%97%E5%AE%9A%E4%B9%89/</url>
+      <content type="html"><![CDATA[<h1 id="外键-FOREIGN-KEY"><a href="#外键-FOREIGN-KEY" class="headerlink" title="外键(FOREIGN KEY)"></a>外键(FOREIGN KEY)</h1><p>外键约束需要满足一些基本要求：<a id="more"></a></p>
+<ul>
+<li>父表和子表必须是相同的引擎，而且禁止使用临时表</li>
+<li>数据表的存储引擎只能是InnoDB</li>
+<li>外键列和参照列必须具有相似的数据烈性。其中数字的长度或是否有符号为必须相同。而字符串的长度可以不同。</li>
+<li>外键列和参照列必须创建索引。如果外键列不存在索引的话，MaSQL将自动创建索引。</li>
+</ul>
+<p>显示索引，test表由于同时有主键和外键，所以有两个索引<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW INDEX FROM user \G;</div><div class="line">*************************** 1. row ***************************</div><div class="line">        Table: user</div><div class="line">   Non_unique: 0</div><div class="line">     Key_name: PRIMARY</div><div class="line"> Seq_in_index: 1</div><div class="line">  Column_name: id</div><div class="line">    Collation: A</div><div class="line">  Cardinality: 0</div><div class="line">     Sub_part: NULL</div><div class="line">       Packed: NULL</div><div class="line">         Null:</div><div class="line">   Index_type: BTREE</div><div class="line">      Comment:</div><div class="line">Index_comment:</div><div class="line">*************************** 2. row ***************************</div><div class="line">        Table: user</div><div class="line">   Non_unique: 1</div><div class="line">     Key_name: pid</div><div class="line"> Seq_in_index: 1</div><div class="line">  Column_name: pid</div><div class="line">    Collation: A</div><div class="line">  Cardinality: 0</div><div class="line">     Sub_part: NULL</div><div class="line">       Packed: NULL</div><div class="line">         Null: YES</div><div class="line">   Index_type: BTREE</div><div class="line">      Comment:</div><div class="line">Index_comment:</div><div class="line">2 rows in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<h1 id="ON-DELETE-参照操作"><a href="#ON-DELETE-参照操作" class="headerlink" title="ON DELETE 参照操作"></a>ON DELETE 参照操作</h1><ul>
+<li>CASCADE 从父表删除或更新，自动删除或更新字表中匹配的行</li>
+<li>SET NULL 从父表删除或更新行，并设置字表中的外键列为NULL。如果使用该选项必须保障字表列没有指定NOT NULL </li>
+<li>RESTRICT 拒绝对父表的删除或更新曹祖</li>
+<li>NO ACTION 标准的SQL关键字，在MySQL中与RESTRICT相同</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CREATE TABLE user2 (</div><div class="line">    -&gt; id SMALLINT  UNSIGNED PRIMARY KEY ,</div><div class="line">    -&gt; name VARCHAR(20) NOT NULL ,</div><div class="line">    -&gt; pid SMALLINT UNSIGNED,</div><div class="line">    -&gt; FOREIGN KEY (pid) REFERENCES provinces (id) ON DELETE CASCADE</div><div class="line">    -&gt; );</div></pre></td></tr></table></figure>
+<h1 id="表级约束与列级约束"><a href="#表级约束与列级约束" class="headerlink" title="表级约束与列级约束"></a>表级约束与列级约束</h1><ul>
+<li>对一个数据列建立的约束，成为列级约束</li>
+<li>对多个数据列建立的约束，成为标记约束。</li>
+<li>劣迹约束既可以在列定义时声名，也可以在列定义后声名</li>
+<li>表级约束只能在列定义后声名</li>
+</ul>
+<p>常见的DEFAULT 和 NOT NULL是列级约束</p>
+<h1 id="修改表约束"><a href="#修改表约束" class="headerlink" title="修改表约束"></a>修改表约束</h1><h2 id="添加主键约束"><a href="#添加主键约束" class="headerlink" title="添加主键约束"></a>添加主键约束</h2><p><strong>ALTER TABLE tbl_name ADD [CONSTRAINT [constraint_name]] PRIMARY KEY [index_type] (index_col_name,…)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE test ADD CONSTRAINT pk_test PRIMARY KEY (id);</div></pre></td></tr></table></figure></p>
+<h2 id="添加唯一约束"><a href="#添加唯一约束" class="headerlink" title="添加唯一约束"></a>添加唯一约束</h2><p><strong>ALTER TABLE tbl_name ADD [CONSTRAINT [constraint_col_name]] UNIQUE [INDEX|KEY] [index_name][index_type](index_col_name,…)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE test ADD CONSTRAINT unique_test UNIQUE KEY(name) ;</div></pre></td></tr></table></figure></p>
+<h2 id="添加外键约束"><a href="#添加外键约束" class="headerlink" title="添加外键约束"></a>添加外键约束</h2><p><strong>ALTER TABLE tbl_name ADD [CONSTRAINT [constraint_name]] FOREIGN KEY [index_name](index_col_name,…) REFERENCES table_name(col_name)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; ALTER TABLE test0 ADD CONSTRAINT fk_test0 FOREIGN KEY (data) REFERENCES test(id);</div></pre></td></tr></table></figure></p>
+<h2 id="添加、删除默认约束"><a href="#添加、删除默认约束" class="headerlink" title="添加、删除默认约束"></a>添加、删除默认约束</h2><p><strong>ALTER TABLE tbl_name ALTER [COLUMN] col_name {SET DEFAULT value|DROP DEFAULT}</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 添加默认约束</div><div class="line">mysql&gt; ALTER TABLE test ALTER COLUMN name SET DEFAULT &apos;TOM&apos;;</div><div class="line">// 删除默认约束</div><div class="line">mysql&gt; ALTER TABLE test ALTER COLUMN name DROP DEFAULT;</div></pre></td></tr></table></figure></p>
+<h2 id="删除主键约束"><a href="#删除主键约束" class="headerlink" title="删除主键约束"></a>删除主键约束</h2><p><strong>ALTER TABLE tbl_name DROP PRIMARY KEY </strong><br>删除主键时，如果主键有AUTO_INCREMENT约束，就不可以删除该主键约束，必须要先删除AUTO_INCREMENT，才可以删除主键约束。因为数据库将具有AUTO_INCREMENT约束的列看成主键</p>
+<h2 id="删除唯一约束"><a href="#删除唯一约束" class="headerlink" title="删除唯一约束"></a>删除唯一约束</h2><p><strong>ALTER TABLE tbl_name DROP {INDEX|KEY} index_name</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 先查看唯一约束的名字</div><div class="line">mysql&gt; SHOW CREATE TABLE test ;</div><div class="line">| test  | CREATE TABLE `test` (</div><div class="line">  `id` int(50) NOT NULL,</div><div class="line">  `name` varchar(10),</div><div class="line">  PRIMARY KEY (`id`),</div><div class="line">  UNIQUE KEY `unique_test` (`name`)</div><div class="line">) ENGINE=InnoDB DEFAULT CHARSET=gbk |</div><div class="line"></div><div class="line">// 根据唯一约束的名字删除对应的约束</div><div class="line">mysql&gt; ALTER TABLE test DROP INDEX unique_test;</div></pre></td></tr></table></figure></p>
+<h2 id="删除外键约束"><a href="#删除外键约束" class="headerlink" title="删除外键约束"></a>删除外键约束</h2><p><strong>ALTER TABLE tbl_name DROP FOREIGN KEY fk_name</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; ALTER TABLE test0 DROP FOREIGN KEY fk_test0;</div></pre></td></tr></table></figure></p>
+<h2 id="查看索引"><a href="#查看索引" class="headerlink" title="查看索引"></a>查看索引</h2><p><strong>SHOW INDEX FROM tbl_name </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW INDEX FROM test0 ;</div><div class="line">+-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+</div><div class="line">| Table | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |</div><div class="line">+-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+</div><div class="line">| test0 |          0 | PRIMARY  |            1 | id          | A         |           0 |     NULL | NULL   |      | BTREE      |         |               |</div><div class="line">| test0 |          1 | fk_test0 |            1 | data        | A         |           0 |     NULL | NULL   | YES  | BTREE      |         |               |</div><div class="line">+-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+</div><div class="line">2 rows in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p><strong>\G 将查询结果按列输出</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CREATE TABLE provinces(</div><div class="line">    -&gt; id SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,</div><div class="line">    -&gt; pname VARCHAR(20) NOT NULL</div><div class="line">    -&gt; );</div><div class="line"></div><div class="line">mysql&gt; CREATE TABLE user (</div><div class="line">    -&gt; id SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,</div><div class="line">    -&gt; username VARCHAR(20) NOT NULL ,</div><div class="line">    -&gt; pid SMALLINT UNSIGNED,</div><div class="line">    -&gt; FOREIGN KEY (pid) REFERENCES provinces (id)</div><div class="line">    -&gt; );</div></pre></td></tr></table></figure></p>
+<h2 id="查看表信息"><a href="#查看表信息" class="headerlink" title="查看表信息"></a>查看表信息</h2><p><strong>SHOW CREATE TABLE tbl_name</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show create table test0 ;</div><div class="line">| test0 | CREATE TABLE `test0` (</div><div class="line">  `id` int(50) NOT NULL,</div><div class="line">  `data` int(50) DEFAULT NULL,</div><div class="line">  PRIMARY KEY (`id`),</div><div class="line">  KEY `fk_test0` (`data`)</div><div class="line">) ENGINE=InnoDB DEFAULT CHARSET=gbk |</div></pre></td></tr></table></figure></p>
+<h1 id="修改数据表"><a href="#修改数据表" class="headerlink" title="修改数据表"></a>修改数据表</h1><h2 id="添加、删除列"><a href="#添加、删除列" class="headerlink" title="添加、删除列"></a>添加、删除列</h2><h3 id="添加列"><a href="#添加列" class="headerlink" title="添加列"></a>添加列</h3><p><strong>ALTER TABLE tbl_name ADD [COLUMN] col_name column_definition [(FIRST) | (AFTER col_name)]</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 插入一条记录</div><div class="line">ALTER TABLE tb4 ADD COLUMN age INT(10) UNSIGNED DEFAULT 10 ;</div><div class="line"></div><div class="line">// 在最前面插入一条记录</div><div class="line">ALTER TABLE tb4 ADD COLUMN truename VARCHAR(20) NOT NULL FIRST;</div><div class="line"></div><div class="line">// 在sex列后面插入一条记录</div><div class="line">mysql&gt; ALTER TABLE tb4 ADD COLUMN password VARCHAR(20) AFTER sex ;</div></pre></td></tr></table></figure>
+<h3 id="添加多列"><a href="#添加多列" class="headerlink" title="添加多列"></a>添加多列</h3><p><strong>ALTER TABLE tbl_name ADD [COLUMN] col_name column_definition (,ADD [column] col_name2 column_definetion…)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 添加school、和grade列</div><div class="line">mysql&gt; ALTER TABLE test ADD COLUMN school VARCHAR(20),ADD COLUMN grade FLOAT;</div></pre></td></tr></table></figure></p>
+<h3 id="删除列"><a href="#删除列" class="headerlink" title="删除列"></a>删除列</h3><p><strong>ALTER TABLE tbl_name DROP [COLUMN] col_name</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 删除grade列</div><div class="line">mysql&gt; ALTER TABLE test DROP COLUMN grade ;</div></pre></td></tr></table></figure></p>
+<h3 id="同时使用多个操作"><a href="#同时使用多个操作" class="headerlink" title="同时使用多个操作"></a>同时使用多个操作</h3><p><strong>ALTER TABLE tbl_name DROP(|ADD) [COLUMN] col_name,DROP(|ADD) [COLUMN] col_name2,…</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 删除grade列 ，添加school列</div><div class="line">mysql&gt; ALTER TABLE test ADD COLUMN grade FLOAT ,DROP COLUMN school ;</div></pre></td></tr></table></figure></p>
+<h2 id="修改数据表列定义"><a href="#修改数据表列定义" class="headerlink" title="修改数据表列定义"></a>修改数据表列定义</h2><ul>
+<li><strong>ALTER TABLE tbl_name MODIFY [COLUMN] col_name column_definition [FIRST|ALTER col_name] </strong><br>在不改变列名的情况下修改列定义<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; ALTER TABLE test MODIFY name VARCHAR(20) DEFAULT &apos;JERRY&apos;;</div><div class="line">mysql&gt; DESCRIBE test;</div><div class="line">+-------+-------------+------+-----+---------+----------------+</div><div class="line">| Field | Type        | Null | Key | Default | Extra          |</div><div class="line">+-------+-------------+------+-----+---------+----------------+</div><div class="line">| id    | int(10)     | NO   | PRI | NULL    | auto_increment |</div><div class="line">| name  | varchar(20) | YES  |     | JERRY   |                |</div><div class="line">| sex   | varchar(5)  | YES  |     | NULL    |                |</div><div class="line">+-------+-------------+------+-----+---------+----------------+</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>新的参数中如果没有包含原来的约束，那么原来的约束会被删除<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; ALTER TABLE test MODIFY name VARCHAR(30) ;</div><div class="line">mysql&gt; DESCRIBE test;</div><div class="line">+-------+-------------+------+-----+---------+----------------+</div><div class="line">| Field | Type        | Null | Key | Default | Extra          |</div><div class="line">+-------+-------------+------+-----+---------+----------------+</div><div class="line">| id    | int(10)     | NO   | PRI | NULL    | auto_increment |</div><div class="line">| name  | varchar(30) | YES  |     | NULL    |                |</div><div class="line">| sex   | varchar(5)  | YES  |     | NULL    |                |</div><div class="line">+-------+-------------+------+-----+---------+----------------+</div></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>ALTER TABLE tbl_name CHANGE [COLUMN] old_col_name new_col_name column_definition [FIRST|AFTER col_name] </strong><br>可以修改列名，和列定义<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; ALTER TABLE test CHANGE name new_name VARCHAR(20) DEFAULT &apos;TOM&apos; FIRST ;</div><div class="line">mysql&gt; DESCRIBE test;</div><div class="line">+----------+-------------+------+-----+---------+-------+</div><div class="line">| Field    | Type        | Null | Key | Default | Extra |</div><div class="line">+----------+-------------+------+-----+---------+-------+</div><div class="line">| new_name | varchar(20) | YES  |     | TOM     |       |</div><div class="line">| id       | int(20)     | NO   | PRI | NULL    |       |</div><div class="line">| sex      | varchar(5)  | YES  |     | NULL    |       |</div><div class="line">+----------+-------------+------+-----+---------+-------+</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="修改数据表名称"><a href="#修改数据表名称" class="headerlink" title="修改数据表名称"></a>修改数据表名称</h2><ul>
+<li><strong>ALTER TABLE tbl_name RENAME [TO|AS] new_tbl_name</strong> 修改单个表名称</li>
+<li><strong>RENAME TABLE tbl_name TO new_tbl_name [,tbl_name2 TO new_tbl_name2…]</strong> 修改多个表名称</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 修改单个表名称</div><div class="line">mysql&gt; ALTER TABLE test RENAME TO  db_test ;</div><div class="line"></div><div class="line">// 修改多个表名称</div><div class="line">mysql&gt; RENAME TABLE db_test TO test ,tb4 TO tb5 ;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> MySQL </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[MySQL入门---数据库登陆与退出、数据库基本操作、开启数据库服务]]></title>
       <url>/2017/07/03/MySQL%E5%85%A5%E9%97%A8-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%99%BB%E9%99%86%E4%B8%8E%E9%80%80%E5%87%BA%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E3%80%81%E5%BC%80%E5%90%AF%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9C%8D%E5%8A%A1/</url>
       <content type="html"><![CDATA[<h1 id="开启和关闭服务"><a href="#开启和关闭服务" class="headerlink" title="开启和关闭服务"></a>开启和关闭服务</h1><ul>
 <li>net start mysql 启动服务</li>
-<li>net stop mysql 停止服务</li>
-</ul>
-<p>执行此命令前，需要安装服务：</p>
-<blockquote>
+<li>net stop mysql 停止服务<a id="more"></a>
+执行此命令前，需要安装服务：<blockquote>
 <p>mysqld -install </p>
 </blockquote>
+</li>
+</ul>
 <p>服务的名称往往不是mysql，而是mysql加上版本号，例如mysql57</p>
 <h1 id="登陆"><a href="#登陆" class="headerlink" title="登陆"></a>登陆</h1><p>登陆使用mysql命令，该命令有以下参数：</p>
 <table>
@@ -2263,38 +2334,6 @@ unalias                            临时删除别名
     </entry>
     
     <entry>
-      <title><![CDATA[不同编码类型的总结]]></title>
-      <url>/2016/09/11/%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%80%BB%E7%BB%93/</url>
-      <content type="html"><![CDATA[<h2 id="1-ASCII"><a href="#1-ASCII" class="headerlink" title="1.ASCII"></a>1.ASCII</h2><p>计算机一开始在美国使用，字符编码也只包括英文字母。ANSCII编码由一个字节表示所有符号。一个字节可以表示的所有可能是256（2的8次方）种，对于美国人来说，26个英文字母，加上常用的符号，也只是用了127个。如果大家都用英文，那这套编码完全够用。<a id="more"></a>但是不同国家的文字不同，如果加上其他国家的语言符号，那一个字节是不够的，之后ASCII做出了改进，将256种情况剩余的可能用来表示其他字符。一直排到了第255种可能，从128到255表示的字符成为“扩展字符集”，然而，新增的字符并不能解决所有问题。<br><img src="http://i.imgur.com/Ks9A740.jpg" alt=""></p>
-<h2 id="2-GB2312"><a href="#2-GB2312" class="headerlink" title="2.GB2312"></a>2.GB2312</h2><p>计算机开始在我国普及时，ASCII中已经没有可以利用的字节状态来表示汉字。于是，我们将扩展字符集删除，将127后的字符状态重新编码。小于127的字符状态的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节称之为高字节，后面一个字节称之为低字节，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，我们还把数学符号、罗马希腊的字母、日文的假名们都编进去了，连在 ASCII 里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的”全角”字符，而原来在127号以下的那些就叫”半角”字符了。 </p>
-<p>后来GB2312也无法满足人们的需要，随后出现了GBK标准，再后来，还是不够用，于是出现了GB18030。这个标准几乎可以表示所有的中文字符，此标准在2006年5月1日被作为在中国境内所有软件产品支持的强制规格。 </p>
-<h2 id="3-Unicode"><a href="#3-Unicode" class="headerlink" title="3.Unicode"></a>3.Unicode</h2><p>不只是我国，很多国家都制定了相应的符合本国文化的字符编码标准。这些标准再本国内可以正常使用，但是如果是不同国家之间通过文本文件的交流，就很有可能导致乱码。这时，国际标准化组织（osi）出现了，OSI致力于将全世界所有的字符用统一的标准编码，消除不同国家之间交流的障碍。</p>
-<p>OSI将所有字符用两个字节表示，包括ANCSI中的前127个字符，所以对于钱127个字符来说，本来8位就可以表示的字符现在用16位来表示，这其实是一种资源的浪费。</p>
-<h2 id="4-UTF-8"><a href="#4-UTF-8" class="headerlink" title="4.UTF-8"></a>4.UTF-8</h2><p>可以看出，Unicode虽然是一个很好的字符编码方式，但由于所有字符都用两个字节表示导致的资源的浪费，促使了UTF-8的出现，UTF-8编码中的第一个字节仍与ASCII兼容，这使得原来处理ASCII字符的软件无须或只须做少部份修改，即可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。互联网工程工作小组（IETF）要求所有互联网协议都必须支持UTF-8编码。<br>UTF-8有如下特点： </p>
-<blockquote>
-<p><1>  前128个US-ASCII字符只需一个字节编码（与ANCSI相同）。 </1></p>
-<p><2>  带有附加符号的拉丁文、希腊文、西里尔字母、亚美尼亚语、希伯来文、阿拉伯文、叙利亚文及它拿字母则需要二个字节编码。 </2></p>
-<p><3>  其他基本多文种平面（BMP）中的字符（这包含了大部分常用字）使用三个字节编码。 </3></p>
-<p><4>  其他极少使用的Unicode辅助平面的字符使用四字节编码。 </4></p>
-</blockquote>
-]]></content>
-      
-        <categories>
-            
-            <category> 技术 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 技术 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[日期类]]></title>
       <url>/2016/09/11/%E6%97%A5%E6%9C%9F%E7%B1%BB/</url>
       <content type="html"><![CDATA[<h4 id="Date类"><a href="#Date类" class="headerlink" title="Date类"></a>Date类</h4><p>从1970.1.1.0点开始到某个时刻的毫秒数，类型是long<br>1970年之前用负数表示</p>
@@ -2332,6 +2371,38 @@ Date d2 = df2.parse(str2);
         <tags>
             
             <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[不同编码类型的总结]]></title>
+      <url>/2016/09/11/%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%80%BB%E7%BB%93/</url>
+      <content type="html"><![CDATA[<h2 id="1-ASCII"><a href="#1-ASCII" class="headerlink" title="1.ASCII"></a>1.ASCII</h2><p>计算机一开始在美国使用，字符编码也只包括英文字母。ANSCII编码由一个字节表示所有符号。一个字节可以表示的所有可能是256（2的8次方）种，对于美国人来说，26个英文字母，加上常用的符号，也只是用了127个。如果大家都用英文，那这套编码完全够用。<a id="more"></a>但是不同国家的文字不同，如果加上其他国家的语言符号，那一个字节是不够的，之后ASCII做出了改进，将256种情况剩余的可能用来表示其他字符。一直排到了第255种可能，从128到255表示的字符成为“扩展字符集”，然而，新增的字符并不能解决所有问题。<br><img src="http://i.imgur.com/Ks9A740.jpg" alt=""></p>
+<h2 id="2-GB2312"><a href="#2-GB2312" class="headerlink" title="2.GB2312"></a>2.GB2312</h2><p>计算机开始在我国普及时，ASCII中已经没有可以利用的字节状态来表示汉字。于是，我们将扩展字符集删除，将127后的字符状态重新编码。小于127的字符状态的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节称之为高字节，后面一个字节称之为低字节，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，我们还把数学符号、罗马希腊的字母、日文的假名们都编进去了，连在 ASCII 里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的”全角”字符，而原来在127号以下的那些就叫”半角”字符了。 </p>
+<p>后来GB2312也无法满足人们的需要，随后出现了GBK标准，再后来，还是不够用，于是出现了GB18030。这个标准几乎可以表示所有的中文字符，此标准在2006年5月1日被作为在中国境内所有软件产品支持的强制规格。 </p>
+<h2 id="3-Unicode"><a href="#3-Unicode" class="headerlink" title="3.Unicode"></a>3.Unicode</h2><p>不只是我国，很多国家都制定了相应的符合本国文化的字符编码标准。这些标准再本国内可以正常使用，但是如果是不同国家之间通过文本文件的交流，就很有可能导致乱码。这时，国际标准化组织（osi）出现了，OSI致力于将全世界所有的字符用统一的标准编码，消除不同国家之间交流的障碍。</p>
+<p>OSI将所有字符用两个字节表示，包括ANCSI中的前127个字符，所以对于钱127个字符来说，本来8位就可以表示的字符现在用16位来表示，这其实是一种资源的浪费。</p>
+<h2 id="4-UTF-8"><a href="#4-UTF-8" class="headerlink" title="4.UTF-8"></a>4.UTF-8</h2><p>可以看出，Unicode虽然是一个很好的字符编码方式，但由于所有字符都用两个字节表示导致的资源的浪费，促使了UTF-8的出现，UTF-8编码中的第一个字节仍与ASCII兼容，这使得原来处理ASCII字符的软件无须或只须做少部份修改，即可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。互联网工程工作小组（IETF）要求所有互联网协议都必须支持UTF-8编码。<br>UTF-8有如下特点： </p>
+<blockquote>
+<p><1>  前128个US-ASCII字符只需一个字节编码（与ANCSI相同）。 </1></p>
+<p><2>  带有附加符号的拉丁文、希腊文、西里尔字母、亚美尼亚语、希伯来文、阿拉伯文、叙利亚文及它拿字母则需要二个字节编码。 </2></p>
+<p><3>  其他基本多文种平面（BMP）中的字符（这包含了大部分常用字）使用三个字节编码。 </3></p>
+<p><4>  其他极少使用的Unicode辅助平面的字符使用四字节编码。 </4></p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 技术 </tag>
             
         </tags>
         

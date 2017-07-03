@@ -10,7 +10,7 @@
     
     <title>
         
-            JSP jsp:useBean介绍 | 
+            MySQL---外键、添加删除约束、ON DELETE参照、添加|删除|修改数据表列定义 | 
         
         Twilight&#39;s Blog
     </title>
@@ -36,7 +36,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="wangchao">
     <meta name="description" content="null">
-    <meta name="keywords" content="null,JSP">
+    <meta name="keywords" content="null,MySQL">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
@@ -62,9 +62,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://twilight.net.cn">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="JSP jsp:useBean介绍 | Twilight&#39;s Blog">
+    <meta property="og:title" content="MySQL---外键、添加删除约束、ON DELETE参照、添加|删除|修改数据表列定义 | Twilight&#39;s Blog">
     <meta property="og:description" content="null">
-    <meta property="og:article:tag" content="JSP"> 
+    <meta property="og:article:tag" content="MySQL"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -246,7 +246,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#创建JavaBean实例："><span class="post-toc-number">1.</span> <span class="post-toc-text">创建JavaBean实例：</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#赋值"><span class="post-toc-number">2.</span> <span class="post-toc-text">赋值</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#外键-FOREIGN-KEY"><span class="post-toc-number">1.</span> <span class="post-toc-text">外键(FOREIGN KEY)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ON-DELETE-参照操作"><span class="post-toc-number">2.</span> <span class="post-toc-text">ON DELETE 参照操作</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#表级约束与列级约束"><span class="post-toc-number">3.</span> <span class="post-toc-text">表级约束与列级约束</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#修改表约束"><span class="post-toc-number">4.</span> <span class="post-toc-text">修改表约束</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加主键约束"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">添加主键约束</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加唯一约束"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">添加唯一约束</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加外键约束"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">添加外键约束</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加、删除默认约束"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">添加、删除默认约束</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#删除主键约束"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">删除主键约束</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#删除唯一约束"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">删除唯一约束</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#删除外键约束"><span class="post-toc-number">4.7.</span> <span class="post-toc-text">删除外键约束</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看索引"><span class="post-toc-number">4.8.</span> <span class="post-toc-text">查看索引</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看表信息"><span class="post-toc-number">4.9.</span> <span class="post-toc-text">查看表信息</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#修改数据表"><span class="post-toc-number">5.</span> <span class="post-toc-text">修改数据表</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加、删除列"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">添加、删除列</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加列"><span class="post-toc-number">5.1.1.</span> <span class="post-toc-text">添加列</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加多列"><span class="post-toc-number">5.1.2.</span> <span class="post-toc-text">添加多列</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删除列"><span class="post-toc-number">5.1.3.</span> <span class="post-toc-text">删除列</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#同时使用多个操作"><span class="post-toc-number">5.1.4.</span> <span class="post-toc-text">同时使用多个操作</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#修改数据表列定义"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">修改数据表列定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#修改数据表名称"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">修改数据表名称</span></a></li></ol></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -283,7 +283,7 @@
         
     
             <p class="article-headline-p">
-                JSP jsp:useBean介绍
+                MySQL---外键、添加删除约束、ON DELETE参照、添加|删除|修改数据表列定义
             </p>
         </div>
 
@@ -302,7 +302,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>wangchao</strong>
-        <span>4月 15, 2017</span>
+        <span>7月 03, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -326,7 +326,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/JSP/">JSP</a>
+        <a class="post_tag-link" href="/tags/MySQL/">MySQL</a>
     </ul>
     
 
@@ -340,7 +340,7 @@
     <!-- Leancloud Views -->
         <a class="post_share-link" href="#">
             <li class="mdl-menu__item">
-                <span id="/2017/04/15/JSP-jsp-useBean介绍/" class="leancloud-views_num" data-flag-title="JSP jsp:useBean介绍">
+                <span id="/2017/07/03/MySQL-外键、添加删除约束、ON-DELETE参照、添加-删除-修改数据表列定义/" class="leancloud-views_num" data-flag-title="MySQL---外键、添加删除约束、ON DELETE参照、添加|删除|修改数据表列定义">
      &nbsp;浏览量
 </span>
 
@@ -352,7 +352,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=JSP jsp:useBean介绍&url=http://twilight.net.cn//2017/04/15/JSP-jsp-useBean介绍/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=MySQL---外键、添加删除约束、ON DELETE参照、添加|删除|修改数据表列定义&url=http://twilight.net.cn//2017/07/03/MySQL-外键、添加删除约束、ON-DELETE参照、添加-删除-修改数据表列定义/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -361,7 +361,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=JSP jsp:useBean介绍&url=http://twilight.net.cn//2017/04/15/JSP-jsp-useBean介绍/index.html&via=wangchao" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=MySQL---外键、添加删除约束、ON DELETE参照、添加|删除|修改数据表列定义&url=http://twilight.net.cn//2017/07/03/MySQL-外键、添加删除约束、ON-DELETE参照、添加-删除-修改数据表列定义/index.html&via=wangchao" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -370,7 +370,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2017/04/15/JSP-jsp-useBean介绍/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2017/07/03/MySQL-外键、添加删除约束、ON-DELETE参照、添加-删除-修改数据表列定义/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -379,7 +379,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2017/04/15/JSP-jsp-useBean介绍/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2017/07/03/MySQL-外键、添加删除约束、ON-DELETE参照、添加-删除-修改数据表列定义/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -391,7 +391,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=JSP jsp:useBean介绍&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2017/04/15/JSP-jsp-useBean介绍/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=MySQL---外键、添加删除约束、ON DELETE参照、添加|删除|修改数据表列定义&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2017/07/03/MySQL-外键、添加删除约束、ON-DELETE参照、添加-删除-修改数据表列定义/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -409,17 +409,57 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="创建JavaBean实例："><a href="#创建JavaBean实例：" class="headerlink" title="创建JavaBean实例："></a>创建JavaBean实例：</h1><p>&lt;jsp:useBean id=”name” class=”” scope=”page/session/request/application”/&gt;</p>
-<p>id为类的另一个名字，class指定具体的类，scope表示范围，在scope的范围内查找是否有指定的属性存在<br><a id="more"></a></p>
-<h1 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h1><ol>
-<li>指定参数和值<br><code>&lt;jsp:setProperty name=&quot;user&quot;  property=&quot;password&quot; value=&quot;123&quot; /&gt;</code></li>
-<li>将指定参数的值赋值给JavaBean的属性<br><code>&lt;jsp:setProperty name=&quot;user&quot; param=&quot;pwd&quot; property=&quot;password&quot; /&gt;</code></li>
-<li>通过自省机制自动匹配<br><code>&lt;jsp:setProperty name=&quot;user&quot; property=&quot;*&quot; /&gt;</code></li>
-</ol>
-<p>使用jsp:useBean的目的是减少Script的使用<br>一个典型的javabean: JavaBean.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">package Bean;</div><div class="line">import java.io.Serializable;</div><div class="line">public class JavaBean implements Serializable &#123;</div><div class="line">	private String name ;</div><div class="line">	private String password;</div><div class="line">	</div><div class="line">	</div><div class="line">	public JavaBean(String name, String password) &#123;</div><div class="line">		super();</div><div class="line">		this.name = name;</div><div class="line">		this.password = password;</div><div class="line">	&#125;</div><div class="line">	public JavaBean() &#123;</div><div class="line">		super();</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public String getName() &#123;</div><div class="line">		return name;</div><div class="line">	&#125;</div><div class="line">	public void setName(String name) &#123;</div><div class="line">		this.name = name;</div><div class="line">	&#125;</div><div class="line">	public String getPassword() &#123;</div><div class="line">		return password;</div><div class="line">	&#125;</div><div class="line">	public void setPassword(String password) &#123;</div><div class="line">		this.password = password;</div><div class="line">	&#125; </div><div class="line">	public boolean isValid()&#123;</div><div class="line">		if(name.equals(&quot;tom&quot;) &amp;&amp; password.equals(&quot;123&quot;))&#123;</div><div class="line">			return true;</div><div class="line">		&#125;</div><div class="line">		return false;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>使用jsp:Bean标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page language=&quot;java&quot; import=&quot;java.util.*&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;jsp:useBean id=&quot;user&quot; class=&quot;Bean.JavaBean&quot; scope=&quot;page&quot; /&gt;</div><div class="line">&lt;jsp:setProperty name=&quot;user&quot; property=&quot;*&quot; /&gt;</div><div class="line"></div><div class="line">&lt;html&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">  &lt;font color=&apos;red&apos;&gt;</div><div class="line">    &lt;jsp:getProperty property=&quot;name&quot; name=&quot;user&quot;/&gt;</div><div class="line">    &lt;/font&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
-<p>web容器翻译后的Java代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Bean.JavaBean user = null;</div><div class="line">user = (Bean.JavaBean) _jspx_page_context.getAttribute(&quot;user&quot;, javax.servlet.jsp.PageContext.PAGE_SCOPE);</div><div class="line">if (user == null)&#123;</div><div class="line">  user = new Bean.JavaBean();</div><div class="line">  _jspx_page_context.setAttribute(&quot;user&quot;, user, javax.servlet.jsp.PageContext.PAGE_SCOPE);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>采用传统方式的做法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page language=&quot;java&quot; import=&quot;java.util.*,Bean.JavaBean&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;%</div><div class="line">    JavaBean user = (JavaBean)request.getAttribute(&quot;user&quot;);</div><div class="line">    if(user == null)&#123;</div><div class="line">    	user = new JavaBean();</div><div class="line">    &#125;</div><div class="line">    user.setName(request.getParameter(&quot;name&quot;));</div><div class="line">    user.setPassword(request.getParameter(&quot;pwd&quot;));</div><div class="line">    if(user.isValid())&#123;</div><div class="line">    	out.println(&quot;登录成功&quot;);</div><div class="line">    &#125;else&#123;</div><div class="line">    	out.println(&quot;登录失败&quot;);</div><div class="line">    &#125;</div><div class="line">    %&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html</div></pre></td></tr></table></figure></p>
+        <h1 id="外键-FOREIGN-KEY"><a href="#外键-FOREIGN-KEY" class="headerlink" title="外键(FOREIGN KEY)"></a>外键(FOREIGN KEY)</h1><p>外键约束需要满足一些基本要求：<a id="more"></a></p>
+<ul>
+<li>父表和子表必须是相同的引擎，而且禁止使用临时表</li>
+<li>数据表的存储引擎只能是InnoDB</li>
+<li>外键列和参照列必须具有相似的数据烈性。其中数字的长度或是否有符号为必须相同。而字符串的长度可以不同。</li>
+<li>外键列和参照列必须创建索引。如果外键列不存在索引的话，MaSQL将自动创建索引。</li>
+</ul>
+<p>显示索引，test表由于同时有主键和外键，所以有两个索引<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW INDEX FROM user \G;</div><div class="line">*************************** 1. row ***************************</div><div class="line">        Table: user</div><div class="line">   Non_unique: 0</div><div class="line">     Key_name: PRIMARY</div><div class="line"> Seq_in_index: 1</div><div class="line">  Column_name: id</div><div class="line">    Collation: A</div><div class="line">  Cardinality: 0</div><div class="line">     Sub_part: NULL</div><div class="line">       Packed: NULL</div><div class="line">         Null:</div><div class="line">   Index_type: BTREE</div><div class="line">      Comment:</div><div class="line">Index_comment:</div><div class="line">*************************** 2. row ***************************</div><div class="line">        Table: user</div><div class="line">   Non_unique: 1</div><div class="line">     Key_name: pid</div><div class="line"> Seq_in_index: 1</div><div class="line">  Column_name: pid</div><div class="line">    Collation: A</div><div class="line">  Cardinality: 0</div><div class="line">     Sub_part: NULL</div><div class="line">       Packed: NULL</div><div class="line">         Null: YES</div><div class="line">   Index_type: BTREE</div><div class="line">      Comment:</div><div class="line">Index_comment:</div><div class="line">2 rows in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<h1 id="ON-DELETE-参照操作"><a href="#ON-DELETE-参照操作" class="headerlink" title="ON DELETE 参照操作"></a>ON DELETE 参照操作</h1><ul>
+<li>CASCADE 从父表删除或更新，自动删除或更新字表中匹配的行</li>
+<li>SET NULL 从父表删除或更新行，并设置字表中的外键列为NULL。如果使用该选项必须保障字表列没有指定NOT NULL </li>
+<li>RESTRICT 拒绝对父表的删除或更新曹祖</li>
+<li>NO ACTION 标准的SQL关键字，在MySQL中与RESTRICT相同</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CREATE TABLE user2 (</div><div class="line">    -&gt; id SMALLINT  UNSIGNED PRIMARY KEY ,</div><div class="line">    -&gt; name VARCHAR(20) NOT NULL ,</div><div class="line">    -&gt; pid SMALLINT UNSIGNED,</div><div class="line">    -&gt; FOREIGN KEY (pid) REFERENCES provinces (id) ON DELETE CASCADE</div><div class="line">    -&gt; );</div></pre></td></tr></table></figure>
+<h1 id="表级约束与列级约束"><a href="#表级约束与列级约束" class="headerlink" title="表级约束与列级约束"></a>表级约束与列级约束</h1><ul>
+<li>对一个数据列建立的约束，成为列级约束</li>
+<li>对多个数据列建立的约束，成为标记约束。</li>
+<li>劣迹约束既可以在列定义时声名，也可以在列定义后声名</li>
+<li>表级约束只能在列定义后声名</li>
+</ul>
+<p>常见的DEFAULT 和 NOT NULL是列级约束</p>
+<h1 id="修改表约束"><a href="#修改表约束" class="headerlink" title="修改表约束"></a>修改表约束</h1><h2 id="添加主键约束"><a href="#添加主键约束" class="headerlink" title="添加主键约束"></a>添加主键约束</h2><p><strong>ALTER TABLE tbl_name ADD [CONSTRAINT [constraint_name]] PRIMARY KEY [index_type] (index_col_name,…)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE test ADD CONSTRAINT pk_test PRIMARY KEY (id);</div></pre></td></tr></table></figure></p>
+<h2 id="添加唯一约束"><a href="#添加唯一约束" class="headerlink" title="添加唯一约束"></a>添加唯一约束</h2><p><strong>ALTER TABLE tbl_name ADD [CONSTRAINT [constraint_col_name]] UNIQUE [INDEX|KEY] [index_name][index_type](index_col_name,…)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE test ADD CONSTRAINT unique_test UNIQUE KEY(name) ;</div></pre></td></tr></table></figure></p>
+<h2 id="添加外键约束"><a href="#添加外键约束" class="headerlink" title="添加外键约束"></a>添加外键约束</h2><p><strong>ALTER TABLE tbl_name ADD [CONSTRAINT [constraint_name]] FOREIGN KEY [index_name](index_col_name,…) REFERENCES table_name(col_name)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; ALTER TABLE test0 ADD CONSTRAINT fk_test0 FOREIGN KEY (data) REFERENCES test(id);</div></pre></td></tr></table></figure></p>
+<h2 id="添加、删除默认约束"><a href="#添加、删除默认约束" class="headerlink" title="添加、删除默认约束"></a>添加、删除默认约束</h2><p><strong>ALTER TABLE tbl_name ALTER [COLUMN] col_name {SET DEFAULT value|DROP DEFAULT}</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 添加默认约束</div><div class="line">mysql&gt; ALTER TABLE test ALTER COLUMN name SET DEFAULT &apos;TOM&apos;;</div><div class="line">// 删除默认约束</div><div class="line">mysql&gt; ALTER TABLE test ALTER COLUMN name DROP DEFAULT;</div></pre></td></tr></table></figure></p>
+<h2 id="删除主键约束"><a href="#删除主键约束" class="headerlink" title="删除主键约束"></a>删除主键约束</h2><p><strong>ALTER TABLE tbl_name DROP PRIMARY KEY </strong><br>删除主键时，如果主键有AUTO_INCREMENT约束，就不可以删除该主键约束，必须要先删除AUTO_INCREMENT，才可以删除主键约束。因为数据库将具有AUTO_INCREMENT约束的列看成主键</p>
+<h2 id="删除唯一约束"><a href="#删除唯一约束" class="headerlink" title="删除唯一约束"></a>删除唯一约束</h2><p><strong>ALTER TABLE tbl_name DROP {INDEX|KEY} index_name</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 先查看唯一约束的名字</div><div class="line">mysql&gt; SHOW CREATE TABLE test ;</div><div class="line">| test  | CREATE TABLE `test` (</div><div class="line">  `id` int(50) NOT NULL,</div><div class="line">  `name` varchar(10),</div><div class="line">  PRIMARY KEY (`id`),</div><div class="line">  UNIQUE KEY `unique_test` (`name`)</div><div class="line">) ENGINE=InnoDB DEFAULT CHARSET=gbk |</div><div class="line"></div><div class="line">// 根据唯一约束的名字删除对应的约束</div><div class="line">mysql&gt; ALTER TABLE test DROP INDEX unique_test;</div></pre></td></tr></table></figure></p>
+<h2 id="删除外键约束"><a href="#删除外键约束" class="headerlink" title="删除外键约束"></a>删除外键约束</h2><p><strong>ALTER TABLE tbl_name DROP FOREIGN KEY fk_name</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; ALTER TABLE test0 DROP FOREIGN KEY fk_test0;</div></pre></td></tr></table></figure></p>
+<h2 id="查看索引"><a href="#查看索引" class="headerlink" title="查看索引"></a>查看索引</h2><p><strong>SHOW INDEX FROM tbl_name </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW INDEX FROM test0 ;</div><div class="line">+-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+</div><div class="line">| Table | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |</div><div class="line">+-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+</div><div class="line">| test0 |          0 | PRIMARY  |            1 | id          | A         |           0 |     NULL | NULL   |      | BTREE      |         |               |</div><div class="line">| test0 |          1 | fk_test0 |            1 | data        | A         |           0 |     NULL | NULL   | YES  | BTREE      |         |               |</div><div class="line">+-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+</div><div class="line">2 rows in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p><strong>\G 将查询结果按列输出</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CREATE TABLE provinces(</div><div class="line">    -&gt; id SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,</div><div class="line">    -&gt; pname VARCHAR(20) NOT NULL</div><div class="line">    -&gt; );</div><div class="line"></div><div class="line">mysql&gt; CREATE TABLE user (</div><div class="line">    -&gt; id SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,</div><div class="line">    -&gt; username VARCHAR(20) NOT NULL ,</div><div class="line">    -&gt; pid SMALLINT UNSIGNED,</div><div class="line">    -&gt; FOREIGN KEY (pid) REFERENCES provinces (id)</div><div class="line">    -&gt; );</div></pre></td></tr></table></figure></p>
+<h2 id="查看表信息"><a href="#查看表信息" class="headerlink" title="查看表信息"></a>查看表信息</h2><p><strong>SHOW CREATE TABLE tbl_name</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show create table test0 ;</div><div class="line">| test0 | CREATE TABLE `test0` (</div><div class="line">  `id` int(50) NOT NULL,</div><div class="line">  `data` int(50) DEFAULT NULL,</div><div class="line">  PRIMARY KEY (`id`),</div><div class="line">  KEY `fk_test0` (`data`)</div><div class="line">) ENGINE=InnoDB DEFAULT CHARSET=gbk |</div></pre></td></tr></table></figure></p>
+<h1 id="修改数据表"><a href="#修改数据表" class="headerlink" title="修改数据表"></a>修改数据表</h1><h2 id="添加、删除列"><a href="#添加、删除列" class="headerlink" title="添加、删除列"></a>添加、删除列</h2><h3 id="添加列"><a href="#添加列" class="headerlink" title="添加列"></a>添加列</h3><p><strong>ALTER TABLE tbl_name ADD [COLUMN] col_name column_definition [(FIRST) | (AFTER col_name)]</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 插入一条记录</div><div class="line">ALTER TABLE tb4 ADD COLUMN age INT(10) UNSIGNED DEFAULT 10 ;</div><div class="line"></div><div class="line">// 在最前面插入一条记录</div><div class="line">ALTER TABLE tb4 ADD COLUMN truename VARCHAR(20) NOT NULL FIRST;</div><div class="line"></div><div class="line">// 在sex列后面插入一条记录</div><div class="line">mysql&gt; ALTER TABLE tb4 ADD COLUMN password VARCHAR(20) AFTER sex ;</div></pre></td></tr></table></figure>
+<h3 id="添加多列"><a href="#添加多列" class="headerlink" title="添加多列"></a>添加多列</h3><p><strong>ALTER TABLE tbl_name ADD [COLUMN] col_name column_definition (,ADD [column] col_name2 column_definetion…)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 添加school、和grade列</div><div class="line">mysql&gt; ALTER TABLE test ADD COLUMN school VARCHAR(20),ADD COLUMN grade FLOAT;</div></pre></td></tr></table></figure></p>
+<h3 id="删除列"><a href="#删除列" class="headerlink" title="删除列"></a>删除列</h3><p><strong>ALTER TABLE tbl_name DROP [COLUMN] col_name</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 删除grade列</div><div class="line">mysql&gt; ALTER TABLE test DROP COLUMN grade ;</div></pre></td></tr></table></figure></p>
+<h3 id="同时使用多个操作"><a href="#同时使用多个操作" class="headerlink" title="同时使用多个操作"></a>同时使用多个操作</h3><p><strong>ALTER TABLE tbl_name DROP(|ADD) [COLUMN] col_name,DROP(|ADD) [COLUMN] col_name2,…</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 删除grade列 ，添加school列</div><div class="line">mysql&gt; ALTER TABLE test ADD COLUMN grade FLOAT ,DROP COLUMN school ;</div></pre></td></tr></table></figure></p>
+<h2 id="修改数据表列定义"><a href="#修改数据表列定义" class="headerlink" title="修改数据表列定义"></a>修改数据表列定义</h2><ul>
+<li><strong>ALTER TABLE tbl_name MODIFY [COLUMN] col_name column_definition [FIRST|ALTER col_name] </strong><br>在不改变列名的情况下修改列定义<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; ALTER TABLE test MODIFY name VARCHAR(20) DEFAULT &apos;JERRY&apos;;</div><div class="line">mysql&gt; DESCRIBE test;</div><div class="line">+-------+-------------+------+-----+---------+----------------+</div><div class="line">| Field | Type        | Null | Key | Default | Extra          |</div><div class="line">+-------+-------------+------+-----+---------+----------------+</div><div class="line">| id    | int(10)     | NO   | PRI | NULL    | auto_increment |</div><div class="line">| name  | varchar(20) | YES  |     | JERRY   |                |</div><div class="line">| sex   | varchar(5)  | YES  |     | NULL    |                |</div><div class="line">+-------+-------------+------+-----+---------+----------------+</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>新的参数中如果没有包含原来的约束，那么原来的约束会被删除<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; ALTER TABLE test MODIFY name VARCHAR(30) ;</div><div class="line">mysql&gt; DESCRIBE test;</div><div class="line">+-------+-------------+------+-----+---------+----------------+</div><div class="line">| Field | Type        | Null | Key | Default | Extra          |</div><div class="line">+-------+-------------+------+-----+---------+----------------+</div><div class="line">| id    | int(10)     | NO   | PRI | NULL    | auto_increment |</div><div class="line">| name  | varchar(30) | YES  |     | NULL    |                |</div><div class="line">| sex   | varchar(5)  | YES  |     | NULL    |                |</div><div class="line">+-------+-------------+------+-----+---------+----------------+</div></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>ALTER TABLE tbl_name CHANGE [COLUMN] old_col_name new_col_name column_definition [FIRST|AFTER col_name] </strong><br>可以修改列名，和列定义<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; ALTER TABLE test CHANGE name new_name VARCHAR(20) DEFAULT &apos;TOM&apos; FIRST ;</div><div class="line">mysql&gt; DESCRIBE test;</div><div class="line">+----------+-------------+------+-----+---------+-------+</div><div class="line">| Field    | Type        | Null | Key | Default | Extra |</div><div class="line">+----------+-------------+------+-----+---------+-------+</div><div class="line">| new_name | varchar(20) | YES  |     | TOM     |       |</div><div class="line">| id       | int(20)     | NO   | PRI | NULL    |       |</div><div class="line">| sex      | varchar(5)  | YES  |     | NULL    |       |</div><div class="line">+----------+-------------+------+-----+---------+-------+</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="修改数据表名称"><a href="#修改数据表名称" class="headerlink" title="修改数据表名称"></a>修改数据表名称</h2><ul>
+<li><strong>ALTER TABLE tbl_name RENAME [TO|AS] new_tbl_name</strong> 修改单个表名称</li>
+<li><strong>RENAME TABLE tbl_name TO new_tbl_name [,tbl_name2 TO new_tbl_name2…]</strong> 修改多个表名称</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 修改单个表名称</div><div class="line">mysql&gt; ALTER TABLE test RENAME TO  db_test ;</div><div class="line"></div><div class="line">// 修改多个表名称</div><div class="line">mysql&gt; RENAME TABLE db_test TO test ,tb4 TO tb5 ;</div></pre></td></tr></table></figure>
 
     
 
@@ -437,7 +477,7 @@
     <!-- 使用 changyan -->
     <div id="changyan-comment">
         <!--PC和WAP自适应版-->
-<div id="SOHUCS" sid="2017/04/15/JSP-jsp-useBean介绍/"  ></div>
+<div id="SOHUCS" sid="2017/07/03/MySQL-外键、添加删除约束、ON-DELETE参照、添加-删除-修改数据表列定义/"  ></div>
 <script type="text/javascript">
 (function(){
 var appid = 'cysVH2p6S';
@@ -466,21 +506,13 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/04/15/Servlet-ServletConfig/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/04/09/Servlet-使用RequestDispathcher调派请求/" id="post_nav-older" class="next-content">
+        <a href="/2017/07/03/MySQL入门-数据库登陆与退出、数据库基本操作、开启数据库服务/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
