@@ -3,6 +3,69 @@
   
     
     <entry>
+      <title><![CDATA[MySQL---操作数据表基本操作（增删改查）]]></title>
+      <url>/2017/07/04/MySQL-%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%EF%BC%89/</url>
+      <content type="html"><![CDATA[<h1 id="插入记录"><a href="#插入记录" class="headerlink" title="插入记录"></a>插入记录</h1><p><strong>INSERT [INTO] tbl_name [{col_name,…}] {VALUES|VALUE} (values…),(values…)</strong><br><a id="more"></a></p>
+<ul>
+<li>不加列名表示需要插入全部数据</li>
+<li>对于自增主键，可以用NULL 和 DEFAULT 使之自己增加</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql&gt; INSERT INTO users VALUES(NULL,&apos;TOM&apos;,&apos;123&apos;,20,1);</div><div class="line">Query OK, 1 row affected (0.08 sec)</div><div class="line"></div><div class="line">mysql&gt; INSERT INTO users VALUES(DEFAULT,&apos;TOM&apos;,&apos;123&apos;,20,1);</div><div class="line">Query OK, 1 row affected (0.08 sec)</div></pre></td></tr></table></figure>
+<ul>
+<li>可以写数字运算、函数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql&gt; INSERT INTO users VALUES(DEFAULT,&apos;TOM&apos;,&apos;123&apos;,10*2-1,1);</div><div class="line">Query OK, 1 row affected (0.08 sec)</div><div class="line"></div><div class="line">// 使用自带的md5()计算md5</div><div class="line">mysql&gt; INSERT INTO users VALUES(DEFAULT,&apos;TOM&apos;,md5(&apos;123&apos;),10*2-1,1);</div></pre></td></tr></table></figure>
+<ul>
+<li>有默认值的列，使用<strong>DEFAULT</strong>表示使用默认值</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; INSERT INTO users VALUES(DEFAULT,&apos;TOM&apos;,&apos;123&apos;,DEFAULT,1);</div><div class="line">Query OK, 1 row affected (0.08 sec)</div></pre></td></tr></table></figure>
+<ul>
+<li>插入多条记录</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql&gt; INSERT INTO users VALUES(DEFAULT,&apos;TOM&apos;,&apos;123&apos;,DEFAULT,1),(NULL,&apos;JERRY&apos;,&apos;456&apos;,DEFAULT,0);</div><div class="line">Query OK, 2 rows affected (0.08 sec)</div><div class="line">Records: 2  Duplicates: 0  Warnings: 0</div></pre></td></tr></table></figure>
+<h2 id="INSERT-INTO-tbl-name-SET-col-name-value，…"><a href="#INSERT-INTO-tbl-name-SET-col-name-value，…" class="headerlink" title="INSERT [INTO] tbl_name SET col_name=value，…"></a>INSERT [INTO] tbl_name SET col_name=value，…</h2><p>此方法可以使用子查询<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">INSERT INTO users SET username=&apos;TIM&apos; , password=&apos;789&apos; ,sex=1;</div></pre></td></tr></table></figure></p>
+<h2 id="INSERT-INTO-tbl-name-col-name-…-SELECT-…"><a href="#INSERT-INTO-tbl-name-col-name-…-SELECT-…" class="headerlink" title="INSERT [INTO] tbl_name [(col_name,…)] SELECT …"></a>INSERT [INTO] tbl_name [(col_name,…)] SELECT …</h2><p>经查询结果插入到指定数据表中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">将查询到的数据的前5条插入到test表中。</div><div class="line">mysql&gt; INSERT INTO test (id,subject) SELECT studentNo, subjectNo FROM result LIMIT 5;</div></pre></td></tr></table></figure></p>
+<h1 id="更新记录"><a href="#更新记录" class="headerlink" title="更新记录"></a>更新记录</h1><p><strong>UPDATE table_name SET col_name1=value1 [,col_name2=value2…] [WHERE condition]</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 	更改username为TOM的行</div><div class="line">mysql&gt; UPDATE userinfo SET username=&apos;AAA&apos; WHERE username=&apos;TOM&apos;;</div><div class="line"></div><div class="line">// 在更改信息时使用表达式</div><div class="line">mysql&gt; UPDATE userinfo SET id = id+10;</div><div class="line"></div><div class="line">// 使用 % 运算符判断奇偶</div><div class="line">mysql&gt; UPDATE userinfo SET email=&apos;ABC&apos; WHERE id%2=0;</div></pre></td></tr></table></figure>
+<h1 id="删除记录"><a href="#删除记录" class="headerlink" title="删除记录"></a>删除记录</h1><p><strong>DELETE FROM tbl_name [WHERE condition]</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 删除一条记录</div><div class="line">mysql&gt; DELETE FROM username WHERE username=&apos;AAA&apos;;</div></pre></td></tr></table></figure></p>
+<h1 id="查找记录"><a href="#查找记录" class="headerlink" title="查找记录"></a>查找记录</h1><p><strong>SELECT value1 [,value2…]</strong><br><strong>[</strong><br><strong>    from table_name </strong><br><strong>    [WHERE condition]</strong><br><strong>    [GROUP BY {col_name|position} [ASC|DESC],…]</strong><br><strong>    [HAVING where_condition]</strong><br><strong>    [ORDER BY {col_name | expr |position}[ASC|DESC],…]</strong><br><strong>    [LIMIT {[offset,]row_count |row_count OFFSET offset}]</strong><br><strong>]</strong></p>
+<ul>
+<li>每个表达式表示一列，至少有一个</li>
+<li>多个列之间用逗号分隔</li>
+<li>星号表示所有列，tbl_name.* 可以表示表的所有列</li>
+<li><strong>查询表达式可以使用[AS] alias_name 为其服务赋予别名。AS 可以省略不写</strong></li>
+<li>别名用于GROUP BY ORDER BY和HAVING子句</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">// 多个表达式之间用逗号隔开</div><div class="line">mysql&gt; SELECT id,username FROM userinfo;</div><div class="line"></div><div class="line">// table_name.colname 表示特定表中的列</div><div class="line">mysql&gt; SELECT userinfo.id ,userinfo.username,userinfo.email FROM userinfo ;</div><div class="line"></div><div class="line">// table_name.* 表示特定表中的所有行，单表查询时，table_name.* 与 * 效果相同</div><div class="line">mysql&gt; SELECT userinfo.* FROM userinfo ;</div><div class="line"></div><div class="line">// 用 AS 给变量取别名</div><div class="line">mysql&gt; SELECT id AS userid FROM userinfo ;</div><div class="line">+--------+</div><div class="line">| userid |</div><div class="line">+--------+</div><div class="line">|     12 |</div><div class="line">|     13 |</div><div class="line">+--------+</div><div class="line"></div><div class="line">// AS 可以省略</div><div class="line">mysql&gt; SELECT id userid FROM userinfo ;</div></pre></td></tr></table></figure>
+<h1 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h1><p><strong>GROUP BY {col_name|position} [ASC|DESC],…</strong><br>用GROUP BY分组后，结果的每一列从1开始递增编号。筛选分组时可以用数字代替列名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 按性别分组，student为各组的第一位的信息。</div><div class="line">mysql&gt; SELECT studentName, count(studentNo) AS number  FROM student GROUP BY sex;</div><div class="line">+-------------+--------+</div><div class="line">| studentName | number |</div><div class="line">+-------------+--------+</div><div class="line">| 张萍        |      7 |</div><div class="line">| newName     |      6 |</div><div class="line">+-------------+--------+</div></pre></td></tr></table></figure></p>
+<h2 id="筛选分组-HAVING"><a href="#筛选分组-HAVING" class="headerlink" title="筛选分组(HAVING)"></a>筛选分组(HAVING)</h2><p><strong>HAVING condition</strong><br>在分组完成后，筛选满足条件的组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 按照gradeId分组</div><div class="line">mysql&gt; SELECT studentName,count(studentNo) AS number FROM student GROUP BY gradeId ;</div><div class="line">+-------------+--------+</div><div class="line">| studentName | number |</div><div class="line">+-------------+--------+</div><div class="line">| newName     |      9 |</div><div class="line">| 王宝宝      |      2 |</div><div class="line">| 陈志强      |      2 |</div><div class="line">+-------------+--------+</div><div class="line"></div><div class="line">// 从分组中筛选number大于3的分组</div><div class="line">mysql&gt; SELECT studentName,count(studentNo) AS number FROM student GROUP BY gradeId HAVING number&gt;=3;</div><div class="line">+-------------+--------+</div><div class="line">| studentName | number |</div><div class="line">+-------------+--------+</div><div class="line">| newName     |      9 |</div><div class="line">+-------------+--------+</div></pre></td></tr></table></figure>
+<p><strong>用数字代替列名,3&gt;2表示结果中的第三个参数count&gt;2</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// 3 表示第三个参数，即count</div><div class="line">mysql&gt; SELECT studentNo,examDate,count(studentNo) AS count FROM result GROUP BY examDate HAVING 3&gt;2;</div><div class="line">+-----------+---------------------+-------+</div><div class="line">| studentNo | examDate            | count |</div><div class="line">+-----------+---------------------+-------+</div><div class="line">|     10000 | 2016-02-15 00:00:00 |     1 |</div><div class="line">|     10000 | 2016-02-17 00:00:00 |     8 |</div><div class="line">|     20000 | 2016-07-09 00:00:00 |     2 |</div><div class="line">+-----------+---------------------+-------+</div><div class="line"></div><div class="line">// 效果与下列相同</div><div class="line">mysql&gt; SELECT studentNo,examDate,count(studentNo) AS count FROM result GROUP BY examDate HAVING count&gt;2;</div><div class="line">+-----------+---------------------+-------+</div><div class="line">| studentNo | examDate            | count |</div><div class="line">+-----------+---------------------+-------+</div><div class="line">|     10000 | 2016-02-17 00:00:00 |     8 |</div><div class="line">+-----------+---------------------+-------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<h1 id="排序-ORDER"><a href="#排序-ORDER" class="headerlink" title="排序(ORDER)"></a>排序(ORDER)</h1><p><strong>ORDER BY col_name [ASC|DESC]</strong><br>将查询结构按照升序（ASC）或者降序（DESC）排列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// 降序排列查询到的结果</div><div class="line">mysql&gt; SELECT studentNo ,studentName FROM student ORDER BY studentNo DESC;</div><div class="line">+-----------+-------------+</div><div class="line">| studentNo | studentName |</div><div class="line">+-----------+-------------+</div><div class="line">|     30012 | 李露露      |</div><div class="line">|     30011 | 陈志强      |</div><div class="line">|     20010 | 何小华      |</div><div class="line">|     20000 | 王宝宝      |</div><div class="line">|     10008 | 何睛睛      |</div><div class="line">|     10007 | 秦洋        |</div><div class="line">|     10006 | 肖梅        |</div><div class="line">|     10005 | 张秋丽      |</div><div class="line">|     10004 | 韩秋洁      |</div><div class="line">|     10003 | 张萍        |</div><div class="line">|     10002 | 李斯文      |</div><div class="line">|     10001 | 李文才      |</div><div class="line">|     10000 | newName     |</div><div class="line">+-----------+-------------+</div></pre></td></tr></table></figure>
+<h1 id="限制查询返回的数量-LIMIT"><a href="#限制查询返回的数量-LIMIT" class="headerlink" title="限制查询返回的数量(LIMIT)"></a>限制查询返回的数量(LIMIT)</h1><p><strong>LIMIT  length (start,length)</strong></p>
+<ul>
+<li>返回的数据，序号从0开始。</li>
+<li>length 表示返回前length条记录，（start，length）表示返回从序号为start开始的length条数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// 选择前三条数据</div><div class="line">mysql&gt; SELECT studentNo, studentName FROM student LIMIT 3;</div><div class="line">+-----------+-------------+</div><div class="line">| studentNo | studentName |</div><div class="line">+-----------+-------------+</div><div class="line">|     10000 | newName     |</div><div class="line">|     10001 | 李文才      |</div><div class="line">|     10002 | 李斯文      |</div><div class="line">+-----------+-------------+</div><div class="line"></div><div class="line">// 选择从序号为2开始的3条数据</div><div class="line">mysql&gt; SELECT studentNo, studentName FROM student LIMIT 2,3;</div><div class="line">+-----------+-------------+</div><div class="line">| studentNo | studentName |</div><div class="line">+-----------+-------------+</div><div class="line">|     10002 | 李斯文      |</div><div class="line">|     10003 | 张萍        |</div><div class="line">|     10004 | 韩秋洁      |</div><div class="line">+-----------+-------------+</div></pre></td></tr></table></figure>]]></content>
+      
+        <categories>
+            
+            <category> MySQL </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[MySQL---外键、添加删除约束、ON DELETE参照、添加|删除|修改数据表列定义]]></title>
       <url>/2017/07/03/MySQL-%E5%A4%96%E9%94%AE%E3%80%81%E6%B7%BB%E5%8A%A0%E5%88%A0%E9%99%A4%E7%BA%A6%E6%9D%9F%E3%80%81ON-DELETE%E5%8F%82%E7%85%A7%E3%80%81%E6%B7%BB%E5%8A%A0-%E5%88%A0%E9%99%A4-%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%88%97%E5%AE%9A%E4%B9%89/</url>
       <content type="html"><![CDATA[<h1 id="外键-FOREIGN-KEY"><a href="#外键-FOREIGN-KEY" class="headerlink" title="外键(FOREIGN KEY)"></a>外键(FOREIGN KEY)</h1><p>外键约束需要满足一些基本要求：<a id="more"></a></p>
@@ -2334,38 +2397,6 @@ unalias                            临时删除别名
     </entry>
     
     <entry>
-      <title><![CDATA[不同编码类型的总结]]></title>
-      <url>/2016/09/11/%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%80%BB%E7%BB%93/</url>
-      <content type="html"><![CDATA[<h2 id="1-ASCII"><a href="#1-ASCII" class="headerlink" title="1.ASCII"></a>1.ASCII</h2><p>计算机一开始在美国使用，字符编码也只包括英文字母。ANSCII编码由一个字节表示所有符号。一个字节可以表示的所有可能是256（2的8次方）种，对于美国人来说，26个英文字母，加上常用的符号，也只是用了127个。如果大家都用英文，那这套编码完全够用。<a id="more"></a>但是不同国家的文字不同，如果加上其他国家的语言符号，那一个字节是不够的，之后ASCII做出了改进，将256种情况剩余的可能用来表示其他字符。一直排到了第255种可能，从128到255表示的字符成为“扩展字符集”，然而，新增的字符并不能解决所有问题。<br><img src="http://i.imgur.com/Ks9A740.jpg" alt=""></p>
-<h2 id="2-GB2312"><a href="#2-GB2312" class="headerlink" title="2.GB2312"></a>2.GB2312</h2><p>计算机开始在我国普及时，ASCII中已经没有可以利用的字节状态来表示汉字。于是，我们将扩展字符集删除，将127后的字符状态重新编码。小于127的字符状态的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节称之为高字节，后面一个字节称之为低字节，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，我们还把数学符号、罗马希腊的字母、日文的假名们都编进去了，连在 ASCII 里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的”全角”字符，而原来在127号以下的那些就叫”半角”字符了。 </p>
-<p>后来GB2312也无法满足人们的需要，随后出现了GBK标准，再后来，还是不够用，于是出现了GB18030。这个标准几乎可以表示所有的中文字符，此标准在2006年5月1日被作为在中国境内所有软件产品支持的强制规格。 </p>
-<h2 id="3-Unicode"><a href="#3-Unicode" class="headerlink" title="3.Unicode"></a>3.Unicode</h2><p>不只是我国，很多国家都制定了相应的符合本国文化的字符编码标准。这些标准再本国内可以正常使用，但是如果是不同国家之间通过文本文件的交流，就很有可能导致乱码。这时，国际标准化组织（osi）出现了，OSI致力于将全世界所有的字符用统一的标准编码，消除不同国家之间交流的障碍。</p>
-<p>OSI将所有字符用两个字节表示，包括ANCSI中的前127个字符，所以对于钱127个字符来说，本来8位就可以表示的字符现在用16位来表示，这其实是一种资源的浪费。</p>
-<h2 id="4-UTF-8"><a href="#4-UTF-8" class="headerlink" title="4.UTF-8"></a>4.UTF-8</h2><p>可以看出，Unicode虽然是一个很好的字符编码方式，但由于所有字符都用两个字节表示导致的资源的浪费，促使了UTF-8的出现，UTF-8编码中的第一个字节仍与ASCII兼容，这使得原来处理ASCII字符的软件无须或只须做少部份修改，即可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。互联网工程工作小组（IETF）要求所有互联网协议都必须支持UTF-8编码。<br>UTF-8有如下特点： </p>
-<blockquote>
-<p><1>  前128个US-ASCII字符只需一个字节编码（与ANCSI相同）。 </1></p>
-<p><2>  带有附加符号的拉丁文、希腊文、西里尔字母、亚美尼亚语、希伯来文、阿拉伯文、叙利亚文及它拿字母则需要二个字节编码。 </2></p>
-<p><3>  其他基本多文种平面（BMP）中的字符（这包含了大部分常用字）使用三个字节编码。 </3></p>
-<p><4>  其他极少使用的Unicode辅助平面的字符使用四字节编码。 </4></p>
-</blockquote>
-]]></content>
-      
-        <categories>
-            
-            <category> 技术 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 技术 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[日期类]]></title>
       <url>/2016/09/11/%E6%97%A5%E6%9C%9F%E7%B1%BB/</url>
       <content type="html"><![CDATA[<h4 id="Date类"><a href="#Date类" class="headerlink" title="Date类"></a>Date类</h4><p>从1970.1.1.0点开始到某个时刻的毫秒数，类型是long<br>1970年之前用负数表示</p>
@@ -2403,6 +2434,38 @@ Date d2 = df2.parse(str2);
         <tags>
             
             <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[不同编码类型的总结]]></title>
+      <url>/2016/09/11/%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%80%BB%E7%BB%93/</url>
+      <content type="html"><![CDATA[<h2 id="1-ASCII"><a href="#1-ASCII" class="headerlink" title="1.ASCII"></a>1.ASCII</h2><p>计算机一开始在美国使用，字符编码也只包括英文字母。ANSCII编码由一个字节表示所有符号。一个字节可以表示的所有可能是256（2的8次方）种，对于美国人来说，26个英文字母，加上常用的符号，也只是用了127个。如果大家都用英文，那这套编码完全够用。<a id="more"></a>但是不同国家的文字不同，如果加上其他国家的语言符号，那一个字节是不够的，之后ASCII做出了改进，将256种情况剩余的可能用来表示其他字符。一直排到了第255种可能，从128到255表示的字符成为“扩展字符集”，然而，新增的字符并不能解决所有问题。<br><img src="http://i.imgur.com/Ks9A740.jpg" alt=""></p>
+<h2 id="2-GB2312"><a href="#2-GB2312" class="headerlink" title="2.GB2312"></a>2.GB2312</h2><p>计算机开始在我国普及时，ASCII中已经没有可以利用的字节状态来表示汉字。于是，我们将扩展字符集删除，将127后的字符状态重新编码。小于127的字符状态的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节称之为高字节，后面一个字节称之为低字节，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，我们还把数学符号、罗马希腊的字母、日文的假名们都编进去了，连在 ASCII 里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的”全角”字符，而原来在127号以下的那些就叫”半角”字符了。 </p>
+<p>后来GB2312也无法满足人们的需要，随后出现了GBK标准，再后来，还是不够用，于是出现了GB18030。这个标准几乎可以表示所有的中文字符，此标准在2006年5月1日被作为在中国境内所有软件产品支持的强制规格。 </p>
+<h2 id="3-Unicode"><a href="#3-Unicode" class="headerlink" title="3.Unicode"></a>3.Unicode</h2><p>不只是我国，很多国家都制定了相应的符合本国文化的字符编码标准。这些标准再本国内可以正常使用，但是如果是不同国家之间通过文本文件的交流，就很有可能导致乱码。这时，国际标准化组织（osi）出现了，OSI致力于将全世界所有的字符用统一的标准编码，消除不同国家之间交流的障碍。</p>
+<p>OSI将所有字符用两个字节表示，包括ANCSI中的前127个字符，所以对于钱127个字符来说，本来8位就可以表示的字符现在用16位来表示，这其实是一种资源的浪费。</p>
+<h2 id="4-UTF-8"><a href="#4-UTF-8" class="headerlink" title="4.UTF-8"></a>4.UTF-8</h2><p>可以看出，Unicode虽然是一个很好的字符编码方式，但由于所有字符都用两个字节表示导致的资源的浪费，促使了UTF-8的出现，UTF-8编码中的第一个字节仍与ASCII兼容，这使得原来处理ASCII字符的软件无须或只须做少部份修改，即可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。互联网工程工作小组（IETF）要求所有互联网协议都必须支持UTF-8编码。<br>UTF-8有如下特点： </p>
+<blockquote>
+<p><1>  前128个US-ASCII字符只需一个字节编码（与ANCSI相同）。 </1></p>
+<p><2>  带有附加符号的拉丁文、希腊文、西里尔字母、亚美尼亚语、希伯来文、阿拉伯文、叙利亚文及它拿字母则需要二个字节编码。 </2></p>
+<p><3>  其他基本多文种平面（BMP）中的字符（这包含了大部分常用字）使用三个字节编码。 </3></p>
+<p><4>  其他极少使用的Unicode辅助平面的字符使用四字节编码。 </4></p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 技术 </tag>
             
         </tags>
         
