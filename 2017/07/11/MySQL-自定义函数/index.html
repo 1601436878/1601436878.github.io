@@ -10,7 +10,7 @@
     
     <title>
         
-            归档: 2017/6 | 
+            MySQL---自定义函数 | 
         
         Twilight&#39;s Blog
     </title>
@@ -36,7 +36,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="wangchao">
     <meta name="description" content="null">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="null,MySQL">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
@@ -62,9 +62,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://twilight.net.cn">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="归档: 2017/6 | Twilight&#39;s Blog">
+    <meta property="og:title" content="MySQL---自定义函数 | Twilight&#39;s Blog">
     <meta property="og:description" content="null">
-    
+    <meta property="og:article:tag" content="MySQL"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -220,432 +220,294 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
     
-
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/06/15/jQuery事件-阻止冒泡和默认行为/">jQuery事件---阻止冒泡和默认行为</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            冒泡如果在页面中重叠了多个元素，并且重叠的这些元素都绑定了同一个事件，那么就会出现冒泡问题。例如：12345&lt;body&gt;	&lt;div style=&quot;width:300px;height:300px;background-color:skyblue;&quot;&gt;		&lt;input type=&quot;button&quot; value=&quot;button&quot;/&gt;	&lt;/div&gt;&lt;/body&gt;
-如果document、div、input三个元素绑定了同一个事件，就会产生冒泡：123456789$(document).click(function()&#123;	alert(&quot;document&quot;);&#125;);$(&quot;div&quot;).click(function()&#123;	alert(&quot;div&quot;);&#125;);$(&quot;:button&quot;).click(function()&#123;	alert(&quot;button&quot;);&#125;);
-当点击button时，会先弹出button、然后是div、然后是document
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/06/15/jQuery事件-阻止冒泡和默认行为/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="wangchao's avatar">
-            </div>
-            <div>
-                <strong>wangchao</strong>
-                <span>6月 15, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/jQuery/">jQuery</a>
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
             </span>
-
-            
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span id = "sourceId::2017/06/15/jQuery事件-阻止冒泡和默认行为/" class = "cy_cmt_count" ></span>条评论
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
+        </a>
     </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#创建UDF"><span class="post-toc-number">1.</span> <span class="post-toc-text">创建UDF</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#删除UDF"><span class="post-toc-number">2.</span> <span class="post-toc-text">删除UDF</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#DELIMITER-“字符串”"><span class="post-toc-number">3.</span> <span class="post-toc-text">DELIMITER “字符串”</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#实例"><span class="post-toc-number">4.</span> <span class="post-toc-text">实例</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#定义局部变量"><span class="post-toc-number">5.</span> <span class="post-toc-text">定义局部变量</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#判断语句-IF"><span class="post-toc-number">6.</span> <span class="post-toc-text">判断语句 IF</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#分支语句-CASE"><span class="post-toc-number">7.</span> <span class="post-toc-text">分支语句 CASE</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#循环-LOOP"><span class="post-toc-number">8.</span> <span class="post-toc-text">循环 LOOP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#LEAVE"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">LEAVE</span></a></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(https://ss3.bdstatic.com/iPoZeXSm1A5BphGlnYG/skin/38.jpg?2)">
+    
+            <p class="article-headline-p">
+                MySQL---自定义函数
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>wangchao</strong>
+        <span>7月 11, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/MySQL/">MySQL</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/2017/07/11/MySQL-自定义函数/" class="leancloud-views_num" data-flag-title="MySQL---自定义函数">
+     &nbsp;浏览量
+</span>
+
+            </li>
+        </a>
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=MySQL---自定义函数&url=http://twilight.net.cn//2017/07/11/MySQL-自定义函数/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=MySQL---自定义函数&url=http://twilight.net.cn//2017/07/11/MySQL-自定义函数/index.html&via=wangchao" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2017/07/11/MySQL-自定义函数/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2017/07/11/MySQL-自定义函数/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=MySQL---自定义函数&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2017/07/11/MySQL-自定义函数/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
 </div>
 
-            
-            
-        
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+        <p>用户自定义函数（user-defined function,UDF）。UDF可以没有参数,但UDF必须有且只有一个返回值<br><a id="more"></a></p>
+<h1 id="创建UDF"><a href="#创建UDF" class="headerlink" title="创建UDF"></a>创建UDF</h1><pre>
+CREATE FUNCTION function_name(parameter_name type,[parameter_name2 type2,...])
+RETURNS  {STRING|INTEGER|REAL|DECIMAL}
+BEGIN
+    body
+END
+</pre>
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/06/15/jQuery事件对象-常见属性/">jQuery事件对象---常见属性</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            event对象常见属性
-
-
-属性
-含义
-
-
-
-
-type
-获取这个事件的事件类型的字符串，例如：click
-
-
-target
-获取与事件绑定的 DOM 元素
-
-
-data
-获取事件调用时的额外数据
-
-
-relatedTarget
-获取移入移出目标前所在的元素
-
-
-currentTarget
-获取冒泡前触发的 DOM 元素，等同与 this
-
-
-pageX/pageY
-获取相对于页面原点的水平/垂直坐标
-
-
-screenX/screenY
-获取显示器屏幕位置的水平/垂直坐标(非 jQuery 封装)
-
-
-clientX/clientY
-获取相对于页面可见部分的水平/垂直坐标(非 jQuery 封装)
-
-
-result
-获取上一个相同事件的返回值
-
-
-timeStamp
-获取事件触发的时间戳（字符串）
-
-
-which
-获取鼠标的左中右键(1,2,3)，或获取键盘按键
-
-
-altKey/shiftKey/ctrlKey/metaKey
-判断在点击的同时是否按下了 alt、shift、ctrl键
-
-
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/06/15/jQuery事件对象-常见属性/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="wangchao's avatar">
-            </div>
-            <div>
-                <strong>wangchao</strong>
-                <span>6月 15, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/jQuery/">jQuery</a>
-            </span>
-
-            
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span id = "sourceId::2017/06/15/jQuery事件对象-常见属性/" class = "cy_cmt_count" ></span>条评论
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/06/15/jQuery事件-常见事件的绑定与解除/">jQuery事件---常见事件的绑定与解除</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            绑定事件常见事件有：click dbclick mousedown mouseup mousemove mouseover mouseout change select submit keydown keypress keyup blur focus load resize scroll error… 
-jquery 用 bind() 为元素绑定事件bind(type,[data],function)
-
-type 表示事件类型，是事件名称的字符串
-data 是可选的作为event.data 属性传递一个额外的数据
-fn 表示绑定到指定元素的处理函数
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/06/15/jQuery事件-常见事件的绑定与解除/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="wangchao's avatar">
-            </div>
-            <div>
-                <strong>wangchao</strong>
-                <span>6月 15, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/jQuery/">jQuery</a>
-            </span>
-
-            
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span id = "sourceId::2017/06/15/jQuery事件-常见事件的绑定与解除/" class = "cy_cmt_count" ></span>条评论
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/06/15/查找和关闭占用特定端口的进程/">查找和关闭占用特定端口的进程</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            今天写博客时发现hexo s 无效，于是怀疑4000端口被其他软件占用了。在网上查了一下。可以在cmd中使用netstat -ano查看正在使用的端...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/06/15/查找和关闭占用特定端口的进程/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="wangchao's avatar">
-            </div>
-            <div>
-                <strong>wangchao</strong>
-                <span>6月 15, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/技术/">技术</a>
-            </span>
-
-            
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span id = "sourceId::2017/06/15/查找和关闭占用特定端口的进程/" class = "cy_cmt_count" ></span>条评论
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/06/03/2017-06-03/">2017-06-03</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            无人为孤岛，一书一世界
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/06/03/2017-06-03/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="wangchao's avatar">
-            </div>
-            <div>
-                <strong>wangchao</strong>
-                <span>6月 03, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/随笔/">随笔</a>
-            </span>
-
-            
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span id = "sourceId::2017/06/03/2017-06-03/" class = "cy_cmt_count" ></span>条评论
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
+<h1 id="删除UDF"><a href="#删除UDF" class="headerlink" title="删除UDF"></a>删除UDF</h1><p>DROP FUNCTION fun_name 删除自定义函数</p>
+<h1 id="DELIMITER-“字符串”"><a href="#DELIMITER-“字符串”" class="headerlink" title="DELIMITER “字符串”"></a>DELIMITER “字符串”</h1><p>更改结束标识<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysql&gt; DELIMITER &quot;//&quot;</div><div class="line">mysql&gt; SHOW TABLES //</div><div class="line">+----------------+</div><div class="line">| Tables_in_test |</div><div class="line">+----------------+</div><div class="line">| provinces      |</div><div class="line">| user           |</div><div class="line">| user2          |</div><div class="line">| userinfo       |</div><div class="line">+----------------+</div></pre></td></tr></table></figure></p>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 计算两个数的平均值</div><div class="line">mysql&gt; CREATE FUNCTION f2_2(num1 SMALLINT,num2 SMALLINT)</div><div class="line">    -&gt; RETURNS FLOAT(10,2)</div><div class="line">    -&gt; RETURN (num1+num2)/2;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CREATE FUNCTION adduser(username VARCHAR(20))</div><div class="line">    -&gt; RETURNS VARCHAR(20)</div><div class="line">    -&gt; BEGIN</div><div class="line">    -&gt; INSERT INTO user(username) VALUES(username);</div><div class="line">    -&gt; RETURN LAST_INSERT_ID();</div><div class="line">    -&gt; END</div><div class="line">    -&gt; //</div></pre></td></tr></table></figure>
+<h1 id="定义局部变量"><a href="#定义局部变量" class="headerlink" title="定义局部变量"></a>定义局部变量</h1><p><strong>DECLARE var_name [,var_name…] date_type [DEFAULT VALUE];</strong></p>
+<p>为变量赋值语法(全局变量也是如此):</p>
+<ul>
+<li>SET parameter_name = value[,parameter_name = value…]</li>
+<li>SELECT INTO parameter_name</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"># 使用default 指定默认值</div><div class="line">CREATE FUNCTION add(num INT)</div><div class="line">RETURNS INT</div><div class="line">BEGIN</div><div class="line">	DECLARE temp INT DEFAULT 10 ; </div><div class="line">	RETURN temp+num;</div><div class="line">END</div><div class="line"></div><div class="line"># 使用select into 为变量赋值</div><div class="line">CREATE FUNCTION userNum()</div><div class="line">RETURNS INT</div><div class="line">BEGIN</div><div class="line">	DECLARE temp INT DEFAULT 10 ; </div><div class="line">	SELECT COUNT(id) FROM user INTO temp;</div><div class="line">	RETURN temp;</div><div class="line">END</div></pre></td></tr></table></figure>
+<p>#用户变量(可以理解成全局变量)</p>
+<ul>
+<li>声名：<strong>SET @param_name = value；</strong></li>
+<li>使用：<strong>SELECT @allParam;</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># 声名A=100</div><div class="line">mysql&gt; SET @A = 100 ;</div><div class="line">#声名B= 200</div><div class="line">mysql&gt; SET @B = 200;</div><div class="line">#声名C=A+B</div><div class="line">mysql&gt; SET @C = @A+@B;</div><div class="line">#输出C</div><div class="line">mysql&gt; SELECT @C ;</div><div class="line">+------+</div><div class="line">| @C   |</div><div class="line">+------+</div><div class="line">|  300 |</div><div class="line">+------+</div></pre></td></tr></table></figure>
+<h1 id="判断语句-IF"><a href="#判断语句-IF" class="headerlink" title="判断语句 IF"></a>判断语句 IF</h1><p><strong>IF condition THEN statement </strong><br><strong>[ELSEIF condition THEN statement]</strong><br><strong>[ELSE statement] </strong><br><strong>END IF </strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">CREATE FUNCTION if_test(age INT)</div><div class="line">RETURNS VARCHAR(20)</div><div class="line">BEGIN</div><div class="line">IF age&gt;18 THEN RETURN &quot;成年&quot;;</div><div class="line">ELSEIF age&gt;10 THEN RETURN &quot;未成年&quot;;</div><div class="line">ELSE RETURN &quot;小学生&quot;;</div><div class="line">END IF;</div><div class="line">END</div></pre></td></tr></table></figure>
+<h1 id="分支语句-CASE"><a href="#分支语句-CASE" class="headerlink" title="分支语句 CASE"></a>分支语句 CASE</h1><p><strong>CASE case_value </strong><br><strong>WHEN when_value THEN statement </strong><br><strong>[WHEN when_value THEN statement] … </strong><br><strong>[ELSE statement_list] </strong><br><strong>END CASE </strong></p>
+<p>另一种方式：<br><strong>CASE </strong><br><strong>WHEN search_condition THEN statement_list </strong><br><strong>[WHEN search_condition THEN statement_list] … </strong><br><strong>[ELSE statement_list] </strong><br><strong>END CASE </strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"># 第一种方式</div><div class="line">CREATE FUNCTION case_test(age INT)</div><div class="line">RETURNS VARCHAR(20)</div><div class="line">BEGIN</div><div class="line">CASE age</div><div class="line">WHEN 20 THEN RETURN &quot;20#&quot;;</div><div class="line">WHEN 30 THEN RETURN &quot;30#&quot;;</div><div class="line">ELSE RETURN &quot;#&quot;;</div><div class="line">END CASE;</div><div class="line">END</div><div class="line"></div><div class="line"># 第二种方式</div><div class="line">CREATE FUNCTION case_test2(age INT)</div><div class="line">RETURNS VARCHAR(20)</div><div class="line">BEGIN</div><div class="line">CASE </div><div class="line">WHEN age=20 THEN RETURN &quot;20#&quot;;</div><div class="line">WHEN age=30 THEN RETURN &quot;30#&quot;;</div><div class="line">ELSE RETURN &quot;#&quot;;</div><div class="line">END CASE;</div><div class="line">END</div></pre></td></tr></table></figure>
+<h1 id="循环-LOOP"><a href="#循环-LOOP" class="headerlink" title="循环 LOOP"></a>循环 LOOP</h1><p><strong>[begin_label:] LOOP </strong><br><strong>statement </strong><br><strong>END LOOP [end_label] ;</strong></p>
+<h2 id="LEAVE"><a href="#LEAVE" class="headerlink" title="LEAVE"></a>LEAVE</h2><p>leave用于终止loop循环<br><strong>LEAVE label </strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"># 累加</div><div class="line">CREATE FUNCTION loop_test()</div><div class="line">RETURNS INT </div><div class="line">BEGIN</div><div class="line">	DECLARE count int DEFAULT 10;</div><div class="line">	adds: LOOP</div><div class="line">		SET count = count+1;</div><div class="line">		IF count &gt; 100 THEN LEAVE adds;</div><div class="line">		END IF;</div><div class="line">	END LOOP adds ;</div><div class="line">	RETURN count;</div><div class="line">END</div></pre></td></tr></table></figure>
+<p>关于循环还有许多语句，以后用到再做总结</p>
 
     
-    <!-- Index nav -->
-        <nav class="material-nav mdl-cell mdl-cell--12-col">
-            <a class="extend prev" rel="prev" href="/archives/2017/06/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_back</i></button></a><a class="page-number" href="/archives/2017/06/">1</a><span class="page-number current">2</span>
-        </nav>
-    
-
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 8; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
-    $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
-</script>
 
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+    <!-- 使用 changyan -->
+    <div id="changyan-comment">
+        <!--PC和WAP自适应版-->
+<div id="SOHUCS" sid="2017/07/11/MySQL-自定义函数/"  ></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cysVH2p6S';
+var conf = '7d191ef850d424bb873df33179309db5';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    </div>
+    <style>
+        #changyan-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/07/11/MySQL-储存过程/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/07/11/MySQL-常见函数/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
