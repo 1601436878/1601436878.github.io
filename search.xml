@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title><![CDATA[23333]]></title>
+      <url>/2017/07/19/2333/</url>
+      <content type="html"><![CDATA[<center><br><div style="width:600px;height:600px;"><br><object type="application/x-shockwave-flash" style="outline:none;" data="http://cdn.abowman.com/widgets/hamster/hamster.swf?" width="300" height="225"><param name="movie" value="http://cdn.abowman.com/widgets/hamster/hamster.swf?"><param name="AllowScriptAccess" value="always"><param name="wmode" value="opaque"></object><br><br></div><br><br></center>
+]]></content>
+      
+        <categories>
+            
+            <category> 随笔 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[JSP---隐式对象、pageContext、错误处理]]></title>
       <url>/2017/07/18/JSP-%E9%9A%90%E5%BC%8F%E5%AF%B9%E8%B1%A1%E3%80%81pageContext%E3%80%81%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/</url>
       <content type="html"><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>隐式对象是_jspService()中的局部变量，故只能在<code>&lt;% %&gt;</code> 和 <code>&lt;%= %&gt;</code>中使用</p>
