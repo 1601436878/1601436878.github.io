@@ -10,7 +10,7 @@
     
     <title>
         
-            Servlet---请求封装器 | 
+            JSP入门---常见标签元素的使用 | 
         
         Twilight&#39;s Blog
     </title>
@@ -36,7 +36,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="wangchao">
     <meta name="description" content="null">
-    <meta name="keywords" content="null,Servlet">
+    <meta name="keywords" content="null,JSP">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
@@ -62,9 +62,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://twilight.net.cn">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Servlet---请求封装器 | Twilight&#39;s Blog">
+    <meta property="og:title" content="JSP入门---常见标签元素的使用 | Twilight&#39;s Blog">
     <meta property="og:description" content="null">
-    <meta property="og:article:tag" content="Servlet"> 
+    <meta property="og:article:tag" content="JSP"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -246,7 +246,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Scriptlet元素"><span class="post-toc-number">1.</span> <span class="post-toc-text">Scriptlet元素</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#声明（Decalaration）元素"><span class="post-toc-number">2.</span> <span class="post-toc-text">声明（Decalaration）元素</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#表达式元素"><span class="post-toc-number">3.</span> <span class="post-toc-text">表达式元素</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#注释元素"><span class="post-toc-number">4.</span> <span class="post-toc-text">注释元素</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#指示-Directive-元素"><span class="post-toc-number">5.</span> <span class="post-toc-text">指示(Directive)元素</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#page属性"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">page属性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#可以使用多条指令语句单独设置每个属性，也可以使用同一条指令语句设置该指令的多个属性"><span class="post-toc-number">5.1.1.</span> <span class="post-toc-text">可以使用多条指令语句单独设置每个属性，也可以使用同一条指令语句设置该指令的多个属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#错误转发案例"><span class="post-toc-number">5.1.2.</span> <span class="post-toc-text">错误转发案例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#include"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">include</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#案例"><span class="post-toc-number">5.2.1.</span> <span class="post-toc-text">案例</span></a></li></ol></li></ol></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -271,10 +271,10 @@
     <!-- Paradox Post Header -->
     
         <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://otbrtx8bw.bkt.clouddn.com/hexo_title42.jpg)">
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://otbrtx8bw.bkt.clouddn.com/hexo_title824.jpg)">
     
             <p class="article-headline-p">
-                Servlet---请求封装器
+                JSP入门---常见标签元素的使用
             </p>
         </div>
 
@@ -293,7 +293,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>wangchao</strong>
-        <span>7月 18, 2017</span>
+        <span>7月 19, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -317,7 +317,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Servlet/">Servlet</a>
+        <a class="post_tag-link" href="/tags/JSP/">JSP</a>
     </ul>
     
 
@@ -331,7 +331,7 @@
     <!-- Leancloud Views -->
         <a class="post_share-link" href="#">
             <li class="mdl-menu__item">
-                <span id="/2017/07/18/Servlet-请求封装器/" class="leancloud-views_num" data-flag-title="Servlet---请求封装器">
+                <span id="/2017/07/19/JSP入门-常见标签元素的使用/" class="leancloud-views_num" data-flag-title="JSP入门---常见标签元素的使用">
      &nbsp;浏览量
 </span>
 
@@ -343,7 +343,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Servlet---请求封装器&url=http://twilight.net.cn//2017/07/18/Servlet-请求封装器/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=JSP入门---常见标签元素的使用&url=http://twilight.net.cn//2017/07/19/JSP入门-常见标签元素的使用/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -352,7 +352,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Servlet---请求封装器&url=http://twilight.net.cn//2017/07/18/Servlet-请求封装器/index.html&via=wangchao" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=JSP入门---常见标签元素的使用&url=http://twilight.net.cn//2017/07/19/JSP入门-常见标签元素的使用/index.html&via=wangchao" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -361,7 +361,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2017/07/18/Servlet-请求封装器/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2017/07/19/JSP入门-常见标签元素的使用/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -370,7 +370,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2017/07/18/Servlet-请求封装器/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2017/07/19/JSP入门-常见标签元素的使用/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -382,7 +382,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=Servlet---请求封装器&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2017/07/18/Servlet-请求封装器/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=JSP入门---常见标签元素的使用&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2017/07/19/JSP入门-常见标签元素的使用/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -400,10 +400,59 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;如果前端传入的字符串中包含特殊字符。例如HTML标签 <code>&lt;a href=&quot;http://www.baidu.com&quot;&gt;百度&lt;/a&gt;</code>,传入这种参数会导致后台吧字符串当成了HTML链接。为了避免这种情况的发生，需要过滤用户输入的字符串。<br>&nbsp;&nbsp;&nbsp;&nbsp;从Request中可以用 getParameter()方法获取参数，可以将获得的参数进行处理，但是Request却没有类似“setParameter()”的方法。当然，也可以直接重写getParameter，但是就需要接口中的所有方法都重写，非常麻烦。<br>&nbsp;&nbsp;&nbsp;&nbsp;HttpServletRequestWrapper类使用了HttpServletRequest接口，并实现了所有的方法，使用时只需集成该类，并重写需要的特定方法即可。</p>
-<p>WrapperTest继承自HttpServletRequestWrapper，并重写了getParameter，构造函数传入的是真正的Request，可以使用getRequest()获取它，之后可以通过过滤器用WrapperTest替换HttpServletRequest<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class WrapperTest extends HttpServletRequestWrapper &#123;</div><div class="line"></div><div class="line">	// 传入真正的request</div><div class="line">	public WrapperTest(HttpServletRequest request) &#123;</div><div class="line">		super(request);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	// 处理从request中获得的参数</div><div class="line">	public String getParameter(String name) &#123;</div><div class="line">		String result = this.getRequest().getParameter(name);</div><div class="line">		// 使用StringEscapeUtils过滤特殊字符</div><div class="line">		return StringEscapeUtils.escapeHtml3(result);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>用WrapperTest替换HttpServletRequest，doFilter()中将WrapperTest传入，之后的Servlet就会从WrapperTest中获得参数，而不是从HttpServletRequest中获得。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class WrapperFilter implements Filter &#123;</div><div class="line"></div><div class="line">	public void doFilter(ServletRequest arg0, ServletResponse arg1,</div><div class="line">			FilterChain arg2) throws IOException, ServletException &#123;</div><div class="line">		// 创建新的Request</div><div class="line">		HttpServletRequestWrapper requestWrapper = new WrapperTest((HttpServletRequest)arg0);</div><div class="line">		</div><div class="line">		// 用WrapperTest对象替换HttpServletRequest，使getParameter具有过滤的功能</div><div class="line">		arg2.doFilter(requestWrapper, arg1);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void init(FilterConfig arg0) throws ServletException &#123;&#125;</div><div class="line">	public void destroy() &#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>直接访问Servlet（<code>http://localhost:8080/Test/hello?html=&lt;a href=&#39;http://www.baidu.com&gt;百度&lt;/a&gt;</code>）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">String html =  req.getParameter(&quot;html&quot;);</div><div class="line">System.out.println(&quot;#&quot;+html);</div><div class="line"></div><div class="line">结果：</div><div class="line">&amp;lt;a href=&apos;http://www.baidu.com&apos;&amp;gt;百度&amp;lt;/a&amp;gt;</div></pre></td></tr></table></figure></p>
+        <h1 id="Scriptlet元素"><a href="#Scriptlet元素" class="headerlink" title="Scriptlet元素"></a>Scriptlet元素</h1><p><em>&lt;% %&gt;</em>  用于运行Java代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;%	</div><div class="line">	out.println(&quot;hello&quot;);</div><div class="line">%&gt;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="声明（Decalaration）元素"><a href="#声明（Decalaration）元素" class="headerlink" title="声明（Decalaration）元素"></a>声明（Decalaration）元素</h1><p><strong>&lt;%! %&gt;</strong><br>可以声名函数和变量，作为Servlet的方法和成员。声明的变量会被翻译到_jspService()方法的外面（类成员，方法）</p>
+<p><code>&lt;% %&gt;</code> 也可以声明变量,声明的变量是_jspService()一部分，是一个局部变量</p>
+<p>由于对象只创建一次，当不断访问以下代码时，data的值会递增，但是data2的值始终为1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;%! int data = 1; %&gt;		// 成员变量</div><div class="line"></div><div class="line">&lt;%</div><div class="line">int data2 = 1;			// 方法中的局部变量</div><div class="line">out.println(data++);		</div><div class="line">out.println(data2++);</div><div class="line">%&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="表达式元素"><a href="#表达式元素" class="headerlink" title="表达式元素"></a>表达式元素</h1><p><strong>&lt;%= %&gt;</strong></p>
+<ul>
+<li><strong>字符串变量，或者可以转换成字符串的表达式</strong> </li>
+<li><strong>“=” 号的前面不能有空格</strong> </li>
+<li><strong>表达式后不加分号</strong> </li>
+<li><strong>&lt;%=date %&gt;翻译时会被转换为out.println(date);</strong> </li>
+</ul>
+<p>传入参数Bgcolor，会显示指定颜色的文字<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;% </div><div class="line">		String color = request.getParameter(&quot;Bgcolor&quot;);</div><div class="line">%&gt;</div><div class="line"></div><div class="line">&lt;font color=&lt;%=color %&gt; size=5 &gt;&lt;%=color %&gt;&lt;/font&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>PS:当输出的&lt;%或%&gt;时，&lt;% 用 &amp;lt;% 表示，%&gt;用%&amp;gt; 或者 %\&gt;表示</strong></p>
+<h1 id="注释元素"><a href="#注释元素" class="headerlink" title="注释元素"></a>注释元素</h1><p>JSP注释:  &lt;%– –%&gt;<br>java注释: &lt;%//   %&gt;<br>java注释: &lt;%/<em> </em>/%&gt;</p>
+<h1 id="指示-Directive-元素"><a href="#指示-Directive-元素" class="headerlink" title="指示(Directive)元素"></a>指示(Directive)元素</h1><p><strong>&lt;%@ Directive属性=”属性值”%&gt;</strong><br>常见的指示类型有page、include、taglib</p>
+<h2 id="page属性"><a href="#page属性" class="headerlink" title="page属性"></a>page属性</h2><p>常见属性值如下:</p>
+<ul>
+<li><strong>import=”java.util.*” 相当于Java中的import</strong></li>
+<li><strong>contentType=”Text/html;charset=utf-8” 指定contentType</strong></li>
+<li><strong>pageEncoding=”UTF-8” 指定转义时的编码</strong></li>
+<li><strong>language=”java” 默认是Java</strong></li>
+<li><strong>errorPage=”error.jsp” 指定发生错误时的跳转页面</strong></li>
+<li><strong>iserrorPage=”true/false” 错误页面</strong></li>
+</ul>
+<h3 id="可以使用多条指令语句单独设置每个属性，也可以使用同一条指令语句设置该指令的多个属性"><a href="#可以使用多条指令语句单独设置每个属性，也可以使用同一条指令语句设置该指令的多个属性" class="headerlink" title="可以使用多条指令语句单独设置每个属性，也可以使用同一条指令语句设置该指令的多个属性"></a>可以使用多条指令语句单独设置每个属性，也可以使用同一条指令语句设置该指令的多个属性</h3><blockquote>
+<p>&lt;%@ page contentType=“text/html;charset=utf-8” %&gt;<br>&lt;%@ page import=“java.io.<em>”  %&gt;<br>&lt;%@ page contentType=”text/html;charset=utf-8”  import=”java.io.</em>“  %&gt;</p>
+</blockquote>
+<p><strong>&lt;%@ page import=”java.util.Date, java.io.*”  %&gt; 等同于</strong></p>
+<blockquote>
+<p> &lt;%@ page import=“java.util.Date”  %&gt;<br> &lt;%@ page import=“java.io.*”  %&gt;</p>
+</blockquote>
+<p><strong>&lt;%@ page contentType=“text/html;charset=UTF-8” %&gt; 会被翻译为：</strong></p>
+<blockquote>
+<p>response.setContentType(“text/html;charset=UTF-8”)</p>
+</blockquote>
+<ul>
+<li><strong>在使用errorPage时，不是所有的错误都能转发。只有抛出异常的错误才能被转发</strong></li>
+<li><strong>错误页面必须要指定isErrorPage=”true”</strong></li>
+</ul>
+<h3 id="错误转发案例"><a href="#错误转发案例" class="headerlink" title="错误转发案例"></a>错误转发案例</h3><p>发生错误的页面 hello.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page errorPage=&quot;error.jsp&quot; %&gt;</div><div class="line"></div><div class="line"> &lt;% String color = request.getParameter(&quot;Bgcolor&quot;); %&gt;</div><div class="line"> &lt;font color=&lt;%=color %&gt; size=5 &gt;&lt;%=color %&gt;&lt;/font&gt;</div><div class="line"> &lt;%Date today = new Date(); %&gt;</div><div class="line"> &lt;font color=&lt;%=color %&gt;&gt;今天是&lt;%=today %&gt;&lt;/font&gt;</div><div class="line">	</div><div class="line"> &lt;%--抛出异常--%&gt;</div><div class="line"> &lt;%=1/0 %&gt;</div></pre></td></tr></table></figure></p>
+<p>错误页面 error.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page isErrorPage=&quot;true&quot;%&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="include"><a href="#include" class="headerlink" title="include"></a>include</h2><p><strong>&lt;%@include file=”URL” %&gt;</strong><br>在翻译时将其他jsp文件包括到当前文件中。翻译后只会生成一个Servlet。</p>
+<p><strong>不能向URL中用GET方法传递参数，例如：</strong></p>
+<blockquote>
+<p>&lt;%@ include file=”includes/Include_Header.jsp?Bgcolor=red” %&gt;    错误</p>
+</blockquote>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><p>将页面分成3部分，使用include将头部和尾部包括进来</p>
+<p>IncludeTest.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page language=&quot;java&quot; import=&quot;java.util.*&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;%@ include file=&quot;includes/Include_Header.jsp&quot; %&gt;</div><div class="line">    &lt;p&gt;这是页面主体&lt;/p&gt;</div><div class="line">&lt;%@ include file=&quot;includes/Include_Footer.jsp&quot; %&gt;</div></pre></td></tr></table></figure></p>
+<p>Include_Header.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;%</div><div class="line">String path = request.getContextPath();</div><div class="line">String basePath = request.getScheme()+&quot;://&quot;+request.getServerName()+&quot;:&quot;+request.getServerPort()+path+&quot;/&quot;;</div><div class="line">%&gt;</div><div class="line"></div><div class="line">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;base href=&quot;&lt;%=basePath%&gt;&quot;&gt;</div><div class="line">    </div><div class="line">    &lt;title&gt;My JSP &apos;IncludeTest.jsp&apos; starting page&lt;/title&gt;</div><div class="line">    </div><div class="line">	&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;</div><div class="line">	&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;</div><div class="line">	&lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot;&gt;    </div><div class="line">	&lt;meta http-equiv=&quot;keywords&quot; content=&quot;keyword1,keyword2,keyword3&quot;&gt;</div><div class="line">	&lt;meta http-equiv=&quot;description&quot; content=&quot;This is my page&quot;&gt;</div><div class="line">	&lt;!--</div><div class="line">	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles.css&quot;&gt;</div><div class="line">	--&gt;</div><div class="line"></div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">  &lt;p&gt;这是页面的Header部分&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>Include_Footer.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;p&gt;这是页面的Footer部分&lt;/p&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>显示结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">这是页面的Header部分</div><div class="line">这是页面主体</div><div class="line">这是页面的Footer部分</div></pre></td></tr></table></figure></p>
 
     
 
@@ -421,7 +470,7 @@
     <!-- 使用 changyan -->
     <div id="changyan-comment">
         <!--PC和WAP自适应版-->
-<div id="SOHUCS" sid="2017/07/18/Servlet-请求封装器/"  ></div>
+<div id="SOHUCS" sid="2017/07/19/JSP入门-常见标签元素的使用/"  ></div>
 <script type="text/javascript">
 (function(){
 var appid = 'cysVH2p6S';
@@ -450,21 +499,13 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/07/18/JSP-隐式对象、pageContext、错误处理/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/07/18/Servlet-过滤器/" id="post_nav-older" class="next-content">
+        <a href="/2017/07/19/2333/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

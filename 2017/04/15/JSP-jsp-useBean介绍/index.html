@@ -411,6 +411,13 @@
     
         <h1 id="创建JavaBean实例："><a href="#创建JavaBean实例：" class="headerlink" title="创建JavaBean实例："></a>创建JavaBean实例：</h1><p>&lt;jsp:useBean id=”name” class=”” scope=”page/session/request/application”/&gt;</p>
 <p>id为类的另一个名字，class指定具体的类，scope表示范围，在scope的范围内查找是否有指定的属性存在<br><a id="more"></a></p>
+<p>JavaBean需要满足以下条件：</p>
+<ul>
+<li>必须实现java.io.Serializable 接口</li>
+<li>没有公开(public)的类变量</li>
+<li>具有无参数的构造函数</li>
+<li>具有公开的set和get方法</li>
+</ul>
 <h1 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h1><ol>
 <li>指定参数和值<br><code>&lt;jsp:setProperty name=&quot;user&quot;  property=&quot;password&quot; value=&quot;123&quot; /&gt;</code></li>
 <li>将指定参数的值赋值给JavaBean的属性<br><code>&lt;jsp:setProperty name=&quot;user&quot; param=&quot;pwd&quot; property=&quot;password&quot; /&gt;</code></li>
