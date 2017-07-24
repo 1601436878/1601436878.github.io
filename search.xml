@@ -3,6 +3,77 @@
   
     
     <entry>
+      <title><![CDATA[linux---网络管理（常用命令）]]></title>
+      <url>/2017/07/24/linux-%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%EF%BC%88%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%EF%BC%89/</url>
+      <content type="html"><![CDATA[<h1 id="网络查看"><a href="#网络查看" class="headerlink" title="网络查看"></a>网络查看</h1><ul>
+<li><strong>ifconfig </strong>： 查看与临时配置网络</li>
+<li><strong>ifdown 网卡设备名 </strong>： 关闭网卡</li>
+<li><strong>ifup 网卡设备名</strong> ： 启用网卡</li>
+</ul>
+<h1 id="netstat-网络状态查询"><a href="#netstat-网络状态查询" class="headerlink" title="netstat 网络状态查询"></a><strong>netstat 网络状态查询</strong></h1><ul>
+<li>-t 列出TCP协议端口</li>
+<li>-u 列出UDP协议端口</li>
+<li>-n 不适用域名与服务名，而是用ip地址和端口号</li>
+<li>-l 仅列出在监听端口</li>
+<li>-a 所有的连接</li>
+<li>-r 路由表</li>
+</ul>
+<p>常用的组合：</p>
+<ul>
+<li>an 所有的连接和端口</li>
+<li>tuln 查看正在监听TCP（t）和UDP（u）的端口</li>
+<li>rn 查看网关 route -n  </li>
+</ul>
+<p>组合命令，查看系统中正在监听的端口数量：</p>
+<blockquote>
+<p>netstat -tuln | grep LISTEN | wc -l </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">[root@localhost Tools]# netstat -tuln</div><div class="line">Active Internet connections (only servers)</div><div class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State      </div><div class="line">tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN     </div><div class="line">tcp        0      0 192.168.122.1:53        0.0.0.0:*               LISTEN     </div><div class="line">tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN     </div><div class="line">tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN     </div><div class="line">tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN     </div><div class="line">tcp6       0      0 :::111                  :::*                    LISTEN     </div><div class="line">tcp6       0      0 :::22                   :::*                    LISTEN     </div><div class="line">tcp6       0      0 ::1:631                 :::*                    LISTEN     </div><div class="line">tcp6       0      0 ::1:25                  :::*                    LISTEN     </div><div class="line">udp        0      0 0.0.0.0:5353            0.0.0.0:*                          </div><div class="line">udp        0      0 0.0.0.0:48437           0.0.0.0:*                          </div><div class="line">udp        0      0 127.0.0.1:323           0.0.0.0:*                          </div><div class="line">udp        0      0 0.0.0.0:54268           0.0.0.0:*                          </div><div class="line">udp        0      0 192.168.122.1:53        0.0.0.0:*                          </div><div class="line">udp        0      0 0.0.0.0:67              0.0.0.0:*                          </div><div class="line">udp        0      0 0.0.0.0:68              0.0.0.0:*                          </div><div class="line">udp6       0      0 ::1:323                 :::*                               </div><div class="line">udp6       0      0 :::20514                :::*</div></pre></td></tr></table></figure>
+<h1 id="nslookup"><a href="#nslookup" class="headerlink" title="nslookup"></a>nslookup</h1><p>翻译域名对应的ip和DNS</p>
+<p>查看百度的ip，其中Server表示当前的DNS：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@localhost Tools]# nslookup www.baidu.com</div><div class="line">Server:		192.168.226.2</div><div class="line">Address:	192.168.226.2#53</div><div class="line"></div><div class="line">Non-authoritative answer:</div><div class="line">www.baidu.com	canonical name = www.a.shifen.com.</div><div class="line">Name:	www.a.shifen.com</div><div class="line">Address: 115.239.211.112</div></pre></td></tr></table></figure></p>
+<h1 id="ping-ip"><a href="#ping-ip" class="headerlink" title="ping ip"></a>ping ip</h1><p>判断网络状况</p>
+<ul>
+<li>-c 发送数据包的次数<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[root@localhost Tools]# ping -c 3 www.baidu.com</div><div class="line">PING www.a.shifen.com (115.239.210.27) 56(84) bytes of data.</div><div class="line">64 bytes from 115.239.210.27 (115.239.210.27): icmp_seq=1 ttl=128 time=28.0 ms</div><div class="line">64 bytes from 115.239.210.27 (115.239.210.27): icmp_seq=2 ttl=128 time=19.8 ms</div><div class="line">64 bytes from 115.239.210.27 (115.239.210.27): icmp_seq=3 ttl=128 time=28.4 ms</div><div class="line"></div><div class="line">--- www.a.shifen.com ping statistics ---</div><div class="line">3 packets transmitted, 3 received, 0% packet loss, time 2004ms</div><div class="line">rtt min/avg/max/mdev = 19.891/25.488/28.485/3.963 ms</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="telnet"><a href="#telnet" class="headerlink" title="telnet"></a>telnet</h1><p><strong>telnet ip port</strong><br>明文传递数据，不安全，已弃用。现在可以用来探测对方的端口是否开启</p>
+<h1 id="traceroute"><a href="#traceroute" class="headerlink" title="traceroute"></a>traceroute</h1><p> <strong>traceroute ip（域名）</strong><br>路由跟踪命令</p>
+<ul>
+<li>-n 使用ip，速度更快</li>
+<li>-q 每次发送的数据包数量，默认是3</li>
+<li>-m 设置跳数，默认是30</li>
+</ul>
+<p>win中使用tracert命令达到相同的效果</p>
+<h1 id="tcpdump"><a href="#tcpdump" class="headerlink" title="tcpdump"></a>tcpdump</h1><p>抓包工具</p>
+<ul>
+<li>-i 指定网卡</li>
+<li>-nn 键给数据包中的域名与服务转为ip和端口</li>
+<li>-X 以十六进制和ASCII吗显示数据包内容</li>
+<li>port 指定监听的端口</li>
+</ul>
+<ul>
+<li>tcpdump -i ens33 -nn -X port 21 检查21端口的数据包</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">[root@localhost network-scripts]# tcpdump -i ens33 -nn -X </div><div class="line">tcpdump: verbose output suppressed, use -v or -vv for full protocol decode</div><div class="line">listening on ens33, link-type EN10MB (Ethernet), capture size 65535 bytes</div><div class="line">11:44:39.513385 IP 192.168.42.1.55904 &gt; 239.255.255.250.1900: UDP, length 174</div><div class="line">	0x0000:  4500 00ca 1342 0000 0111 cb3d c0a8 2a01  E....B.....=..*.</div><div class="line">	0x0010:  efff fffa da60 076c 00b6 3d68 4d2d 5345  .....`.l..=hM-SE</div><div class="line">	0x0020:  4152 4348 202a 2048 5454 502f 312e 310d  ARCH.*.HTTP/1.1.</div><div class="line">	0x0030:  0a48 4f53 543a 2032 3339 2e32 3535 2e32  .HOST:.239.255.2</div><div class="line">	0x0040:  3535 2e32 3530 3a31 3930 300d 0a4d 414e  55.250:1900..MAN</div><div class="line">	0x0050:  3a20 2273 7364 703a 6469 7363 6f76 6572  :.&quot;ssdp:discover</div><div class="line">	0x0060:  220d 0a4d 583a 2031 0d0a 5354 3a20 7572  &quot;..MX:.1..ST:.ur</div><div class="line">	0x0070:  6e3a 6469 616c 2d6d 756c 7469 7363 7265  n:dial-multiscre</div><div class="line">	0x0080:  656e 2d6f 7267 3a73 6572 7669 6365 3a64  en-org:service:d</div><div class="line">	0x0090:  6961 6c3a 310d 0a55 5345 522d 4147 454e  ial:1..USER-AGEN</div><div class="line">	0x00a0:  543a 2047 6f6f 676c 6520 4368 726f 6d65  T:.Google.Chrome</div><div class="line">	0x00b0:  2f35 392e 302e 3330 3731 2e31 3034 2057  /59.0.3071.104.W</div><div class="line">	0x00c0:  696e 646f 7773 0d0a 0d0a                 indows....</div><div class="line">11:44:40.514356 IP 192.168.42.1.55904 &gt; 239.255.255.250.1900: UDP, length 174</div><div class="line">	0x0000:  4500 00ca 1343 0000 0111 cb3c c0a8 2a01  E....C.....&lt;..*.</div><div class="line">	0x0010:  efff fffa da60 076c 00b6 3d68 4d2d 5345  .....`.l..=hM-SE</div><div class="line">	0x0020:  4152 4348 202a 2048 5454 502f 312e 310d  ARCH.*.HTTP/1.1.</div><div class="line">	0x0030:  0a48 4f53 543a 2032 3339 2e32 3535 2e32  .HOST:.239.255.2</div><div class="line">	0x0040:  3535 2e32 3530 3a31 3930 300d 0a4d 414e  55.250:1900..MAN</div><div class="line">	0x0050:  3a20 2273 7364 703a 6469 7363 6f76 6572  :.&quot;ssdp:discover</div><div class="line">	0x0060:  220d 0a4d 583a 2031 0d0a 5354 3a20 7572  &quot;..MX:.1..ST:.ur</div><div class="line">	0x0070:  6e3a 6469 616c 2d6d 756c 7469 7363 7265  n:dial-multiscre</div><div class="line">	0x0080:  656e 2d6f 7267 3a73 6572 7669 6365 3a64  en-org:service:d</div><div class="line">	0x0090:  6961 6c3a 310d 0a55 5345 522d 4147 454e  ial:1..USER-AGEN</div><div class="line">	0x00a0:  543a 2047 6f6f 676c 6520 4368 726f 6d65  T:.Google.Chrome</div><div class="line">	0x00b0:  2f35 392e 302e 3330 3731 2e31 3034 2057  /59.0.3071.104.W</div><div class="line">	0x00c0:  696e 646f 7773 0d0a 0d0a                 indows....</div><div class="line">11:44:41.514257 IP 192.168.42.1.55904 &gt; 239.255.255.250.1900: UDP, length 174</div><div class="line">	0x0000:  4500 00ca 1344 0000 0111 cb3b c0a8 2a01  E....D.....;..*.</div><div class="line">	0x0010:  efff fffa da60 076c 00b6 3d68 4d2d 5345  .....`.l..=hM-SE</div><div class="line">	0x0020:  4152 4348 202a 2048 5454 502f 312e 310d  ARCH.*.HTTP/1.1.</div><div class="line">	0x0030:  0a48 4f53 543a 2032 3339 2e32 3535 2e32  .HOST:.239.255.2</div><div class="line">	0x0040:  3535 2e32 3530 3a31 3930 300d 0a4d 414e  55.250:1900..MAN</div><div class="line">	0x0050:  3a20 2273 7364 703a 6469 7363 6f76 6572  :.&quot;ssdp:discover</div><div class="line">	0x0060:  220d 0a4d 583a 2031 0d0a 5354 3a20 7572  &quot;..MX:.1..ST:.ur</div><div class="line">	0x0070:  6e3a 6469 616c 2d6d 756c 7469 7363 7265  n:dial-multiscre</div><div class="line">	0x0080:  656e 2d6f 7267 3a73 6572 7669 6365 3a64  en-org:service:d</div><div class="line">	0x0090:  6961 6c3a 310d 0a55 5345 522d 4147 454e  ial:1..USER-AGEN</div><div class="line">	0x00a0:  543a 2047 6f6f 676c 6520 4368 726f 6d65  T:.Google.Chrome</div><div class="line">	0x00b0:  2f35 392e 302e 3330 3731 2e31 3034 2057  /59.0.3071.104.W</div><div class="line">	0x00c0:  696e 646f 7773 0d0a 0d0a                 indows....</div><div class="line">11:44:42.514598 IP 192.168.42.1.55904 &gt; 239.255.255.250.1900: UDP, length 174</div><div class="line">	0x0000:  4500 00ca 1345 0000 0111 cb3a c0a8 2a01  E....E.....:..*.</div><div class="line">	0x0010:  efff fffa da60 076c 00b6 3d68 4d2d 5345  .....`.l..=hM-SE</div><div class="line">	0x0020:  4152 4348 202a 2048 5454 502f 312e 310d  ARCH.*.HTTP/1.1.</div><div class="line">	0x0030:  0a48 4f53 543a 2032 3339 2e32 3535 2e32  .HOST:.239.255.2</div><div class="line">	0x0040:  3535 2e32 3530 3a31 3930 300d 0a4d 414e  55.250:1900..MAN</div><div class="line">	0x0050:  3a20 2273 7364 703a 6469 7363 6f76 6572  :.&quot;ssdp:discover</div><div class="line">	0x0060:  220d 0a4d 583a 2031 0d0a 5354 3a20 7572  &quot;..MX:.1..ST:.ur</div><div class="line">	0x0070:  6e3a 6469 616c 2d6d 756c 7469 7363 7265  n:dial-multiscre</div><div class="line">	0x0080:  656e 2d6f 7267 3a73 6572 7669 6365 3a64  en-org:service:d</div><div class="line">	0x0090:  6961 6c3a 310d 0a55 5345 522d 4147 454e  ial:1..USER-AGEN</div><div class="line">	0x00a0:  543a 2047 6f6f 676c 6520 4368 726f 6d65  T:.Google.Chrome</div><div class="line">	0x00b0:  2f35 392e 302e 3330 3731 2e31 3034 2057  /59.0.3071.104.W</div><div class="line">	0x00c0:  696e 646f 7773 0d0a 0d0a                 indows....</div><div class="line">^C</div><div class="line">4 packets captured</div><div class="line">4 packets received by filter</div><div class="line">0 packets dropped by kernel</div></pre></td></tr></table></figure>
+<p>ftp是明文传递,可以直接解析ftp包中的用户名和密码，因此telnet和ftp不是绝对安全的</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Linux---用户、用户组]]></title>
       <url>/2017/07/24/Linux-%E7%94%A8%E6%88%B7%E3%80%81%E7%94%A8%E6%88%B7%E7%BB%84/</url>
       <content type="html"><![CDATA[<h1 id="有关文件"><a href="#有关文件" class="headerlink" title="有关文件"></a>有关文件</h1><h2 id="etc-group-储存当前系统中所有用户组信息"><a href="#etc-group-储存当前系统中所有用户组信息" class="headerlink" title="/etc/group 储存当前系统中所有用户组信息"></a>/etc/group 储存当前系统中所有用户组信息</h2><p><strong>Group : x  :123 :abc,def,xyz</strong><br><strong>组名称：密码：编号:用户名</strong></p>
