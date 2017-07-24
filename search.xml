@@ -166,18 +166,19 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;c:choose&gt;</div><div class="line">	&lt;c:when test=&quot;$&#123;param.score&gt;=90 &amp;&amp; param.score&lt;=100 &#125;&quot;&gt;</div><div class="line">		&lt;c:out value=&quot;优秀&quot;&gt;&lt;/c:out&gt;</div><div class="line">	&lt;/c:when&gt;</div><div class="line">	&lt;c:when test=&quot;$&#123;param.score&gt;=60 &amp;&amp; param.score&lt;90 &#125;&quot;&gt;</div><div class="line">		&lt;c:out value=&quot;良好&quot;&gt;&lt;/c:out&gt;</div><div class="line">	&lt;/c:when&gt;</div><div class="line">	&lt;c:otherwise&gt;</div><div class="line">		&lt;c:out value=&quot;输入有误&quot;&gt;&lt;/c:out&gt;</div><div class="line">	&lt;/c:otherwise&gt;</div><div class="line">&lt;/c:choose&gt;</div></pre></td></tr></table></figure>
 <h1 id="循环语句-forEach"><a href="#循环语句-forEach" class="headerlink" title="循环语句 forEach"></a>循环语句 forEach</h1><p><strong>&lt;c:forEach var=”fruit” items=”${fruits }” begin=”0” end=”4” step=”1” varStatus=”fru”&gt;&lt;/c:forEach&gt;</strong><br>属性：</p>
 <ul>
-<li>items表示变量的集合</li>
-<li>var 表示每次从集合中取出的值</li>
-<li>begin、end表示循环从集合中下标为begin的元素开始，到下标为end结束</li>
-<li>step 步长</li>
-<li>varStatus 通过index、count、first、last 4个状态值，描述begin和end子集中元素的状态</li>
+<li>items ： 表示变量的集合</li>
+<li>var ： 表示每次从集合中取出的值</li>
+<li>begin ： 如果指定了items，那么迭代就从items[begin]开始进行迭代；如果没有指定items，那么就从begin开始迭代。它的类型为整数</li>
+<li>end ： 如果指定了items，那么就在items[end]结束迭代；如果没有指定items，那么就在end结束迭代。它的类型也为整数</li>
+<li>step ： 步长</li>
+<li>varStatus ： 通过index、count、first、last 4个状态值，描述begin和end子集中元素的状态</li>
 </ul>
 <p>varStaus的4个取值：</p>
 <ul>
-<li>index 当前元素在集合中的下标，起始位0</li>
-<li>count 当前元素在begin、end子集中的序号，起始位为1</li>
-<li>first 判断当前元素是不是当前子集的首元素，true/false</li>
-<li>last  判断当前元素是不是当卡子集的末尾元素，true/false </li>
+<li>index ： 当前元素在集合中的下标，起始位0</li>
+<li>count ： 当前元素在begin、end子集中的序号，起始位为1</li>
+<li>first ： 判断当前元素是不是当前子集的首元素，true/false</li>
+<li>last  ： 判断当前元素是不是当卡子集的末尾元素，true/false </li>
 </ul>
 <p><strong>PS：</strong></p>
 <ul>
@@ -302,7 +303,7 @@
     </entry>
     
     <entry>
-      <title><![CDATA[23333]]></title>
+      <title><![CDATA[cutey]]></title>
       <url>/2017/07/19/2333/</url>
       <content type="html"><![CDATA[<center><br><div style="width:600px;height:600px;"><br><object type="application/x-shockwave-flash" style="outline:none;" data="http://cdn.abowman.com/widgets/hamster/hamster.swf?" width="600px" height="600px"><param name="movie" value="http://cdn.abowman.com/widgets/hamster/hamster.swf?"><param name="AllowScriptAccess" value="always"><param name="wmode" value="opaque"></object><br><br></div><br><br></center>
 ]]></content>
