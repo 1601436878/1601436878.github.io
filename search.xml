@@ -3,6 +3,135 @@
   
     
     <entry>
+      <title><![CDATA[Linux--网络管理（7层结构、netstat、ifconfig、配置文件、虚拟机中的网络连接）]]></title>
+      <url>/2017/07/24/Linux-%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%EF%BC%887%E5%B1%82%E7%BB%93%E6%9E%84%E3%80%81netstat%E3%80%81ifconfig%EF%BC%89/</url>
+      <content type="html"><![CDATA[<p>说到Linux是一个悲伤的故事，早就想学了现在还是小白水平。连个tomcat服务都搞不定。痛哉痛哉</p>
+<h1 id="ISO网络7层结构"><a href="#ISO网络7层结构" class="headerlink" title="ISO网络7层结构"></a>ISO网络7层结构</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">层次</th>
+<th style="text-align:center">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">应用层</td>
+<td style="text-align:center">用户接口</td>
+</tr>
+<tr>
+<td style="text-align:center">表示层</td>
+<td style="text-align:center">数据的表示形式。特定功能的实现（加密）</td>
+</tr>
+<tr>
+<td style="text-align:center">会话层</td>
+<td style="text-align:center">对应用会话的管理、同步、是否需要传递</td>
+</tr>
+<tr>
+<td style="text-align:center">传输层</td>
+<td style="text-align:center">可靠与不可靠的传输、传输前的错误检测与修正</td>
+</tr>
+<tr>
+<td style="text-align:center">网络层</td>
+<td style="text-align:center">提供逻辑地址、选路</td>
+</tr>
+<tr>
+<td style="text-align:center">数据链路层</td>
+<td style="text-align:center">帧、用Mac地址访问没接、错误检测与修正</td>
+</tr>
+<tr>
+<td style="text-align:center">物理层</td>
+<td style="text-align:center">设备之间的比特流的传递、物理接口、电器特征等</td>
+</tr>
+</tbody>
+</table>
+<h1 id="TCP-IP模型"><a href="#TCP-IP模型" class="headerlink" title="TCP/IP模型"></a>TCP/IP模型</h1><ul>
+<li>应用层</li>
+<li>传输层 </li>
+<li>网际互联层 </li>
+<li>网络接口层</li>
+</ul>
+<h1 id="netstat-an"><a href="#netstat-an" class="headerlink" title="netstat -an"></a>netstat -an</h1><p>查看本机启用的端口</p>
+<ul>
+<li>-a 查看所有连接和监听端口(ano可同时使用)</li>
+<li>-n 显示IP地址和端口号，而不是显示域名和服务名</li>
+<li>-o 显示活动的 TCP 连接并包括每个连接的进程 ID (PID)</li>
+<li>-r 显示 IP 路由表的内容。该参数与 route print 命令等价。 </li>
+</ul>
+<p>端口状态：</p>
+<ul>
+<li>LISTENING 端口是开放的，等待连接，但还没有被连接。就像你房子的门已经敞开的，但还没有人进来。</li>
+<li>ESTABLISHED 表示已经建立连接。两台机器正在通信。</li>
+</ul>
+<h2 id="常见端口："><a href="#常见端口：" class="headerlink" title="常见端口："></a>常见端口：</h2><ul>
+<li><strong>FTP 20 21 </strong></li>
+<li><strong>SSH 22 </strong></li>
+<li><strong>telnet 23 </strong></li>
+<li><strong>DNS 53</strong> </li>
+<li><strong>http 80 </strong></li>
+<li><strong>SMTP(邮件) 25 </strong></li>
+<li><strong>POP3(收邮件) 110 </strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div></pre></td><td class="code"><pre><div class="line">C:\Users\wangchao&gt;netstat -an</div><div class="line">活动连接</div><div class="line"></div><div class="line">  协议  本地地址          外部地址        状态</div><div class="line">  TCP    0.0.0.0:80             0.0.0.0:0              LISTENING</div><div class="line">  TCP    0.0.0.0:135            0.0.0.0:0              LISTENING</div><div class="line">  TCP    0.0.0.0:445            0.0.0.0:0              LISTENING</div><div class="line">  TCP    0.0.0.0:902            0.0.0.0:0              LISTENING</div><div class="line">  TCP    0.0.0.0:912            0.0.0.0:0              LISTENING</div><div class="line">  TCP    0.0.0.0:1433           0.0.0.0:0              LISTENING</div><div class="line">  TCP    0.0.0.0:49152          0.0.0.0:0              LISTENING</div><div class="line">  TCP    0.0.0.0:49153          0.0.0.0:0              LISTENING</div><div class="line">  TCP    0.0.0.0:49154          0.0.0.0:0              LISTENING</div><div class="line">  TCP    0.0.0.0:49155          0.0.0.0:0              LISTENING</div><div class="line">  TCP    0.0.0.0:49177          0.0.0.0:0              LISTENING</div><div class="line">  TCP    127.0.0.1:1434         0.0.0.0:0              LISTENING</div><div class="line">  TCP    127.0.0.1:4300         0.0.0.0:0              LISTENING</div><div class="line">  TCP    127.0.0.1:4301         0.0.0.0:0              LISTENING</div><div class="line">  TCP    172.25.208.32:139      0.0.0.0:0              LISTENING</div><div class="line">  TCP    172.25.208.32:50180    108.177.97.188:5228    ESTABLISHED</div><div class="line">  TCP    172.25.208.32:50234    115.182.41.173:80      ESTABLISHED</div><div class="line">  TCP    172.25.208.32:52330    223.252.199.6:6003     ESTABLISHED</div><div class="line">  TCP    172.25.208.32:53614    115.182.41.173:80      ESTABLISHED</div><div class="line">  TCP    172.25.208.32:54164    115.182.41.173:80      ESTABLISHED</div><div class="line">  TCP    172.25.208.32:54171    115.182.41.49:7080     ESTABLISHED</div><div class="line">  TCP    172.25.208.32:54526    14.17.52.183:80        CLOSE_WAIT</div><div class="line">  TCP    172.25.208.32:54745    115.182.41.180:80      ESTABLISHED</div><div class="line">  TCP    172.25.208.32:55290    101.201.173.115:80     ESTABLISHED</div><div class="line">  TCP    172.25.208.32:55329    101.201.173.115:80     ESTABLISHED</div><div class="line">  TCP    172.25.208.32:55398    106.120.188.49:80      TIME_WAIT</div><div class="line">  TCP    172.25.208.32:55401    183.36.108.223:443     TIME_WAIT</div><div class="line">  TCP    172.25.208.32:55411    180.163.21.35:80       ESTABLISHED</div><div class="line">  TCP    172.25.208.32:55412    64.233.189.138:443     SYN_SENT</div><div class="line">  TCP    172.25.208.32:55413    64.233.189.102:443     SYN_SENT</div><div class="line">  TCP    172.25.208.32:55414    64.233.189.102:443     SYN_SENT</div><div class="line">  TCP    172.25.208.32:55415    64.233.189.138:443     SYN_SENT</div><div class="line">  TCP    172.25.208.32:55416    59.111.160.195:80      ESTABLISHED</div><div class="line">  TCP    192.168.42.1:139       0.0.0.0:0              LISTENING</div><div class="line">  TCP    192.168.247.1:139      0.0.0.0:0              LISTENING</div><div class="line">  TCP    [::]:80                [::]:0                 LISTENING</div><div class="line">  TCP    [::]:135               [::]:0                 LISTENING</div><div class="line">  TCP    [::]:445               [::]:0                 LISTENING</div><div class="line">  TCP    [::]:1433              [::]:0                 LISTENING</div><div class="line">  TCP    [::]:49152             [::]:0                 LISTENING</div><div class="line">  TCP    [::]:49153             [::]:0                 LISTENING</div><div class="line">  TCP    [::]:49154             [::]:0                 LISTENING</div><div class="line">  TCP    [::]:49155             [::]:0                 LISTENING</div><div class="line">  TCP    [::]:49177             [::]:0                 LISTENING</div><div class="line">  TCP    [::1]:1434             [::]:0                 LISTENING</div><div class="line">  UDP    0.0.0.0:4018           *:*                    </div><div class="line">  UDP    0.0.0.0:5353           *:*                    </div><div class="line">  UDP    0.0.0.0:5353           *:*                    </div><div class="line">  UDP    0.0.0.0:5353           *:*                    </div><div class="line">  UDP    0.0.0.0:5353           *:*                    </div><div class="line">  UDP    0.0.0.0:5353           *:*                    </div><div class="line">  UDP    0.0.0.0:5353           *:*                    </div><div class="line">  UDP    0.0.0.0:5353           *:*                    </div><div class="line">  UDP    0.0.0.0:5355           *:*                    </div><div class="line">  UDP    0.0.0.0:50020          *:*                    </div><div class="line">  UDP    0.0.0.0:52451          *:*                    </div><div class="line">  UDP    0.0.0.0:54543          *:*                    </div><div class="line">  UDP    0.0.0.0:57313          *:*                    </div><div class="line">  UDP    0.0.0.0:60018          *:*                    </div><div class="line">  UDP    0.0.0.0:60019          *:*                    </div><div class="line">  UDP    0.0.0.0:60020          *:*                    </div><div class="line">  UDP    0.0.0.0:63636          *:*                    </div><div class="line">  UDP    0.0.0.0:65532          *:*                    </div><div class="line">  UDP    127.0.0.1:1900         *:*                    </div><div class="line">  UDP    127.0.0.1:53883        *:*                    </div><div class="line">  UDP    172.25.208.32:137      *:*                    </div><div class="line">  UDP    172.25.208.32:138      *:*                    </div><div class="line">  UDP    172.25.208.32:1900     *:*                    </div><div class="line">  UDP    172.25.208.32:53882    *:*                    </div><div class="line">  UDP    192.168.42.1:137       *:*                    </div><div class="line">  UDP    192.168.42.1:138       *:*                    </div><div class="line">  UDP    192.168.42.1:1900      *:*                    </div><div class="line">  UDP    192.168.247.1:137      *:*                    </div><div class="line">  UDP    192.168.247.1:138      *:*                    </div><div class="line">  UDP    192.168.247.1:1900     *:*                    </div><div class="line">  UDP    [::]:5353              *:*                    </div><div class="line">  UDP    [::]:5353              *:*                    </div><div class="line">  UDP    [::]:5353              *:*                    </div><div class="line">  UDP    [::]:5353              *:*                    </div><div class="line">  UDP    [::]:5355              *:*                    </div><div class="line">  UDP    [::1]:1900             *:*                    </div><div class="line">  UDP    [::1]:53881            *:*                    </div><div class="line">  UDP    [fe80::7134:d4df:12f4:7846%16]:546  *:*                    </div><div class="line">  UDP    [fe80::7134:d4df:12f4:7846%16]:546  *:*                    </div><div class="line">  UDP    [fe80::7134:d4df:12f4:7846%16]:1900  *:*                    </div><div class="line">  UDP    [fe80::95c6:d3f1:50e1:8ae4%15]:546  *:*                    </div><div class="line">  UDP    [fe80::95c6:d3f1:50e1:8ae4%15]:546  *:*                    </div><div class="line">  UDP    [fe80::95c6:d3f1:50e1:8ae4%15]:1900  *:*                    </div><div class="line">  UDP    [fe80::f053:ca43:6de1:5420%17]:546  *:*                    </div><div class="line">  UDP    [fe80::f053:ca43:6de1:5420%17]:546  *:*                    </div><div class="line">  UDP    [fe80::f053:ca43:6de1:5420%17]:1900  *:*                    </div><div class="line">  UDP    [fe80::f053:ca43:6de1:5420%17]:53880  *:*</div></pre></td></tr></table></figure>
+<h1 id="ifconfig-临时配置IP地址"><a href="#ifconfig-临时配置IP地址" class="headerlink" title="ifconfig 临时配置IP地址"></a>ifconfig 临时配置IP地址</h1><ul>
+<li><strong>ifconfig ：查看网络状态</strong></li>
+<li><strong>ifconfig eth0 192.168.254.200 netmask 255.255.255.0 ： 临时配置IP和子网掩码</strong></li>
+<li><strong>ifconfig 网卡名 down/up  ： 关闭、打开网卡</strong></li>
+<li><strong>ifconfig 网卡名 ipv4 ： 设置ipv4地址</strong></li>
+</ul>
+<h1 id="修改配置文件配置IP地址"><a href="#修改配置文件配置IP地址" class="headerlink" title="修改配置文件配置IP地址"></a>修改配置文件配置IP地址</h1><h2 id="etc-sysconfig-network-scripts-ifcfg-ens33"><a href="#etc-sysconfig-network-scripts-ifcfg-ens33" class="headerlink" title="/etc/sysconfig/network-scripts/ifcfg-ens33"></a>/etc/sysconfig/network-scripts/ifcfg-ens33</h2><p>网卡配置文件</p>
+<ul>
+<li><strong>DEVICE=eth0</strong> <strong>网卡设备名，需要和文件名中的网卡名一致</strong></li>
+<li><strong>BOOTPROTO=none(none、dhcp、dhcp)</strong> <strong>是否自动获取IP（如果是dhcp，下面的内容无需配置）</strong></li>
+<li><strong>HWADDR</strong>   <strong>MAC地址</strong></li>
+<li><strong>NM_CONTROLLED=yes(no)</strong> <strong>是否可以被Network Manager图形管理工具管理</strong></li>
+<li><strong>ONBOOT=yes(no)</strong>  <strong>是否随着网络服务启动(centos6以上默认是no)</strong></li>
+<li><strong>TYPE=Ethernet</strong> <strong>类型为以太网</strong></li>
+<li><strong>UUID</strong> <strong>唯一识别码</strong></li>
+<li><strong>IPADDR</strong> <strong>ip地址</strong></li>
+<li><strong>NETMASK</strong> <strong>子网掩码</strong></li>
+<li><strong>GATEWAY</strong> <strong>网关</strong></li>
+<li><strong>DNS1</strong> <strong>dns</strong></li>
+<li><strong>IPV6INIT=no</strong>  <strong>ipv6没有启动</strong></li>
+<li><strong>USERCTL=no</strong> <strong>不允许非root用户控制网卡</strong></li>
+</ul>
+<h2 id="etc-sysconfig-network-和-etc-hostname"><a href="#etc-sysconfig-network-和-etc-hostname" class="headerlink" title="/etc/sysconfig/network 和 /etc/hostname"></a>/etc/sysconfig/network 和 /etc/hostname</h2><p>主机名文件<br>CentOS7中主机名文件为hostname，内容是：<br><code>localhost.localdomain</code></p>
+<p>也可以通过hostname命令临时更改主机名<br>hostname newname 临时更改主机名为newname（不加参数表示查看当前主机名）</p>
+<h2 id="etc-resolv-conf"><a href="#etc-resolv-conf" class="headerlink" title="/etc/resolv.conf"></a>/etc/resolv.conf</h2><p>DNS 配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">nameserver 202.106.0.20(可以写多个)</div><div class="line">search localhost</div></pre></td></tr></table></figure>
+<h1 id="其他方式"><a href="#其他方式" class="headerlink" title="其他方式"></a>其他方式</h1><ul>
+<li>图形界面</li>
+<li>setup工具</li>
+</ul>
+<h1 id="虚拟机网络参数配置"><a href="#虚拟机网络参数配置" class="headerlink" title="虚拟机网络参数配置"></a>虚拟机网络参数配置</h1><ul>
+<li>将 /etc/sysconfig/network-scripts/文件中的onboot改为yes表示开机自启网络。</li>
+<li>将BOOTPROTO设置为dhcp，如果是none则需要手动设置ip地址，设置的方法是在文件尾部加上IPADDR和NETMASK属性表示ip地址和子网掩码</li>
+<li>然后用service network restart 重启网络即可生效</li>
+</ul>
+<p>虚拟机中的连接方式有三种：</p>
+<ul>
+<li>桥接：虚拟机会被当成一个真正的电脑，占用局域网中的一个ip地址，</li>
+<li>NAT：可以上网，可以连通主机</li>
+<li>仅主机模式：只能连通主机，不能上网</li>
+</ul>
+<p>在校园网中使用桥接会获得一个校园网的ip，但是该ip没有登录，所以不能上网。因此在校园网中使用NAT便可以上网，此时的ip为(192.168.42.132),与本机的ip并不在一个网段中(172.25.233.40)<br>service network start/stop/restart 开启关闭重启网络服务</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[JSP---JSTL(import、redirect、url处理、常用函数)]]></title>
       <url>/2017/07/22/JSP-JSTL-import%E3%80%81redirect%E3%80%81url%E5%A4%84%E7%90%86%E3%80%81%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</url>
       <content type="html"><![CDATA[<h1 id="import"><a href="#import" class="headerlink" title="import"></a>import</h1><p><strong>&lt;import url=”” context=”” var=”” scope=”” charEncoding=”” varReader=””&gt;&lt;/c:import&gt;</strong><br>包含另一个 JSP 页 面到本页面来</p>
@@ -3392,6 +3521,38 @@ unalias                            临时删除别名
     </entry>
     
     <entry>
+      <title><![CDATA[不同编码类型的总结]]></title>
+      <url>/2016/09/11/%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%80%BB%E7%BB%93/</url>
+      <content type="html"><![CDATA[<h2 id="1-ASCII"><a href="#1-ASCII" class="headerlink" title="1.ASCII"></a>1.ASCII</h2><p>计算机一开始在美国使用，字符编码也只包括英文字母。ANSCII编码由一个字节表示所有符号。一个字节可以表示的所有可能是256（2的8次方）种，对于美国人来说，26个英文字母，加上常用的符号，也只是用了127个。如果大家都用英文，那这套编码完全够用。<a id="more"></a>但是不同国家的文字不同，如果加上其他国家的语言符号，那一个字节是不够的，之后ASCII做出了改进，将256种情况剩余的可能用来表示其他字符。一直排到了第255种可能，从128到255表示的字符成为“扩展字符集”，然而，新增的字符并不能解决所有问题。<br><img src="http://i.imgur.com/Ks9A740.jpg" alt=""></p>
+<h2 id="2-GB2312"><a href="#2-GB2312" class="headerlink" title="2.GB2312"></a>2.GB2312</h2><p>计算机开始在我国普及时，ASCII中已经没有可以利用的字节状态来表示汉字。于是，我们将扩展字符集删除，将127后的字符状态重新编码。小于127的字符状态的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节称之为高字节，后面一个字节称之为低字节，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，我们还把数学符号、罗马希腊的字母、日文的假名们都编进去了，连在 ASCII 里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的”全角”字符，而原来在127号以下的那些就叫”半角”字符了。 </p>
+<p>后来GB2312也无法满足人们的需要，随后出现了GBK标准，再后来，还是不够用，于是出现了GB18030。这个标准几乎可以表示所有的中文字符，此标准在2006年5月1日被作为在中国境内所有软件产品支持的强制规格。 </p>
+<h2 id="3-Unicode"><a href="#3-Unicode" class="headerlink" title="3.Unicode"></a>3.Unicode</h2><p>不只是我国，很多国家都制定了相应的符合本国文化的字符编码标准。这些标准再本国内可以正常使用，但是如果是不同国家之间通过文本文件的交流，就很有可能导致乱码。这时，国际标准化组织（osi）出现了，OSI致力于将全世界所有的字符用统一的标准编码，消除不同国家之间交流的障碍。</p>
+<p>OSI将所有字符用两个字节表示，包括ANCSI中的前127个字符，所以对于钱127个字符来说，本来8位就可以表示的字符现在用16位来表示，这其实是一种资源的浪费。</p>
+<h2 id="4-UTF-8"><a href="#4-UTF-8" class="headerlink" title="4.UTF-8"></a>4.UTF-8</h2><p>可以看出，Unicode虽然是一个很好的字符编码方式，但由于所有字符都用两个字节表示导致的资源的浪费，促使了UTF-8的出现，UTF-8编码中的第一个字节仍与ASCII兼容，这使得原来处理ASCII字符的软件无须或只须做少部份修改，即可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。互联网工程工作小组（IETF）要求所有互联网协议都必须支持UTF-8编码。<br>UTF-8有如下特点： </p>
+<blockquote>
+<p><1>  前128个US-ASCII字符只需一个字节编码（与ANCSI相同）。 </1></p>
+<p><2>  带有附加符号的拉丁文、希腊文、西里尔字母、亚美尼亚语、希伯来文、阿拉伯文、叙利亚文及它拿字母则需要二个字节编码。 </2></p>
+<p><3>  其他基本多文种平面（BMP）中的字符（这包含了大部分常用字）使用三个字节编码。 </3></p>
+<p><4>  其他极少使用的Unicode辅助平面的字符使用四字节编码。 </4></p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 技术 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[日期类]]></title>
       <url>/2016/09/11/%E6%97%A5%E6%9C%9F%E7%B1%BB/</url>
       <content type="html"><![CDATA[<h4 id="Date类"><a href="#Date类" class="headerlink" title="Date类"></a>Date类</h4><p>从1970.1.1.0点开始到某个时刻的毫秒数，类型是long<br>1970年之前用负数表示</p>
@@ -3429,38 +3590,6 @@ Date d2 = df2.parse(str2);
         <tags>
             
             <tag> Java </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[不同编码类型的总结]]></title>
-      <url>/2016/09/11/%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%80%BB%E7%BB%93/</url>
-      <content type="html"><![CDATA[<h2 id="1-ASCII"><a href="#1-ASCII" class="headerlink" title="1.ASCII"></a>1.ASCII</h2><p>计算机一开始在美国使用，字符编码也只包括英文字母。ANSCII编码由一个字节表示所有符号。一个字节可以表示的所有可能是256（2的8次方）种，对于美国人来说，26个英文字母，加上常用的符号，也只是用了127个。如果大家都用英文，那这套编码完全够用。<a id="more"></a>但是不同国家的文字不同，如果加上其他国家的语言符号，那一个字节是不够的，之后ASCII做出了改进，将256种情况剩余的可能用来表示其他字符。一直排到了第255种可能，从128到255表示的字符成为“扩展字符集”，然而，新增的字符并不能解决所有问题。<br><img src="http://i.imgur.com/Ks9A740.jpg" alt=""></p>
-<h2 id="2-GB2312"><a href="#2-GB2312" class="headerlink" title="2.GB2312"></a>2.GB2312</h2><p>计算机开始在我国普及时，ASCII中已经没有可以利用的字节状态来表示汉字。于是，我们将扩展字符集删除，将127后的字符状态重新编码。小于127的字符状态的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节称之为高字节，后面一个字节称之为低字节，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，我们还把数学符号、罗马希腊的字母、日文的假名们都编进去了，连在 ASCII 里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的”全角”字符，而原来在127号以下的那些就叫”半角”字符了。 </p>
-<p>后来GB2312也无法满足人们的需要，随后出现了GBK标准，再后来，还是不够用，于是出现了GB18030。这个标准几乎可以表示所有的中文字符，此标准在2006年5月1日被作为在中国境内所有软件产品支持的强制规格。 </p>
-<h2 id="3-Unicode"><a href="#3-Unicode" class="headerlink" title="3.Unicode"></a>3.Unicode</h2><p>不只是我国，很多国家都制定了相应的符合本国文化的字符编码标准。这些标准再本国内可以正常使用，但是如果是不同国家之间通过文本文件的交流，就很有可能导致乱码。这时，国际标准化组织（osi）出现了，OSI致力于将全世界所有的字符用统一的标准编码，消除不同国家之间交流的障碍。</p>
-<p>OSI将所有字符用两个字节表示，包括ANCSI中的前127个字符，所以对于钱127个字符来说，本来8位就可以表示的字符现在用16位来表示，这其实是一种资源的浪费。</p>
-<h2 id="4-UTF-8"><a href="#4-UTF-8" class="headerlink" title="4.UTF-8"></a>4.UTF-8</h2><p>可以看出，Unicode虽然是一个很好的字符编码方式，但由于所有字符都用两个字节表示导致的资源的浪费，促使了UTF-8的出现，UTF-8编码中的第一个字节仍与ASCII兼容，这使得原来处理ASCII字符的软件无须或只须做少部份修改，即可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。互联网工程工作小组（IETF）要求所有互联网协议都必须支持UTF-8编码。<br>UTF-8有如下特点： </p>
-<blockquote>
-<p><1>  前128个US-ASCII字符只需一个字节编码（与ANCSI相同）。 </1></p>
-<p><2>  带有附加符号的拉丁文、希腊文、西里尔字母、亚美尼亚语、希伯来文、阿拉伯文、叙利亚文及它拿字母则需要二个字节编码。 </2></p>
-<p><3>  其他基本多文种平面（BMP）中的字符（这包含了大部分常用字）使用三个字节编码。 </3></p>
-<p><4>  其他极少使用的Unicode辅助平面的字符使用四字节编码。 </4></p>
-</blockquote>
-]]></content>
-      
-        <categories>
-            
-            <category> 技术 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 技术 </tag>
             
         </tags>
         

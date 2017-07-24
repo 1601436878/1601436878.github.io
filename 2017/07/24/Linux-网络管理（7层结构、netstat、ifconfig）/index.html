@@ -10,7 +10,7 @@
     
     <title>
         
-            Java异常 | 
+            Linux--网络管理（7层结构、netstat、ifconfig、配置文件、虚拟机中的网络连接） | 
         
         Twilight&#39;s Blog
     </title>
@@ -36,7 +36,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="wangchao">
     <meta name="description" content="null">
-    <meta name="keywords" content="null,Java">
+    <meta name="keywords" content="null,Linux">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
@@ -62,9 +62,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://twilight.net.cn">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Java异常 | Twilight&#39;s Blog">
+    <meta property="og:title" content="Linux--网络管理（7层结构、netstat、ifconfig、配置文件、虚拟机中的网络连接） | Twilight&#39;s Blog">
     <meta property="og:description" content="null">
-    <meta property="og:article:tag" content="Java"> 
+    <meta property="og:article:tag" content="Linux"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -246,7 +246,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ISO网络7层结构"><span class="post-toc-number">1.</span> <span class="post-toc-text">ISO网络7层结构</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#TCP-IP模型"><span class="post-toc-number">2.</span> <span class="post-toc-text">TCP/IP模型</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#netstat-an"><span class="post-toc-number">3.</span> <span class="post-toc-text">netstat -an</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常见端口："><span class="post-toc-number">3.1.</span> <span class="post-toc-text">常见端口：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ifconfig-临时配置IP地址"><span class="post-toc-number">4.</span> <span class="post-toc-text">ifconfig 临时配置IP地址</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#修改配置文件配置IP地址"><span class="post-toc-number">5.</span> <span class="post-toc-text">修改配置文件配置IP地址</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#etc-sysconfig-network-scripts-ifcfg-ens33"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">/etc/sysconfig/network-scripts/ifcfg-ens33</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#etc-sysconfig-network-和-etc-hostname"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">/etc/sysconfig/network 和 /etc/hostname</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#etc-resolv-conf"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">/etc/resolv.conf</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#其他方式"><span class="post-toc-number">6.</span> <span class="post-toc-text">其他方式</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#虚拟机网络参数配置"><span class="post-toc-number">7.</span> <span class="post-toc-text">虚拟机网络参数配置</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -283,7 +283,7 @@
         
     
             <p class="article-headline-p">
-                Java异常
+                Linux--网络管理（7层结构、netstat、ifconfig、配置文件、虚拟机中的网络连接）
             </p>
         </div>
 
@@ -302,7 +302,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>wangchao</strong>
-        <span>11月 16, 2016</span>
+        <span>7月 24, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -326,7 +326,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Java/">Java</a>
+        <a class="post_tag-link" href="/tags/Linux/">Linux</a>
     </ul>
     
 
@@ -340,7 +340,7 @@
     <!-- Leancloud Views -->
         <a class="post_share-link" href="#">
             <li class="mdl-menu__item">
-                <span id="/2016/11/16/异常/" class="leancloud-views_num" data-flag-title="Java异常">
+                <span id="/2017/07/24/Linux-网络管理（7层结构、netstat、ifconfig）/" class="leancloud-views_num" data-flag-title="Linux--网络管理（7层结构、netstat、ifconfig、配置文件、虚拟机中的网络连接）">
      &nbsp;浏览量
 </span>
 
@@ -352,7 +352,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java异常&url=http://twilight.net.cn//2016/11/16/异常/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Linux--网络管理（7层结构、netstat、ifconfig、配置文件、虚拟机中的网络连接）&url=http://twilight.net.cn//2017/07/24/Linux-网络管理（7层结构、netstat、ifconfig）/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -361,7 +361,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Java异常&url=http://twilight.net.cn//2016/11/16/异常/index.html&via=wangchao" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Linux--网络管理（7层结构、netstat、ifconfig、配置文件、虚拟机中的网络连接）&url=http://twilight.net.cn//2017/07/24/Linux-网络管理（7层结构、netstat、ifconfig）/index.html&via=wangchao" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -370,7 +370,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2016/11/16/异常/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2017/07/24/Linux-网络管理（7层结构、netstat、ifconfig）/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -379,7 +379,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2016/11/16/异常/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2017/07/24/Linux-网络管理（7层结构、netstat、ifconfig）/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -391,7 +391,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=Java异常&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2016/11/16/异常/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=Linux--网络管理（7层结构、netstat、ifconfig、配置文件、虚拟机中的网络连接）&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2017/07/24/Linux-网络管理（7层结构、netstat、ifconfig）/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -409,32 +409,115 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>1.可以自定义一个异常，方法是继承Throwable类或者是继承Exception类。其实Exception类就是Throwable的子类。<br></p>
-<a id="more"></a>
-<p>2.当有一个函数会抛出我们自定义的异常，需要声明这个函数会抛出什么样的异常 例如：</p>
-<blockquote>
-<p>public static  void a() throws wrong{</p>
-</blockquote>
-<p>这里，throw是抛出一个异常，而Throws是声明一个函数会抛出异常</p>
-<blockquote>
-<p>e.getMessage()             异常中的信息<br><br>println（e）                异常的名字和异常中储存的值<br><br>e.printStacktrace()        跟踪异常出现位置<br></p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">wrong</span> <span class="keyword">extends</span> <span class="title">Throwable</span></span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 异常 </span>&#123;</div><div class="line">	<span class="keyword">static</span> <span class="keyword">int</span> [] a = <span class="keyword">new</span> <span class="keyword">int</span> [<span class="number">10</span>];</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span></span>&#123;</div><div class="line">		<span class="keyword">try</span>&#123;</div><div class="line">			a();</div><div class="line">		&#125;<span class="keyword">catch</span>(wrong e )&#123;</div><div class="line">			System.out.println(<span class="string">"这是自定义的异常"</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  <span class="keyword">void</span> <span class="title">a</span><span class="params">()</span> <span class="keyword">throws</span> wrong</span>&#123;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> wrong();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-<p>1.当一个异常继承于另一个异常时，捕捉父类异常时就可以同时捕捉子类的异常。<br>也就是说因为Exception是所有异常的父类，所以捕捉Exception异常时就可以捕捉所有的异常</p>
-<p>2.当同时捕捉多个异常时，只会有一个异常被捕捉到。</p>
-<p>3.当语句中先捕捉父类异常再捕捉子类异常时会报错。提示这是一个永远不会执行到的异常。</p>
-<blockquote>
-<p> <em>Unreachable catch block for wrong2</em></p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">wrong</span> <span class="keyword">extends</span> <span class="title">Exception</span> </span>&#123;	<span class="comment">//父类异常</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">wrong2</span> <span class="keyword">extends</span> <span class="title">wrong</span></span>&#123;		<span class="comment">//子类异常</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 异常 </span>&#123;</div><div class="line">	<span class="keyword">static</span> <span class="keyword">int</span> [] a = <span class="keyword">new</span> <span class="keyword">int</span> [<span class="number">10</span>];</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span></span>&#123;</div><div class="line">		<span class="keyword">try</span>&#123;</div><div class="line">			a();</div><div class="line">		&#125;<span class="keyword">catch</span>(wrong e )&#123;</div><div class="line">			System.out.println(<span class="string">"这是异常wrong"</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  <span class="keyword">void</span> <span class="title">a</span><span class="params">()</span> <span class="keyword">throws</span> wrong2</span>&#123;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> wrong2();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>1.当覆盖函数的时候，子类不能声明抛出比父类的版本更多的异常。<br>2.在子类的构造函数中，必须声明父类可能抛出的全部异常。</p>
-<p>如果有以下三种异常</p>
-<pre><code>class wrong1 extends Exception {}    //父类异常
-class wrong2 extends wrong1{}        //子类异常
-class wrong3 extends Exception{}     
-</code></pre><p>当父类的函数f()抛出异常wrong1时，子类中覆盖它的函数的异常不能比它抛出更多的异常,但是子类的构造函数必须包含父类的所有异常</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">   <span class="comment">//父类</span></div><div class="line">   <span class="class"><span class="keyword">class</span> <span class="title">test</span> </span>&#123;</div><div class="line">   	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span> <span class="keyword">throws</span> wrong1,wrong3</span>&#123;&#125;</div><div class="line">   	test()<span class="keyword">throws</span> wrong1&#123;&#125;</div><div class="line">   &#125;</div><div class="line"><span class="comment">//子类</span></div><div class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 异常 <span class="keyword">extends</span> <span class="title">test</span> </span>&#123;</div><div class="line">	<span class="comment">//构造函数</span></div><div class="line">   	异常()<span class="keyword">throws</span> wrong1,wrong3&#123;&#125;</div><div class="line"></div><div class="line">	<span class="comment">//子类覆盖的函数</span></div><div class="line">   	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span><span class="keyword">throws</span> wrong1 ,wrong3</span></div><div class="line">   	&#123;&#125;</div><div class="line">   	</div><div class="line">   	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span></span>&#123;</div><div class="line">   		<span class="keyword">try</span>&#123;</div><div class="line">   			a();</div><div class="line">   		&#125;<span class="keyword">catch</span>(wrong1 e )&#123;</div><div class="line">   			System.out.println(<span class="string">"这是异常wrong1"</span>);</div><div class="line">   		&#125;<span class="keyword">catch</span>(wrong3 e)&#123;&#125;</div><div class="line">   	&#125;</div><div class="line">   	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  <span class="keyword">void</span> <span class="title">a</span><span class="params">()</span> <span class="keyword">throws</span> wrong1,wrong3</span>&#123;</div><div class="line">   		test s = <span class="keyword">new</span> test();</div><div class="line">   		s.f();</div><div class="line">   	&#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+        <p>说到Linux是一个悲伤的故事，早就想学了现在还是小白水平。连个tomcat服务都搞不定。痛哉痛哉</p>
+<h1 id="ISO网络7层结构"><a href="#ISO网络7层结构" class="headerlink" title="ISO网络7层结构"></a>ISO网络7层结构</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">层次</th>
+<th style="text-align:center">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">应用层</td>
+<td style="text-align:center">用户接口</td>
+</tr>
+<tr>
+<td style="text-align:center">表示层</td>
+<td style="text-align:center">数据的表示形式。特定功能的实现（加密）</td>
+</tr>
+<tr>
+<td style="text-align:center">会话层</td>
+<td style="text-align:center">对应用会话的管理、同步、是否需要传递</td>
+</tr>
+<tr>
+<td style="text-align:center">传输层</td>
+<td style="text-align:center">可靠与不可靠的传输、传输前的错误检测与修正</td>
+</tr>
+<tr>
+<td style="text-align:center">网络层</td>
+<td style="text-align:center">提供逻辑地址、选路</td>
+</tr>
+<tr>
+<td style="text-align:center">数据链路层</td>
+<td style="text-align:center">帧、用Mac地址访问没接、错误检测与修正</td>
+</tr>
+<tr>
+<td style="text-align:center">物理层</td>
+<td style="text-align:center">设备之间的比特流的传递、物理接口、电器特征等</td>
+</tr>
+</tbody>
+</table>
+<h1 id="TCP-IP模型"><a href="#TCP-IP模型" class="headerlink" title="TCP/IP模型"></a>TCP/IP模型</h1><ul>
+<li>应用层</li>
+<li>传输层 </li>
+<li>网际互联层 </li>
+<li>网络接口层</li>
+</ul>
+<h1 id="netstat-an"><a href="#netstat-an" class="headerlink" title="netstat -an"></a>netstat -an</h1><p>查看本机启用的端口</p>
+<ul>
+<li>-a 查看所有连接和监听端口(ano可同时使用)</li>
+<li>-n 显示IP地址和端口号，而不是显示域名和服务名</li>
+<li>-o 显示活动的 TCP 连接并包括每个连接的进程 ID (PID)</li>
+<li>-r 显示 IP 路由表的内容。该参数与 route print 命令等价。 </li>
+</ul>
+<p>端口状态：</p>
+<ul>
+<li>LISTENING 端口是开放的，等待连接，但还没有被连接。就像你房子的门已经敞开的，但还没有人进来。</li>
+<li>ESTABLISHED 表示已经建立连接。两台机器正在通信。</li>
+</ul>
+<h2 id="常见端口："><a href="#常见端口：" class="headerlink" title="常见端口："></a>常见端口：</h2><ul>
+<li><strong>FTP 20 21 </strong></li>
+<li><strong>SSH 22 </strong></li>
+<li><strong>telnet 23 </strong></li>
+<li><strong>DNS 53</strong> </li>
+<li><strong>http 80 </strong></li>
+<li><strong>SMTP(邮件) 25 </strong></li>
+<li><strong>POP3(收邮件) 110 </strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div></pre></td><td class="code"><pre><div class="line">C:\Users\wangchao&gt;netstat -an</div><div class="line">活动连接</div><div class="line"></div><div class="line">  协议  本地地址          外部地址        状态</div><div class="line">  TCP    0.0.0.0:80             0.0.0.0:0              LISTENING</div><div class="line">  TCP    0.0.0.0:135            0.0.0.0:0              LISTENING</div><div class="line">  TCP    0.0.0.0:445            0.0.0.0:0              LISTENING</div><div class="line">  TCP    0.0.0.0:902            0.0.0.0:0              LISTENING</div><div class="line">  TCP    0.0.0.0:912            0.0.0.0:0              LISTENING</div><div class="line">  TCP    0.0.0.0:1433           0.0.0.0:0              LISTENING</div><div class="line">  TCP    0.0.0.0:49152          0.0.0.0:0              LISTENING</div><div class="line">  TCP    0.0.0.0:49153          0.0.0.0:0              LISTENING</div><div class="line">  TCP    0.0.0.0:49154          0.0.0.0:0              LISTENING</div><div class="line">  TCP    0.0.0.0:49155          0.0.0.0:0              LISTENING</div><div class="line">  TCP    0.0.0.0:49177          0.0.0.0:0              LISTENING</div><div class="line">  TCP    127.0.0.1:1434         0.0.0.0:0              LISTENING</div><div class="line">  TCP    127.0.0.1:4300         0.0.0.0:0              LISTENING</div><div class="line">  TCP    127.0.0.1:4301         0.0.0.0:0              LISTENING</div><div class="line">  TCP    172.25.208.32:139      0.0.0.0:0              LISTENING</div><div class="line">  TCP    172.25.208.32:50180    108.177.97.188:5228    ESTABLISHED</div><div class="line">  TCP    172.25.208.32:50234    115.182.41.173:80      ESTABLISHED</div><div class="line">  TCP    172.25.208.32:52330    223.252.199.6:6003     ESTABLISHED</div><div class="line">  TCP    172.25.208.32:53614    115.182.41.173:80      ESTABLISHED</div><div class="line">  TCP    172.25.208.32:54164    115.182.41.173:80      ESTABLISHED</div><div class="line">  TCP    172.25.208.32:54171    115.182.41.49:7080     ESTABLISHED</div><div class="line">  TCP    172.25.208.32:54526    14.17.52.183:80        CLOSE_WAIT</div><div class="line">  TCP    172.25.208.32:54745    115.182.41.180:80      ESTABLISHED</div><div class="line">  TCP    172.25.208.32:55290    101.201.173.115:80     ESTABLISHED</div><div class="line">  TCP    172.25.208.32:55329    101.201.173.115:80     ESTABLISHED</div><div class="line">  TCP    172.25.208.32:55398    106.120.188.49:80      TIME_WAIT</div><div class="line">  TCP    172.25.208.32:55401    183.36.108.223:443     TIME_WAIT</div><div class="line">  TCP    172.25.208.32:55411    180.163.21.35:80       ESTABLISHED</div><div class="line">  TCP    172.25.208.32:55412    64.233.189.138:443     SYN_SENT</div><div class="line">  TCP    172.25.208.32:55413    64.233.189.102:443     SYN_SENT</div><div class="line">  TCP    172.25.208.32:55414    64.233.189.102:443     SYN_SENT</div><div class="line">  TCP    172.25.208.32:55415    64.233.189.138:443     SYN_SENT</div><div class="line">  TCP    172.25.208.32:55416    59.111.160.195:80      ESTABLISHED</div><div class="line">  TCP    192.168.42.1:139       0.0.0.0:0              LISTENING</div><div class="line">  TCP    192.168.247.1:139      0.0.0.0:0              LISTENING</div><div class="line">  TCP    [::]:80                [::]:0                 LISTENING</div><div class="line">  TCP    [::]:135               [::]:0                 LISTENING</div><div class="line">  TCP    [::]:445               [::]:0                 LISTENING</div><div class="line">  TCP    [::]:1433              [::]:0                 LISTENING</div><div class="line">  TCP    [::]:49152             [::]:0                 LISTENING</div><div class="line">  TCP    [::]:49153             [::]:0                 LISTENING</div><div class="line">  TCP    [::]:49154             [::]:0                 LISTENING</div><div class="line">  TCP    [::]:49155             [::]:0                 LISTENING</div><div class="line">  TCP    [::]:49177             [::]:0                 LISTENING</div><div class="line">  TCP    [::1]:1434             [::]:0                 LISTENING</div><div class="line">  UDP    0.0.0.0:4018           *:*                    </div><div class="line">  UDP    0.0.0.0:5353           *:*                    </div><div class="line">  UDP    0.0.0.0:5353           *:*                    </div><div class="line">  UDP    0.0.0.0:5353           *:*                    </div><div class="line">  UDP    0.0.0.0:5353           *:*                    </div><div class="line">  UDP    0.0.0.0:5353           *:*                    </div><div class="line">  UDP    0.0.0.0:5353           *:*                    </div><div class="line">  UDP    0.0.0.0:5353           *:*                    </div><div class="line">  UDP    0.0.0.0:5355           *:*                    </div><div class="line">  UDP    0.0.0.0:50020          *:*                    </div><div class="line">  UDP    0.0.0.0:52451          *:*                    </div><div class="line">  UDP    0.0.0.0:54543          *:*                    </div><div class="line">  UDP    0.0.0.0:57313          *:*                    </div><div class="line">  UDP    0.0.0.0:60018          *:*                    </div><div class="line">  UDP    0.0.0.0:60019          *:*                    </div><div class="line">  UDP    0.0.0.0:60020          *:*                    </div><div class="line">  UDP    0.0.0.0:63636          *:*                    </div><div class="line">  UDP    0.0.0.0:65532          *:*                    </div><div class="line">  UDP    127.0.0.1:1900         *:*                    </div><div class="line">  UDP    127.0.0.1:53883        *:*                    </div><div class="line">  UDP    172.25.208.32:137      *:*                    </div><div class="line">  UDP    172.25.208.32:138      *:*                    </div><div class="line">  UDP    172.25.208.32:1900     *:*                    </div><div class="line">  UDP    172.25.208.32:53882    *:*                    </div><div class="line">  UDP    192.168.42.1:137       *:*                    </div><div class="line">  UDP    192.168.42.1:138       *:*                    </div><div class="line">  UDP    192.168.42.1:1900      *:*                    </div><div class="line">  UDP    192.168.247.1:137      *:*                    </div><div class="line">  UDP    192.168.247.1:138      *:*                    </div><div class="line">  UDP    192.168.247.1:1900     *:*                    </div><div class="line">  UDP    [::]:5353              *:*                    </div><div class="line">  UDP    [::]:5353              *:*                    </div><div class="line">  UDP    [::]:5353              *:*                    </div><div class="line">  UDP    [::]:5353              *:*                    </div><div class="line">  UDP    [::]:5355              *:*                    </div><div class="line">  UDP    [::1]:1900             *:*                    </div><div class="line">  UDP    [::1]:53881            *:*                    </div><div class="line">  UDP    [fe80::7134:d4df:12f4:7846%16]:546  *:*                    </div><div class="line">  UDP    [fe80::7134:d4df:12f4:7846%16]:546  *:*                    </div><div class="line">  UDP    [fe80::7134:d4df:12f4:7846%16]:1900  *:*                    </div><div class="line">  UDP    [fe80::95c6:d3f1:50e1:8ae4%15]:546  *:*                    </div><div class="line">  UDP    [fe80::95c6:d3f1:50e1:8ae4%15]:546  *:*                    </div><div class="line">  UDP    [fe80::95c6:d3f1:50e1:8ae4%15]:1900  *:*                    </div><div class="line">  UDP    [fe80::f053:ca43:6de1:5420%17]:546  *:*                    </div><div class="line">  UDP    [fe80::f053:ca43:6de1:5420%17]:546  *:*                    </div><div class="line">  UDP    [fe80::f053:ca43:6de1:5420%17]:1900  *:*                    </div><div class="line">  UDP    [fe80::f053:ca43:6de1:5420%17]:53880  *:*</div></pre></td></tr></table></figure>
+<h1 id="ifconfig-临时配置IP地址"><a href="#ifconfig-临时配置IP地址" class="headerlink" title="ifconfig 临时配置IP地址"></a>ifconfig 临时配置IP地址</h1><ul>
+<li><strong>ifconfig ：查看网络状态</strong></li>
+<li><strong>ifconfig eth0 192.168.254.200 netmask 255.255.255.0 ： 临时配置IP和子网掩码</strong></li>
+<li><strong>ifconfig 网卡名 down/up  ： 关闭、打开网卡</strong></li>
+<li><strong>ifconfig 网卡名 ipv4 ： 设置ipv4地址</strong></li>
+</ul>
+<h1 id="修改配置文件配置IP地址"><a href="#修改配置文件配置IP地址" class="headerlink" title="修改配置文件配置IP地址"></a>修改配置文件配置IP地址</h1><h2 id="etc-sysconfig-network-scripts-ifcfg-ens33"><a href="#etc-sysconfig-network-scripts-ifcfg-ens33" class="headerlink" title="/etc/sysconfig/network-scripts/ifcfg-ens33"></a>/etc/sysconfig/network-scripts/ifcfg-ens33</h2><p>网卡配置文件</p>
+<ul>
+<li><strong>DEVICE=eth0</strong> <strong>网卡设备名，需要和文件名中的网卡名一致</strong></li>
+<li><strong>BOOTPROTO=none(none、dhcp、dhcp)</strong> <strong>是否自动获取IP（如果是dhcp，下面的内容无需配置）</strong></li>
+<li><strong>HWADDR</strong>   <strong>MAC地址</strong></li>
+<li><strong>NM_CONTROLLED=yes(no)</strong> <strong>是否可以被Network Manager图形管理工具管理</strong></li>
+<li><strong>ONBOOT=yes(no)</strong>  <strong>是否随着网络服务启动(centos6以上默认是no)</strong></li>
+<li><strong>TYPE=Ethernet</strong> <strong>类型为以太网</strong></li>
+<li><strong>UUID</strong> <strong>唯一识别码</strong></li>
+<li><strong>IPADDR</strong> <strong>ip地址</strong></li>
+<li><strong>NETMASK</strong> <strong>子网掩码</strong></li>
+<li><strong>GATEWAY</strong> <strong>网关</strong></li>
+<li><strong>DNS1</strong> <strong>dns</strong></li>
+<li><strong>IPV6INIT=no</strong>  <strong>ipv6没有启动</strong></li>
+<li><strong>USERCTL=no</strong> <strong>不允许非root用户控制网卡</strong></li>
+</ul>
+<h2 id="etc-sysconfig-network-和-etc-hostname"><a href="#etc-sysconfig-network-和-etc-hostname" class="headerlink" title="/etc/sysconfig/network 和 /etc/hostname"></a>/etc/sysconfig/network 和 /etc/hostname</h2><p>主机名文件<br>CentOS7中主机名文件为hostname，内容是：<br><code>localhost.localdomain</code></p>
+<p>也可以通过hostname命令临时更改主机名<br>hostname newname 临时更改主机名为newname（不加参数表示查看当前主机名）</p>
+<h2 id="etc-resolv-conf"><a href="#etc-resolv-conf" class="headerlink" title="/etc/resolv.conf"></a>/etc/resolv.conf</h2><p>DNS 配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">nameserver 202.106.0.20(可以写多个)</div><div class="line">search localhost</div></pre></td></tr></table></figure>
+<h1 id="其他方式"><a href="#其他方式" class="headerlink" title="其他方式"></a>其他方式</h1><ul>
+<li>图形界面</li>
+<li>setup工具</li>
+</ul>
+<h1 id="虚拟机网络参数配置"><a href="#虚拟机网络参数配置" class="headerlink" title="虚拟机网络参数配置"></a>虚拟机网络参数配置</h1><ul>
+<li>将 /etc/sysconfig/network-scripts/文件中的onboot改为yes表示开机自启网络。</li>
+<li>将BOOTPROTO设置为dhcp，如果是none则需要手动设置ip地址，设置的方法是在文件尾部加上IPADDR和NETMASK属性表示ip地址和子网掩码</li>
+<li>然后用service network restart 重启网络即可生效</li>
+</ul>
+<p>虚拟机中的连接方式有三种：</p>
+<ul>
+<li>桥接：虚拟机会被当成一个真正的电脑，占用局域网中的一个ip地址，</li>
+<li>NAT：可以上网，可以连通主机</li>
+<li>仅主机模式：只能连通主机，不能上网</li>
+</ul>
+<p>在校园网中使用桥接会获得一个校园网的ip，但是该ip没有登录，所以不能上网。因此在校园网中使用NAT便可以上网，此时的ip为(192.168.42.132),与本机的ip并不在一个网段中(172.25.233.40)<br>service network start/stop/restart 开启关闭重启网络服务</p>
 
     
 
@@ -452,7 +535,7 @@ class wrong3 extends Exception{}
     <!-- 使用 changyan -->
     <div id="changyan-comment">
         <!--PC和WAP自适应版-->
-<div id="SOHUCS" sid="2016/11/16/异常/"  ></div>
+<div id="SOHUCS" sid="2017/07/24/Linux-网络管理（7层结构、netstat、ifconfig）/"  ></div>
 <script type="text/javascript">
 (function(){
 var appid = 'cysVH2p6S';
@@ -481,21 +564,13 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2016/11/30/IO流/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2016/09/11/linux常用命令/" id="post_nav-older" class="next-content">
+        <a href="/2017/07/22/JSP-JSTL-import、redirect、url处理、常用函数/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
