@@ -10,7 +10,7 @@
     
     <title>
         
-            CSS_列表 | 
+            Linux---权限管理（chmod、umask） | 
         
         Twilight&#39;s Blog
     </title>
@@ -36,7 +36,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="wangchao">
     <meta name="description" content="null">
-    <meta name="keywords" content="null,CSS">
+    <meta name="keywords" content="null,Linux">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
@@ -62,9 +62,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://twilight.net.cn">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="CSS_列表 | Twilight&#39;s Blog">
+    <meta property="og:title" content="Linux---权限管理（chmod、umask） | Twilight&#39;s Blog">
     <meta property="og:description" content="null">
-    <meta property="og:article:tag" content="CSS"> 
+    <meta property="og:article:tag" content="Linux"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -246,7 +246,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#list-style-type"><span class="post-toc-number">1.</span> <span class="post-toc-text">list-style-type</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#list-style-position"><span class="post-toc-number">2.</span> <span class="post-toc-text">list-style-position</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#list-style-image"><span class="post-toc-number">3.</span> <span class="post-toc-text">list-style-image</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#list-style"><span class="post-toc-number">4.</span> <span class="post-toc-text">list-style</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#chmod-命令"><span class="post-toc-number">1.</span> <span class="post-toc-text">chmod 命令</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#权限对文件的作用"><span class="post-toc-number">2.</span> <span class="post-toc-text">权限对文件的作用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#权限对目录的作用"><span class="post-toc-number">3.</span> <span class="post-toc-text">权限对目录的作用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#chmod"><span class="post-toc-number">4.</span> <span class="post-toc-text">chmod</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#文件的默认权限"><span class="post-toc-number">5.</span> <span class="post-toc-text">文件的默认权限</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -283,7 +283,7 @@
         
     
             <p class="article-headline-p">
-                CSS_列表
+                Linux---权限管理（chmod、umask）
             </p>
         </div>
 
@@ -302,7 +302,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>wangchao</strong>
-        <span>1月 25, 2017</span>
+        <span>7月 25, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -326,7 +326,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/CSS/">CSS</a>
+        <a class="post_tag-link" href="/tags/Linux/">Linux</a>
     </ul>
     
 
@@ -340,7 +340,7 @@
     <!-- Leancloud Views -->
         <a class="post_share-link" href="#">
             <li class="mdl-menu__item">
-                <span id="/2017/01/25/CSS-列表/" class="leancloud-views_num" data-flag-title="CSS_列表">
+                <span id="/2017/07/25/Linux-权限管理（chmod、umask）/" class="leancloud-views_num" data-flag-title="Linux---权限管理（chmod、umask）">
      &nbsp;浏览量
 </span>
 
@@ -352,7 +352,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=CSS_列表&url=http://twilight.net.cn//2017/01/25/CSS-列表/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Linux---权限管理（chmod、umask）&url=http://twilight.net.cn//2017/07/25/Linux-权限管理（chmod、umask）/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -361,7 +361,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=CSS_列表&url=http://twilight.net.cn//2017/01/25/CSS-列表/index.html&via=wangchao" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Linux---权限管理（chmod、umask）&url=http://twilight.net.cn//2017/07/25/Linux-权限管理（chmod、umask）/index.html&via=wangchao" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -370,7 +370,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2017/01/25/CSS-列表/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2017/07/25/Linux-权限管理（chmod、umask）/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -379,7 +379,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2017/01/25/CSS-列表/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2017/07/25/Linux-权限管理（chmod、umask）/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -391,7 +391,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=CSS_列表&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2017/01/25/CSS-列表/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=Linux---权限管理（chmod、umask）&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2017/07/25/Linux-权限管理（chmod、umask）/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -409,24 +409,74 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="list-style-type"><a href="#list-style-type" class="headerlink" title="list-style-type"></a>list-style-type</h2><p>改变列表项的标志。以下的所有的标志类型：</p>
-<p>none 无标记<br>disc 实心圆，默认<br>circle 空心圆<br>square 方块<br>decimal 数字 <a id="more"></a><br>decimal-leading-zero 0开头的数字标记。(01, 02, 03, 等。)<br>lower-roman 小写罗马数字(i, ii, iii, iv, v, 等。)<br>upper-roman 大写罗马数字(I, II, III, IV, V, 等。)<br>lower-alpha 小写英文字母(a, b, c, d, e, 等。)<br>upper-alpha 大写英文字母(A, B, C, D, E, 等。)<br>lower-greek 小写希腊字母(alpha, beta, gamma, 等。)<br>lower-latin 小写拉丁字母(a, b, c, d, e, 等。)<br>upper-latin 大写拉丁字母(A, B, C, D, E, 等。)<br>hebrew 传统的希伯来编号方式<br>armenian 传统的亚美尼亚编号方式<br>georgian 传统的乔治亚编号方式(an, ban, gan, 等。)<br>cjk-ideographic 简单的表意数字<br>hiragana 标记是：a, i, u, e, o, ka, ki, 等。（日文片假名）<br>katakana 标记是：A, I, U, E, O, KA, KI, 等。（日文片假名）<br>hiragana-iroha 标记是：i, ro, ha, ni, ho, he, to, 等。（日文片假名）<br>katakana-iroha 标记是：I, RO, HA, NI, HO, HE, TO, 等。（日文片假名） </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">			.disc&#123;</div><div class="line">				list-style-type:disc;</div><div class="line">			&#125;</div><div class="line">			.circle&#123;</div><div class="line">				list-style-type:circle;</div><div class="line">			&#125;</div><div class="line">			.square&#123;</div><div class="line">				list-style-type:square;</div><div class="line">			&#125;</div><div class="line">			.decimal&#123;</div><div class="line">				list-style-type:decimal;</div><div class="line">			&#125;</div><div class="line">			.lower-roman&#123;</div><div class="line">				list-style-type:lower-roman;</div><div class="line">			&#125;</div><div class="line">			.lower-alpha&#123;</div><div class="line">				list-style-type:lower-alpha;</div><div class="line">			&#125;</div><div class="line">			.lower-greek&#123;</div><div class="line">				list-style-type:lower-greek;</div><div class="line">			&#125;</div><div class="line">			.lower-latin&#123;</div><div class="line">				list-style-type:lower-latin;</div><div class="line">			&#125;</div><div class="line">		<span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"disc"</span>&gt;</span>disc 实心圆，默认<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"circle"</span>&gt;</span>circle 空心圆<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"square"</span>&gt;</span>square 方块<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"decimal"</span>&gt;</span>decimal 数字<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"lower-roman"</span>&gt;</span>lower-roman 小写罗马数字(i, ii, iii, iv, v, 等。) <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"lower-alpha"</span>&gt;</span>lower-alpha 小写英文字母(a, b, c, d, e, 等。)  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"lower-greek"</span>&gt;</span>lower-greek 小写希腊字母(alpha, beta, gamma, 等。) <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"lower-latin"</span>&gt;</span>lower-latin 小写拉丁字母(a, b, c, d, e, 等。) <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<p><img src="http://i1.piimg.com/584041/2cb9d19a043ce401.png" alt=""></p>
-<h2 id="list-style-position"><a href="#list-style-position" class="headerlink" title="list-style-position"></a>list-style-position</h2><p>inside 列表项目标记放置在文本以内，且环绕文本根据标记对齐。<br>outside <strong>默认值</strong>。保持标记位于文本的左侧。列表项目标记放置在文本以外，且环绕文本不根据标记对齐。 </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">			.inside&#123;</div><div class="line">				list-style-position:inside;</div><div class="line">			&#125;</div><div class="line">			.outside&#123;</div><div class="line">				list-style-position:outside;</div><div class="line">			&#125;</div><div class="line">		<span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"inside"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span>inside inside inside<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span>inside inside inside<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span>inside inside inside<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"></div><div class="line">	<span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span>normal normal normal<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span>normal normal normal<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span>normal normal normal<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"></div><div class="line">	<span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"outside"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span>outside outside outside<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span>outside outside outside<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span>outside outside outside<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"></div><div class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<p><img src="http://i1.piimg.com/584041/cb0641d68a8659ce.png" alt="列表位置"></p>
-<h2 id="list-style-image"><a href="#list-style-image" class="headerlink" title="list-style-image"></a>list-style-image</h2><p>以图片作为标志</p>
+        <h1 id="chmod-命令"><a href="#chmod-命令" class="headerlink" title="chmod 命令"></a>chmod 命令</h1><p><strong>chmod [选项] 模式 文件名</strong><br>选项： </p>
+<ul>
+<li>-R 递归</li>
+</ul>
+<p>模式：</p>
+<ul>
+<li>[ugoa][+-=][rwx] 对指定的用户增加和删除权限</li>
+<li><p>[mode=421] 用数字表示权限</p>
+</li>
+<li><p>-u 所有者</p>
+</li>
+<li>-g 所属组</li>
+<li>-o 其他人</li>
+<li>-a 所有人</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">chmod u+x testdata 给所有者添加执行权限</div><div class="line">chmod u-x testdata 删除所有者的执行权限</div><div class="line">chmod a+x testdata 给所有用户添加执行权限</div><div class="line">chmod u+x,o+w testdata 不同用户之间用逗号隔开</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">chmod u=rwx testdata 赋予所有者rwx</div><div class="line">chmod u=rw- testdata 所有者rw-</div><div class="line">chmod u=r testdata 所有者r--</div><div class="line">chmod u=rw,g=r,o=r testdata 所有者rw-,所有组r--,其他人r--</div></pre></td></tr></table></figure>
+<p>权限数字表示：</p>
 <blockquote>
-<p>list-style-image:url(url);</p>
+<p>r–4<br>w–2<br>x–1 </p>
 </blockquote>
-<p>none 无<br>inherit 继承</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">			.image&#123;</div><div class="line">				list-style-image:url("素材/五角星.png");</div><div class="line">			&#125;</div><div class="line">		<span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line">	<span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"image"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span>图片 图片 图片 <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span>图片 图片 图片 <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span>图片 图片 图片 <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"></div><div class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<p><img src="http://i1.piimg.com/584041/fc9fca8d124f7aaa.png" alt="图片"></p>
-<h2 id="list-style"><a href="#list-style" class="headerlink" title="list-style"></a>list-style</h2><p>简写，将所有属性按照一定顺序写在list-style后，可以不设置某个值，未设置的值将采用默认值。</p>
-<blockquote>
-<p>li {list-style : url(example.gif) square inside}</p>
-</blockquote>
+<p>常用权限</p>
+<ul>
+<li>777–rwxrwxrwx</li>
+<li>755–rwxr-xr-x</li>
+<li>644–rw-r–r–</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod 777 testdata</div></pre></td></tr></table></figure>
+<h1 id="权限对文件的作用"><a href="#权限对文件的作用" class="headerlink" title="权限对文件的作用"></a>权限对文件的作用</h1><ul>
+<li>r：读取文件内容（cat more head tail）</li>
+<li>w：编辑、新增、修改文件内容（vi echo）</li>
+<li>x：可执行</li>
+</ul>
+<p>有写权限并不能删除文件，因为文件的信息保存在目录中，还需要目录也有相应的权限。</p>
+<h1 id="权限对目录的作用"><a href="#权限对目录的作用" class="headerlink" title="权限对目录的作用"></a>权限对目录的作用</h1><ul>
+<li>r:可以查看目录下的文件名（ls）</li>
+<li>w：具有修改目录结构的权限。如新建文件和目录，删除目录下的文件和目录，重命名此目录下的文件和目录，剪切（touch rm mv cp）</li>
+<li><p>x：可以进入目录（cd）</p>
+</li>
+<li><p>文件最高权限是：x</p>
+</li>
+<li>目录的最高权限是：w（5，7）</li>
+</ul>
+<h1 id="chmod"><a href="#chmod" class="headerlink" title="chmod"></a>chmod</h1><p><strong> chown 所有者[:|.]所属组 </strong></p>
+<p>如果需要让某个用户具有某个文件的所有权限，可以用chown将文件的所有者改为该用户，然后给文件的所有者赋予最高权限即可。之前的o是对于所有其他用户赋予的权限，不安全。</p>
+<p>例如，abc文件的属性如下，只有root用户可以修改文件，如果我现在想让twilight用户对这个文件具有修改权限。可以把文件的所有者改为twilight<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-rw-r--r--. 1 root root 12 7月  25 09:09 abc</div></pre></td></tr></table></figure></p>
+<p>更改文件所有者，此时twilight用户已经可以修改文件内容了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">chown twilight abc</div><div class="line">// 查看文件属性</div><div class="line">[twilight@localhost test]$ ll</div><div class="line">总用量 4</div><div class="line">-rw-r--r--. 1 twilight root 12 7月  25 09:09 abc</div></pre></td></tr></table></figure></p>
+<p>chgrp 将文件赋予用户组，用法与chown类似<br><strong>chgrp 组名 文件名</strong></p>
+<h1 id="文件的默认权限"><a href="#文件的默认权限" class="headerlink" title="文件的默认权限"></a>文件的默认权限</h1><p><strong>umask 查看默认权限</strong><br><strong>umask vlaue 暂时设置umask（root默认是0022）</strong></p>
+<ul>
+<li>0 文件特殊权限</li>
+<li><p>022 文件默认权限</p>
+</li>
+<li><p>文件默认不能有执行权限，必须由手工赋予执行权限</p>
+</li>
+<li>文件的默认权限最大为666</li>
+<li>新建文件的默认权限，为666减umask值</li>
+</ul>
+<ul>
+<li>目录默认最大权限为777 </li>
+<li>建立文件之后的默认权限为777减umask值</li>
+</ul>
+<p>关于umask的计算方式，网上的说法很多，简单地说,就是从最大权限中拿走对应的权限。如果umask为022，那么新建一个文件时<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">file:  110 110 110</div><div class="line">umask: 000 010 010</div><div class="line">result:110 100 100</div></pre></td></tr></table></figure></p>
+<p>如果umask为033，那么结果还是644：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">file:  110 110 110</div><div class="line">umask: 000 011 011</div><div class="line">result:110 100 100</div></pre></td></tr></table></figure></p>
+<p>永久修改umask 需要修改文件</p>
+<ul>
+<li>vi /etc/profile</li>
+</ul>
 
     
 
@@ -444,7 +494,7 @@
     <!-- 使用 changyan -->
     <div id="changyan-comment">
         <!--PC和WAP自适应版-->
-<div id="SOHUCS" sid="2017/01/25/CSS-列表/"  ></div>
+<div id="SOHUCS" sid="2017/07/25/Linux-权限管理（chmod、umask）/"  ></div>
 <script type="text/javascript">
 (function(){
 var appid = 'cysVH2p6S';
@@ -473,21 +523,13 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/01/31/CSS-定位/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/01/25/CSS-边框样式/" id="post_nav-older" class="next-content">
+        <a href="/2017/07/25/Linux-远程登陆Linux、互传文件/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

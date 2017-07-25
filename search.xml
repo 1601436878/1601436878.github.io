@@ -3,6 +3,94 @@
   
     
     <entry>
+      <title><![CDATA[Linux---权限管理（chmod、umask）]]></title>
+      <url>/2017/07/25/Linux-%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%EF%BC%88chmod%E3%80%81umask%EF%BC%89/</url>
+      <content type="html"><![CDATA[<h1 id="chmod-命令"><a href="#chmod-命令" class="headerlink" title="chmod 命令"></a>chmod 命令</h1><p><strong>chmod [选项] 模式 文件名</strong><br>选项： </p>
+<ul>
+<li>-R 递归</li>
+</ul>
+<p>模式：</p>
+<ul>
+<li>[ugoa][+-=][rwx] 对指定的用户增加和删除权限</li>
+<li><p>[mode=421] 用数字表示权限</p>
+</li>
+<li><p>-u 所有者</p>
+</li>
+<li>-g 所属组</li>
+<li>-o 其他人</li>
+<li>-a 所有人</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">chmod u+x testdata 给所有者添加执行权限</div><div class="line">chmod u-x testdata 删除所有者的执行权限</div><div class="line">chmod a+x testdata 给所有用户添加执行权限</div><div class="line">chmod u+x,o+w testdata 不同用户之间用逗号隔开</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">chmod u=rwx testdata 赋予所有者rwx</div><div class="line">chmod u=rw- testdata 所有者rw-</div><div class="line">chmod u=r testdata 所有者r--</div><div class="line">chmod u=rw,g=r,o=r testdata 所有者rw-,所有组r--,其他人r--</div></pre></td></tr></table></figure>
+<p>权限数字表示：</p>
+<blockquote>
+<p>r–4<br>w–2<br>x–1 </p>
+</blockquote>
+<p>常用权限</p>
+<ul>
+<li>777–rwxrwxrwx</li>
+<li>755–rwxr-xr-x</li>
+<li>644–rw-r–r–</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod 777 testdata</div></pre></td></tr></table></figure>
+<h1 id="权限对文件的作用"><a href="#权限对文件的作用" class="headerlink" title="权限对文件的作用"></a>权限对文件的作用</h1><ul>
+<li>r：读取文件内容（cat more head tail）</li>
+<li>w：编辑、新增、修改文件内容（vi echo）</li>
+<li>x：可执行</li>
+</ul>
+<p>有写权限并不能删除文件，因为文件的信息保存在目录中，还需要目录也有相应的权限。</p>
+<h1 id="权限对目录的作用"><a href="#权限对目录的作用" class="headerlink" title="权限对目录的作用"></a>权限对目录的作用</h1><ul>
+<li>r:可以查看目录下的文件名（ls）</li>
+<li>w：具有修改目录结构的权限。如新建文件和目录，删除目录下的文件和目录，重命名此目录下的文件和目录，剪切（touch rm mv cp）</li>
+<li><p>x：可以进入目录（cd）</p>
+</li>
+<li><p>文件最高权限是：x</p>
+</li>
+<li>目录的最高权限是：w（5，7）</li>
+</ul>
+<h1 id="chmod"><a href="#chmod" class="headerlink" title="chmod"></a>chmod</h1><p><strong> chown 所有者[:|.]所属组 </strong></p>
+<p>如果需要让某个用户具有某个文件的所有权限，可以用chown将文件的所有者改为该用户，然后给文件的所有者赋予最高权限即可。之前的o是对于所有其他用户赋予的权限，不安全。</p>
+<p>例如，abc文件的属性如下，只有root用户可以修改文件，如果我现在想让twilight用户对这个文件具有修改权限。可以把文件的所有者改为twilight<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-rw-r--r--. 1 root root 12 7月  25 09:09 abc</div></pre></td></tr></table></figure></p>
+<p>更改文件所有者，此时twilight用户已经可以修改文件内容了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">chown twilight abc</div><div class="line">// 查看文件属性</div><div class="line">[twilight@localhost test]$ ll</div><div class="line">总用量 4</div><div class="line">-rw-r--r--. 1 twilight root 12 7月  25 09:09 abc</div></pre></td></tr></table></figure></p>
+<p>chgrp 将文件赋予用户组，用法与chown类似<br><strong>chgrp 组名 文件名</strong></p>
+<h1 id="文件的默认权限"><a href="#文件的默认权限" class="headerlink" title="文件的默认权限"></a>文件的默认权限</h1><p><strong>umask 查看默认权限</strong><br><strong>umask vlaue 暂时设置umask（root默认是0022）</strong></p>
+<ul>
+<li>0 文件特殊权限</li>
+<li><p>022 文件默认权限</p>
+</li>
+<li><p>文件默认不能有执行权限，必须由手工赋予执行权限</p>
+</li>
+<li>文件的默认权限最大为666</li>
+<li>新建文件的默认权限，为666减umask值</li>
+</ul>
+<ul>
+<li>目录默认最大权限为777 </li>
+<li>建立文件之后的默认权限为777减umask值</li>
+</ul>
+<p>关于umask的计算方式，网上的说法很多，简单地说,就是从最大权限中拿走对应的权限。如果umask为022，那么新建一个文件时<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">file:  110 110 110</div><div class="line">umask: 000 010 010</div><div class="line">result:110 100 100</div></pre></td></tr></table></figure></p>
+<p>如果umask为033，那么结果还是644：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">file:  110 110 110</div><div class="line">umask: 000 011 011</div><div class="line">result:110 100 100</div></pre></td></tr></table></figure></p>
+<p>永久修改umask 需要修改文件</p>
+<ul>
+<li>vi /etc/profile</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Linux---远程登陆Linux、互传文件]]></title>
       <url>/2017/07/25/Linux-%E8%BF%9C%E7%A8%8B%E7%99%BB%E9%99%86Linux%E3%80%81%E4%BA%92%E4%BC%A0%E6%96%87%E4%BB%B6/</url>
       <content type="html"><![CDATA[<h1 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h1><p>Linux 与 Linux之间最简单和安全的通信方式</p>
