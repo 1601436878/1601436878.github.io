@@ -441,6 +441,8 @@
 </li>
 </ul>
 <h1 id="telnet"><a href="#telnet" class="headerlink" title="telnet"></a>telnet</h1><p><strong>telnet ip port</strong><br>明文传递数据，不安全，已弃用。现在可以用来探测对方的端口是否开启</p>
+<p>windows也有telnet协议，只不过，默认是关闭的，使用telnet探测虚拟机的22端口，会进入一个空白的画面。虽然不能控制虚拟机，但是可以说明22端口是可用的。如果端口不可用会提示链接失败。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">telnet 192.168.226.128 22</div></pre></td></tr></table></figure>
 <h1 id="traceroute"><a href="#traceroute" class="headerlink" title="traceroute"></a>traceroute</h1><p> <strong>traceroute ip（域名）</strong><br>路由跟踪命令</p>
 <ul>
 <li>-n 使用ip，速度更快</li>
