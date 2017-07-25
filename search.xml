@@ -3,6 +3,49 @@
   
     
     <entry>
+      <title><![CDATA[Linux---远程登陆Linux、互传文件]]></title>
+      <url>/2017/07/25/Linux-%E8%BF%9C%E7%A8%8B%E7%99%BB%E9%99%86Linux%E3%80%81%E4%BA%92%E4%BC%A0%E6%96%87%E4%BB%B6/</url>
+      <content type="html"><![CDATA[<h1 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h1><p>Linux 与 Linux之间最简单和安全的通信方式</p>
+<ul>
+<li>远程登陆Linux服务器：<br><strong> ssh 用户名@ip</strong></li>
+</ul>
+<p>第一次使用时需要下载公钥，输入yes即可，之后输入对应账号的密码即可登陆到Linux：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ ssh root@192.168.226.128</div><div class="line">The authenticity of host &apos;192.168.226.128 (192.168.226.128)&apos; can&apos;t be established.</div><div class="line">ECDSA key fingerprint is SHA256:dOe26KCDHHBXH9pUKk70HlTeAN8ItC+Z8fnUvs9Amhs.</div><div class="line">Are you sure you want to continue connecting (yes/no)? yes</div><div class="line"></div><div class="line">Warning: Permanently added &apos;192.168.226.128&apos; (ECDSA) to the list of known hosts.</div><div class="line">root@192.168.226.128&apos;s password:</div><div class="line">Last login: Tue Jul 25 08:22:54 2017 from 192.168.226.1</div></pre></td></tr></table></figure></p>
+<ul>
+<li>下载文件(-r表示目录)：<br><strong>scp [-r] 用户名@ip:文件路径 本地路径</strong></li>
+</ul>
+<p>将远程的文件下载到本地的D盘，因为没有登陆，所以需要输入用户密码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ scp root@192.168.226.128:/root/Hexo.md /D/</div><div class="line">root@192.168.226.128&apos;s password:</div><div class="line">Hexo.md</div></pre></td></tr></table></figure></p>
+<ul>
+<li>上传文件(-r表示目录)：<br><strong>scp [-r] 本地文件 用户名@ip:上传路径</strong></li>
+</ul>
+<p>上传一个目录到Linux，要加参数-r<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ scp -r test root@192.168.226.128:/root</div><div class="line">root@192.168.226.128&apos;s password:</div><div class="line">abc</div></pre></td></tr></table></figure></p>
+<p>意外的发现git的Windows客户端完全可以当成一个Linux主机来使用，ssh需要两台Linux主机，而我只有一个虚拟机。而且git本身就是用ssh协议的，因为有git我才能尝试使用上面几个命令。  &lt;(▰˘◡˘▰)&gt; </p>
+<h1 id="Xshell"><a href="#Xshell" class="headerlink" title="Xshell"></a>Xshell</h1><p>一款远程Linux登陆工具，可以在Windows上登陆Linux，比SecureCRT更强大，而且免费，</p>
+<p>天上当前会话的名称，目的主机的ip、端口号采用默认的22端口，然后确定即可。</p>
+<p><img src="http://otbrtx8bw.bkt.clouddn.com/xshell-show.png" alt="xshell"></p>
+<h1 id="winSCP"><a href="#winSCP" class="headerlink" title="winSCP"></a>winSCP</h1><p>非常好用的工具，很强大，可以在windows和Linux之间互传文件。</p>
+<p>首先选择SFTP协议，填上目的主机的ip地址，端口号采取默认的22端口，然后填写用户名和密码</p>
+<p><img src="http://otbrtx8bw.bkt.clouddn.com/winSCP-login.png" alt="Login"></p>
+<p>然后可以看到左边是window的目录结构，右边是Linux的目录结构，要复制文件只需要拖拽文件到另外一边即可，很方便</p>
+<p><img src="http://otbrtx8bw.bkt.clouddn.com/winSCP-file.png" alt="file"></p>
+<p>还有一款软件叫SecureCRT，听说是收费的，而且功能不及Xshell，所以已弃用。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[linux---网络管理（常用命令）]]></title>
       <url>/2017/07/24/linux-%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%EF%BC%88%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%EF%BC%89/</url>
       <content type="html"><![CDATA[<h1 id="网络查看"><a href="#网络查看" class="headerlink" title="网络查看"></a>网络查看</h1><ul>
@@ -3670,38 +3713,6 @@ unalias                            临时删除别名
     </entry>
     
     <entry>
-      <title><![CDATA[不同编码类型的总结]]></title>
-      <url>/2016/09/11/%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%80%BB%E7%BB%93/</url>
-      <content type="html"><![CDATA[<h2 id="1-ASCII"><a href="#1-ASCII" class="headerlink" title="1.ASCII"></a>1.ASCII</h2><p>计算机一开始在美国使用，字符编码也只包括英文字母。ANSCII编码由一个字节表示所有符号。一个字节可以表示的所有可能是256（2的8次方）种，对于美国人来说，26个英文字母，加上常用的符号，也只是用了127个。如果大家都用英文，那这套编码完全够用。<a id="more"></a>但是不同国家的文字不同，如果加上其他国家的语言符号，那一个字节是不够的，之后ASCII做出了改进，将256种情况剩余的可能用来表示其他字符。一直排到了第255种可能，从128到255表示的字符成为“扩展字符集”，然而，新增的字符并不能解决所有问题。<br><img src="http://i.imgur.com/Ks9A740.jpg" alt=""></p>
-<h2 id="2-GB2312"><a href="#2-GB2312" class="headerlink" title="2.GB2312"></a>2.GB2312</h2><p>计算机开始在我国普及时，ASCII中已经没有可以利用的字节状态来表示汉字。于是，我们将扩展字符集删除，将127后的字符状态重新编码。小于127的字符状态的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节称之为高字节，后面一个字节称之为低字节，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，我们还把数学符号、罗马希腊的字母、日文的假名们都编进去了，连在 ASCII 里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的”全角”字符，而原来在127号以下的那些就叫”半角”字符了。 </p>
-<p>后来GB2312也无法满足人们的需要，随后出现了GBK标准，再后来，还是不够用，于是出现了GB18030。这个标准几乎可以表示所有的中文字符，此标准在2006年5月1日被作为在中国境内所有软件产品支持的强制规格。 </p>
-<h2 id="3-Unicode"><a href="#3-Unicode" class="headerlink" title="3.Unicode"></a>3.Unicode</h2><p>不只是我国，很多国家都制定了相应的符合本国文化的字符编码标准。这些标准再本国内可以正常使用，但是如果是不同国家之间通过文本文件的交流，就很有可能导致乱码。这时，国际标准化组织（osi）出现了，OSI致力于将全世界所有的字符用统一的标准编码，消除不同国家之间交流的障碍。</p>
-<p>OSI将所有字符用两个字节表示，包括ANCSI中的前127个字符，所以对于钱127个字符来说，本来8位就可以表示的字符现在用16位来表示，这其实是一种资源的浪费。</p>
-<h2 id="4-UTF-8"><a href="#4-UTF-8" class="headerlink" title="4.UTF-8"></a>4.UTF-8</h2><p>可以看出，Unicode虽然是一个很好的字符编码方式，但由于所有字符都用两个字节表示导致的资源的浪费，促使了UTF-8的出现，UTF-8编码中的第一个字节仍与ASCII兼容，这使得原来处理ASCII字符的软件无须或只须做少部份修改，即可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。互联网工程工作小组（IETF）要求所有互联网协议都必须支持UTF-8编码。<br>UTF-8有如下特点： </p>
-<blockquote>
-<p><1>  前128个US-ASCII字符只需一个字节编码（与ANCSI相同）。 </1></p>
-<p><2>  带有附加符号的拉丁文、希腊文、西里尔字母、亚美尼亚语、希伯来文、阿拉伯文、叙利亚文及它拿字母则需要二个字节编码。 </2></p>
-<p><3>  其他基本多文种平面（BMP）中的字符（这包含了大部分常用字）使用三个字节编码。 </3></p>
-<p><4>  其他极少使用的Unicode辅助平面的字符使用四字节编码。 </4></p>
-</blockquote>
-]]></content>
-      
-        <categories>
-            
-            <category> 技术 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 技术 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[日期类]]></title>
       <url>/2016/09/11/%E6%97%A5%E6%9C%9F%E7%B1%BB/</url>
       <content type="html"><![CDATA[<h4 id="Date类"><a href="#Date类" class="headerlink" title="Date类"></a>Date类</h4><p>从1970.1.1.0点开始到某个时刻的毫秒数，类型是long<br>1970年之前用负数表示</p>
@@ -3739,6 +3750,38 @@ Date d2 = df2.parse(str2);
         <tags>
             
             <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[不同编码类型的总结]]></title>
+      <url>/2016/09/11/%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%80%BB%E7%BB%93/</url>
+      <content type="html"><![CDATA[<h2 id="1-ASCII"><a href="#1-ASCII" class="headerlink" title="1.ASCII"></a>1.ASCII</h2><p>计算机一开始在美国使用，字符编码也只包括英文字母。ANSCII编码由一个字节表示所有符号。一个字节可以表示的所有可能是256（2的8次方）种，对于美国人来说，26个英文字母，加上常用的符号，也只是用了127个。如果大家都用英文，那这套编码完全够用。<a id="more"></a>但是不同国家的文字不同，如果加上其他国家的语言符号，那一个字节是不够的，之后ASCII做出了改进，将256种情况剩余的可能用来表示其他字符。一直排到了第255种可能，从128到255表示的字符成为“扩展字符集”，然而，新增的字符并不能解决所有问题。<br><img src="http://i.imgur.com/Ks9A740.jpg" alt=""></p>
+<h2 id="2-GB2312"><a href="#2-GB2312" class="headerlink" title="2.GB2312"></a>2.GB2312</h2><p>计算机开始在我国普及时，ASCII中已经没有可以利用的字节状态来表示汉字。于是，我们将扩展字符集删除，将127后的字符状态重新编码。小于127的字符状态的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节称之为高字节，后面一个字节称之为低字节，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，我们还把数学符号、罗马希腊的字母、日文的假名们都编进去了，连在 ASCII 里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的”全角”字符，而原来在127号以下的那些就叫”半角”字符了。 </p>
+<p>后来GB2312也无法满足人们的需要，随后出现了GBK标准，再后来，还是不够用，于是出现了GB18030。这个标准几乎可以表示所有的中文字符，此标准在2006年5月1日被作为在中国境内所有软件产品支持的强制规格。 </p>
+<h2 id="3-Unicode"><a href="#3-Unicode" class="headerlink" title="3.Unicode"></a>3.Unicode</h2><p>不只是我国，很多国家都制定了相应的符合本国文化的字符编码标准。这些标准再本国内可以正常使用，但是如果是不同国家之间通过文本文件的交流，就很有可能导致乱码。这时，国际标准化组织（osi）出现了，OSI致力于将全世界所有的字符用统一的标准编码，消除不同国家之间交流的障碍。</p>
+<p>OSI将所有字符用两个字节表示，包括ANCSI中的前127个字符，所以对于钱127个字符来说，本来8位就可以表示的字符现在用16位来表示，这其实是一种资源的浪费。</p>
+<h2 id="4-UTF-8"><a href="#4-UTF-8" class="headerlink" title="4.UTF-8"></a>4.UTF-8</h2><p>可以看出，Unicode虽然是一个很好的字符编码方式，但由于所有字符都用两个字节表示导致的资源的浪费，促使了UTF-8的出现，UTF-8编码中的第一个字节仍与ASCII兼容，这使得原来处理ASCII字符的软件无须或只须做少部份修改，即可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。互联网工程工作小组（IETF）要求所有互联网协议都必须支持UTF-8编码。<br>UTF-8有如下特点： </p>
+<blockquote>
+<p><1>  前128个US-ASCII字符只需一个字节编码（与ANCSI相同）。 </1></p>
+<p><2>  带有附加符号的拉丁文、希腊文、西里尔字母、亚美尼亚语、希伯来文、阿拉伯文、叙利亚文及它拿字母则需要二个字节编码。 </2></p>
+<p><3>  其他基本多文种平面（BMP）中的字符（这包含了大部分常用字）使用三个字节编码。 </3></p>
+<p><4>  其他极少使用的Unicode辅助平面的字符使用四字节编码。 </4></p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 技术 </tag>
             
         </tags>
         

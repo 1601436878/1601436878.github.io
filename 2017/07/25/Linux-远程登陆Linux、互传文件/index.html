@@ -10,6 +10,8 @@
     
     <title>
         
+            Linux---远程登陆Linux、互传文件 | 
+        
         Twilight&#39;s Blog
     </title>
 
@@ -34,7 +36,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="wangchao">
     <meta name="description" content="null">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="null,Linux">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
@@ -60,9 +62,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://twilight.net.cn">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Twilight&#39;s Blog">
+    <meta property="og:title" content="Linux---远程登陆Linux、互传文件 | Twilight&#39;s Blog">
     <meta property="og:description" content="null">
-    
+    <meta property="og:article:tag" content="Linux"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -218,586 +220,283 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
     
-
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50 lazy" data-original="http://otbrtx8bw.bkt.clouddn.com/hexo_title823.jpg">
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/07/18/JSP-隐式对象、pageContext、错误处理/">JSP---隐式对象、pageContext、错误处理</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            简介隐式对象是_j...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/07/18/JSP-隐式对象、pageContext、错误处理/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="wangchao's avatar">
-            </div>
-            <div>
-                <strong>wangchao</strong>
-                <span>7月 18, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/JSP/">JSP</a>
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
             </span>
-
-            
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span id = "sourceId::2017/07/18/JSP-隐式对象、pageContext、错误处理/" class = "cy_cmt_count" ></span>条评论
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
+        </a>
     </div>
-</div>
+    -->
 
-            
-            
-        
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SSH"><span class="post-toc-number">1.</span> <span class="post-toc-text">SSH</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Xshell"><span class="post-toc-number">2.</span> <span class="post-toc-text">Xshell</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#winSCP"><span class="post-toc-number">3.</span> <span class="post-toc-text">winSCP</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50 lazy" data-original="http://otbrtx8bw.bkt.clouddn.com/hexo_title42.jpg">
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/07/18/Servlet-请求封装器/">Servlet---请求封装器</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            &nbsp;&nbsp;&nbsp;&nbsp;如果前端传入的字符串中包含特殊字符。例如HTML标签 &lt;a href=&quot;...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/07/18/Servlet-请求封装器/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="wangchao's avatar">
-            </div>
-            <div>
-                <strong>wangchao</strong>
-                <span>7月 18, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/Servlet/">Servlet</a>
-            </span>
-
-            
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span id = "sourceId::2017/07/18/Servlet-请求封装器/" class = "cy_cmt_count" ></span>条评论
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50 lazy" data-original="http://otbrtx8bw.bkt.clouddn.com/hexo_title184.jpg">
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/07/18/Servlet-过滤器/">Servlet---过滤器</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            要实现过滤器，必须实现Filter接口，并再web.xml或者注解中定义过滤器。过滤器有三个主要方法：
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/07/18/Servlet-过滤器/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="wangchao's avatar">
-            </div>
-            <div>
-                <strong>wangchao</strong>
-                <span>7月 18, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/Servlet/">Servlet</a>
-            </span>
-
-            
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span id = "sourceId::2017/07/18/Servlet-过滤器/" class = "cy_cmt_count" ></span>条评论
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50 lazy" data-original="http://i1.buimg.com/584041/0008bd25d797ea67.jpg">
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/07/11/MySQL-储存过程/">MySQL---储存过程</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            创建存储过程CREATE PROCEDURE sp_name ([proc_parameter[,…]])routine_body
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/07/11/MySQL-储存过程/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="wangchao's avatar">
-            </div>
-            <div>
-                <strong>wangchao</strong>
-                <span>7月 11, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/MySQL/">MySQL</a>
-            </span>
-
-            
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span id = "sourceId::2017/07/11/MySQL-储存过程/" class = "cy_cmt_count" ></span>条评论
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50 lazy" data-original="https://ss3.bdstatic.com/iPoZeXSm1A5BphGlnYG/skin/38.jpg?2">
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/07/11/MySQL-自定义函数/">MySQL---自定义函数</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            用户自定义函数（user-defined function,UDF）。UDF可以没有参数,但UDF必须有且只有一个返回值
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/07/11/MySQL-自定义函数/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="wangchao's avatar">
-            </div>
-            <div>
-                <strong>wangchao</strong>
-                <span>7月 11, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/MySQL/">MySQL</a>
-            </span>
-
-            
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span id = "sourceId::2017/07/11/MySQL-自定义函数/" class = "cy_cmt_count" ></span>条评论
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50 lazy" data-original="http://i1.buimg.com/584041/5ba234f1d959c6b5.jpg">
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/07/11/MySQL-常见函数/">MySQL---常见函数</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            字符函数
-
-
-函数名
-作用
-
-
-
-
-CONCAT()
-字符连接
-
-
-CANCAT_WS(“分隔符”,”value”,”value”,..)
-用指定分隔符进行字符连接
-
-
-FORMAT()
-数字格式化
-
-
-LOWER()
-转换成小写
-
-
-UPPER()
-转换成大写
-
-
-LEFT()
-从左侧开始截取
-
-
-RIGHT()
-从右侧开始截取
-
-
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/07/11/MySQL-常见函数/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="wangchao's avatar">
-            </div>
-            <div>
-                <strong>wangchao</strong>
-                <span>7月 11, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/MySQL/">MySQL</a>
-            </span>
-
-            
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span id = "sourceId::2017/07/11/MySQL-常见函数/" class = "cy_cmt_count" ></span>条评论
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50 lazy" data-original="http://i1.buimg.com/584041/af98794802befb2a.jpg">
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/07/09/独白/">NTR1czU1bTk=</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-
-NWFXOTVMbUY1ckto...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/07/09/独白/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="wangchao's avatar">
-            </div>
-            <div>
-                <strong>wangchao</strong>
-                <span>7月 09, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/随笔/">随笔</a>
-            </span>
-
-            
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span id = "sourceId::2017/07/09/独白/" class = "cy_cmt_count" ></span>条评论
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50 lazy" data-original="http://i4.piimg.com/584041/a933808dfb9372a5.jpg">
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/07/08/MySQL-子查询、表的连接/">MySQL---子查询、表的连接</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            子查询常用的比较运算符： =、&gt;、&lt;、&gt;=、&lt;=、&lt;&gt;、!=、&lt;=&gt;
-修饰运算符
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/07/08/MySQL-子查询、表的连接/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="wangchao's avatar">
-            </div>
-            <div>
-                <strong>wangchao</strong>
-                <span>7月 08, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/MySQL/">MySQL</a>
-            </span>
-
-            
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span id = "sourceId::2017/07/08/MySQL-子查询、表的连接/" class = "cy_cmt_count" ></span>条评论
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-    <!-- Index nav -->
-        <nav class="material-nav mdl-cell mdl-cell--12-col">
-            <a class="extend prev" rel="prev" href="/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_back</i></button></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_forward</i></button></a>
-        </nav>
-    
-
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 8; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                Linux---远程登陆Linux、互传文件
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>wangchao</strong>
+        <span>7月 25, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Linux/">Linux</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/2017/07/25/Linux-远程登陆Linux、互传文件/" class="leancloud-views_num" data-flag-title="Linux---远程登陆Linux、互传文件">
+     &nbsp;浏览量
+</span>
+
+            </li>
+        </a>
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Linux---远程登陆Linux、互传文件&url=http://twilight.net.cn//2017/07/25/Linux-远程登陆Linux、互传文件/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Linux---远程登陆Linux、互传文件&url=http://twilight.net.cn//2017/07/25/Linux-远程登陆Linux、互传文件/index.html&via=wangchao" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2017/07/25/Linux-远程登陆Linux、互传文件/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2017/07/25/Linux-远程登陆Linux、互传文件/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=Linux---远程登陆Linux、互传文件&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2017/07/25/Linux-远程登陆Linux、互传文件/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h1><p>Linux 与 Linux之间最简单和安全的通信方式</p>
+<ul>
+<li>远程登陆Linux服务器：<br><strong> ssh 用户名@ip</strong></li>
+</ul>
+<p>第一次使用时需要下载公钥，输入yes即可，之后输入对应账号的密码即可登陆到Linux：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ ssh root@192.168.226.128</div><div class="line">The authenticity of host &apos;192.168.226.128 (192.168.226.128)&apos; can&apos;t be established.</div><div class="line">ECDSA key fingerprint is SHA256:dOe26KCDHHBXH9pUKk70HlTeAN8ItC+Z8fnUvs9Amhs.</div><div class="line">Are you sure you want to continue connecting (yes/no)? yes</div><div class="line"></div><div class="line">Warning: Permanently added &apos;192.168.226.128&apos; (ECDSA) to the list of known hosts.</div><div class="line">root@192.168.226.128&apos;s password:</div><div class="line">Last login: Tue Jul 25 08:22:54 2017 from 192.168.226.1</div></pre></td></tr></table></figure></p>
+<ul>
+<li>下载文件(-r表示目录)：<br><strong>scp [-r] 用户名@ip:文件路径 本地路径</strong></li>
+</ul>
+<p>将远程的文件下载到本地的D盘，因为没有登陆，所以需要输入用户密码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ scp root@192.168.226.128:/root/Hexo.md /D/</div><div class="line">root@192.168.226.128&apos;s password:</div><div class="line">Hexo.md</div></pre></td></tr></table></figure></p>
+<ul>
+<li>上传文件(-r表示目录)：<br><strong>scp [-r] 本地文件 用户名@ip:上传路径</strong></li>
+</ul>
+<p>上传一个目录到Linux，要加参数-r<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ scp -r test root@192.168.226.128:/root</div><div class="line">root@192.168.226.128&apos;s password:</div><div class="line">abc</div></pre></td></tr></table></figure></p>
+<p>意外的发现git的Windows客户端完全可以当成一个Linux主机来使用，ssh需要两台Linux主机，而我只有一个虚拟机。而且git本身就是用ssh协议的，因为有git我才能尝试使用上面几个命令。  &lt;(▰˘◡˘▰)&gt; </p>
+<h1 id="Xshell"><a href="#Xshell" class="headerlink" title="Xshell"></a>Xshell</h1><p>一款远程Linux登陆工具，可以在Windows上登陆Linux，比SecureCRT更强大，而且免费，</p>
+<p>天上当前会话的名称，目的主机的ip、端口号采用默认的22端口，然后确定即可。</p>
+<p><img src="http://otbrtx8bw.bkt.clouddn.com/xshell-show.png" alt="xshell"></p>
+<h1 id="winSCP"><a href="#winSCP" class="headerlink" title="winSCP"></a>winSCP</h1><p>非常好用的工具，很强大，可以在windows和Linux之间互传文件。</p>
+<p>首先选择SFTP协议，填上目的主机的ip地址，端口号采取默认的22端口，然后填写用户名和密码</p>
+<p><img src="http://otbrtx8bw.bkt.clouddn.com/winSCP-login.png" alt="Login"></p>
+<p>然后可以看到左边是window的目录结构，右边是Linux的目录结构，要复制文件只需要拖拽文件到另外一边即可，很方便</p>
+<p><img src="http://otbrtx8bw.bkt.clouddn.com/winSCP-file.png" alt="file"></p>
+<p>还有一款软件叫SecureCRT，听说是收费的，而且功能不及Xshell，所以已弃用。</p>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+    <!-- 使用 changyan -->
+    <div id="changyan-comment">
+        <!--PC和WAP自适应版-->
+<div id="SOHUCS" sid="2017/07/25/Linux-远程登陆Linux、互传文件/"  ></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cysVH2p6S';
+var conf = '7d191ef850d424bb873df33179309db5';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    </div>
+    <style>
+        #changyan-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/07/24/linux-网络管理（常用命令）/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
