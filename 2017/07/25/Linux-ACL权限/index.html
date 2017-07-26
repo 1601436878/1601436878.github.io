@@ -246,7 +246,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#设定-查看-ACL权限"><span class="post-toc-number">1.</span> <span class="post-toc-text">设定/查看 ACL权限</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#最大有效权限-mask"><span class="post-toc-number">2.</span> <span class="post-toc-text">最大有效权限 mask</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#删除-ACL-权限"><span class="post-toc-number">3.</span> <span class="post-toc-text">删除 ACL 权限</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#递归权限"><span class="post-toc-number">4.</span> <span class="post-toc-text">递归权限</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#默认权限"><span class="post-toc-number">5.</span> <span class="post-toc-text">默认权限</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#递归权限-和-默认权限的异同"><span class="post-toc-number">6.</span> <span class="post-toc-text">递归权限 和 默认权限的异同</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ACL简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">ACL简介</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#设定-查看-ACL权限"><span class="post-toc-number">2.</span> <span class="post-toc-text">设定/查看 ACL权限</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#最大有效权限-mask"><span class="post-toc-number">3.</span> <span class="post-toc-text">最大有效权限 mask</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#删除-ACL-权限"><span class="post-toc-number">4.</span> <span class="post-toc-text">删除 ACL 权限</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#递归权限"><span class="post-toc-number">5.</span> <span class="post-toc-text">递归权限</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#默认权限"><span class="post-toc-number">6.</span> <span class="post-toc-text">默认权限</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#递归权限-和-默认权限的异同"><span class="post-toc-number">7.</span> <span class="post-toc-text">递归权限 和 默认权限的异同</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -400,7 +400,7 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>#ACL简介<br>目前已知的三种权限分别是，所有者权限，所有组权限，和其他人权限。这三种权限有时并不能很好的指定所有用户的权限。当无法使用这三种权限准确的指定一个用户的权限时，可以使用acl给用户或用户组指定特定的权限。例如，所有者和所属组具有最高权限。其他人具有0权限。此时我希望给一个用户设定r-x权限。这时用以上三种权限很难实现。就可以用acl指定该用户的权限。</p>
+        <h1 id="ACL简介"><a href="#ACL简介" class="headerlink" title="ACL简介"></a>ACL简介</h1><p>目前已知的三种权限分别是，所有者权限，所属组权限，和其他人权限。这三种权限有时并不能很好的指定所有用户的权限。当无法使用这三种权限准确的指定一个用户的权限时，可以使用acl给用户或用户组指定特定的权限。例如，所有者和所属组具有最高权限。其他人具有0权限。此时我希望给一个用户设定r-x权限。这时用以上三种权限很难实现。就可以用acl指定该用户的权限。</p>
 <h1 id="设定-查看-ACL权限"><a href="#设定-查看-ACL权限" class="headerlink" title="设定/查看 ACL权限"></a>设定/查看 ACL权限</h1><ul>
 <li><strong>getfacl 文件名  ： 查看acl权限</strong></li>
 <li><strong>setfacl 选项 文件名 ： 设置acl权限</strong></li>
@@ -415,16 +415,17 @@
 <li><p>-R 递归设定ACL权限</p>
 </li>
 <li><p>给特定用户设置acl权限：</p>
+</li>
+</ul>
 <blockquote>
 <p>setfacl -m u:username:rx 文件或目录</p>
 </blockquote>
-</li>
-<li><p>给特定用户组设置acl权限：</p>
+<ul>
+<li>给特定用户组设置acl权限：</li>
+</ul>
 <blockquote>
 <p>setfacl -m g:groupname:rx 文件或目录</p>
 </blockquote>
-</li>
-</ul>
 <p>例如有test目录，所有者是twilight，所属组是stu，都具有最高权限，具体属性如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">drwxrwx---.  2 twilight stu         6 7月  25 20:05 test</div></pre></td></tr></table></figure></p>
 <p>如果此时希望添加一个lw用户，使之具有r-x权限，可以使用acl：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">setfacl -m u:lw:rx test</div></pre></td></tr></table></figure></p>
 <p>用getfacl查看acl权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[root@localhost home]# getfacl test</div><div class="line"># file: test</div><div class="line"># owner: twilight</div><div class="line"># group: stu</div><div class="line">user::rwx</div><div class="line">user:lw:r-x</div><div class="line">group::rwx</div><div class="line">mask::rwx</div><div class="line">other::---</div></pre></td></tr></table></figure></p>
@@ -504,6 +505,14 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             <!-- Post Prev & Next Nav -->
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
+    
+        <a href="/2017/07/26/Linux-sudo权限/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
     
 
     <!-- Section Spacer -->
@@ -603,7 +612,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">22</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">13</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">九月 2016<span class="sidebar_archives-count">3</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">23</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">13</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">九月 2016<span class="sidebar_archives-count">3</span></a>
             </ul>
         </li>
         
@@ -621,7 +630,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/CSS/">CSS<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/HTML/">HTML<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/JSP/">JSP<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/categories/JavaScript/">JavaScript<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Linux/">Linux<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/categories/MySQL/">MySQL<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/categories/Servlet/">Servlet<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/html/">html<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/jQuery/">jQuery<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/categories/技术/">技术<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/日常/">日常<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">3</span></a>
+                <a class="sidebar_archives-link" href="/categories/CSS/">CSS<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/HTML/">HTML<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/JSP/">JSP<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/categories/JavaScript/">JavaScript<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Linux/">Linux<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/MySQL/">MySQL<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/categories/Servlet/">Servlet<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/html/">html<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/jQuery/">jQuery<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/categories/技术/">技术<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/日常/">日常<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">3</span></a>
             </ul>
         </li>
         
@@ -677,7 +686,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">65</span>
+                <span class="sidebar-badge">66</span>
             </a>
         </li>
         

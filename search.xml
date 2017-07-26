@@ -3,9 +3,53 @@
   
     
     <entry>
+      <title><![CDATA[Linux---sudo权限]]></title>
+      <url>/2017/07/26/Linux-sudo%E6%9D%83%E9%99%90/</url>
+      <content type="html"><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><code>sudo</code>命令允许系统管理员让普通用户执行一些或者全部的root命令。不需要暴露root密码，就可以让普通用户执行管理员的命令</p>
+<h1 id="修改sudo权限"><a href="#修改sudo权限" class="headerlink" title="修改sudo权限"></a>修改sudo权限</h1><ul>
+<li><em>visudo  </em></li>
+</ul>
+<p>visudo 会自动打开etc下的sudo文件。在文件中加上允许普通用户执行的命令即可，命令格式如下：</p>
+<ul>
+<li><strong>用户名 ALL=(root) 命令 参数</strong></li>
+</ul>
+<p><strong>括号中的内容表示在使用sudo时，以括号中的身份来执行命令，之后的命令可以加参数，表示指定命令的指定操作。命令最好是以绝对路径的方式来写。</strong></p>
+<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">twilight ALL=(root) /usr/sbin/shutdown -r</div></pre></td></tr></table></figure></p>
+<p>twilight用户就可以执行shutdown -r命令，不过仅仅是-r。其他参数还是不允许的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo shutdown -r</div></pre></td></tr></table></figure></p>
+<p>当我尝试不使用绝对路径，保存退出时会报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">twilight ALL=(root) useradd</div></pre></td></tr></table></figure></p>
+<p>报错信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# visudo</div><div class="line">visudo：&gt;&gt;&gt; /etc/sudoers：syntax error 在行 94 附近&lt;&lt;&lt;</div><div class="line">现在做什么？</div><div class="line">选项有：</div><div class="line">  重新编辑 sudoers 文件(e)</div><div class="line">  退出，不保存对 sudoers 文件的更改(x)</div><div class="line">  退出并将更改保存到 sudoers 文件(危险！)(Q)</div><div class="line"></div><div class="line">现在做什么？x</div></pre></td></tr></table></figure></p>
+<h1 id="sudo-l"><a href="#sudo-l" class="headerlink" title="sudo -l"></a>sudo -l</h1><p>可以使用 <code>sudo -l</code>查看当前普通用户能使用 <code>sudo</code> 执行的权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">[twilight@localhost root]$ sudo -l</div><div class="line">[sudo] password for twilight: </div><div class="line">匹配此主机上 twilight 的默认条目：</div><div class="line">    !visiblepw, always_set_home, env_reset, env_keep=&quot;COLORS DISPLAY</div><div class="line">    HOSTNAME HISTSIZE KDEDIR LS_COLORS&quot;, env_keep+=&quot;MAIL PS1 PS2 QTDIR</div><div class="line">    USERNAME LANG LC_ADDRESS LC_CTYPE&quot;, env_keep+=&quot;LC_COLLATE</div><div class="line">    LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES&quot;, env_keep+=&quot;LC_MONETARY</div><div class="line">    LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE&quot;, env_keep+=&quot;LC_TIME LC_ALL</div><div class="line">    LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY&quot;,</div><div class="line">    secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin</div><div class="line"></div><div class="line">用户 twilight 可以在该主机上运行以下命令：</div><div class="line">    (root) /usr/sbin/useradd</div></pre></td></tr></table></figure></p>
+<p>Centos在执行sudo命令时可以不指定绝对路径：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[twilight@localhost root]$ sudo useradd tom</div></pre></td></tr></table></figure></p>
+<p>查看是否生效：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[twilight@localhost root]$ cat /etc/passwd | grep tom </div><div class="line">tom:x:1004:1006::/home/tom:/bin/bash</div></pre></td></tr></table></figure></p>
+<h1 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h1><p>如果用sudo给普通用户赋予passwd命令的权限，那么普通用户就可以用sudo命令来修改root密码，这是十分不安全的。不过，在赋予权限时可以加上一些限制，将普通用户可用的命令限制在合理范围内。</p>
+<ul>
+<li>可以使用正则表达式，不需要加引号</li>
+<li>使用 <code>!</code> 取反，表示不允许执行这条命令</li>
+</ul>
+<p>例如以下权限。twilight用户只能更改普通用户的密码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">twilight ALL=/usr/bin/passwd [a-zA-Z]*, !/usr/bin/passwd root, !/usr/bin/passwd &quot;&quot;</div></pre></td></tr></table></figure></p>
+<p>此时查看twilight的sudo权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# su twilight</div><div class="line">[twilight@localhost root]$ sudo -l</div><div class="line">匹配此主机上 twilight 的默认条目：</div><div class="line">    !visiblepw, always_set_home, env_reset, env_keep=&quot;COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS&quot;, env_keep+=&quot;MAIL PS1 PS2</div><div class="line">    QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE&quot;, env_keep+=&quot;LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES&quot;,</div><div class="line">    env_keep+=&quot;LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE&quot;, env_keep+=&quot;LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET</div><div class="line">    XAUTHORITY&quot;, secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin</div><div class="line"></div><div class="line">用户 twilight 可以在该主机上运行以下命令：</div><div class="line">    (root) /usr/bin/passwd [a-zA-Z]*, (root) !/usr/bin/passwd root, (root) !/usr/bin/passwd \&quot;\&quot;</div></pre></td></tr></table></figure></p>
+<p>此时尝试更改root密码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[twilight@localhost root]$ sudo passwd root </div><div class="line">[sudo] password for twilight: </div><div class="line">对不起，用户 twilight 无权以 root 的身份在 localhost.localdomain 上执行 /bin/passwd root。</div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Linux---ACL权限]]></title>
       <url>/2017/07/25/Linux-ACL%E6%9D%83%E9%99%90/</url>
-      <content type="html"><![CDATA[<p>#ACL简介<br>目前已知的三种权限分别是，所有者权限，所有组权限，和其他人权限。这三种权限有时并不能很好的指定所有用户的权限。当无法使用这三种权限准确的指定一个用户的权限时，可以使用acl给用户或用户组指定特定的权限。例如，所有者和所属组具有最高权限。其他人具有0权限。此时我希望给一个用户设定r-x权限。这时用以上三种权限很难实现。就可以用acl指定该用户的权限。</p>
+      <content type="html"><![CDATA[<h1 id="ACL简介"><a href="#ACL简介" class="headerlink" title="ACL简介"></a>ACL简介</h1><p>目前已知的三种权限分别是，所有者权限，所属组权限，和其他人权限。这三种权限有时并不能很好的指定所有用户的权限。当无法使用这三种权限准确的指定一个用户的权限时，可以使用acl给用户或用户组指定特定的权限。例如，所有者和所属组具有最高权限。其他人具有0权限。此时我希望给一个用户设定r-x权限。这时用以上三种权限很难实现。就可以用acl指定该用户的权限。</p>
 <h1 id="设定-查看-ACL权限"><a href="#设定-查看-ACL权限" class="headerlink" title="设定/查看 ACL权限"></a>设定/查看 ACL权限</h1><ul>
 <li><strong>getfacl 文件名  ： 查看acl权限</strong></li>
 <li><strong>setfacl 选项 文件名 ： 设置acl权限</strong></li>
@@ -20,16 +64,17 @@
 <li><p>-R 递归设定ACL权限</p>
 </li>
 <li><p>给特定用户设置acl权限：</p>
+</li>
+</ul>
 <blockquote>
 <p>setfacl -m u:username:rx 文件或目录</p>
 </blockquote>
-</li>
-<li><p>给特定用户组设置acl权限：</p>
+<ul>
+<li>给特定用户组设置acl权限：</li>
+</ul>
 <blockquote>
 <p>setfacl -m g:groupname:rx 文件或目录</p>
 </blockquote>
-</li>
-</ul>
 <p>例如有test目录，所有者是twilight，所属组是stu，都具有最高权限，具体属性如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">drwxrwx---.  2 twilight stu         6 7月  25 20:05 test</div></pre></td></tr></table></figure></p>
 <p>如果此时希望添加一个lw用户，使之具有r-x权限，可以使用acl：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">setfacl -m u:lw:rx test</div></pre></td></tr></table></figure></p>
 <p>用getfacl查看acl权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[root@localhost home]# getfacl test</div><div class="line"># file: test</div><div class="line"># owner: twilight</div><div class="line"># group: stu</div><div class="line">user::rwx</div><div class="line">user:lw:r-x</div><div class="line">group::rwx</div><div class="line">mask::rwx</div><div class="line">other::---</div></pre></td></tr></table></figure></p>
