@@ -3,7 +3,162 @@
   
     
     <entry>
-      <title><![CDATA[Linux---sudo权限]]></title>
+      <title><![CDATA[Linux软件安装---rpm包、源码包]]></title>
+      <url>/2017/08/02/Linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-rpm%E5%8C%85%E3%80%81%E6%BA%90%E7%A0%81%E5%8C%85/</url>
+      <content type="html"><![CDATA[<h1 id="RPM-安装"><a href="#RPM-安装" class="headerlink" title="RPM 安装"></a>RPM 安装</h1><p><strong>rpm -ivh 全名 </strong><br>安装软件包</p>
+<p>选项：</p>
+<ul>
+<li>-i (install) 安装</li>
+<li>-v (verbose) 显示详细信息</li>
+<li>-h (hash) 显示进度</li>
+</ul>
+<h2 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h2><p><strong>rpm -Uvh 包全名（旧版本）</strong><br>如果已经安装就更新，如果没有安装就安装</p>
+<ul>
+<li>-U (upgrade)升级</li>
+</ul>
+<h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><p><strong>rpm -e 包名</strong><br>后台数据库中查找包名对应的文件，然后卸载</p>
+<ul>
+<li>-e(erase)</li>
+<li>–nodeps 不检查依赖性（不提倡使用）</li>
+</ul>
+<h2 id="查询-q"><a href="#查询-q" class="headerlink" title="查询(-q)"></a>查询(-q)</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">rpm -q 包名</td>
+<td style="text-align:left">查询是否安装软件包</td>
+</tr>
+<tr>
+<td style="text-align:left">rpm -qa</td>
+<td style="text-align:left">查询所有已安装的软件包</td>
+</tr>
+<tr>
+<td style="text-align:left">rpm -qi 包名</td>
+<td style="text-align:left">查询已安装软件包的信息</td>
+</tr>
+<tr>
+<td style="text-align:left">rpm -qip 包全名</td>
+<td style="text-align:left">查看未安装的包的信息</td>
+</tr>
+<tr>
+<td style="text-align:left">rpm -ql 包名</td>
+<td style="text-align:left">查看包安装位置（未安装也可以查询-p）</td>
+</tr>
+<tr>
+<td style="text-align:left">rpm -qf 文件名</td>
+<td style="text-align:left">查看系统文件属于哪个软件包</td>
+</tr>
+<tr>
+<td style="text-align:left">rpm -qR 包名</td>
+<td style="text-align:left">查看包所依赖的软件包</td>
+</tr>
+</tbody>
+</table>
+<p>选项：</p>
+<ul>
+<li>-q (query) 查询</li>
+<li>-a (all) 所有</li>
+<li>-i (information) 查询软件包信息</li>
+<li>-f (file) 查询系统问价属于哪个软件包</li>
+<li>-p (package) 查询未安装包信息</li>
+<li>-R (requires) 查询软件包的依赖性</li>
+<li>-V (Verify) 文件校验</li>
+</ul>
+<h2 id="rpm文件提取"><a href="#rpm文件提取" class="headerlink" title="rpm文件提取"></a>rpm文件提取</h2><p><strong>rpm2cpio 包全名 | cpio -idv .文件绝对路径</strong><br>从rpm包中提取需要的文件</p>
+<ul>
+<li>rpm2cpio ： 将rpm转换为cpio格式的命令</li>
+<li>cpio ： 标准工具，用户创建软件档案文件和从档案文件中提取文件</li>
+</ul>
+<p>例如，删除ls命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -rf /bin/ls</div></pre></td></tr></table></figure></p>
+<p>从rpm包中提取出ls文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rpm2cpio /mnt/cdrom/Packages/coreutils-8.4-43.el6.x86_64.rpm | cpio -idv ./bin/ls</div></pre></td></tr></table></figure></p>
+<h1 id="yum在线安装"><a href="#yum在线安装" class="headerlink" title="yum在线安装"></a>yum在线安装</h1><h2 id="yum源文件"><a href="#yum源文件" class="headerlink" title="yum源文件"></a>yum源文件</h2><p>yum的源文件位于 <code>/etc/yum.repos.d/CentOS-Base.repo</code> ，具体文件内容如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"># CentOS-Base.repo</div><div class="line">#</div><div class="line"># The mirror system uses the connecting IP address of the client and the</div><div class="line"># update status of each mirror to pick mirrors that are updated to and</div><div class="line"># geographically close to the client.  You should use this for CentOS updates</div><div class="line"># unless you are manually picking other mirrors.</div><div class="line">#</div><div class="line"># If the mirrorlist= does not work for you, as a fall back you can try the </div><div class="line"># remarked out baseurl= line instead.</div><div class="line">#</div><div class="line">#</div><div class="line"></div><div class="line">[base]</div><div class="line">name=CentOS-$releasever - Base - mirrors.aliyun.com</div><div class="line">failovermethod=priority</div><div class="line">baseurl=http://mirrors.aliyun.com/centos/$releasever/os/$basearch/</div><div class="line">        http://mirrors.aliyuncs.com/centos/$releasever/os/$basearch/</div><div class="line">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os</div><div class="line">gpgcheck=1</div><div class="line">gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-6</div><div class="line"></div><div class="line">#released updates </div><div class="line">[updates]</div><div class="line">name=CentOS-$releasever - Updates - mirrors.aliyun.com</div><div class="line">failovermethod=priority</div><div class="line">baseurl=http://mirrors.aliyun.com/centos/$releasever/updates/$basearch/</div><div class="line">        http://mirrors.aliyuncs.com/centos/$releasever/updates/$basearch/</div><div class="line">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=updates</div><div class="line">gpgcheck=1</div><div class="line">gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-6</div><div class="line"></div><div class="line">#additional packages that may be useful</div><div class="line">[extras]</div><div class="line">name=CentOS-$releasever - Extras - mirrors.aliyun.com</div><div class="line">failovermethod=priority</div><div class="line">baseurl=http://mirrors.aliyun.com/centos/$releasever/extras/$basearch/</div><div class="line">        http://mirrors.aliyuncs.com/centos/$releasever/extras/$basearch/</div><div class="line">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=extras</div><div class="line">gpgcheck=1</div><div class="line">gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-6</div><div class="line"></div><div class="line">#additional packages that extend functionality of existing packages</div><div class="line">[centosplus]</div><div class="line">name=CentOS-$releasever - Plus - mirrors.aliyun.com</div><div class="line">failovermethod=priority</div><div class="line">baseurl=http://mirrors.aliyun.com/centos/$releasever/centosplus/$basearch/</div><div class="line">        http://mirrors.aliyuncs.com/centos/$releasever/centosplus/$basearch/</div><div class="line">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=centosplus</div><div class="line">gpgcheck=1</div><div class="line">enabled=0</div><div class="line">gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-6</div><div class="line"></div><div class="line">#contrib - packages by Centos Users</div><div class="line">[contrib]</div><div class="line">name=CentOS-$releasever - Contrib - mirrors.aliyun.com</div><div class="line">failovermethod=priority</div><div class="line">baseurl=http://mirrors.aliyun.com/centos/$releasever/contrib/$basearch/</div><div class="line">        http://mirrors.aliyuncs.com/centos/$releasever/contrib/$basearch/</div><div class="line">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=contrib</div><div class="line">gpgcheck=1</div><div class="line">enabled=0</div><div class="line">gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-6</div></pre></td></tr></table></figure>
+<p><strong>相关参数：</strong></p>
+<ul>
+<li>[base] 容器名称，一定要放在[]中</li>
+<li>name 容器说明，随便写</li>
+<li>mirrorlist 镜像站点</li>
+<li>baseurl yum源服务器的地址</li>
+<li>enabled 是否生效，1是生效，0不生效，默认生效</li>
+<li>gpgcheck 1指数字证书生效</li>
+<li>gpgkey 数字证书的公钥文件保存位置。不用修改</li>
+</ul>
+<h2 id="更换阿里的源"><a href="#更换阿里的源" class="headerlink" title="更换阿里的源"></a>更换阿里的源</h2><ul>
+<li><p>备份<br><code>mv CentOS-Base.repo CentOS-Base.repo.backup</code> </p>
+</li>
+<li><p>下载新的源文件，替换原来的源<br><code>wget -O CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo</code></p>
+</li>
+<li><p>生成缓存<br><code>yum makecache</code></p>
+</li>
+</ul>
+<h1 id="光盘搭建yum"><a href="#光盘搭建yum" class="headerlink" title="光盘搭建yum"></a>光盘搭建yum</h1><ul>
+<li><p>挂载光盘<br><code>mount -t iso9660 /dev/sr0 /mnt/cdrom/</code></p>
+</li>
+<li><p>使网络yum失效。将网络源文件改名为其他文件，或者将 <code>enabled</code> 设为0：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 将网络源文件改名为其他文件</div><div class="line">mv CentOS-Base.repo CentOS-Base.repo.ali.backup</div></pre></td></tr></table></figure>
+</li>
+<li><p>更改 <code>CentOS-Media.repo</code> 文件。将baseurl 改成光盘目录，将enable改为1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[c6-media]</div><div class="line">name=CentOS-$releasever - Media</div><div class="line">baseurl=file:///mnt/cdrom</div><div class="line">#        file:///media/cdrom/</div><div class="line">#        file:///media/cdrecorder/</div><div class="line">gpgcheck=1</div><div class="line">enabled=1</div><div class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6</div></pre></td></tr></table></figure>
+</li>
+<li><p>验证。再次使用 <code>yum list</code> ，可以看到所有源的名称都变成了 <code>c6-media</code>。正是光盘源的名称:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">vte.i686                                                0.25.1-9.el6                         c6-media                                </div><div class="line">vte-devel.i686                                          0.25.1-9.el6                         c6-media                                </div><div class="line">vte-devel.x86_64                                        0.25.1-9.el6                         c6-media                                </div><div class="line">w3m.x86_64                                              0.5.2-19.el6                         c6-media                                </div><div class="line">w3m-img.x86_64                                          0.5.2-19.el6                         c6-media                                </div><div class="line">watchdog.x86_64                                         5.6-5.el6                            c6-media                                </div><div class="line">wavpack.i686                                            4.60-1.1.el6                         c6-media                                </div><div class="line">wavpack-devel.i686                                      4.60-1.1.el6                         c6-media                                </div><div class="line">wavpack-devel.x86_64                                    4.60-1.1.el6                         c6-media                                </div><div class="line">webalizer.x86_64                                        2.21_02-3.3.el6                      c6-media                                </div><div class="line">webkitgtk.i686                                          1.4.3-9.el6_6                        c6-media                                </div><div class="line">webkitgtk-devel.i686                                    1.4.3-9.el6_6                        c6-media                                </div><div class="line">webkitgtk-devel.x86_64                                  1.4.3-9.el6_6                        c6-media                                </div><div class="line">webkitgtk-doc.x86_64                                    1.4.3-9.el6_6                        c6-media                                </div><div class="line">werken-xpath.noarch                                     0.9.4-4.beta.12.6.el6                c6-media                                </div><div class="line">werken-xpath-javadoc.noarch                             0.9.4-4.beta.12.6.el6                c6-media                                </div><div class="line">wireless-tools.i686                                     1:29-6.el6                           c6-media                                </div><div class="line">wireless-tools-devel.i686                               1:29-6.el6                           c6-media                                </div><div class="line">wireless-tools-devel.x86_64                             1:29-6.el6                           c6-media </div><div class="line">...</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="常用-yum-命令"><a href="#常用-yum-命令" class="headerlink" title="常用 yum 命令"></a>常用 yum 命令</h1><ul>
+<li><p>查询所有可用软件包列表<br><code>yum list</code> </p>
+</li>
+<li><p>查询和关键字有关的软件包<br><code>yum search 关键字</code></p>
+</li>
+<li><p>自动安装指定软件包<br><code>yum -y install 包名</code></p>
+</li>
+<li><p>升级（如果源中有更新版的软件包）<br><code>yum -y update 包名</code></p>
+</li>
+<li><p>升级所有软件，包括内核<br><code>yum -y update</code></p>
+</li>
+<li><p>卸载软件包<br><code>yum -y remove 包名</code></p>
+</li>
+</ul>
+<p><strong>参数：</strong></p>
+<ul>
+<li>install 安装</li>
+<li>remove 卸载</li>
+<li>-y 自动回答yes</li>
+</ul>
+<h2 id="软件组管理命令"><a href="#软件组管理命令" class="headerlink" title="软件组管理命令"></a>软件组管理命令</h2><ul>
+<li><p>列出所有可用的软件组列表：<br><code>yum grouplsit</code></p>
+</li>
+<li><p>安装指定软件组，组名可以由grouplist查询出来<br><code>yum groupinstall 软件组名</code></p>
+</li>
+<li><p>卸载指定软件组<br><code>yum groupremove 软件组名</code></p>
+</li>
+</ul>
+<h1 id="源码包"><a href="#源码包" class="headerlink" title="源码包"></a>源码包</h1><p>1、进入解压缩命令<br>2、./configure -prefix=/usr/local/apache 安装到指定目录<br>3、make 编译（make clean清除）<br>4、make install编译安装 </p>
+<h1 id="rpm包与源码包的异同"><a href="#rpm包与源码包的异同" class="headerlink" title="rpm包与源码包的异同"></a>rpm包与源码包的异同</h1><h2 id="启动方式不同"><a href="#启动方式不同" class="headerlink" title="启动方式不同"></a>启动方式不同</h2><p>rpm包的启动方式：从/etc/init.d/目录下启动，在执行service时也是从/etc/init.d/目录下启动。因此可以将源码包的启动脚本复制到给目录下，即可用service启动。<br>源码包的启动方式：可以随意指定，一般是 <code>/usr/local/</code> ，不可以用service命令管理</p>
+<p>安装完毕后，仅有的不同是安装位置不同。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Linux---权限管理（sudo权限）]]></title>
       <url>/2017/07/26/Linux-sudo%E6%9D%83%E9%99%90/</url>
       <content type="html"><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><code>sudo</code>命令允许系统管理员让普通用户执行一些或者全部的root命令。不需要暴露root密码，就可以让普通用户执行管理员的命令</p>
 <h1 id="修改sudo权限"><a href="#修改sudo权限" class="headerlink" title="修改sudo权限"></a>修改sudo权限</h1><ul>
@@ -47,7 +202,7 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Linux---ACL权限]]></title>
+      <title><![CDATA[Linux---权限管理（ACL权限）]]></title>
       <url>/2017/07/25/Linux-ACL%E6%9D%83%E9%99%90/</url>
       <content type="html"><![CDATA[<h1 id="ACL简介"><a href="#ACL简介" class="headerlink" title="ACL简介"></a>ACL简介</h1><p>目前已知的三种权限分别是，所有者权限，所属组权限，和其他人权限。这三种权限有时并不能很好的指定所有用户的权限。当无法使用这三种权限准确的指定一个用户的权限时，可以使用acl给用户或用户组指定特定的权限。例如，所有者和所属组具有最高权限。其他人具有0权限。此时我希望给一个用户设定r-x权限。这时用以上三种权限很难实现。就可以用acl指定该用户的权限。</p>
 <h1 id="设定-查看-ACL权限"><a href="#设定-查看-ACL权限" class="headerlink" title="设定/查看 ACL权限"></a>设定/查看 ACL权限</h1><ul>
@@ -3993,38 +4148,6 @@ unalias                            临时删除别名
     </entry>
     
     <entry>
-      <title><![CDATA[不同编码类型的总结]]></title>
-      <url>/2016/09/11/%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%80%BB%E7%BB%93/</url>
-      <content type="html"><![CDATA[<h2 id="1-ASCII"><a href="#1-ASCII" class="headerlink" title="1.ASCII"></a>1.ASCII</h2><p>计算机一开始在美国使用，字符编码也只包括英文字母。ANSCII编码由一个字节表示所有符号。一个字节可以表示的所有可能是256（2的8次方）种，对于美国人来说，26个英文字母，加上常用的符号，也只是用了127个。如果大家都用英文，那这套编码完全够用。<a id="more"></a>但是不同国家的文字不同，如果加上其他国家的语言符号，那一个字节是不够的，之后ASCII做出了改进，将256种情况剩余的可能用来表示其他字符。一直排到了第255种可能，从128到255表示的字符成为“扩展字符集”，然而，新增的字符并不能解决所有问题。<br><img src="http://i.imgur.com/Ks9A740.jpg" alt=""></p>
-<h2 id="2-GB2312"><a href="#2-GB2312" class="headerlink" title="2.GB2312"></a>2.GB2312</h2><p>计算机开始在我国普及时，ASCII中已经没有可以利用的字节状态来表示汉字。于是，我们将扩展字符集删除，将127后的字符状态重新编码。小于127的字符状态的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节称之为高字节，后面一个字节称之为低字节，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，我们还把数学符号、罗马希腊的字母、日文的假名们都编进去了，连在 ASCII 里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的”全角”字符，而原来在127号以下的那些就叫”半角”字符了。 </p>
-<p>后来GB2312也无法满足人们的需要，随后出现了GBK标准，再后来，还是不够用，于是出现了GB18030。这个标准几乎可以表示所有的中文字符，此标准在2006年5月1日被作为在中国境内所有软件产品支持的强制规格。 </p>
-<h2 id="3-Unicode"><a href="#3-Unicode" class="headerlink" title="3.Unicode"></a>3.Unicode</h2><p>不只是我国，很多国家都制定了相应的符合本国文化的字符编码标准。这些标准再本国内可以正常使用，但是如果是不同国家之间通过文本文件的交流，就很有可能导致乱码。这时，国际标准化组织（osi）出现了，OSI致力于将全世界所有的字符用统一的标准编码，消除不同国家之间交流的障碍。</p>
-<p>OSI将所有字符用两个字节表示，包括ANCSI中的前127个字符，所以对于钱127个字符来说，本来8位就可以表示的字符现在用16位来表示，这其实是一种资源的浪费。</p>
-<h2 id="4-UTF-8"><a href="#4-UTF-8" class="headerlink" title="4.UTF-8"></a>4.UTF-8</h2><p>可以看出，Unicode虽然是一个很好的字符编码方式，但由于所有字符都用两个字节表示导致的资源的浪费，促使了UTF-8的出现，UTF-8编码中的第一个字节仍与ASCII兼容，这使得原来处理ASCII字符的软件无须或只须做少部份修改，即可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。互联网工程工作小组（IETF）要求所有互联网协议都必须支持UTF-8编码。<br>UTF-8有如下特点： </p>
-<blockquote>
-<p><1>  前128个US-ASCII字符只需一个字节编码（与ANCSI相同）。 </1></p>
-<p><2>  带有附加符号的拉丁文、希腊文、西里尔字母、亚美尼亚语、希伯来文、阿拉伯文、叙利亚文及它拿字母则需要二个字节编码。 </2></p>
-<p><3>  其他基本多文种平面（BMP）中的字符（这包含了大部分常用字）使用三个字节编码。 </3></p>
-<p><4>  其他极少使用的Unicode辅助平面的字符使用四字节编码。 </4></p>
-</blockquote>
-]]></content>
-      
-        <categories>
-            
-            <category> 技术 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 技术 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[日期类]]></title>
       <url>/2016/09/11/%E6%97%A5%E6%9C%9F%E7%B1%BB/</url>
       <content type="html"><![CDATA[<h4 id="Date类"><a href="#Date类" class="headerlink" title="Date类"></a>Date类</h4><p>从1970.1.1.0点开始到某个时刻的毫秒数，类型是long<br>1970年之前用负数表示</p>
@@ -4062,6 +4185,38 @@ Date d2 = df2.parse(str2);
         <tags>
             
             <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[不同编码类型的总结]]></title>
+      <url>/2016/09/11/%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%80%BB%E7%BB%93/</url>
+      <content type="html"><![CDATA[<h2 id="1-ASCII"><a href="#1-ASCII" class="headerlink" title="1.ASCII"></a>1.ASCII</h2><p>计算机一开始在美国使用，字符编码也只包括英文字母。ANSCII编码由一个字节表示所有符号。一个字节可以表示的所有可能是256（2的8次方）种，对于美国人来说，26个英文字母，加上常用的符号，也只是用了127个。如果大家都用英文，那这套编码完全够用。<a id="more"></a>但是不同国家的文字不同，如果加上其他国家的语言符号，那一个字节是不够的，之后ASCII做出了改进，将256种情况剩余的可能用来表示其他字符。一直排到了第255种可能，从128到255表示的字符成为“扩展字符集”，然而，新增的字符并不能解决所有问题。<br><img src="http://i.imgur.com/Ks9A740.jpg" alt=""></p>
+<h2 id="2-GB2312"><a href="#2-GB2312" class="headerlink" title="2.GB2312"></a>2.GB2312</h2><p>计算机开始在我国普及时，ASCII中已经没有可以利用的字节状态来表示汉字。于是，我们将扩展字符集删除，将127后的字符状态重新编码。小于127的字符状态的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节称之为高字节，后面一个字节称之为低字节，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，我们还把数学符号、罗马希腊的字母、日文的假名们都编进去了，连在 ASCII 里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的”全角”字符，而原来在127号以下的那些就叫”半角”字符了。 </p>
+<p>后来GB2312也无法满足人们的需要，随后出现了GBK标准，再后来，还是不够用，于是出现了GB18030。这个标准几乎可以表示所有的中文字符，此标准在2006年5月1日被作为在中国境内所有软件产品支持的强制规格。 </p>
+<h2 id="3-Unicode"><a href="#3-Unicode" class="headerlink" title="3.Unicode"></a>3.Unicode</h2><p>不只是我国，很多国家都制定了相应的符合本国文化的字符编码标准。这些标准再本国内可以正常使用，但是如果是不同国家之间通过文本文件的交流，就很有可能导致乱码。这时，国际标准化组织（osi）出现了，OSI致力于将全世界所有的字符用统一的标准编码，消除不同国家之间交流的障碍。</p>
+<p>OSI将所有字符用两个字节表示，包括ANCSI中的前127个字符，所以对于钱127个字符来说，本来8位就可以表示的字符现在用16位来表示，这其实是一种资源的浪费。</p>
+<h2 id="4-UTF-8"><a href="#4-UTF-8" class="headerlink" title="4.UTF-8"></a>4.UTF-8</h2><p>可以看出，Unicode虽然是一个很好的字符编码方式，但由于所有字符都用两个字节表示导致的资源的浪费，促使了UTF-8的出现，UTF-8编码中的第一个字节仍与ASCII兼容，这使得原来处理ASCII字符的软件无须或只须做少部份修改，即可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。互联网工程工作小组（IETF）要求所有互联网协议都必须支持UTF-8编码。<br>UTF-8有如下特点： </p>
+<blockquote>
+<p><1>  前128个US-ASCII字符只需一个字节编码（与ANCSI相同）。 </1></p>
+<p><2>  带有附加符号的拉丁文、希腊文、西里尔字母、亚美尼亚语、希伯来文、阿拉伯文、叙利亚文及它拿字母则需要二个字节编码。 </2></p>
+<p><3>  其他基本多文种平面（BMP）中的字符（这包含了大部分常用字）使用三个字节编码。 </3></p>
+<p><4>  其他极少使用的Unicode辅助平面的字符使用四字节编码。 </4></p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 技术 </tag>
             
         </tags>
         
