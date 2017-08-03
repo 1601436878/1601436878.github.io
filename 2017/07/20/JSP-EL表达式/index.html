@@ -10,7 +10,7 @@
     
     <title>
         
-            分类: JSP | 
+            JSP---EL表达式 | 
         
         Twilight&#39;s Blog
     </title>
@@ -36,7 +36,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="wangchao">
     <meta name="description" content="null">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="null,JSP">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
@@ -62,9 +62,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://twilight.net.cn">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="分类: JSP | Twilight&#39;s Blog">
+    <meta property="og:title" content="JSP---EL表达式 | Twilight&#39;s Blog">
     <meta property="og:description" content="null">
-    
+    <meta property="og:article:tag" content="JSP"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -220,421 +220,352 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
     
-
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50 lazy" data-original="http://otbrtx8bw.bkt.clouddn.com/hexo_title823.jpg">
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/07/22/JSP-JSTL-import、redirect、url处理、常用函数/">JSP---JSTL(import、redirect、url处理、常用函数)</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            impor...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/07/22/JSP-JSTL-import、redirect、url处理、常用函数/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="wangchao's avatar">
-            </div>
-            <div>
-                <strong>wangchao</strong>
-                <span>7月 22, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/JSP/">JSP</a>
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
             </span>
-
-            
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span id = "sourceId::2017/07/22/JSP-JSTL-import、redirect、url处理、常用函数/" class = "cy_cmt_count" ></span>条评论
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
+        </a>
     </div>
-</div>
+    -->
 
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50 lazy" data-original="http://otbrtx8bw.bkt.clouddn.com/hexo_title53.jpg">
-    
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/07/22/JSP-使用JSTL-out、set、remove、catch捕捉异常、条件判断、流程控制、字符截取/">JSP---使用JSTL(out、set、remove、catch捕捉异常、条件判断、流程控制、字符截取)</a></p>
-    </div>
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用EL获得属性"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用EL获得属性</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#EL-隐式对象"><span class="post-toc-number">3.</span> <span class="post-toc-text">EL 隐式对象</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#关闭EL"><span class="post-toc-number">4.</span> <span class="post-toc-text">关闭EL</span></a></li></ol>
 
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            使用JST...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/07/22/JSP-使用JSTL-out、set、remove、catch捕捉异常、条件判断、流程控制、字符截取/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="wangchao's avatar">
-            </div>
-            <div>
-                <strong>wangchao</strong>
-                <span>7月 22, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/JSP/">JSP</a>
-            </span>
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
 
-            
 
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span id = "sourceId::2017/07/22/JSP-使用JSTL-out、set、remove、catch捕捉异常、条件判断、流程控制、字符截取/" class = "cy_cmt_count" ></span>条评论
-                </span>
-            
 
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
 
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/07/20/JSP-EL表达式/">JSP---EL表达式</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            简介之前获得req...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/07/20/JSP-EL表达式/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="wangchao's avatar">
-            </div>
-            <div>
-                <strong>wangchao</strong>
-                <span>7月 20, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/JSP/">JSP</a>
-            </span>
-
-            
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span id = "sourceId::2017/07/20/JSP-EL表达式/" class = "cy_cmt_count" ></span>条评论
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50 lazy" data-original="http://otbrtx8bw.bkt.clouddn.com/hexo_title824.jpg">
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/07/19/JSP入门-常见标签元素的使用/">JSP入门---常见标签元素的使用</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            Scriptlet元素&lt;% %&gt;  用于运行Java代码
-123&lt;%		out.println(&quot;hello&quot;);%&gt;
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/07/19/JSP入门-常见标签元素的使用/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="wangchao's avatar">
-            </div>
-            <div>
-                <strong>wangchao</strong>
-                <span>7月 19, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/JSP/">JSP</a>
-            </span>
-
-            
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span id = "sourceId::2017/07/19/JSP入门-常见标签元素的使用/" class = "cy_cmt_count" ></span>条评论
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50 lazy" data-original="http://otbrtx8bw.bkt.clouddn.com/hexo_title823.jpg">
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/07/18/JSP-隐式对象、pageContext、错误处理/">JSP---隐式对象、pageContext、错误处理</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            简介隐式对象是_j...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/07/18/JSP-隐式对象、pageContext、错误处理/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="wangchao's avatar">
-            </div>
-            <div>
-                <strong>wangchao</strong>
-                <span>7月 18, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/JSP/">JSP</a>
-            </span>
-
-            
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span id = "sourceId::2017/07/18/JSP-隐式对象、pageContext、错误处理/" class = "cy_cmt_count" ></span>条评论
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/04/15/JSP-jsp-useBean介绍/">JSP jsp:useBean介绍</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            创建JavaBean实例：&lt;jsp:useBean id=”name” class=”” scope=”page/session/request/application”/&gt;
-id为类的另一个名字，class指定具体的类，scope表示范围，在scope的范围内查找是否有指定的属性存在
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/04/15/JSP-jsp-useBean介绍/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="wangchao's avatar">
-            </div>
-            <div>
-                <strong>wangchao</strong>
-                <span>4月 15, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/JSP/">JSP</a>
-            </span>
-
-            
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span id = "sourceId::2017/04/15/JSP-jsp-useBean介绍/" class = "cy_cmt_count" ></span>条评论
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 8; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                JSP---EL表达式
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>wangchao</strong>
+        <span>7月 20, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/JSP/">JSP</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/2017/07/20/JSP-EL表达式/" class="leancloud-views_num" data-flag-title="JSP---EL表达式">
+     &nbsp;浏览量
+</span>
+
+            </li>
+        </a>
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=JSP---EL表达式&url=http://twilight.net.cn//2017/07/20/JSP-EL表达式/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=JSP---EL表达式&url=http://twilight.net.cn//2017/07/20/JSP-EL表达式/index.html&via=wangchao" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2017/07/20/JSP-EL表达式/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2017/07/20/JSP-EL表达式/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=JSP---EL表达式&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2017/07/20/JSP-EL表达式/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>之前获得request中的参数需要使用getParameter()获得，使用EL可以更加简单：<br><code>${param.username}</code>，param表示从request的请求参数中获得name为username的属性值。EL减少了Scriptlet的使用。例如一个求和的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String a = request.getParameter(&quot;a&quot;);</div><div class="line">String b = request.getParameter(&quot;b&quot;);</div><div class="line">out.println(&quot;a+b=&quot;+(Integer.parseInt(a)+Integer.parseInt(b)));</div></pre></td></tr></table></figure>
+<p>用EL表达式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$&#123;param.a&#125; + $&#123;param.b&#125; = $&#123;param.a+param.b&#125;</div></pre></td></tr></table></figure></p>
+<p>EL可以自动完成类型的转换，通过param.a简单的获取request中的参数</p>
+<h1 id="使用EL获得属性"><a href="#使用EL获得属性" class="headerlink" title="使用EL获得属性"></a>使用EL获得属性</h1><p><code>.</code> <code>[]</code> 都可以用来获得属性</p>
+<ul>
+<li>如果使用<code>.</code>，那么，左边可以是JavaBean、Map对象</li>
+<li>如果使用<code>[]</code>，那么，左边可以是JavaBean、Map、数组、List对象</li>
+</ul>
+<p>访问数组：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;%</div><div class="line">  	// 数组</div><div class="line">  	String [] str = &#123;&quot;tom&quot;,&quot;jerry&quot;&#125;;</div><div class="line">  	session.setAttribute(&quot;str&quot;, str);</div><div class="line">%&gt;</div><div class="line">    &lt;p&gt;数组 $&#123;str[1]&#125;  &lt;/p&gt;</div><div class="line"> 	&lt;p&gt;数组 $&#123;str[&quot;1&quot;]&#125; &lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>访问集合List：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;%</div><div class="line">  	// List</div><div class="line">  	List&lt;String&gt; strList = new ArrayList(); </div><div class="line">  	strList.add(&quot;a&quot;);</div><div class="line">  	strList.add(&quot;b&quot;);</div><div class="line">  	session.setAttribute(&quot;strList&quot;, strList);</div><div class="line">%&gt;</div><div class="line">    &lt;p&gt;List $&#123;strList[0]&#125; &lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>访问Map：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;% 	</div><div class="line"> 	// Map</div><div class="line">  	Map&lt;String,String&gt; map = new HashMap();</div><div class="line">  	map.put(&quot;tom&quot;, &quot;a&quot;);</div><div class="line">  	map.put(&quot;jerry&quot;, &quot;b&quot;);</div><div class="line">  	session.setAttribute(&quot;map&quot;, map);</div><div class="line">  	</div><div class="line">%&gt;</div><div class="line">    &lt;p&gt;Map $&#123;map[&quot;tom&quot;]&#125; &lt;/p&gt;</div><div class="line">	&lt;p&gt;Map $&#123;map.tom&#125; &lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>对于Map，建议使用<code>[]</code> 因为如果参数名含有特殊字符时，使用<code>.</code>会报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;Map $&#123;map[&quot;tom jerry&quot;] &#125; &lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>还可以嵌套使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;嵌套 $&#123;map[str[0]] &#125;&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="EL-隐式对象"><a href="#EL-隐式对象" class="headerlink" title="EL 隐式对象"></a>EL 隐式对象</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">隐式对象</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">pageScope</td>
+<td style="text-align:center">PageContext范围</td>
+</tr>
+<tr>
+<td style="text-align:center">requestScope</td>
+<td style="text-align:center">request范围</td>
+</tr>
+<tr>
+<td style="text-align:center">sessionScope</td>
+<td style="text-align:center">session范围</td>
+</tr>
+<tr>
+<td style="text-align:center">applicationScope</td>
+<td style="text-align:center">application范围</td>
+</tr>
+<tr>
+<td style="text-align:center">pageContext</td>
+<td style="text-align:center">当前页面</td>
+</tr>
+<tr>
+<td style="text-align:center">param</td>
+<td style="text-align:center">请求参数</td>
+</tr>
+<tr>
+<td style="text-align:center">paramValues</td>
+<td style="text-align:center">获得请求参数的所有值</td>
+</tr>
+<tr>
+<td style="text-align:center">Header</td>
+<td style="text-align:center">数据包的头部信息</td>
+</tr>
+<tr>
+<td style="text-align:center">HeaderValues</td>
+<td style="text-align:center">数据包的头部信息的name对应的所有value</td>
+</tr>
+<tr>
+<td style="text-align:center">cookie</td>
+<td style="text-align:center">cookie</td>
+</tr>
+<tr>
+<td style="text-align:center">initParam</td>
+<td style="text-align:center">ServletContext的初始化参数，即&lt;context-param&gt;中的参数</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>属性范围：pageScope、requestScope、sessionScope、application可以获得setAttribute()方法获得的属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;%</div><div class="line">String test = &quot;test&quot;;</div><div class="line">pageContext.setAttribute(&quot;test&quot;, test);</div><div class="line">session.setAttribute(&quot;test&quot;, test);</div><div class="line"></div><div class="line">%&gt;</div><div class="line">&lt;p&gt;$&#123;pageScope.test&#125;&lt;/p&gt;</div><div class="line">&lt;p&gt;$&#123;sessionScope.test&#125;&lt;/p&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>请求参数：<strong>param</strong> 相当于getParameter() 。<strong>paramValues</strong> 相当于getParameterValues()，返回数组可以用 <code>[]</code>获取 。(Header与HeaderValues与之类似)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// http://localhost:8080/Test/EL/ELTest1.jsp?name=tom</div><div class="line">    &lt;p&gt;$&#123;param.name &#125;&lt;/p&gt;</div><div class="line">//http://localhost:8080/Test/EL/ELTest1.jsp?name=tom&amp;name=jerry</div><div class="line">    &lt;p&gt;$&#123;paramValues.name[1] &#125;&lt;/p&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>cookie可以获得cookie中的值</p>
+</li>
+<li><p>initParam可以获得ServletContext的初始化参数<br>参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;context-param&gt;</div><div class="line">	&lt;param-name&gt;username&lt;/param-name&gt;</div><div class="line">	&lt;param-value&gt;tim&lt;/param-value&gt;</div><div class="line">&lt;/context-param&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>使用initParam获得参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;initParam $&#123;initParam.username &#125;&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="关闭EL"><a href="#关闭EL" class="headerlink" title="关闭EL"></a>关闭EL</h1><p>可以使用page指示元素的isELIgnored属性设置是否使用El <code>&lt;%@ page isELIgnored=&quot;true&quot; %&gt;</code></p>
+<p>还可以使用自定义函数，日后在做总结</p>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+    <!-- 使用 changyan -->
+    <div id="changyan-comment">
+        <!--PC和WAP自适应版-->
+<div id="SOHUCS" sid="2017/07/20/JSP-EL表达式/"  ></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cysVH2p6S';
+var conf = '7d191ef850d424bb873df33179309db5';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    </div>
+    <style>
+        #changyan-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/07/22/JSP-使用JSTL-out、set、remove、catch捕捉异常、条件判断、流程控制、字符截取/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/07/19/JSP入门-常见标签元素的使用/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     

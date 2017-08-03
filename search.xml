@@ -986,6 +986,110 @@
     </entry>
     
     <entry>
+      <title><![CDATA[JSP---EL表达式]]></title>
+      <url>/2017/07/20/JSP-EL%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>之前获得request中的参数需要使用getParameter()获得，使用EL可以更加简单：<br><code>${param.username}</code>，param表示从request的请求参数中获得name为username的属性值。EL减少了Scriptlet的使用。例如一个求和的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String a = request.getParameter(&quot;a&quot;);</div><div class="line">String b = request.getParameter(&quot;b&quot;);</div><div class="line">out.println(&quot;a+b=&quot;+(Integer.parseInt(a)+Integer.parseInt(b)));</div></pre></td></tr></table></figure>
+<p>用EL表达式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$&#123;param.a&#125; + $&#123;param.b&#125; = $&#123;param.a+param.b&#125;</div></pre></td></tr></table></figure></p>
+<p>EL可以自动完成类型的转换，通过param.a简单的获取request中的参数</p>
+<h1 id="使用EL获得属性"><a href="#使用EL获得属性" class="headerlink" title="使用EL获得属性"></a>使用EL获得属性</h1><p><code>.</code> <code>[]</code> 都可以用来获得属性</p>
+<ul>
+<li>如果使用<code>.</code>，那么，左边可以是JavaBean、Map对象</li>
+<li>如果使用<code>[]</code>，那么，左边可以是JavaBean、Map、数组、List对象</li>
+</ul>
+<p>访问数组：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;%</div><div class="line">  	// 数组</div><div class="line">  	String [] str = &#123;&quot;tom&quot;,&quot;jerry&quot;&#125;;</div><div class="line">  	session.setAttribute(&quot;str&quot;, str);</div><div class="line">%&gt;</div><div class="line">    &lt;p&gt;数组 $&#123;str[1]&#125;  &lt;/p&gt;</div><div class="line"> 	&lt;p&gt;数组 $&#123;str[&quot;1&quot;]&#125; &lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>访问集合List：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;%</div><div class="line">  	// List</div><div class="line">  	List&lt;String&gt; strList = new ArrayList(); </div><div class="line">  	strList.add(&quot;a&quot;);</div><div class="line">  	strList.add(&quot;b&quot;);</div><div class="line">  	session.setAttribute(&quot;strList&quot;, strList);</div><div class="line">%&gt;</div><div class="line">    &lt;p&gt;List $&#123;strList[0]&#125; &lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>访问Map：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;% 	</div><div class="line"> 	// Map</div><div class="line">  	Map&lt;String,String&gt; map = new HashMap();</div><div class="line">  	map.put(&quot;tom&quot;, &quot;a&quot;);</div><div class="line">  	map.put(&quot;jerry&quot;, &quot;b&quot;);</div><div class="line">  	session.setAttribute(&quot;map&quot;, map);</div><div class="line">  	</div><div class="line">%&gt;</div><div class="line">    &lt;p&gt;Map $&#123;map[&quot;tom&quot;]&#125; &lt;/p&gt;</div><div class="line">	&lt;p&gt;Map $&#123;map.tom&#125; &lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>对于Map，建议使用<code>[]</code> 因为如果参数名含有特殊字符时，使用<code>.</code>会报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;Map $&#123;map[&quot;tom jerry&quot;] &#125; &lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>还可以嵌套使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;嵌套 $&#123;map[str[0]] &#125;&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="EL-隐式对象"><a href="#EL-隐式对象" class="headerlink" title="EL 隐式对象"></a>EL 隐式对象</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">隐式对象</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">pageScope</td>
+<td style="text-align:center">PageContext范围</td>
+</tr>
+<tr>
+<td style="text-align:center">requestScope</td>
+<td style="text-align:center">request范围</td>
+</tr>
+<tr>
+<td style="text-align:center">sessionScope</td>
+<td style="text-align:center">session范围</td>
+</tr>
+<tr>
+<td style="text-align:center">applicationScope</td>
+<td style="text-align:center">application范围</td>
+</tr>
+<tr>
+<td style="text-align:center">pageContext</td>
+<td style="text-align:center">当前页面</td>
+</tr>
+<tr>
+<td style="text-align:center">param</td>
+<td style="text-align:center">请求参数</td>
+</tr>
+<tr>
+<td style="text-align:center">paramValues</td>
+<td style="text-align:center">获得请求参数的所有值</td>
+</tr>
+<tr>
+<td style="text-align:center">Header</td>
+<td style="text-align:center">数据包的头部信息</td>
+</tr>
+<tr>
+<td style="text-align:center">HeaderValues</td>
+<td style="text-align:center">数据包的头部信息的name对应的所有value</td>
+</tr>
+<tr>
+<td style="text-align:center">cookie</td>
+<td style="text-align:center">cookie</td>
+</tr>
+<tr>
+<td style="text-align:center">initParam</td>
+<td style="text-align:center">ServletContext的初始化参数，即&lt;context-param&gt;中的参数</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>属性范围：pageScope、requestScope、sessionScope、application可以获得setAttribute()方法获得的属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;%</div><div class="line">String test = &quot;test&quot;;</div><div class="line">pageContext.setAttribute(&quot;test&quot;, test);</div><div class="line">session.setAttribute(&quot;test&quot;, test);</div><div class="line"></div><div class="line">%&gt;</div><div class="line">&lt;p&gt;$&#123;pageScope.test&#125;&lt;/p&gt;</div><div class="line">&lt;p&gt;$&#123;sessionScope.test&#125;&lt;/p&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>请求参数：<strong>param</strong> 相当于getParameter() 。<strong>paramValues</strong> 相当于getParameterValues()，返回数组可以用 <code>[]</code>获取 。(Header与HeaderValues与之类似)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// http://localhost:8080/Test/EL/ELTest1.jsp?name=tom</div><div class="line">    &lt;p&gt;$&#123;param.name &#125;&lt;/p&gt;</div><div class="line">//http://localhost:8080/Test/EL/ELTest1.jsp?name=tom&amp;name=jerry</div><div class="line">    &lt;p&gt;$&#123;paramValues.name[1] &#125;&lt;/p&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>cookie可以获得cookie中的值</p>
+</li>
+<li><p>initParam可以获得ServletContext的初始化参数<br>参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;context-param&gt;</div><div class="line">	&lt;param-name&gt;username&lt;/param-name&gt;</div><div class="line">	&lt;param-value&gt;tim&lt;/param-value&gt;</div><div class="line">&lt;/context-param&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>使用initParam获得参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;initParam $&#123;initParam.username &#125;&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="关闭EL"><a href="#关闭EL" class="headerlink" title="关闭EL"></a>关闭EL</h1><p>可以使用page指示元素的isELIgnored属性设置是否使用El <code>&lt;%@ page isELIgnored=&quot;true&quot; %&gt;</code></p>
+<p>还可以使用自定义函数，日后在做总结</p>
+]]></content>
+      
+        <categories>
+            
+            <category> JSP </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> JSP </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[JSP入门---常见标签元素的使用]]></title>
       <url>/2017/07/19/JSP%E5%85%A5%E9%97%A8-%E5%B8%B8%E8%A7%81%E6%A0%87%E7%AD%BE%E5%85%83%E7%B4%A0%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
       <content type="html"><![CDATA[<h1 id="Scriptlet元素"><a href="#Scriptlet元素" class="headerlink" title="Scriptlet元素"></a>Scriptlet元素</h1><p><em>&lt;% %&gt;</em>  用于运行Java代码</p>
@@ -4148,6 +4252,38 @@ unalias                            临时删除别名
     </entry>
     
     <entry>
+      <title><![CDATA[不同编码类型的总结]]></title>
+      <url>/2016/09/11/%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%80%BB%E7%BB%93/</url>
+      <content type="html"><![CDATA[<h2 id="1-ASCII"><a href="#1-ASCII" class="headerlink" title="1.ASCII"></a>1.ASCII</h2><p>计算机一开始在美国使用，字符编码也只包括英文字母。ANSCII编码由一个字节表示所有符号。一个字节可以表示的所有可能是256（2的8次方）种，对于美国人来说，26个英文字母，加上常用的符号，也只是用了127个。如果大家都用英文，那这套编码完全够用。<a id="more"></a>但是不同国家的文字不同，如果加上其他国家的语言符号，那一个字节是不够的，之后ASCII做出了改进，将256种情况剩余的可能用来表示其他字符。一直排到了第255种可能，从128到255表示的字符成为“扩展字符集”，然而，新增的字符并不能解决所有问题。<br><img src="http://i.imgur.com/Ks9A740.jpg" alt=""></p>
+<h2 id="2-GB2312"><a href="#2-GB2312" class="headerlink" title="2.GB2312"></a>2.GB2312</h2><p>计算机开始在我国普及时，ASCII中已经没有可以利用的字节状态来表示汉字。于是，我们将扩展字符集删除，将127后的字符状态重新编码。小于127的字符状态的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节称之为高字节，后面一个字节称之为低字节，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，我们还把数学符号、罗马希腊的字母、日文的假名们都编进去了，连在 ASCII 里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的”全角”字符，而原来在127号以下的那些就叫”半角”字符了。 </p>
+<p>后来GB2312也无法满足人们的需要，随后出现了GBK标准，再后来，还是不够用，于是出现了GB18030。这个标准几乎可以表示所有的中文字符，此标准在2006年5月1日被作为在中国境内所有软件产品支持的强制规格。 </p>
+<h2 id="3-Unicode"><a href="#3-Unicode" class="headerlink" title="3.Unicode"></a>3.Unicode</h2><p>不只是我国，很多国家都制定了相应的符合本国文化的字符编码标准。这些标准再本国内可以正常使用，但是如果是不同国家之间通过文本文件的交流，就很有可能导致乱码。这时，国际标准化组织（osi）出现了，OSI致力于将全世界所有的字符用统一的标准编码，消除不同国家之间交流的障碍。</p>
+<p>OSI将所有字符用两个字节表示，包括ANCSI中的前127个字符，所以对于钱127个字符来说，本来8位就可以表示的字符现在用16位来表示，这其实是一种资源的浪费。</p>
+<h2 id="4-UTF-8"><a href="#4-UTF-8" class="headerlink" title="4.UTF-8"></a>4.UTF-8</h2><p>可以看出，Unicode虽然是一个很好的字符编码方式，但由于所有字符都用两个字节表示导致的资源的浪费，促使了UTF-8的出现，UTF-8编码中的第一个字节仍与ASCII兼容，这使得原来处理ASCII字符的软件无须或只须做少部份修改，即可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。互联网工程工作小组（IETF）要求所有互联网协议都必须支持UTF-8编码。<br>UTF-8有如下特点： </p>
+<blockquote>
+<p><1>  前128个US-ASCII字符只需一个字节编码（与ANCSI相同）。 </1></p>
+<p><2>  带有附加符号的拉丁文、希腊文、西里尔字母、亚美尼亚语、希伯来文、阿拉伯文、叙利亚文及它拿字母则需要二个字节编码。 </2></p>
+<p><3>  其他基本多文种平面（BMP）中的字符（这包含了大部分常用字）使用三个字节编码。 </3></p>
+<p><4>  其他极少使用的Unicode辅助平面的字符使用四字节编码。 </4></p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 技术 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[日期类]]></title>
       <url>/2016/09/11/%E6%97%A5%E6%9C%9F%E7%B1%BB/</url>
       <content type="html"><![CDATA[<h4 id="Date类"><a href="#Date类" class="headerlink" title="Date类"></a>Date类</h4><p>从1970.1.1.0点开始到某个时刻的毫秒数，类型是long<br>1970年之前用负数表示</p>
@@ -4185,38 +4321,6 @@ Date d2 = df2.parse(str2);
         <tags>
             
             <tag> Java </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[不同编码类型的总结]]></title>
-      <url>/2016/09/11/%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%80%BB%E7%BB%93/</url>
-      <content type="html"><![CDATA[<h2 id="1-ASCII"><a href="#1-ASCII" class="headerlink" title="1.ASCII"></a>1.ASCII</h2><p>计算机一开始在美国使用，字符编码也只包括英文字母。ANSCII编码由一个字节表示所有符号。一个字节可以表示的所有可能是256（2的8次方）种，对于美国人来说，26个英文字母，加上常用的符号，也只是用了127个。如果大家都用英文，那这套编码完全够用。<a id="more"></a>但是不同国家的文字不同，如果加上其他国家的语言符号，那一个字节是不够的，之后ASCII做出了改进，将256种情况剩余的可能用来表示其他字符。一直排到了第255种可能，从128到255表示的字符成为“扩展字符集”，然而，新增的字符并不能解决所有问题。<br><img src="http://i.imgur.com/Ks9A740.jpg" alt=""></p>
-<h2 id="2-GB2312"><a href="#2-GB2312" class="headerlink" title="2.GB2312"></a>2.GB2312</h2><p>计算机开始在我国普及时，ASCII中已经没有可以利用的字节状态来表示汉字。于是，我们将扩展字符集删除，将127后的字符状态重新编码。小于127的字符状态的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节称之为高字节，后面一个字节称之为低字节，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，我们还把数学符号、罗马希腊的字母、日文的假名们都编进去了，连在 ASCII 里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的”全角”字符，而原来在127号以下的那些就叫”半角”字符了。 </p>
-<p>后来GB2312也无法满足人们的需要，随后出现了GBK标准，再后来，还是不够用，于是出现了GB18030。这个标准几乎可以表示所有的中文字符，此标准在2006年5月1日被作为在中国境内所有软件产品支持的强制规格。 </p>
-<h2 id="3-Unicode"><a href="#3-Unicode" class="headerlink" title="3.Unicode"></a>3.Unicode</h2><p>不只是我国，很多国家都制定了相应的符合本国文化的字符编码标准。这些标准再本国内可以正常使用，但是如果是不同国家之间通过文本文件的交流，就很有可能导致乱码。这时，国际标准化组织（osi）出现了，OSI致力于将全世界所有的字符用统一的标准编码，消除不同国家之间交流的障碍。</p>
-<p>OSI将所有字符用两个字节表示，包括ANCSI中的前127个字符，所以对于钱127个字符来说，本来8位就可以表示的字符现在用16位来表示，这其实是一种资源的浪费。</p>
-<h2 id="4-UTF-8"><a href="#4-UTF-8" class="headerlink" title="4.UTF-8"></a>4.UTF-8</h2><p>可以看出，Unicode虽然是一个很好的字符编码方式，但由于所有字符都用两个字节表示导致的资源的浪费，促使了UTF-8的出现，UTF-8编码中的第一个字节仍与ASCII兼容，这使得原来处理ASCII字符的软件无须或只须做少部份修改，即可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。互联网工程工作小组（IETF）要求所有互联网协议都必须支持UTF-8编码。<br>UTF-8有如下特点： </p>
-<blockquote>
-<p><1>  前128个US-ASCII字符只需一个字节编码（与ANCSI相同）。 </1></p>
-<p><2>  带有附加符号的拉丁文、希腊文、西里尔字母、亚美尼亚语、希伯来文、阿拉伯文、叙利亚文及它拿字母则需要二个字节编码。 </2></p>
-<p><3>  其他基本多文种平面（BMP）中的字符（这包含了大部分常用字）使用三个字节编码。 </3></p>
-<p><4>  其他极少使用的Unicode辅助平面的字符使用四字节编码。 </4></p>
-</blockquote>
-]]></content>
-      
-        <categories>
-            
-            <category> 技术 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 技术 </tag>
             
         </tags>
         
