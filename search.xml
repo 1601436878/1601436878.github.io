@@ -3,6 +3,122 @@
   
     
     <entry>
+      <title><![CDATA[Linux服务管理---系统运行级别、rpm启动与自启动、源码包的启动与自启动]]></title>
+      <url>/2017/08/05/Linux%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86-%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C%E7%BA%A7%E5%88%AB%E3%80%81rpm%E5%90%AF%E5%8A%A8%E4%B8%8E%E8%87%AA%E5%90%AF%E5%8A%A8%E3%80%81%E6%BA%90%E7%A0%81%E5%8C%85%E7%9A%84%E5%90%AF%E5%8A%A8%E4%B8%8E%E8%87%AA%E5%90%AF%E5%8A%A8/</url>
+      <content type="html"><![CDATA[<h1 id="系统运行级别"><a href="#系统运行级别" class="headerlink" title="系统运行级别"></a>系统运行级别</h1><ul>
+<li>runlevel 查看运行级别</li>
+<li>init num 设置运行级别<a id="more"></a>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">运行级别</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">关机</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">单用户模式，可以想象为安全模式，主要用户系统修复</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">不完全的命令行模式</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">完全的命令行模式，标准字符界面</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">系统保留</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">图形模式</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">重启动</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# init 3</div><div class="line">[root@localhost ~]# runlevel</div><div class="line">5 3</div></pre></td></tr></table></figure>
+<p>修改默认运行级别传统方式是更改/etc/inittab文件。但是在Centos7中，该文件的内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"># inittab is no longer used when using systemd.</div><div class="line">#</div><div class="line"># ADDING CONFIGURATION HERE WILL HAVE NO EFFECT ON YOUR SYSTEM.</div><div class="line">#</div><div class="line"># Ctrl-Alt-Delete is handled by /usr/lib/systemd/system/ctrl-alt-del.target</div><div class="line">#</div><div class="line"># systemd uses &apos;targets&apos; instead of runlevels. By default, there are two main targets:</div><div class="line">#</div><div class="line"># multi-user.target: analogous to runlevel 3</div><div class="line"># graphical.target: analogous to runlevel 5</div><div class="line">#</div><div class="line"># To view current default target, run:</div><div class="line"># systemctl get-default</div><div class="line">#</div><div class="line"># To set a default target, run:</div><div class="line"># systemctl set-default TARGET.target</div></pre></td></tr></table></figure></p>
+<p>表示该文件已经不起作用，可以使用命令方式修改：</p>
+<ul>
+<li>multi-user.target: runlevel 3</li>
+<li>graphical.target:  runlevel 5</li>
+</ul>
+<p>使用 <code>systemctl get-default</code> 获取默认级别。使用 <code>systemctl set-default TARGET.target</code> 设置默认级别</p>
+<p>获得默认运行级别<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@localhost etc]# systemctl get-default</div><div class="line">graphical.target</div></pre></td></tr></table></figure></p>
+<p>设置默认运行级别为字符界面：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@localhost etc]# systemctl set-default multi-user.target</div><div class="line">Removed symlink /etc/systemd/system/default.target.</div><div class="line">Created symlink from /etc/systemd/system/default.target to /usr/lib/systemd/system/multi-user.target.</div></pre></td></tr></table></figure></p>
+<h1 id="查看自启动状态"><a href="#查看自启动状态" class="headerlink" title="查看自启动状态"></a>查看自启动状态</h1><p><strong>chkconfig –list</strong><br>查看服务自启动状态,可以看到所有RPM包安装的服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@localhost rc.d]# chkconfig --list</div><div class="line">NetworkManager 	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">abrt-ccpp      	0:关闭	1:关闭	2:关闭	3:启用	4:关闭	5:启用	6:关闭</div><div class="line">abrtd          	0:关闭	1:关闭	2:关闭	3:启用	4:关闭	5:启用	6:关闭</div><div class="line">acpid          	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">atd            	0:关闭	1:关闭	2:关闭	3:启用	4:启用	5:启用	6:关闭</div><div class="line">auditd         	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">autofs         	0:关闭	1:关闭	2:关闭	3:启用	4:启用	5:启用	6:关闭</div></pre></td></tr></table></figure>
+<h2 id="查看已启动的软件"><a href="#查看已启动的软件" class="headerlink" title="查看已启动的软件"></a>查看已启动的软件</h2><ul>
+<li>netstat -an 查看所有端口，查看已连接端口</li>
+<li>netstat -tulnp 查看已开启的监听状态的端口</li>
+</ul>
+<h2 id="rpm如何启动软件"><a href="#rpm如何启动软件" class="headerlink" title="rpm如何启动软件"></a>rpm如何启动软件</h2><ul>
+<li><p>通过绝对路径启动（标准启动方式）</p>
+<blockquote>
+<p>/etc/init.d/httpd start<br>/etc/rc.d/init.d/httpd start </p>
+</blockquote>
+</li>
+<li><p>service 命令启动（rethat系统专有命令）<br><code>service httpd start|stop|restart|status</code> </p>
+</li>
+</ul>
+<h1 id="设置自启动状态"><a href="#设置自启动状态" class="headerlink" title="设置自启动状态"></a>设置自启动状态</h1><ul>
+<li><strong>chkconfig [–level] [独立服务名] [on|off]</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@localhost rc.d]# chkconfig --level 2345  httpd on</div><div class="line">[root@localhost rc.d]# chkconfig --list | grep httpd</div><div class="line">httpd          	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div></pre></td></tr></table></figure>
+<ul>
+<li>修改/etc/rc.d/rc.local 文件，系统启动时会最后执行文件中的内容，可以加上启动特定服务的命令。最后执行的文件。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">#</div><div class="line"># This script will be executed *after* all the other init scripts.</div><div class="line"># You can put your own initialization stuff in here if you don&apos;t</div><div class="line"># want to do the full Sys V style init stuff.</div><div class="line"></div><div class="line">touch /var/lock/subsys/local</div><div class="line"></div><div class="line"># 自启动命令</div><div class="line">/etc/init.d/httpd start</div></pre></td></tr></table></figure>
+<ul>
+<li>ntsysv [级别号] 图形化工具，作用和chkconfig相同。</li>
+</ul>
+<p><strong>chkconfig 和 ntsysv 做出的更改会同步，但是在rc.local文件中做出的修改，在chkconfig中无法查看到</strong></p>
+<h1 id="源码包的自启动"><a href="#源码包的自启动" class="headerlink" title="源码包的自启动"></a>源码包的自启动</h1><p>更改 <code>/etc/rc.d/rc.local</code> 文件，将启动命令追加到文件末尾即可。 <code>chkconfig</code> 命令不能识别源码包服务。</p>
+<h1 id="让源码包被service识别"><a href="#让源码包被service识别" class="headerlink" title="让源码包被service识别"></a>让源码包被service识别</h1><p>将源码包的启动脚本复制到init.d目录下，改脚本需要能接受相关参数，比如start|stop等</p>
+<h1 id="让源码包的服务能被chkconfig-与ntsysv命令管理"><a href="#让源码包的服务能被chkconfig-与ntsysv命令管理" class="headerlink" title="让源码包的服务能被chkconfig 与ntsysv命令管理"></a>让源码包的服务能被chkconfig 与ntsysv命令管理</h1><ul>
+<li><p>在init.d 目录下的脚本中起始处添加 <code># chkconfig: 35 86 76</code></p>
+<blockquote>
+<p>chkconfig： 运行级别 启动顺序 关闭顺序 (/etc/rc3.d/)</p>
+</blockquote>
+</li>
+<li><p>在脚本中添加 <code># description: ..</code></p>
+<blockquote>
+<p>说明， 内容随意</p>
+</blockquote>
+</li>
+<li><p><code>chkconfig --add 脚本名称</code> 将init.d下的启动脚本加入chkconfig到命令中</p>
+</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Linux软件安装---rpm包、源码包]]></title>
       <url>/2017/08/02/Linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-rpm%E5%8C%85%E3%80%81%E6%BA%90%E7%A0%81%E5%8C%85/</url>
       <content type="html"><![CDATA[<h1 id="RPM-安装"><a href="#RPM-安装" class="headerlink" title="RPM 安装"></a>RPM 安装</h1><p><strong>rpm -ivh 全名 </strong><br>安装软件包</p>
@@ -4252,38 +4368,6 @@ unalias                            临时删除别名
     </entry>
     
     <entry>
-      <title><![CDATA[不同编码类型的总结]]></title>
-      <url>/2016/09/11/%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%80%BB%E7%BB%93/</url>
-      <content type="html"><![CDATA[<h2 id="1-ASCII"><a href="#1-ASCII" class="headerlink" title="1.ASCII"></a>1.ASCII</h2><p>计算机一开始在美国使用，字符编码也只包括英文字母。ANSCII编码由一个字节表示所有符号。一个字节可以表示的所有可能是256（2的8次方）种，对于美国人来说，26个英文字母，加上常用的符号，也只是用了127个。如果大家都用英文，那这套编码完全够用。<a id="more"></a>但是不同国家的文字不同，如果加上其他国家的语言符号，那一个字节是不够的，之后ASCII做出了改进，将256种情况剩余的可能用来表示其他字符。一直排到了第255种可能，从128到255表示的字符成为“扩展字符集”，然而，新增的字符并不能解决所有问题。<br><img src="http://i.imgur.com/Ks9A740.jpg" alt=""></p>
-<h2 id="2-GB2312"><a href="#2-GB2312" class="headerlink" title="2.GB2312"></a>2.GB2312</h2><p>计算机开始在我国普及时，ASCII中已经没有可以利用的字节状态来表示汉字。于是，我们将扩展字符集删除，将127后的字符状态重新编码。小于127的字符状态的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节称之为高字节，后面一个字节称之为低字节，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，我们还把数学符号、罗马希腊的字母、日文的假名们都编进去了，连在 ASCII 里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的”全角”字符，而原来在127号以下的那些就叫”半角”字符了。 </p>
-<p>后来GB2312也无法满足人们的需要，随后出现了GBK标准，再后来，还是不够用，于是出现了GB18030。这个标准几乎可以表示所有的中文字符，此标准在2006年5月1日被作为在中国境内所有软件产品支持的强制规格。 </p>
-<h2 id="3-Unicode"><a href="#3-Unicode" class="headerlink" title="3.Unicode"></a>3.Unicode</h2><p>不只是我国，很多国家都制定了相应的符合本国文化的字符编码标准。这些标准再本国内可以正常使用，但是如果是不同国家之间通过文本文件的交流，就很有可能导致乱码。这时，国际标准化组织（osi）出现了，OSI致力于将全世界所有的字符用统一的标准编码，消除不同国家之间交流的障碍。</p>
-<p>OSI将所有字符用两个字节表示，包括ANCSI中的前127个字符，所以对于钱127个字符来说，本来8位就可以表示的字符现在用16位来表示，这其实是一种资源的浪费。</p>
-<h2 id="4-UTF-8"><a href="#4-UTF-8" class="headerlink" title="4.UTF-8"></a>4.UTF-8</h2><p>可以看出，Unicode虽然是一个很好的字符编码方式，但由于所有字符都用两个字节表示导致的资源的浪费，促使了UTF-8的出现，UTF-8编码中的第一个字节仍与ASCII兼容，这使得原来处理ASCII字符的软件无须或只须做少部份修改，即可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。互联网工程工作小组（IETF）要求所有互联网协议都必须支持UTF-8编码。<br>UTF-8有如下特点： </p>
-<blockquote>
-<p><1>  前128个US-ASCII字符只需一个字节编码（与ANCSI相同）。 </1></p>
-<p><2>  带有附加符号的拉丁文、希腊文、西里尔字母、亚美尼亚语、希伯来文、阿拉伯文、叙利亚文及它拿字母则需要二个字节编码。 </2></p>
-<p><3>  其他基本多文种平面（BMP）中的字符（这包含了大部分常用字）使用三个字节编码。 </3></p>
-<p><4>  其他极少使用的Unicode辅助平面的字符使用四字节编码。 </4></p>
-</blockquote>
-]]></content>
-      
-        <categories>
-            
-            <category> 技术 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 技术 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[日期类]]></title>
       <url>/2016/09/11/%E6%97%A5%E6%9C%9F%E7%B1%BB/</url>
       <content type="html"><![CDATA[<h4 id="Date类"><a href="#Date类" class="headerlink" title="Date类"></a>Date类</h4><p>从1970.1.1.0点开始到某个时刻的毫秒数，类型是long<br>1970年之前用负数表示</p>
@@ -4321,6 +4405,38 @@ Date d2 = df2.parse(str2);
         <tags>
             
             <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[不同编码类型的总结]]></title>
+      <url>/2016/09/11/%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%80%BB%E7%BB%93/</url>
+      <content type="html"><![CDATA[<h2 id="1-ASCII"><a href="#1-ASCII" class="headerlink" title="1.ASCII"></a>1.ASCII</h2><p>计算机一开始在美国使用，字符编码也只包括英文字母。ANSCII编码由一个字节表示所有符号。一个字节可以表示的所有可能是256（2的8次方）种，对于美国人来说，26个英文字母，加上常用的符号，也只是用了127个。如果大家都用英文，那这套编码完全够用。<a id="more"></a>但是不同国家的文字不同，如果加上其他国家的语言符号，那一个字节是不够的，之后ASCII做出了改进，将256种情况剩余的可能用来表示其他字符。一直排到了第255种可能，从128到255表示的字符成为“扩展字符集”，然而，新增的字符并不能解决所有问题。<br><img src="http://i.imgur.com/Ks9A740.jpg" alt=""></p>
+<h2 id="2-GB2312"><a href="#2-GB2312" class="headerlink" title="2.GB2312"></a>2.GB2312</h2><p>计算机开始在我国普及时，ASCII中已经没有可以利用的字节状态来表示汉字。于是，我们将扩展字符集删除，将127后的字符状态重新编码。小于127的字符状态的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节称之为高字节，后面一个字节称之为低字节，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，我们还把数学符号、罗马希腊的字母、日文的假名们都编进去了，连在 ASCII 里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的”全角”字符，而原来在127号以下的那些就叫”半角”字符了。 </p>
+<p>后来GB2312也无法满足人们的需要，随后出现了GBK标准，再后来，还是不够用，于是出现了GB18030。这个标准几乎可以表示所有的中文字符，此标准在2006年5月1日被作为在中国境内所有软件产品支持的强制规格。 </p>
+<h2 id="3-Unicode"><a href="#3-Unicode" class="headerlink" title="3.Unicode"></a>3.Unicode</h2><p>不只是我国，很多国家都制定了相应的符合本国文化的字符编码标准。这些标准再本国内可以正常使用，但是如果是不同国家之间通过文本文件的交流，就很有可能导致乱码。这时，国际标准化组织（osi）出现了，OSI致力于将全世界所有的字符用统一的标准编码，消除不同国家之间交流的障碍。</p>
+<p>OSI将所有字符用两个字节表示，包括ANCSI中的前127个字符，所以对于钱127个字符来说，本来8位就可以表示的字符现在用16位来表示，这其实是一种资源的浪费。</p>
+<h2 id="4-UTF-8"><a href="#4-UTF-8" class="headerlink" title="4.UTF-8"></a>4.UTF-8</h2><p>可以看出，Unicode虽然是一个很好的字符编码方式，但由于所有字符都用两个字节表示导致的资源的浪费，促使了UTF-8的出现，UTF-8编码中的第一个字节仍与ASCII兼容，这使得原来处理ASCII字符的软件无须或只须做少部份修改，即可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。互联网工程工作小组（IETF）要求所有互联网协议都必须支持UTF-8编码。<br>UTF-8有如下特点： </p>
+<blockquote>
+<p><1>  前128个US-ASCII字符只需一个字节编码（与ANCSI相同）。 </1></p>
+<p><2>  带有附加符号的拉丁文、希腊文、西里尔字母、亚美尼亚语、希伯来文、阿拉伯文、叙利亚文及它拿字母则需要二个字节编码。 </2></p>
+<p><3>  其他基本多文种平面（BMP）中的字符（这包含了大部分常用字）使用三个字节编码。 </3></p>
+<p><4>  其他极少使用的Unicode辅助平面的字符使用四字节编码。 </4></p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 技术 </tag>
             
         </tags>
         

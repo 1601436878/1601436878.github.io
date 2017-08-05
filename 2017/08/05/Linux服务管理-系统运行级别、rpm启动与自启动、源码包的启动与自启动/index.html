@@ -10,7 +10,7 @@
     
     <title>
         
-            jQuery事件对象---常见属性 | 
+            Linux服务管理---系统运行级别、rpm启动与自启动、源码包的启动与自启动 | 
         
         Twilight&#39;s Blog
     </title>
@@ -36,7 +36,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="wangchao">
     <meta name="description" content="null">
-    <meta name="keywords" content="null,jQuery">
+    <meta name="keywords" content="null,Linux">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
@@ -62,9 +62,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://twilight.net.cn">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="jQuery事件对象---常见属性 | Twilight&#39;s Blog">
+    <meta property="og:title" content="Linux服务管理---系统运行级别、rpm启动与自启动、源码包的启动与自启动 | Twilight&#39;s Blog">
     <meta property="og:description" content="null">
-    <meta property="og:article:tag" content="jQuery"> 
+    <meta property="og:article:tag" content="Linux"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -246,7 +246,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#event对象常见属性"><span class="post-toc-number">1.</span> <span class="post-toc-text">event对象常见属性</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Target"><span class="post-toc-number">2.</span> <span class="post-toc-text">Target</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#data"><span class="post-toc-number">3.</span> <span class="post-toc-text">data</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#pageY、screenY、clienty"><span class="post-toc-number">4.</span> <span class="post-toc-text">pageY、screenY、clienty</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#which"><span class="post-toc-number">5.</span> <span class="post-toc-text">which</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#系统运行级别"><span class="post-toc-number">1.</span> <span class="post-toc-text">系统运行级别</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#查看自启动状态"><span class="post-toc-number">2.</span> <span class="post-toc-text">查看自启动状态</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看已启动的软件"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">查看已启动的软件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rpm如何启动软件"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">rpm如何启动软件</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#设置自启动状态"><span class="post-toc-number">3.</span> <span class="post-toc-text">设置自启动状态</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#源码包的自启动"><span class="post-toc-number">4.</span> <span class="post-toc-text">源码包的自启动</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#让源码包被service识别"><span class="post-toc-number">5.</span> <span class="post-toc-text">让源码包被service识别</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#让源码包的服务能被chkconfig-与ntsysv命令管理"><span class="post-toc-number">6.</span> <span class="post-toc-text">让源码包的服务能被chkconfig 与ntsysv命令管理</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -283,7 +283,7 @@
         
     
             <p class="article-headline-p">
-                jQuery事件对象---常见属性
+                Linux服务管理---系统运行级别、rpm启动与自启动、源码包的启动与自启动
             </p>
         </div>
 
@@ -302,7 +302,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>wangchao</strong>
-        <span>6月 15, 2017</span>
+        <span>8月 05, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -326,7 +326,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/jQuery/">jQuery</a>
+        <a class="post_tag-link" href="/tags/Linux/">Linux</a>
     </ul>
     
 
@@ -340,7 +340,7 @@
     <!-- Leancloud Views -->
         <a class="post_share-link" href="#">
             <li class="mdl-menu__item">
-                <span id="/2017/06/15/jQuery事件对象-常见属性/" class="leancloud-views_num" data-flag-title="jQuery事件对象---常见属性">
+                <span id="/2017/08/05/Linux服务管理-系统运行级别、rpm启动与自启动、源码包的启动与自启动/" class="leancloud-views_num" data-flag-title="Linux服务管理---系统运行级别、rpm启动与自启动、源码包的启动与自启动">
      &nbsp;浏览量
 </span>
 
@@ -352,7 +352,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=jQuery事件对象---常见属性&url=http://twilight.net.cn//2017/06/15/jQuery事件对象-常见属性/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Linux服务管理---系统运行级别、rpm启动与自启动、源码包的启动与自启动&url=http://twilight.net.cn//2017/08/05/Linux服务管理-系统运行级别、rpm启动与自启动、源码包的启动与自启动/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -361,7 +361,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=jQuery事件对象---常见属性&url=http://twilight.net.cn//2017/06/15/jQuery事件对象-常见属性/index.html&via=wangchao" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Linux服务管理---系统运行级别、rpm启动与自启动、源码包的启动与自启动&url=http://twilight.net.cn//2017/08/05/Linux服务管理-系统运行级别、rpm启动与自启动、源码包的启动与自启动/index.html&via=wangchao" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -370,7 +370,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2017/06/15/jQuery事件对象-常见属性/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2017/08/05/Linux服务管理-系统运行级别、rpm启动与自启动、源码包的启动与自启动/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -379,7 +379,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2017/06/15/jQuery事件对象-常见属性/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2017/08/05/Linux服务管理-系统运行级别、rpm启动与自启动、源码包的启动与自启动/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -391,7 +391,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=jQuery事件对象---常见属性&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2017/06/15/jQuery事件对象-常见属性/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=Linux服务管理---系统运行级别、rpm启动与自启动、源码包的启动与自启动&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2017/08/05/Linux服务管理-系统运行级别、rpm启动与自启动、源码包的启动与自启动/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -409,87 +409,102 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="event对象常见属性"><a href="#event对象常见属性" class="headerlink" title="event对象常见属性"></a>event对象常见属性</h1><table>
+        <h1 id="系统运行级别"><a href="#系统运行级别" class="headerlink" title="系统运行级别"></a>系统运行级别</h1><ul>
+<li>runlevel 查看运行级别</li>
+<li>init num 设置运行级别<a id="more"></a>
+</li>
+</ul>
+<table>
 <thead>
 <tr>
-<th style="text-align:center">属性</th>
+<th style="text-align:center">运行级别</th>
 <th style="text-align:center">含义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">type</td>
-<td style="text-align:center">获取这个事件的事件类型的<strong>字符串</strong>，例如：click</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">关机</td>
 </tr>
 <tr>
-<td style="text-align:center">target</td>
-<td style="text-align:center">获取与事件绑定的 DOM 元素</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">单用户模式，可以想象为安全模式，主要用户系统修复</td>
 </tr>
 <tr>
-<td style="text-align:center">data</td>
-<td style="text-align:center">获取事件调用时的额外数据</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">不完全的命令行模式</td>
 </tr>
 <tr>
-<td style="text-align:center">relatedTarget</td>
-<td style="text-align:center">获取移入移出目标前所在的元素</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">完全的命令行模式，标准字符界面</td>
 </tr>
 <tr>
-<td style="text-align:center">currentTarget</td>
-<td style="text-align:center">获取冒泡前触发的 DOM 元素，等同与 this</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">系统保留</td>
 </tr>
 <tr>
-<td style="text-align:center">pageX/pageY</td>
-<td style="text-align:center">获取相对于页面原点的水平/垂直坐标</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">图形模式</td>
 </tr>
 <tr>
-<td style="text-align:center">screenX/screenY</td>
-<td style="text-align:center">获取显示器屏幕位置的水平/垂直坐标(非 jQuery 封装)</td>
-</tr>
-<tr>
-<td style="text-align:center">clientX/clientY</td>
-<td style="text-align:center">获取相对于页面可见部分的水平/垂直坐标(非 jQuery 封装)</td>
-</tr>
-<tr>
-<td style="text-align:center">result</td>
-<td style="text-align:center">获取上一个相同事件的返回值</td>
-</tr>
-<tr>
-<td style="text-align:center">timeStamp</td>
-<td style="text-align:center">获取事件触发的时间戳（字符串）</td>
-</tr>
-<tr>
-<td style="text-align:center">which</td>
-<td style="text-align:center">获取鼠标的左中右键(1,2,3)，或获取键盘按键</td>
-</tr>
-<tr>
-<td style="text-align:center">altKey/shiftKey/ctrlKey/metaKey</td>
-<td style="text-align:center">判断在点击的同时是否按下了 alt、shift、ctrl键</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">重启动</td>
 </tr>
 </tbody>
 </table>
-<a id="more"></a>
-<h1 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h1><ul>
-<li><strong>target 获得触发元素的DOM（点击的元素）</strong></li>
-<li><strong>currentTarget得到的是监听元素的DOM（绑定的元素）</strong></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# init 3</div><div class="line">[root@localhost ~]# runlevel</div><div class="line">5 3</div></pre></td></tr></table></figure>
+<p>修改默认运行级别传统方式是更改/etc/inittab文件。但是在Centos7中，该文件的内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"># inittab is no longer used when using systemd.</div><div class="line">#</div><div class="line"># ADDING CONFIGURATION HERE WILL HAVE NO EFFECT ON YOUR SYSTEM.</div><div class="line">#</div><div class="line"># Ctrl-Alt-Delete is handled by /usr/lib/systemd/system/ctrl-alt-del.target</div><div class="line">#</div><div class="line"># systemd uses &apos;targets&apos; instead of runlevels. By default, there are two main targets:</div><div class="line">#</div><div class="line"># multi-user.target: analogous to runlevel 3</div><div class="line"># graphical.target: analogous to runlevel 5</div><div class="line">#</div><div class="line"># To view current default target, run:</div><div class="line"># systemctl get-default</div><div class="line">#</div><div class="line"># To set a default target, run:</div><div class="line"># systemctl set-default TARGET.target</div></pre></td></tr></table></figure></p>
+<p>表示该文件已经不起作用，可以使用命令方式修改：</p>
+<ul>
+<li>multi-user.target: runlevel 3</li>
+<li>graphical.target:  runlevel 5</li>
 </ul>
-<p>对于样式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;div style=&quot;width:300px;height:300px;background-color:skyblue;&quot;&gt;</div><div class="line">	&lt;span style=&quot;width:100px;height:100px;background-color:yellow;display:block&quot;&gt;&lt;/span&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">	$(&quot;div:eq(0)&quot;).bind(&quot;mouseover&quot;,function(event)&#123;</div><div class="line">	//	alert(event);			// [object Object]</div><div class="line">	//	alert(event.type);		// click</div><div class="line">	//	alert(event.target);	// 点击的元素	[object HTMLSpanElement]/[object HTMLDivElement]</div><div class="line">	//	alert(event.currentTarget);	// 总是div	[object HTMLDivElement]</div><div class="line">		alert(event.relatedTarget);</div><div class="line">	&#125;);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
-<p>用鼠标进入事件模拟三种target的效果：</p>
-<p><strong>target:</strong></p>
-<p><img src="http://i4.piimg.com/584041/d107c45ca55bd2f0.jpg" alt=""></p>
-<p><strong>currentTarget:</strong></p>
-<p><img src="http://i4.piimg.com/584041/92622f2fd31d2f9a.jpg" alt=""></p>
-<p><strong>relatedTarget:</strong></p>
-<p><img src="http://i4.piimg.com/584041/eceaa05149cdb580.jpg" alt=""></p>
-<h1 id="data"><a href="#data" class="headerlink" title="data"></a>data</h1><p>通过 event.data 获取额外数据，可以是数字、字符串、数组、对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(&quot;:button:eq(1)&quot;).bind(&quot;click&quot;,&quot;sss&quot;,function(e)&#123;</div><div class="line">	alert(e.data);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h1 id="pageY、screenY、clienty"><a href="#pageY、screenY、clienty" class="headerlink" title="pageY、screenY、clienty"></a>pageY、screenY、clienty</h1><ul>
-<li><strong>pageY</strong> 是对于页面顶端的距离，包括未显示的部分，所以常用于滚动条，随着滚动条改变</li>
-<li><strong>screenY</strong> 是对于屏幕顶端的距离，不随滚动条改变</li>
-<li><strong>clienty</strong> 是相对于页面可见部分顶端的距离，不随滚动条改变</li>
+<p>使用 <code>systemctl get-default</code> 获取默认级别。使用 <code>systemctl set-default TARGET.target</code> 设置默认级别</p>
+<p>获得默认运行级别<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@localhost etc]# systemctl get-default</div><div class="line">graphical.target</div></pre></td></tr></table></figure></p>
+<p>设置默认运行级别为字符界面：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@localhost etc]# systemctl set-default multi-user.target</div><div class="line">Removed symlink /etc/systemd/system/default.target.</div><div class="line">Created symlink from /etc/systemd/system/default.target to /usr/lib/systemd/system/multi-user.target.</div></pre></td></tr></table></figure></p>
+<h1 id="查看自启动状态"><a href="#查看自启动状态" class="headerlink" title="查看自启动状态"></a>查看自启动状态</h1><p><strong>chkconfig –list</strong><br>查看服务自启动状态,可以看到所有RPM包安装的服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@localhost rc.d]# chkconfig --list</div><div class="line">NetworkManager 	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">abrt-ccpp      	0:关闭	1:关闭	2:关闭	3:启用	4:关闭	5:启用	6:关闭</div><div class="line">abrtd          	0:关闭	1:关闭	2:关闭	3:启用	4:关闭	5:启用	6:关闭</div><div class="line">acpid          	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">atd            	0:关闭	1:关闭	2:关闭	3:启用	4:启用	5:启用	6:关闭</div><div class="line">auditd         	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">autofs         	0:关闭	1:关闭	2:关闭	3:启用	4:启用	5:启用	6:关闭</div></pre></td></tr></table></figure>
+<h2 id="查看已启动的软件"><a href="#查看已启动的软件" class="headerlink" title="查看已启动的软件"></a>查看已启动的软件</h2><ul>
+<li>netstat -an 查看所有端口，查看已连接端口</li>
+<li>netstat -tulnp 查看已开启的监听状态的端口</li>
 </ul>
-<p><img src="http://i4.piimg.com/584041/f2a963e0d9da4748.jpg" alt="page"></p>
-<h1 id="which"><a href="#which" class="headerlink" title="which"></a>which</h1><p>判断鼠标点击,不过实验的时候好像只有左键有效 <strong>(/= _ =)/~┴┴</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(&quot;:text&quot;).click(function(e)&#123;</div><div class="line">	alert(e.which);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>判断键盘按下的值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(&quot;:text&quot;).keydown(function(e)&#123;</div><div class="line">	alert(e.which);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="rpm如何启动软件"><a href="#rpm如何启动软件" class="headerlink" title="rpm如何启动软件"></a>rpm如何启动软件</h2><ul>
+<li><p>通过绝对路径启动（标准启动方式）</p>
+<blockquote>
+<p>/etc/init.d/httpd start<br>/etc/rc.d/init.d/httpd start </p>
+</blockquote>
+</li>
+<li><p>service 命令启动（rethat系统专有命令）<br><code>service httpd start|stop|restart|status</code> </p>
+</li>
+</ul>
+<h1 id="设置自启动状态"><a href="#设置自启动状态" class="headerlink" title="设置自启动状态"></a>设置自启动状态</h1><ul>
+<li><strong>chkconfig [–level] [独立服务名] [on|off]</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@localhost rc.d]# chkconfig --level 2345  httpd on</div><div class="line">[root@localhost rc.d]# chkconfig --list | grep httpd</div><div class="line">httpd          	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div></pre></td></tr></table></figure>
+<ul>
+<li>修改/etc/rc.d/rc.local 文件，系统启动时会最后执行文件中的内容，可以加上启动特定服务的命令。最后执行的文件。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">#</div><div class="line"># This script will be executed *after* all the other init scripts.</div><div class="line"># You can put your own initialization stuff in here if you don&apos;t</div><div class="line"># want to do the full Sys V style init stuff.</div><div class="line"></div><div class="line">touch /var/lock/subsys/local</div><div class="line"></div><div class="line"># 自启动命令</div><div class="line">/etc/init.d/httpd start</div></pre></td></tr></table></figure>
+<ul>
+<li>ntsysv [级别号] 图形化工具，作用和chkconfig相同。</li>
+</ul>
+<p><strong>chkconfig 和 ntsysv 做出的更改会同步，但是在rc.local文件中做出的修改，在chkconfig中无法查看到</strong></p>
+<h1 id="源码包的自启动"><a href="#源码包的自启动" class="headerlink" title="源码包的自启动"></a>源码包的自启动</h1><p>更改 <code>/etc/rc.d/rc.local</code> 文件，将启动命令追加到文件末尾即可。 <code>chkconfig</code> 命令不能识别源码包服务。</p>
+<h1 id="让源码包被service识别"><a href="#让源码包被service识别" class="headerlink" title="让源码包被service识别"></a>让源码包被service识别</h1><p>将源码包的启动脚本复制到init.d目录下，改脚本需要能接受相关参数，比如start|stop等</p>
+<h1 id="让源码包的服务能被chkconfig-与ntsysv命令管理"><a href="#让源码包的服务能被chkconfig-与ntsysv命令管理" class="headerlink" title="让源码包的服务能被chkconfig 与ntsysv命令管理"></a>让源码包的服务能被chkconfig 与ntsysv命令管理</h1><ul>
+<li><p>在init.d 目录下的脚本中起始处添加 <code># chkconfig: 35 86 76</code></p>
+<blockquote>
+<p>chkconfig： 运行级别 启动顺序 关闭顺序 (/etc/rc3.d/)</p>
+</blockquote>
+</li>
+<li><p>在脚本中添加 <code># description: ..</code></p>
+<blockquote>
+<p>说明， 内容随意</p>
+</blockquote>
+</li>
+<li><p><code>chkconfig --add 脚本名称</code> 将init.d下的启动脚本加入chkconfig到命令中</p>
+</li>
+</ul>
 
     
 
@@ -507,7 +522,7 @@
     <!-- 使用 changyan -->
     <div id="changyan-comment">
         <!--PC和WAP自适应版-->
-<div id="SOHUCS" sid="2017/06/15/jQuery事件对象-常见属性/"  ></div>
+<div id="SOHUCS" sid="2017/08/05/Linux服务管理-系统运行级别、rpm启动与自启动、源码包的启动与自启动/"  ></div>
 <script type="text/javascript">
 (function(){
 var appid = 'cysVH2p6S';
@@ -536,21 +551,13 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/06/15/jQuery事件-阻止冒泡和默认行为/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/06/15/jQuery事件-常见事件的绑定与解除/" id="post_nav-older" class="next-content">
+        <a href="/2017/08/02/Linux软件安装-rpm包、源码包/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
