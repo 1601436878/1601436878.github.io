@@ -246,7 +246,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#查看进程"><span class="post-toc-number">1.</span> <span class="post-toc-text">查看进程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ps"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">ps</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pstree"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">pstree</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#top"><span class="post-toc-number">2.</span> <span class="post-toc-text">top</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#终止进程"><span class="post-toc-number">3.</span> <span class="post-toc-text">终止进程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#kill-l"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">kill -l</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#killall"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">killall</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pkill"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">pkill</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#修改进程优先级"><span class="post-toc-number">4.</span> <span class="post-toc-text">修改进程优先级</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nice-命令"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">nice 命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#renice-命令"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">renice 命令</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#查看进程"><span class="post-toc-number">1.</span> <span class="post-toc-text">查看进程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ps"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">ps</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pstree-命令"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">pstree 命令</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#top-命令"><span class="post-toc-number">2.</span> <span class="post-toc-text">top 命令</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#终止进程"><span class="post-toc-number">3.</span> <span class="post-toc-text">终止进程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#kill-l-命令"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">kill -l 命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#killall-命令"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">killall 命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pkill-命令"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">pkill 命令</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#修改进程优先级"><span class="post-toc-number">4.</span> <span class="post-toc-text">修改进程优先级</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nice-命令"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">nice 命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#renice-命令"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">renice 命令</span></a></li></ol></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -401,12 +401,16 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <h1 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h1><h2 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h2><ul>
-<li><p>ps aux<br>查看所有进程，使用BSD操作系统格式</p>
-</li>
-<li><p>ps -le<br>查看系统所有进程，使用Linux标准命令格式</p>
+<li>ps aux</li>
+</ul>
+<p>查看所有进程，使用BSD操作系统格式</p>
+<ul>
+<li>ps -le </li>
+</ul>
+<p>查看系统所有进程，使用Linux标准命令格式</p>
 <a id="more"></a>
 <p>参数</p>
-</li>
+<ul>
 <li>a ：显示一个终端的所有进程，</li>
 <li>u ：显示进程的归属用户及内存的使用情况</li>
 <li>x ：显示没有控制终端的进程</li>
@@ -468,13 +472,13 @@
 </tr>
 </tbody>
 </table>
-<h2 id="pstree"><a href="#pstree" class="headerlink" title="pstree"></a>pstree</h2><p>显示进程树</p>
+<h2 id="pstree-命令"><a href="#pstree-命令" class="headerlink" title="pstree 命令"></a>pstree 命令</h2><p>显示进程树</p>
 <ul>
 <li>-p：显示进程的PID</li>
 <li>-u：显示进程的所属用户</li>
 </ul>
 <p>执行结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# pstree -up</div><div class="line">init(1)─┬─NetworkManager(1581)─┬─dhclient(3561)</div><div class="line">        │                      └─&#123;NetworkManager&#125;(1645)</div><div class="line">        ├─abrtd(1960)</div><div class="line">        ├─acpid(1680)</div><div class="line">        ├─atd(1987)</div><div class="line">        ├─auditd(1462)───&#123;auditd&#125;(1463)</div><div class="line">        ├─automount(1767)─┬─&#123;automount&#125;(1768)</div><div class="line">        │                 ├─&#123;automount&#125;(1769)</div><div class="line">        │                 ├─&#123;automount&#125;(1772)</div><div class="line">        │                 └─&#123;automount&#125;(1775)</div><div class="line">        ├─certmonger(2003)</div><div class="line">        ├─console-kit-dae(2584)─┬─&#123;console-kit-da&#125;(2585)</div><div class="line">        │                       ├─&#123;console-kit-da&#125;(2586)</div><div class="line">        │                       ├─&#123;console-kit-da&#125;(2587)</div><div class="line">        │                       ├─&#123;console-kit-da&#125;(2588)</div><div class="line">        │                       ├─&#123;console-kit-da&#125;(2589)</div><div class="line">        │                       ├─&#123;console-kit-da&#125;(2590)</div><div class="line">        │                       ├─&#123;console-kit-da&#125;(2591)</div><div class="line">        │                       ├─&#123;console-kit-da&#125;(2592)</div><div class="line">        ├─crond(1972)</div><div class="line">        ├─cupsd(1647)</div><div class="line">        ├─dbus-daemon(1567,dbus)───&#123;dbus-daemon&#125;(1570)</div><div class="line">        ├─hald(1692,haldaemon)─┬─hald-runner(1693,root)─┬─hald-addon-acpi(1738,haldaemon)</div><div class="line">        │                      │                        └─hald-addon-inpu(1737)</div><div class="line">        │                      └─&#123;hald&#125;(1694)</div><div class="line">        ├─login(3126)───bash(3166)</div><div class="line">        ├─master(1931)─┬─pickup(21672,postfix)</div><div class="line">        │              └─qmgr(1942,postfix)</div><div class="line">        ├─mingetty(2050)</div><div class="line">        ├─mingetty(2052)</div><div class="line">        ├─mingetty(2054)</div><div class="line">        ├─mingetty(2056)</div><div class="line">        ├─mingetty(2064)</div><div class="line">        ├─modem-manager(1588)</div><div class="line">        ├─polkitd(2720)</div><div class="line">        ├─rpc.statd(1604,rpcuser)</div><div class="line">        ├─rpcbind(1547,rpc)</div><div class="line">        ├─rsyslogd(1496)─┬─&#123;rsyslogd&#125;(1497)</div><div class="line">        │                ├─&#123;rsyslogd&#125;(1498)</div><div class="line">        │                └─&#123;rsyslogd&#125;(1499)</div><div class="line">        ├─sshd(1835)───sshd(21691)───bash(21695)───pstree(21739)</div><div class="line">        ├─udevd(548)─┬─udevd(2062)</div><div class="line">        │            └─udevd(2063)</div><div class="line">        └─wpa_supplicant(1648)</div></pre></td></tr></table></figure></p>
-<h1 id="top"><a href="#top" class="headerlink" title="top"></a>top</h1><p>查看系统健康状态</p>
+<h1 id="top-命令"><a href="#top-命令" class="headerlink" title="top 命令"></a>top 命令</h1><p>查看系统健康状态</p>
 <p>参数</p>
 <ul>
 <li>-d： 秒数：指定top命令每隔几秒更新。默认3秒</li>
@@ -649,7 +653,7 @@
 </tr>
 </tbody>
 </table>
-<h1 id="终止进程"><a href="#终止进程" class="headerlink" title="终止进程"></a>终止进程</h1><h2 id="kill-l"><a href="#kill-l" class="headerlink" title="kill -l"></a>kill -l</h2><ul>
+<h1 id="终止进程"><a href="#终止进程" class="headerlink" title="终止进程"></a>终止进程</h1><h2 id="kill-l-命令"><a href="#kill-l-命令" class="headerlink" title="kill -l 命令"></a>kill -l 命令</h2><ul>
 <li>kill -[信号] pid<br>根据进程id杀死单一进程</li>
 </ul>
 <p>常见信号如下：</p>
@@ -680,7 +684,7 @@
 </tbody>
 </table>
 <p>杀死pid为14942的进程：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">kill -1 14942</div><div class="line">kill -HUP 14942</div></pre></td></tr></table></figure></p>
-<h2 id="killall"><a href="#killall" class="headerlink" title="killall"></a>killall</h2><ul>
+<h2 id="killall-命令"><a href="#killall-命令" class="headerlink" title="killall 命令"></a>killall 命令</h2><ul>
 <li>killall [信号] [选项] 进程名<br>按照进程名杀死进程</li>
 </ul>
 <p>选项：</p>
@@ -689,7 +693,7 @@
 <li>-I 忽略进程名的大小写</li>
 </ul>
 <p>杀死tomcat进程：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">killall -9 -I java</div></pre></td></tr></table></figure></p>
-<h2 id="pkill"><a href="#pkill" class="headerlink" title="pkill"></a>pkill</h2><ul>
+<h2 id="pkill-命令"><a href="#pkill-命令" class="headerlink" title="pkill 命令"></a>pkill 命令</h2><ul>
 <li>pkill [信号] [选项] 进程名<br>按照进程名杀死进程</li>
 </ul>
 <p>该命令的作用与killall类似，只是多出了一个按照终端号结束用户终端的功能</p>
