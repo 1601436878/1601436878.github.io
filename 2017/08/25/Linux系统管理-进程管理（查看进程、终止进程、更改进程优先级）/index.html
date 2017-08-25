@@ -10,7 +10,7 @@
     
     <title>
         
-            JSP---隐式对象、pageContext、错误处理 | 
+            Linux系统管理---进程管理（查看进程、终止进程、更改进程优先级） | 
         
         Twilight&#39;s Blog
     </title>
@@ -36,7 +36,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="wangchao">
     <meta name="description" content="null">
-    <meta name="keywords" content="null,JSP">
+    <meta name="keywords" content="null,Linux">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
@@ -62,9 +62,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://twilight.net.cn">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="JSP---隐式对象、pageContext、错误处理 | Twilight&#39;s Blog">
+    <meta property="og:title" content="Linux系统管理---进程管理（查看进程、终止进程、更改进程优先级） | Twilight&#39;s Blog">
     <meta property="og:description" content="null">
-    <meta property="og:article:tag" content="JSP"> 
+    <meta property="og:article:tag" content="Linux"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -246,7 +246,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#隐式对象"><span class="post-toc-number">2.</span> <span class="post-toc-text">隐式对象</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#pageContext"><span class="post-toc-number">3.</span> <span class="post-toc-text">pageContext</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常用方法："><span class="post-toc-number">3.1.</span> <span class="post-toc-text">常用方法：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查找范围-scope"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">查找范围(scope)</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#错误处理"><span class="post-toc-number">4.</span> <span class="post-toc-text">错误处理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#error-page"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">error-page</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#查看进程"><span class="post-toc-number">1.</span> <span class="post-toc-text">查看进程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ps"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">ps</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pstree"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">pstree</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#top"><span class="post-toc-number">2.</span> <span class="post-toc-text">top</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#终止进程"><span class="post-toc-number">3.</span> <span class="post-toc-text">终止进程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#kill-l"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">kill -l</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#killall"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">killall</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pkill"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">pkill</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#修改进程优先级"><span class="post-toc-number">4.</span> <span class="post-toc-text">修改进程优先级</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nice-命令"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">nice 命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#renice-命令"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">renice 命令</span></a></li></ol></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -271,10 +271,10 @@
     <!-- Paradox Post Header -->
     
         <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://otbrtx8bw.bkt.clouddn.com/hexo_title823.jpg)">
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://otbrtx8bw.bkt.clouddn.com/1.jpg)">
     
             <p class="article-headline-p">
-                JSP---隐式对象、pageContext、错误处理
+                Linux系统管理---进程管理（查看进程、终止进程、更改进程优先级）
             </p>
         </div>
 
@@ -293,7 +293,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>wangchao</strong>
-        <span>7月 18, 2017</span>
+        <span>8月 25, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -317,7 +317,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/JSP/">JSP</a>
+        <a class="post_tag-link" href="/tags/Linux/">Linux</a>
     </ul>
     
 
@@ -331,7 +331,7 @@
     <!-- Leancloud Views -->
         <a class="post_share-link" href="#">
             <li class="mdl-menu__item">
-                <span id="/2017/07/18/JSP-隐式对象、pageContext、错误处理/" class="leancloud-views_num" data-flag-title="JSP---隐式对象、pageContext、错误处理">
+                <span id="/2017/08/25/Linux系统管理-进程管理（查看进程、终止进程、更改进程优先级）/" class="leancloud-views_num" data-flag-title="Linux系统管理---进程管理（查看进程、终止进程、更改进程优先级）">
      &nbsp;浏览量
 </span>
 
@@ -343,7 +343,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=JSP---隐式对象、pageContext、错误处理&url=http://twilight.net.cn//2017/07/18/JSP-隐式对象、pageContext、错误处理/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Linux系统管理---进程管理（查看进程、终止进程、更改进程优先级）&url=http://twilight.net.cn//2017/08/25/Linux系统管理-进程管理（查看进程、终止进程、更改进程优先级）/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -352,7 +352,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=JSP---隐式对象、pageContext、错误处理&url=http://twilight.net.cn//2017/07/18/JSP-隐式对象、pageContext、错误处理/index.html&via=wangchao" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Linux系统管理---进程管理（查看进程、终止进程、更改进程优先级）&url=http://twilight.net.cn//2017/08/25/Linux系统管理-进程管理（查看进程、终止进程、更改进程优先级）/index.html&via=wangchao" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -361,7 +361,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2017/07/18/JSP-隐式对象、pageContext、错误处理/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://twilight.net.cn//2017/08/25/Linux系统管理-进程管理（查看进程、终止进程、更改进程优先级）/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -370,7 +370,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2017/07/18/JSP-隐式对象、pageContext、错误处理/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://twilight.net.cn//2017/08/25/Linux系统管理-进程管理（查看进程、终止进程、更改进程优先级）/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -382,7 +382,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=JSP---隐式对象、pageContext、错误处理&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2017/07/18/JSP-隐式对象、pageContext、错误处理/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=Linux系统管理---进程管理（查看进程、终止进程、更改进程优先级）&summary=null&pics=http://twilight.net.cn/img/favicon.png&url=http://twilight.net.cn/2017/08/25/Linux系统管理-进程管理（查看进程、终止进程、更改进程优先级）/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -400,71 +400,326 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>隐式对象是_jspService()中的局部变量，故只能在<code>&lt;% %&gt;</code> 和 <code>&lt;%= %&gt;</code>中使用</p>
-<h1 id="隐式对象"><a href="#隐式对象" class="headerlink" title="隐式对象"></a>隐式对象</h1><table>
+        <h1 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h1><h2 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h2><ul>
+<li><p>ps aux<br>查看所有进程，使用BSD操作系统格式</p>
+</li>
+<li><p>ps -le<br>查看系统所有进程，使用Linux标准命令格式</p>
+<a id="more"></a>
+<p>参数</p>
+</li>
+<li>a ：显示一个终端的所有进程，</li>
+<li>u ：显示进程的归属用户及内存的使用情况</li>
+<li>x ：显示没有控制终端的进程</li>
+<li>-l ：长格式显示。显示更加详细的信息</li>
+<li>-e ：显示所有进程，和-A作用一致</li>
+</ul>
+<p>输出:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# ps aux</div><div class="line">USER        PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</div><div class="line">root          1  0.0  0.1  19348  1616 ?        Ss   Aug01   0:02 /sbin/init</div><div class="line">root          2  0.0  0.0      0     0 ?        S    Aug01   0:00 [kthreadd]</div><div class="line">root          3  0.0  0.0      0     0 ?        S    Aug01   0:00 [migration/0</div><div class="line">root          4  0.0  0.0      0     0 ?        S    Aug01   0:00 [ksoftirqd/0</div><div class="line">root          5  0.0  0.0      0     0 ?        S    Aug01   0:00 [stopper/0]</div><div class="line">root          6  0.0  0.0      0     0 ?        S    Aug01   0:00 [watchdog/0]</div><div class="line">root          7  0.1  0.0      0     0 ?        S    Aug01   0:37 [events/0]</div><div class="line">root          8  0.0  0.0      0     0 ?        S    Aug01   0:00 [events/0]</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<table>
 <thead>
 <tr>
-<th style="text-align:center">隐式对象</th>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">USER</td>
+<td style="text-align:left">该进程是由哪个用户产生的</td>
+</tr>
+<tr>
+<td style="text-align:left">PID</td>
+<td style="text-align:left">进程的ID号</td>
+</tr>
+<tr>
+<td style="text-align:left">%CPU</td>
+<td style="text-align:left">改进程占用的CPU资源的百分比，占用越高，进程越耗费资源</td>
+</tr>
+<tr>
+<td style="text-align:left">%MEM</td>
+<td style="text-align:left">该进程占用的物理内存的百分比，占用越高，进程越耗费资源</td>
+</tr>
+<tr>
+<td style="text-align:left">VSZ</td>
+<td style="text-align:left">该进程占用的虚拟内存大小，单位是KB</td>
+</tr>
+<tr>
+<td style="text-align:left">RSS</td>
+<td style="text-align:left">该进程占用的物理内存大小，单位是KB</td>
+</tr>
+<tr>
+<td style="text-align:left">TTY</td>
+<td style="text-align:left">该进程是在哪个终端中运行的。tty1-tty7表示本地控制台，pts/0-255表示虚拟终端</td>
+</tr>
+<tr>
+<td style="text-align:left">STAT</td>
+<td style="text-align:left">进程状态。常见状态有 R:运行 S：睡眠 T:停止状态 s：包含子进程 +：位于后台</td>
+</tr>
+<tr>
+<td style="text-align:left">START</td>
+<td style="text-align:left">该进程的启动时间</td>
+</tr>
+<tr>
+<td style="text-align:left">TIME</td>
+<td style="text-align:left">该进程占用CPU的运算时间，不是系统时间</td>
+</tr>
+<tr>
+<td style="text-align:left">COMMAND</td>
+<td style="text-align:left">产生此进程的命令名</td>
+</tr>
+</tbody>
+</table>
+<h2 id="pstree"><a href="#pstree" class="headerlink" title="pstree"></a>pstree</h2><p>显示进程树</p>
+<ul>
+<li>-p：显示进程的PID</li>
+<li>-u：显示进程的所属用户</li>
+</ul>
+<p>执行结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# pstree -up</div><div class="line">init(1)─┬─NetworkManager(1581)─┬─dhclient(3561)</div><div class="line">        │                      └─&#123;NetworkManager&#125;(1645)</div><div class="line">        ├─abrtd(1960)</div><div class="line">        ├─acpid(1680)</div><div class="line">        ├─atd(1987)</div><div class="line">        ├─auditd(1462)───&#123;auditd&#125;(1463)</div><div class="line">        ├─automount(1767)─┬─&#123;automount&#125;(1768)</div><div class="line">        │                 ├─&#123;automount&#125;(1769)</div><div class="line">        │                 ├─&#123;automount&#125;(1772)</div><div class="line">        │                 └─&#123;automount&#125;(1775)</div><div class="line">        ├─certmonger(2003)</div><div class="line">        ├─console-kit-dae(2584)─┬─&#123;console-kit-da&#125;(2585)</div><div class="line">        │                       ├─&#123;console-kit-da&#125;(2586)</div><div class="line">        │                       ├─&#123;console-kit-da&#125;(2587)</div><div class="line">        │                       ├─&#123;console-kit-da&#125;(2588)</div><div class="line">        │                       ├─&#123;console-kit-da&#125;(2589)</div><div class="line">        │                       ├─&#123;console-kit-da&#125;(2590)</div><div class="line">        │                       ├─&#123;console-kit-da&#125;(2591)</div><div class="line">        │                       ├─&#123;console-kit-da&#125;(2592)</div><div class="line">        ├─crond(1972)</div><div class="line">        ├─cupsd(1647)</div><div class="line">        ├─dbus-daemon(1567,dbus)───&#123;dbus-daemon&#125;(1570)</div><div class="line">        ├─hald(1692,haldaemon)─┬─hald-runner(1693,root)─┬─hald-addon-acpi(1738,haldaemon)</div><div class="line">        │                      │                        └─hald-addon-inpu(1737)</div><div class="line">        │                      └─&#123;hald&#125;(1694)</div><div class="line">        ├─login(3126)───bash(3166)</div><div class="line">        ├─master(1931)─┬─pickup(21672,postfix)</div><div class="line">        │              └─qmgr(1942,postfix)</div><div class="line">        ├─mingetty(2050)</div><div class="line">        ├─mingetty(2052)</div><div class="line">        ├─mingetty(2054)</div><div class="line">        ├─mingetty(2056)</div><div class="line">        ├─mingetty(2064)</div><div class="line">        ├─modem-manager(1588)</div><div class="line">        ├─polkitd(2720)</div><div class="line">        ├─rpc.statd(1604,rpcuser)</div><div class="line">        ├─rpcbind(1547,rpc)</div><div class="line">        ├─rsyslogd(1496)─┬─&#123;rsyslogd&#125;(1497)</div><div class="line">        │                ├─&#123;rsyslogd&#125;(1498)</div><div class="line">        │                └─&#123;rsyslogd&#125;(1499)</div><div class="line">        ├─sshd(1835)───sshd(21691)───bash(21695)───pstree(21739)</div><div class="line">        ├─udevd(548)─┬─udevd(2062)</div><div class="line">        │            └─udevd(2063)</div><div class="line">        └─wpa_supplicant(1648)</div></pre></td></tr></table></figure></p>
+<h1 id="top"><a href="#top" class="headerlink" title="top"></a>top</h1><p>查看系统健康状态</p>
+<p>参数</p>
+<ul>
+<li>-d： 秒数：指定top命令每隔几秒更新。默认3秒</li>
+<li>-b： 使用批处理模式输出，一般和 <code>-</code> n合用</li>
+<li>-n： 次数：指定top命令执行的次数。一般和<code>-b</code>合用</li>
+</ul>
+<p>交互命令：</p>
+<ul>
+<li>？或h：显示帮助信息</li>
+<li>P:以CPU使用率排序，默认是此选项</li>
+<li>M：以内存使用率排序</li>
+<li>N：以PID排序</li>
+<li>q：退出top</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# top</div><div class="line">top - 02:42:13 up  9:01,  2 users,  load average: 0.06, 0.04, 0.05</div><div class="line">Tasks:  97 total,   1 running,  96 sleeping,   0 stopped,   0 zombie</div><div class="line">Cpu(s):  0.2%us,  0.4%sy,  0.0%ni, 99.0%id,  0.4%wa,  0.0%hi,  0.1%si,  0.0%st</div><div class="line">Mem:   1004136k total,   824820k used,   179316k free,    39408k buffers</div><div class="line">Swap:  2031612k total,        0k used,  2031612k free,   596492k cached</div><div class="line"></div><div class="line">   PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND              </div><div class="line">     7 root      20   0     0    0    0 S  2.0  0.0   0:39.59 events/0              </div><div class="line">     1 root      20   0 19348 1616 1304 S  0.0  0.2   0:02.90 init                  </div><div class="line">     2 root      20   0     0    0    0 S  0.0  0.0   0:00.01 kthreadd              </div><div class="line">     3 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 migration/0           </div><div class="line">     4 root      20   0     0    0    0 S  0.0  0.0   0:00.12 ksoftirqd/0           </div><div class="line">     5 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 stopper/0             </div><div class="line">     6 root      RT   0     0    0    0 S  0.0  0.0   0:00.12 watchdog/0            </div><div class="line">     8 root      20   0     0    0    0 S  0.0  0.0   0:00.00 events/0              </div><div class="line">     9 root      20   0     0    0    0 S  0.0  0.0   0:00.00 events_long/0         </div><div class="line">    10 root      20   0     0    0    0 S  0.0  0.0   0:00.00 events_power_ef       </div><div class="line">    11 root      20   0     0    0    0 S  0.0  0.0   0:00.00 cgroup                </div><div class="line">    12 root      20   0     0    0    0 S  0.0  0.0   0:00.00 khelper               </div><div class="line">    13 root      20   0     0    0    0 S  0.0  0.0   0:00.00 netns                 </div><div class="line">    14 root      20   0     0    0    0 S  0.0  0.0   0:00.00 async/mgr             </div><div class="line">    15 root      20   0     0    0    0 S  0.0  0.0   0:00.00 pm                    </div><div class="line">    16 root      20   0     0    0    0 S  0.0  0.0   0:00.27 sync_supers           </div><div class="line">    17 root      20   0     0    0    0 S  0.0  0.0   0:00.25 bdi-default           </div><div class="line">    18 root      20   0     0    0    0 S  0.0  0.0   0:00.00 kintegrityd/0</div></pre></td></tr></table></figure>
+<p>第一行</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">内容</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">02:42:13</td>
+<td style="text-align:left">系统当前时间</td>
+</tr>
+<tr>
+<td style="text-align:left">up  9:01</td>
+<td style="text-align:left">系统的运行时间</td>
+</tr>
+<tr>
+<td style="text-align:left">2 users</td>
+<td style="text-align:left">当前用户数</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>load average: 0.06, 0.04, 0.05</strong></td>
+<td style="text-align:left"><strong>系统在之前1分钟、5分钟、15分钟的平均负载。</strong></td>
+</tr>
+</tbody>
+</table>
+<p>第二行</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">内容</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Tasks:  97 total</td>
+<td style="text-align:left">系统中的进程总数</td>
+</tr>
+<tr>
+<td style="text-align:left">1 running</td>
+<td style="text-align:left">正在运行的进程数</td>
+</tr>
+<tr>
+<td style="text-align:left">96 sleeping</td>
+<td style="text-align:left">睡眠的进程数</td>
+</tr>
+<tr>
+<td style="text-align:left">0 stopped</td>
+<td style="text-align:left">正在停止的进程数</td>
+</tr>
+<tr>
+<td style="text-align:left">0 zombie</td>
+<td style="text-align:left">僵尸进程</td>
+</tr>
+</tbody>
+</table>
+<p>第三行</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">内容</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Cpu(s):  0.2%us</td>
+<td style="text-align:left">用户模式占用的CPU百分比</td>
+</tr>
+<tr>
+<td style="text-align:left">0.4%sy</td>
+<td style="text-align:left">系统模式占用的CPU百分比</td>
+</tr>
+<tr>
+<td style="text-align:left">0.0%ni</td>
+<td style="text-align:left">改变过优先级的用户进程占用的CPU百分比</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>99.0%id </strong></td>
+<td style="text-align:left"><strong>空闲的CPU百分比</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">0.4%wa</td>
+<td style="text-align:left">等该输入/输出的进程占用百分比</td>
+</tr>
+<tr>
+<td style="text-align:left">0.0%hi</td>
+<td style="text-align:left">硬中断请求服务占用的CPU百分比</td>
+</tr>
+<tr>
+<td style="text-align:left">0.1%si</td>
+<td style="text-align:left">软中断请求服务占用的CPU百分比</td>
+</tr>
+<tr>
+<td style="text-align:left">0.0%st</td>
+<td style="text-align:left">st（Steal time）虚拟时间百分比，就是当有虚拟机时，虚拟机CPU等待实际CPU的时间百分比</td>
+</tr>
+</tbody>
+</table>
+<p>第四行</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">内容</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Mem:   1004136k total</td>
+<td style="text-align:left">物理内存的总量，单位KB</td>
+</tr>
+<tr>
+<td style="text-align:left">824820k used</td>
+<td style="text-align:left">已经使用的物理内存数量</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>179316k free</strong></td>
+<td style="text-align:left"><strong>空闲的物理内存数量</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">39408k buffers</td>
+<td style="text-align:left">作为缓冲区的内存数量</td>
+</tr>
+</tbody>
+</table>
+<p>第五行</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">内容</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Swap:  2031612k total</td>
+<td style="text-align:left">交换分区（虚拟内存）的总大小</td>
+</tr>
+<tr>
+<td style="text-align:left">824820k used</td>
+<td style="text-align:left">已经使用的交换分区的大小</td>
+</tr>
+<tr>
+<td style="text-align:left">0k used</td>
+<td style="text-align:left">已经使用的交换分区的大小</td>
+</tr>
+<tr>
+<td style="text-align:left">2031612k free</td>
+<td style="text-align:left">空闲交换分区的大小</td>
+</tr>
+<tr>
+<td style="text-align:left">596492k cached</td>
+<td style="text-align:left">作为环迅的交换分区的大小</td>
+</tr>
+</tbody>
+</table>
+<h1 id="终止进程"><a href="#终止进程" class="headerlink" title="终止进程"></a>终止进程</h1><h2 id="kill-l"><a href="#kill-l" class="headerlink" title="kill -l"></a>kill -l</h2><ul>
+<li>kill -[信号] pid<br>根据进程id杀死单一进程</li>
+</ul>
+<p>常见信号如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">信号代码</th>
+<th style="text-align:center">信号名称</th>
 <th style="text-align:center">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">out</td>
-<td style="text-align:center">JspWriter对象，内部关联PrintWriter对象</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">SIGHUP</td>
+<td style="text-align:center">平滑重启，关闭进程，重新读取配置文件后重启</td>
 </tr>
 <tr>
-<td style="text-align:center">request</td>
-<td style="text-align:center">对应HttpServletRequest对象</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">SIGNKILL</td>
+<td style="text-align:center">进程法伤问题时，强制结束进程</td>
 </tr>
 <tr>
-<td style="text-align:center">response</td>
-<td style="text-align:center">对应HttpServletResponse对象</td>
-</tr>
-<tr>
-<td style="text-align:center">config</td>
-<td style="text-align:center">对应ServletConfig</td>
-</tr>
-<tr>
-<td style="text-align:center">application</td>
-<td style="text-align:center">对应ServletContext</td>
-</tr>
-<tr>
-<td style="text-align:center">session</td>
-<td style="text-align:center">对应HttpSession</td>
-</tr>
-<tr>
-<td style="text-align:center">pageContext</td>
-<td style="text-align:center">对应PageContent对象。将所有JSP页面信息封装起来，可以通过pageContext获得所有的隐式对象</td>
-</tr>
-<tr>
-<td style="text-align:center">exception</td>
-<td style="text-align:center">对应Throwable对象，代表由其他JSP页面抛出的一场对象，只会出现在JSP错误页面</td>
-</tr>
-<tr>
-<td style="text-align:center">page</td>
-<td style="text-align:center">对应转译后的this</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">SIGTERM</td>
+<td style="text-align:center">正常结束的金浩，kill命令的默认信号</td>
 </tr>
 </tbody>
 </table>
-<h1 id="pageContext"><a href="#pageContext" class="headerlink" title="pageContext"></a>pageContext</h1><p>使用pageContext可以获取所有隐式对象，也可以访问 page、request、session、application范围的变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">request = pageContext.getRequest();</div><div class="line">response = pageContext.getResponse();</div><div class="line">config = pageContext.getServletConfig();</div><div class="line">application = pageContext.getServletContext();</div><div class="line">session = pageContext.getSession();</div><div class="line">out = pageContext.getOut();</div></pre></td></tr></table></figure></p>
-<h2 id="常用方法："><a href="#常用方法：" class="headerlink" title="常用方法："></a>常用方法：</h2><ul>
-<li>setAttribute(String name, String value, int scope)：如果没有指定scope，该属性默认在page范围内</li>
-<li>getAttribute(String name, int scope) 获得属性值</li>
-<li>removeAttribute(String name, int scope) 移除属性</li>
-<li>findAttribute()依次从页面、请求、会话、应用程序范围查找有无对应的属性</li>
+<p>杀死pid为14942的进程：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">kill -1 14942</div><div class="line">kill -HUP 14942</div></pre></td></tr></table></figure></p>
+<h2 id="killall"><a href="#killall" class="headerlink" title="killall"></a>killall</h2><ul>
+<li>killall [信号] [选项] 进程名<br>按照进程名杀死进程</li>
 </ul>
-<h2 id="查找范围-scope"><a href="#查找范围-scope" class="headerlink" title="查找范围(scope)"></a>查找范围(scope)</h2><ul>
-<li>pageContext.APPLICATION_SCOPE ServletContext（application）</li>
-<li>pageContext.REQUEST_SCOPE request</li>
-<li>pageContext.SESSION_SCOPE session</li>
-<li>pageContext.PAGE_SCOPE pageContext</li>
+<p>选项：</p>
+<ul>
+<li>-i 交互式。询问是否要杀死某个进程</li>
+<li>-I 忽略进程名的大小写</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;%</div><div class="line">pageContext.setAttribute(&quot;scope&quot;, &quot;page&quot;);</div><div class="line">session.setAttribute(&quot;scope&quot;, &quot;session&quot;);</div><div class="line">application.setAttribute(&quot;scope&quot;, &quot;application&quot;);</div><div class="line">request.setAttribute(&quot;scope&quot;, &quot;request&quot;);</div><div class="line"></div><div class="line">%&gt;</div><div class="line">page:&lt;%= pageContext.getAttribute(&quot;scope&quot;, pageContext.PAGE_SCOPE) %&gt;&lt;br/&gt;</div><div class="line">session:&lt;%= pageContext.getAttribute(&quot;scope&quot;, pageContext.SESSION_SCOPE) %&gt;&lt;br/&gt;</div><div class="line">application:&lt;%= pageContext.getAttribute(&quot;scope&quot;, pageContext.APPLICATION_SCOPE) %&gt;&lt;br/&gt;</div><div class="line">request:&lt;%= pageContext.getAttribute(&quot;scope&quot;, pageContext.REQUEST_SCOPE) %&gt;&lt;br/&gt;</div></pre></td></tr></table></figure>
-<h1 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h1><p>错误界面只有iserrorPage为true时才可以使用exception对象</p>
-<p>发生错误的页面 hello.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page language=&quot;java&quot; import=&quot;java.util.*&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;%@ page errorPage=&quot;Error.jsp&quot; %&gt;</div><div class="line"></div><div class="line">&lt;html&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;%=1/0 %&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
-<p>错误页面 error.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page language=&quot;java&quot; import=&quot;java.util.*&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;%@ page isErrorPage=&quot;true&quot; %&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">  &lt;h1&gt;这是一个错误界面&lt;/h1&gt;</div><div class="line">    &lt;%=exception %&gt;</div><div class="line">    &lt;hr/&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
-<h2 id="error-page"><a href="#error-page" class="headerlink" title="error-page"></a>error-page</h2><p>如果希望容器在发现某个错误或者异常时，自动转发至错误页面，则可以使用 <code>&lt;error-page&gt;&lt;/error-page&gt;</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;error-page&gt;</div><div class="line">	&lt;exception-type&gt;java.lang.ArithmeticException&lt;/exception-type&gt;</div><div class="line">	&lt;location&gt;/JSPTest/Error.jsp&lt;/location&gt;</div><div class="line">&lt;/error-page&gt;</div><div class="line"></div><div class="line"> &lt;error-page&gt;</div><div class="line">	&lt;error-code&gt;404&lt;/error-code&gt;</div><div class="line">	&lt;location&gt;/JSPTest/Error.jsp&lt;/location&gt;</div><div class="line">&lt;/error-page&gt;</div></pre></td></tr></table></figure></p>
+<p>杀死tomcat进程：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">killall -9 -I java</div></pre></td></tr></table></figure></p>
+<h2 id="pkill"><a href="#pkill" class="headerlink" title="pkill"></a>pkill</h2><ul>
+<li>pkill [信号] [选项] 进程名<br>按照进程名杀死进程</li>
+</ul>
+<p>该命令的作用与killall类似，只是多出了一个按照终端号结束用户终端的功能</p>
+<ul>
+<li>-t 终端号： 按照终端号踢出用户。 只有root用户可以操作</li>
+</ul>
+<p><code>w</code>命令查看当前用户。可知有一个本地终端和两个远程终端。WHAT表示该终端正在执行的命令。pts/1是当前终端的终端号。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[root@localhost bin]# w</div><div class="line"> 17:10:02 up 50 min,  3 users,  load average: 0.71, 0.21, 0.07</div><div class="line">USER     TTY      FROM              LOGIN@   IDLE   JCPU   PCPU WHAT</div><div class="line">root     tty1     -                16:24   41:19   0.15s  0.15s -bash</div><div class="line">twilight pts/0    192.168.226.1    16:27   42:17   0.08s  0.08s -bash</div><div class="line">root     pts/1    192.168.226.1    16:29    0.00s  0.33s  0.05s w</div></pre></td></tr></table></figure></p>
+<p>根据终端号杀死pts/0用户的终端：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pkill -9 -t pts/0</div></pre></td></tr></table></figure></p>
+<h1 id="修改进程优先级"><a href="#修改进程优先级" class="headerlink" title="修改进程优先级"></a>修改进程优先级</h1><p><code>ps -le</code>可以查看所有进程的信息，其中包括进程的优先级。PRI表示priority，NI表示nice。两个都是有点急，数字越小代表优先级越高。</p>
+<p>注意事项：</p>
+<ul>
+<li>NI的范围是-20 到 19 </li>
+<li>普通用户调整NI值得范围是0~19，而且只能调整自己的进程</li>
+<li>普通用户只能调高NI值，而不能降低</li>
+<li>root用户才能设定进程NI值为负值，而且可以调整任何用户的进程</li>
+<li>PRI(最终值) = PRI(原始值) + NI</li>
+<li>用户只能修改NI的值，不能直接修改PRI</li>
+</ul>
+<h2 id="nice-命令"><a href="#nice-命令" class="headerlink" title="nice 命令"></a>nice 命令</h2><ul>
+<li>nice [选项] 命令<br>nice可以给新执行的命令直接赋予NI值，但是不能修改已经存在进程的NI值。</li>
+</ul>
+<p>选项：</p>
+<ul>
+<li>-n NI值： 给命令赋予NI值</li>
+</ul>
+<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nice -n -5 service httpd start</div></pre></td></tr></table></figure></p>
+<h2 id="renice-命令"><a href="#renice-命令" class="headerlink" title="renice 命令"></a>renice 命令</h2><ul>
+<li>renice [优先级] PID<br>修改已经存在的进程的NI值的命令</li>
+</ul>
+<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">renice -10 2125</div></pre></td></tr></table></figure></p>
 
     
 
@@ -482,7 +737,7 @@
     <!-- 使用 changyan -->
     <div id="changyan-comment">
         <!--PC和WAP自适应版-->
-<div id="SOHUCS" sid="2017/07/18/JSP-隐式对象、pageContext、错误处理/"  ></div>
+<div id="SOHUCS" sid="2017/08/25/Linux系统管理-进程管理（查看进程、终止进程、更改进程优先级）/"  ></div>
 <script type="text/javascript">
 (function(){
 var appid = 'cysVH2p6S';
@@ -511,21 +766,13 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/07/19/2333/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/07/18/Servlet-请求封装器/" id="post_nav-older" class="next-content">
+        <a href="/2017/08/05/Linux服务管理-系统运行级别、rpm启动与自启动、源码包的启动与自启动/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
