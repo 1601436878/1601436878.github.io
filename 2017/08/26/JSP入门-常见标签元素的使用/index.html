@@ -10,7 +10,7 @@
     
     <title>
         
-            MySQL---操作数据表基本操作（增删改查） | 
+            JSP入门---常见标签元素的使用 | 
         
         Twilight&#39;s Blog
     </title>
@@ -36,7 +36,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="wangchao">
     <meta name="description" content="null">
-    <meta name="keywords" content="null,MySQL">
+    <meta name="keywords" content="null,JSP">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
@@ -62,9 +62,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="MySQL---操作数据表基本操作（增删改查） | Twilight&#39;s Blog">
+    <meta property="og:title" content="JSP入门---常见标签元素的使用 | Twilight&#39;s Blog">
     <meta property="og:description" content="null">
-    <meta property="og:article:tag" content="MySQL"> 
+    <meta property="og:article:tag" content="JSP"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -246,7 +246,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#插入记录"><span class="post-toc-number">1.</span> <span class="post-toc-text">插入记录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#INSERT-INTO-tbl-name-SET-col-name-value，…"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">INSERT [INTO] tbl_name SET col_name=value，…</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#INSERT-INTO-tbl-name-col-name-…-SELECT-…"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">INSERT [INTO] tbl_name [(col_name,…)] SELECT …</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#更新记录"><span class="post-toc-number">2.</span> <span class="post-toc-text">更新记录</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#删除记录"><span class="post-toc-number">3.</span> <span class="post-toc-text">删除记录</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#查找记录"><span class="post-toc-number">4.</span> <span class="post-toc-text">查找记录</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#分组"><span class="post-toc-number">5.</span> <span class="post-toc-text">分组</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#筛选分组-HAVING"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">筛选分组(HAVING)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#排序-ORDER"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">排序(ORDER)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#限制查询返回的数量-LIMIT"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">限制查询返回的数量(LIMIT)</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Scriptlet元素"><span class="post-toc-number">1.</span> <span class="post-toc-text">Scriptlet元素</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#声明（Decalaration）元素"><span class="post-toc-number">2.</span> <span class="post-toc-text">声明（Decalaration）元素</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#表达式元素"><span class="post-toc-number">3.</span> <span class="post-toc-text">表达式元素</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#注释元素"><span class="post-toc-number">4.</span> <span class="post-toc-text">注释元素</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#指示-Directive-元素"><span class="post-toc-number">5.</span> <span class="post-toc-text">指示(Directive)元素</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#page属性"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">page属性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#可以使用多条指令语句单独设置每个属性，也可以使用同一条指令语句设置该指令的多个属性"><span class="post-toc-number">5.1.1.</span> <span class="post-toc-text">可以使用多条指令语句单独设置每个属性，也可以使用同一条指令语句设置该指令的多个属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#错误转发案例"><span class="post-toc-number">5.1.2.</span> <span class="post-toc-text">错误转发案例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#include"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">include</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#案例"><span class="post-toc-number">5.2.1.</span> <span class="post-toc-text">案例</span></a></li></ol></li></ol></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -271,10 +271,10 @@
     <!-- Paradox Post Header -->
     
         <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://otbrtx8bw.bkt.clouddn.com/hexo_title_mysql-%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.jpg)">
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://otbrtx8bw.bkt.clouddn.com/hexo_title824.jpg)">
     
             <p class="article-headline-p">
-                MySQL---操作数据表基本操作（增删改查）
+                JSP入门---常见标签元素的使用
             </p>
         </div>
 
@@ -293,7 +293,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>wangchao</strong>
-        <span>7月 04, 2017</span>
+        <span>8月 26, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -317,7 +317,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/MySQL/">MySQL</a>
+        <a class="post_tag-link" href="/tags/JSP/">JSP</a>
     </ul>
     
 
@@ -331,7 +331,7 @@
     <!-- Leancloud Views -->
         <a class="post_share-link" href="#">
             <li class="mdl-menu__item">
-                <span id="/2017/07/04/MySQL-操作数据表基本操作（增删改查）/" class="leancloud-views_num" data-flag-title="MySQL---操作数据表基本操作（增删改查）">
+                <span id="/2017/08/26/JSP入门-常见标签元素的使用/" class="leancloud-views_num" data-flag-title="JSP入门---常见标签元素的使用">
      &nbsp;浏览量
 </span>
 
@@ -343,7 +343,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=MySQL---操作数据表基本操作（增删改查）&url=http://yoursite.com//2017/07/04/MySQL-操作数据表基本操作（增删改查）/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=JSP入门---常见标签元素的使用&url=http://yoursite.com//2017/08/26/JSP入门-常见标签元素的使用/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -352,7 +352,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=MySQL---操作数据表基本操作（增删改查）&url=http://yoursite.com//2017/07/04/MySQL-操作数据表基本操作（增删改查）/index.html&via=wangchao" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=JSP入门---常见标签元素的使用&url=http://yoursite.com//2017/08/26/JSP入门-常见标签元素的使用/index.html&via=wangchao" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -361,7 +361,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/07/04/MySQL-操作数据表基本操作（增删改查）/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/08/26/JSP入门-常见标签元素的使用/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -370,7 +370,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/07/04/MySQL-操作数据表基本操作（增删改查）/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/08/26/JSP入门-常见标签元素的使用/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -382,7 +382,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=MySQL---操作数据表基本操作（增删改查）&summary=null&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/07/04/MySQL-操作数据表基本操作（增删改查）/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Twilight&#39;s Blog&title=JSP入门---常见标签元素的使用&summary=null&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/08/26/JSP入门-常见标签元素的使用/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -400,50 +400,60 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="插入记录"><a href="#插入记录" class="headerlink" title="插入记录"></a>插入记录</h1><p><strong>INSERT [INTO] tbl_name [{col_name,…}] {VALUES|VALUE} (values…),(values…)</strong><br><a id="more"></a></p>
+        <h1 id="Scriptlet元素"><a href="#Scriptlet元素" class="headerlink" title="Scriptlet元素"></a>Scriptlet元素</h1><p><em>&lt;% %&gt;</em>  用于运行Java代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;%	</div><div class="line">	out.println(&quot;hello&quot;);</div><div class="line">%&gt;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="声明（Decalaration）元素"><a href="#声明（Decalaration）元素" class="headerlink" title="声明（Decalaration）元素"></a>声明（Decalaration）元素</h1><p><strong>&lt;%! %&gt;</strong><br>可以声名函数和变量，作为Servlet的方法和成员。声明的变量会被翻译到_jspService()方法的外面（类成员，方法）</p>
+<p><code>&lt;% %&gt;</code> 也可以声明变量,声明的变量是_jspService()一部分，是一个局部变量</p>
+<p>由于对象只创建一次，当不断访问以下代码时，data的值会递增，但是data2的值始终为1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;%! int data = 1; %&gt;		// 成员变量</div><div class="line"></div><div class="line">&lt;%</div><div class="line">int data2 = 1;			// 方法中的局部变量</div><div class="line">out.println(data++);		</div><div class="line">out.println(data2++);</div><div class="line">%&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="表达式元素"><a href="#表达式元素" class="headerlink" title="表达式元素"></a>表达式元素</h1><p><strong>&lt;%= %&gt;</strong></p>
 <ul>
-<li>不加列名表示需要插入全部数据</li>
-<li>对于自增主键，可以用NULL 和 DEFAULT 使之自己增加</li>
+<li><strong>字符串变量，或者可以转换成字符串的表达式</strong> </li>
+<li><strong>“=” 号的前面不能有空格</strong> </li>
+<li><strong>表达式后不加分号</strong> </li>
+<li><strong>&lt;%=date %&gt;翻译时会被转换为out.println(date);</strong> </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql&gt; INSERT INTO users VALUES(NULL,&apos;TOM&apos;,&apos;123&apos;,20,1);</div><div class="line">Query OK, 1 row affected (0.08 sec)</div><div class="line"></div><div class="line">mysql&gt; INSERT INTO users VALUES(DEFAULT,&apos;TOM&apos;,&apos;123&apos;,20,1);</div><div class="line">Query OK, 1 row affected (0.08 sec)</div></pre></td></tr></table></figure>
+<p>传入参数Bgcolor，会显示指定颜色的文字<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;% </div><div class="line">		String color = request.getParameter(&quot;Bgcolor&quot;);</div><div class="line">%&gt;</div><div class="line"></div><div class="line">&lt;font color=&lt;%=color %&gt; size=5 &gt;&lt;%=color %&gt;&lt;/font&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>PS:当输出的&lt;%或%&gt;时，&lt;% 用 &amp;lt;% 表示，%&gt;用%&amp;gt; 或者 %\&gt;表示</strong></p>
+<h1 id="注释元素"><a href="#注释元素" class="headerlink" title="注释元素"></a>注释元素</h1><p>JSP注释:  &lt;%– –%&gt;<br>java注释: &lt;%//   %&gt;<br>java注释: &lt;%/<em> </em>/%&gt;</p>
+<h1 id="指示-Directive-元素"><a href="#指示-Directive-元素" class="headerlink" title="指示(Directive)元素"></a>指示(Directive)元素</h1><p><strong>&lt;%@ Directive属性=”属性值”%&gt;</strong><br>常见的指示类型有page、include、taglib</p>
+<h2 id="page属性"><a href="#page属性" class="headerlink" title="page属性"></a>page属性</h2><p>常见属性值如下:</p>
 <ul>
-<li>可以写数字运算、函数</li>
+<li><strong>import=”java.util.*” 相当于Java中的import</strong></li>
+<li><strong>contentType=”Text/html;charset=utf-8” 指定contentType</strong></li>
+<li><strong>pageEncoding=”UTF-8” 指定转义时的编码</strong></li>
+<li><strong>language=”java” 默认是Java</strong></li>
+<li><strong>errorPage=”error.jsp” 指定发生错误时的跳转页面</strong></li>
+<li><strong>iserrorPage=”true/false” 错误页面</strong></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql&gt; INSERT INTO users VALUES(DEFAULT,&apos;TOM&apos;,&apos;123&apos;,10*2-1,1);</div><div class="line">Query OK, 1 row affected (0.08 sec)</div><div class="line"></div><div class="line">// 使用自带的md5()计算md5</div><div class="line">mysql&gt; INSERT INTO users VALUES(DEFAULT,&apos;TOM&apos;,md5(&apos;123&apos;),10*2-1,1);</div></pre></td></tr></table></figure>
+<h3 id="可以使用多条指令语句单独设置每个属性，也可以使用同一条指令语句设置该指令的多个属性"><a href="#可以使用多条指令语句单独设置每个属性，也可以使用同一条指令语句设置该指令的多个属性" class="headerlink" title="可以使用多条指令语句单独设置每个属性，也可以使用同一条指令语句设置该指令的多个属性"></a>可以使用多条指令语句单独设置每个属性，也可以使用同一条指令语句设置该指令的多个属性</h3><blockquote>
+<p>&lt;%@ page contentType=“text/html;charset=utf-8” %&gt;<br>&lt;%@ page import=“java.io.<em>”  %&gt;<br>&lt;%@ page contentType=”text/html;charset=utf-8”  import=”java.io.</em>“  %&gt;</p>
+</blockquote>
+<p><strong>&lt;%@ page import=”java.util.Date, java.io.*”  %&gt; 等同于</strong></p>
+<blockquote>
+<p> &lt;%@ page import=“java.util.Date”  %&gt;<br> &lt;%@ page import=“java.io.*”  %&gt;</p>
+</blockquote>
+<p><strong>&lt;%@ page contentType=“text/html;charset=UTF-8” %&gt; 会被翻译为：</strong></p>
+<blockquote>
+<p>response.setContentType(“text/html;charset=UTF-8”)</p>
+</blockquote>
 <ul>
-<li>有默认值的列，使用<strong>DEFAULT</strong>表示使用默认值</li>
+<li><strong>在使用errorPage时，不是所有的错误都能转发。只有抛出异常的错误才能被转发</strong></li>
+<li><strong>错误页面必须要指定isErrorPage=”true”</strong></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; INSERT INTO users VALUES(DEFAULT,&apos;TOM&apos;,&apos;123&apos;,DEFAULT,1);</div><div class="line">Query OK, 1 row affected (0.08 sec)</div></pre></td></tr></table></figure>
-<ul>
-<li>插入多条记录</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql&gt; INSERT INTO users VALUES(DEFAULT,&apos;TOM&apos;,&apos;123&apos;,DEFAULT,1),(NULL,&apos;JERRY&apos;,&apos;456&apos;,DEFAULT,0);</div><div class="line">Query OK, 2 rows affected (0.08 sec)</div><div class="line">Records: 2  Duplicates: 0  Warnings: 0</div></pre></td></tr></table></figure>
-<h2 id="INSERT-INTO-tbl-name-SET-col-name-value，…"><a href="#INSERT-INTO-tbl-name-SET-col-name-value，…" class="headerlink" title="INSERT [INTO] tbl_name SET col_name=value，…"></a>INSERT [INTO] tbl_name SET col_name=value，…</h2><p>此方法可以使用子查询<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">INSERT INTO users SET username=&apos;TIM&apos; , password=&apos;789&apos; ,sex=1;</div></pre></td></tr></table></figure></p>
-<h2 id="INSERT-INTO-tbl-name-col-name-…-SELECT-…"><a href="#INSERT-INTO-tbl-name-col-name-…-SELECT-…" class="headerlink" title="INSERT [INTO] tbl_name [(col_name,…)] SELECT …"></a>INSERT [INTO] tbl_name [(col_name,…)] SELECT …</h2><p>经查询结果插入到指定数据表中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">将查询到的数据的前5条插入到test表中。</div><div class="line">mysql&gt; INSERT INTO test (id,subject) SELECT studentNo, subjectNo FROM result LIMIT 5;</div></pre></td></tr></table></figure></p>
-<h1 id="更新记录"><a href="#更新记录" class="headerlink" title="更新记录"></a>更新记录</h1><p><strong>UPDATE table_name SET col_name1=value1 [,col_name2=value2…] [WHERE condition]</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 	更改username为TOM的行</div><div class="line">mysql&gt; UPDATE userinfo SET username=&apos;AAA&apos; WHERE username=&apos;TOM&apos;;</div><div class="line"></div><div class="line">// 在更改信息时使用表达式</div><div class="line">mysql&gt; UPDATE userinfo SET id = id+10;</div><div class="line"></div><div class="line">// 使用 % 运算符判断奇偶</div><div class="line">mysql&gt; UPDATE userinfo SET email=&apos;ABC&apos; WHERE id%2=0;</div></pre></td></tr></table></figure>
-<h1 id="删除记录"><a href="#删除记录" class="headerlink" title="删除记录"></a>删除记录</h1><p><strong>DELETE FROM tbl_name [WHERE condition]</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 删除一条记录</div><div class="line">mysql&gt; DELETE FROM username WHERE username=&apos;AAA&apos;;</div></pre></td></tr></table></figure></p>
-<h1 id="查找记录"><a href="#查找记录" class="headerlink" title="查找记录"></a>查找记录</h1><p><strong>SELECT value1 [,value2…]</strong><br><strong>[</strong><br><strong>    from table_name </strong><br><strong>    [WHERE condition]</strong><br><strong>    [GROUP BY {col_name|position} [ASC|DESC],…]</strong><br><strong>    [HAVING where_condition]</strong><br><strong>    [ORDER BY {col_name | expr |position}[ASC|DESC],…]</strong><br><strong>    [LIMIT {[offset,]row_count |row_count OFFSET offset}]</strong><br><strong>]</strong></p>
-<ul>
-<li>每个表达式表示一列，至少有一个</li>
-<li>多个列之间用逗号分隔</li>
-<li>星号表示所有列，tbl_name.* 可以表示表的所有列</li>
-<li><strong>查询表达式可以使用[AS] alias_name 为其服务赋予别名。AS 可以省略不写</strong></li>
-<li>别名用于GROUP BY ORDER BY和HAVING子句</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">// 多个表达式之间用逗号隔开</div><div class="line">mysql&gt; SELECT id,username FROM userinfo;</div><div class="line"></div><div class="line">// table_name.colname 表示特定表中的列</div><div class="line">mysql&gt; SELECT userinfo.id ,userinfo.username,userinfo.email FROM userinfo ;</div><div class="line"></div><div class="line">// table_name.* 表示特定表中的所有行，单表查询时，table_name.* 与 * 效果相同</div><div class="line">mysql&gt; SELECT userinfo.* FROM userinfo ;</div><div class="line"></div><div class="line">// 用 AS 给变量取别名</div><div class="line">mysql&gt; SELECT id AS userid FROM userinfo ;</div><div class="line">+--------+</div><div class="line">| userid |</div><div class="line">+--------+</div><div class="line">|     12 |</div><div class="line">|     13 |</div><div class="line">+--------+</div><div class="line"></div><div class="line">// AS 可以省略</div><div class="line">mysql&gt; SELECT id userid FROM userinfo ;</div></pre></td></tr></table></figure>
-<h1 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h1><p><strong>GROUP BY {col_name|position} [ASC|DESC],…</strong><br>用GROUP BY分组后，结果的每一列从1开始递增编号。分组时可以用数字代替列名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 按性别分组，student为各组的第一位的信息。</div><div class="line">mysql&gt; SELECT studentName, count(studentNo) AS number  FROM student GROUP BY sex;</div><div class="line">+-------------+--------+</div><div class="line">| studentName | number |</div><div class="line">+-------------+--------+</div><div class="line">| 张萍        |      7 |</div><div class="line">| newName     |      6 |</div><div class="line">+-------------+--------+</div></pre></td></tr></table></figure></p>
-<h2 id="筛选分组-HAVING"><a href="#筛选分组-HAVING" class="headerlink" title="筛选分组(HAVING)"></a>筛选分组(HAVING)</h2><p><strong>HAVING condition</strong><br>在分组完成后，筛选满足条件的组。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 按照gradeId分组</div><div class="line">mysql&gt; SELECT studentName,count(studentNo) AS number FROM student GROUP BY gradeId ;</div><div class="line">+-------------+--------+</div><div class="line">| studentName | number |</div><div class="line">+-------------+--------+</div><div class="line">| newName     |      9 |</div><div class="line">| 王宝宝      |      2 |</div><div class="line">| 陈志强      |      2 |</div><div class="line">+-------------+--------+</div><div class="line"></div><div class="line">// 从分组中筛选number大于3的分组</div><div class="line">mysql&gt; SELECT studentName,count(studentNo) AS number FROM student GROUP BY gradeId HAVING number&gt;=3;</div><div class="line">+-------------+--------+</div><div class="line">| studentName | number |</div><div class="line">+-------------+--------+</div><div class="line">| newName     |      9 |</div><div class="line">+-------------+--------+</div></pre></td></tr></table></figure>
-<p><strong>用数字代替列名,GROUP BY 2 结果中的第二个参数 GROUP BY examDate</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// 2 表示第二个参数，即examDate</div><div class="line">mysql&gt; SELECT studentNo,examDate,count(studentNo) AS count FROM result GROUP BY examDate HAVING count&gt;2;</div><div class="line">+-----------+---------------------+-------+</div><div class="line">| studentNo | examDate            | count |</div><div class="line">+-----------+---------------------+-------+</div><div class="line">|     10000 | 2016-02-17 00:00:00 |     8 |</div><div class="line">+-----------+---------------------+-------+</div><div class="line"></div><div class="line">// 效果与下列相同</div><div class="line">mysql&gt; SELECT studentNo,examDate,count(studentNo) AS count FROM result GROUP BY 2 HAVING count&gt;2;</div><div class="line">+-----------+---------------------+-------+</div><div class="line">| studentNo | examDate            | count |</div><div class="line">+-----------+---------------------+-------+</div><div class="line">|     10000 | 2016-02-17 00:00:00 |     8 |</div><div class="line">+-----------+---------------------+-------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
-<h2 id="排序-ORDER"><a href="#排序-ORDER" class="headerlink" title="排序(ORDER)"></a>排序(ORDER)</h2><p><strong>ORDER BY col_name [ASC|DESC]</strong><br>将查询结构按照升序（ASC）或者降序（DESC）排列</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// 降序排列查询到的结果</div><div class="line">mysql&gt; SELECT studentNo ,studentName FROM student ORDER BY studentNo DESC;</div><div class="line">+-----------+-------------+</div><div class="line">| studentNo | studentName |</div><div class="line">+-----------+-------------+</div><div class="line">|     30012 | 李露露      |</div><div class="line">|     30011 | 陈志强      |</div><div class="line">|     20010 | 何小华      |</div><div class="line">|     20000 | 王宝宝      |</div><div class="line">|     10008 | 何睛睛      |</div><div class="line">|     10007 | 秦洋        |</div><div class="line">|     10006 | 肖梅        |</div><div class="line">|     10005 | 张秋丽      |</div><div class="line">|     10004 | 韩秋洁      |</div><div class="line">|     10003 | 张萍        |</div><div class="line">|     10002 | 李斯文      |</div><div class="line">|     10001 | 李文才      |</div><div class="line">|     10000 | newName     |</div><div class="line">+-----------+-------------+</div></pre></td></tr></table></figure>
-<h2 id="限制查询返回的数量-LIMIT"><a href="#限制查询返回的数量-LIMIT" class="headerlink" title="限制查询返回的数量(LIMIT)"></a>限制查询返回的数量(LIMIT)</h2><p><strong>LIMIT  length (start,length)</strong></p>
-<ul>
-<li>返回的数据，序号从0开始。</li>
-<li>length 表示返回前length条记录，（start，length）表示返回从序号为start开始的length条数据</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// 选择前三条数据</div><div class="line">mysql&gt; SELECT studentNo, studentName FROM student LIMIT 3;</div><div class="line">+-----------+-------------+</div><div class="line">| studentNo | studentName |</div><div class="line">+-----------+-------------+</div><div class="line">|     10000 | newName     |</div><div class="line">|     10001 | 李文才      |</div><div class="line">|     10002 | 李斯文      |</div><div class="line">+-----------+-------------+</div><div class="line"></div><div class="line">// 选择从序号为2开始的3条数据</div><div class="line">mysql&gt; SELECT studentNo, studentName FROM student LIMIT 2,3;</div><div class="line">+-----------+-------------+</div><div class="line">| studentNo | studentName |</div><div class="line">+-----------+-------------+</div><div class="line">|     10002 | 李斯文      |</div><div class="line">|     10003 | 张萍        |</div><div class="line">|     10004 | 韩秋洁      |</div><div class="line">+-----------+-------------+</div></pre></td></tr></table></figure>
+<h3 id="错误转发案例"><a href="#错误转发案例" class="headerlink" title="错误转发案例"></a>错误转发案例</h3><p>发生错误的页面 hello.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page errorPage=&quot;error.jsp&quot; %&gt;</div><div class="line"></div><div class="line"> &lt;% String color = request.getParameter(&quot;Bgcolor&quot;); %&gt;</div><div class="line"> &lt;font color=&lt;%=color %&gt; size=5 &gt;&lt;%=color %&gt;&lt;/font&gt;</div><div class="line"> &lt;%Date today = new Date(); %&gt;</div><div class="line"> &lt;font color=&lt;%=color %&gt;&gt;今天是&lt;%=today %&gt;&lt;/font&gt;</div><div class="line">	</div><div class="line"> &lt;%--抛出异常--%&gt;</div><div class="line"> &lt;%=1/0 %&gt;</div></pre></td></tr></table></figure></p>
+<p>错误页面 error.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page isErrorPage=&quot;true&quot;%&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="include"><a href="#include" class="headerlink" title="include"></a>include</h2><p><strong>&lt;%@include file=”URL” %&gt;</strong><br>在翻译时将其他jsp文件包括到当前文件中。翻译后只会生成一个Servlet。</p>
+<p><strong>不能向URL中用GET方法传递参数，例如：</strong></p>
+<blockquote>
+<p>&lt;%@ include file=”includes/Include_Header.jsp?Bgcolor=red” %&gt;    错误</p>
+</blockquote>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><p>将页面分成3部分，使用include将头部和尾部包括进来</p>
+<p>IncludeTest.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page language=&quot;java&quot; import=&quot;java.util.*&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;%@ include file=&quot;includes/Include_Header.jsp&quot; %&gt;</div><div class="line">    &lt;p&gt;这是页面主体&lt;/p&gt;</div><div class="line">&lt;%@ include file=&quot;includes/Include_Footer.jsp&quot; %&gt;</div></pre></td></tr></table></figure></p>
+<p>Include_Header.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;%</div><div class="line">String path = request.getContextPath();</div><div class="line">String basePath = request.getScheme()+&quot;://&quot;+request.getServerName()+&quot;:&quot;+request.getServerPort()+path+&quot;/&quot;;</div><div class="line">%&gt;</div><div class="line"></div><div class="line">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;base href=&quot;&lt;%=basePath%&gt;&quot;&gt;</div><div class="line">    </div><div class="line">    &lt;title&gt;My JSP &apos;IncludeTest.jsp&apos; starting page&lt;/title&gt;</div><div class="line">    </div><div class="line">	&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;</div><div class="line">	&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;</div><div class="line">	&lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot;&gt;    </div><div class="line">	&lt;meta http-equiv=&quot;keywords&quot; content=&quot;keyword1,keyword2,keyword3&quot;&gt;</div><div class="line">	&lt;meta http-equiv=&quot;description&quot; content=&quot;This is my page&quot;&gt;</div><div class="line">	&lt;!--</div><div class="line">	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles.css&quot;&gt;</div><div class="line">	--&gt;</div><div class="line"></div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">  &lt;p&gt;这是页面的Header部分&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>Include_Footer.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;p&gt;这是页面的Footer部分&lt;/p&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>显示结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">这是页面的Header部分</div><div class="line">这是页面主体</div><div class="line">这是页面的Footer部分</div></pre></td></tr></table></figure></p>
+
     
 
     
@@ -460,7 +470,7 @@
     <!-- 使用 changyan -->
     <div id="changyan-comment">
         <!--PC和WAP自适应版-->
-<div id="SOHUCS" sid="2017/07/04/MySQL-操作数据表基本操作（增删改查）/"  ></div>
+<div id="SOHUCS" sid="2017/08/26/JSP入门-常见标签元素的使用/"  ></div>
 <script type="text/javascript">
 (function(){
 var appid = 'cysVH2p6S';
@@ -489,21 +499,13 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/07/08/MySQL-子查询、表的连接/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/07/03/MySQL-外键、添加删除约束、ON-DELETE参照、添加-删除-修改数据表列定义/" id="post_nav-older" class="next-content">
+        <a href="/2017/08/26/Linux系统管理-工作管理（后台程序管理）/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
