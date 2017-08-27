@@ -3,79 +3,6 @@
   
     
     <entry>
-      <title><![CDATA[JSP入门---常见标签元素的使用]]></title>
-      <url>/2017/08/26/JSP%E5%85%A5%E9%97%A8-%E5%B8%B8%E8%A7%81%E6%A0%87%E7%AD%BE%E5%85%83%E7%B4%A0%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-      <content type="html"><![CDATA[<h1 id="Scriptlet元素"><a href="#Scriptlet元素" class="headerlink" title="Scriptlet元素"></a>Scriptlet元素</h1><p><em>&lt;% %&gt;</em>  用于运行Java代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;%	</div><div class="line">	out.println(&quot;hello&quot;);</div><div class="line">%&gt;</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<h1 id="声明（Decalaration）元素"><a href="#声明（Decalaration）元素" class="headerlink" title="声明（Decalaration）元素"></a>声明（Decalaration）元素</h1><p><strong>&lt;%! %&gt;</strong><br>可以声名函数和变量，作为Servlet的方法和成员。声明的变量会被翻译到_jspService()方法的外面（类成员，方法）</p>
-<p><code>&lt;% %&gt;</code> 也可以声明变量,声明的变量是_jspService()一部分，是一个局部变量</p>
-<p>由于对象只创建一次，当不断访问以下代码时，data的值会递增，但是data2的值始终为1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;%! int data = 1; %&gt;		// 成员变量</div><div class="line"></div><div class="line">&lt;%</div><div class="line">int data2 = 1;			// 方法中的局部变量</div><div class="line">out.println(data++);		</div><div class="line">out.println(data2++);</div><div class="line">%&gt;</div></pre></td></tr></table></figure></p>
-<h1 id="表达式元素"><a href="#表达式元素" class="headerlink" title="表达式元素"></a>表达式元素</h1><p><strong>&lt;%= %&gt;</strong></p>
-<ul>
-<li><strong>字符串变量，或者可以转换成字符串的表达式</strong> </li>
-<li><strong>“=” 号的前面不能有空格</strong> </li>
-<li><strong>表达式后不加分号</strong> </li>
-<li><strong>&lt;%=date %&gt;翻译时会被转换为out.println(date);</strong> </li>
-</ul>
-<p>传入参数Bgcolor，会显示指定颜色的文字<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;% </div><div class="line">		String color = request.getParameter(&quot;Bgcolor&quot;);</div><div class="line">%&gt;</div><div class="line"></div><div class="line">&lt;font color=&lt;%=color %&gt; size=5 &gt;&lt;%=color %&gt;&lt;/font&gt;</div></pre></td></tr></table></figure></p>
-<p><strong>PS:当输出的&lt;%或%&gt;时，&lt;% 用 &amp;lt;% 表示，%&gt;用%&amp;gt; 或者 %\&gt;表示</strong></p>
-<h1 id="注释元素"><a href="#注释元素" class="headerlink" title="注释元素"></a>注释元素</h1><p>JSP注释:  &lt;%– –%&gt;<br>java注释: &lt;%//   %&gt;<br>java注释: &lt;%/<em> </em>/%&gt;</p>
-<h1 id="指示-Directive-元素"><a href="#指示-Directive-元素" class="headerlink" title="指示(Directive)元素"></a>指示(Directive)元素</h1><p><strong>&lt;%@ Directive属性=”属性值”%&gt;</strong><br>常见的指示类型有page、include、taglib</p>
-<h2 id="page属性"><a href="#page属性" class="headerlink" title="page属性"></a>page属性</h2><p>常见属性值如下:</p>
-<ul>
-<li><strong>import=”java.util.*” 相当于Java中的import</strong></li>
-<li><strong>contentType=”Text/html;charset=utf-8” 指定contentType</strong></li>
-<li><strong>pageEncoding=”UTF-8” 指定转义时的编码</strong></li>
-<li><strong>language=”java” 默认是Java</strong></li>
-<li><strong>errorPage=”error.jsp” 指定发生错误时的跳转页面</strong></li>
-<li><strong>iserrorPage=”true/false” 错误页面</strong></li>
-</ul>
-<h3 id="可以使用多条指令语句单独设置每个属性，也可以使用同一条指令语句设置该指令的多个属性"><a href="#可以使用多条指令语句单独设置每个属性，也可以使用同一条指令语句设置该指令的多个属性" class="headerlink" title="可以使用多条指令语句单独设置每个属性，也可以使用同一条指令语句设置该指令的多个属性"></a>可以使用多条指令语句单独设置每个属性，也可以使用同一条指令语句设置该指令的多个属性</h3><blockquote>
-<p>&lt;%@ page contentType=“text/html;charset=utf-8” %&gt;<br>&lt;%@ page import=“java.io.<em>”  %&gt;<br>&lt;%@ page contentType=”text/html;charset=utf-8”  import=”java.io.</em>“  %&gt;</p>
-</blockquote>
-<p><strong>&lt;%@ page import=”java.util.Date, java.io.*”  %&gt; 等同于</strong></p>
-<blockquote>
-<p> &lt;%@ page import=“java.util.Date”  %&gt;<br> &lt;%@ page import=“java.io.*”  %&gt;</p>
-</blockquote>
-<p><strong>&lt;%@ page contentType=“text/html;charset=UTF-8” %&gt; 会被翻译为：</strong></p>
-<blockquote>
-<p>response.setContentType(“text/html;charset=UTF-8”)</p>
-</blockquote>
-<ul>
-<li><strong>在使用errorPage时，不是所有的错误都能转发。只有抛出异常的错误才能被转发</strong></li>
-<li><strong>错误页面必须要指定isErrorPage=”true”</strong></li>
-</ul>
-<h3 id="错误转发案例"><a href="#错误转发案例" class="headerlink" title="错误转发案例"></a>错误转发案例</h3><p>发生错误的页面 hello.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page errorPage=&quot;error.jsp&quot; %&gt;</div><div class="line"></div><div class="line"> &lt;% String color = request.getParameter(&quot;Bgcolor&quot;); %&gt;</div><div class="line"> &lt;font color=&lt;%=color %&gt; size=5 &gt;&lt;%=color %&gt;&lt;/font&gt;</div><div class="line"> &lt;%Date today = new Date(); %&gt;</div><div class="line"> &lt;font color=&lt;%=color %&gt;&gt;今天是&lt;%=today %&gt;&lt;/font&gt;</div><div class="line">	</div><div class="line"> &lt;%--抛出异常--%&gt;</div><div class="line"> &lt;%=1/0 %&gt;</div></pre></td></tr></table></figure></p>
-<p>错误页面 error.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page isErrorPage=&quot;true&quot;%&gt;</div></pre></td></tr></table></figure></p>
-<h2 id="include"><a href="#include" class="headerlink" title="include"></a>include</h2><p><strong>&lt;%@include file=”URL” %&gt;</strong><br>在翻译时将其他jsp文件包括到当前文件中。翻译后只会生成一个Servlet。</p>
-<p><strong>不能向URL中用GET方法传递参数，例如：</strong></p>
-<blockquote>
-<p>&lt;%@ include file=”includes/Include_Header.jsp?Bgcolor=red” %&gt;    错误</p>
-</blockquote>
-<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><p>将页面分成3部分，使用include将头部和尾部包括进来</p>
-<p>IncludeTest.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page language=&quot;java&quot; import=&quot;java.util.*&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;%@ include file=&quot;includes/Include_Header.jsp&quot; %&gt;</div><div class="line">    &lt;p&gt;这是页面主体&lt;/p&gt;</div><div class="line">&lt;%@ include file=&quot;includes/Include_Footer.jsp&quot; %&gt;</div></pre></td></tr></table></figure></p>
-<p>Include_Header.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;%</div><div class="line">String path = request.getContextPath();</div><div class="line">String basePath = request.getScheme()+&quot;://&quot;+request.getServerName()+&quot;:&quot;+request.getServerPort()+path+&quot;/&quot;;</div><div class="line">%&gt;</div><div class="line"></div><div class="line">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;base href=&quot;&lt;%=basePath%&gt;&quot;&gt;</div><div class="line">    </div><div class="line">    &lt;title&gt;My JSP &apos;IncludeTest.jsp&apos; starting page&lt;/title&gt;</div><div class="line">    </div><div class="line">	&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;</div><div class="line">	&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;</div><div class="line">	&lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot;&gt;    </div><div class="line">	&lt;meta http-equiv=&quot;keywords&quot; content=&quot;keyword1,keyword2,keyword3&quot;&gt;</div><div class="line">	&lt;meta http-equiv=&quot;description&quot; content=&quot;This is my page&quot;&gt;</div><div class="line">	&lt;!--</div><div class="line">	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles.css&quot;&gt;</div><div class="line">	--&gt;</div><div class="line"></div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">  &lt;p&gt;这是页面的Header部分&lt;/p&gt;</div></pre></td></tr></table></figure></p>
-<p>Include_Footer.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;p&gt;这是页面的Footer部分&lt;/p&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
-<p>显示结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">这是页面的Header部分</div><div class="line">这是页面主体</div><div class="line">这是页面的Footer部分</div></pre></td></tr></table></figure></p>
-]]></content>
-      
-        <categories>
-            
-            <category> JSP </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> JSP </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Linux系统管理---工作管理（后台程序管理）]]></title>
       <url>/2017/08/26/Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86-%E5%B7%A5%E4%BD%9C%E7%AE%A1%E7%90%86%EF%BC%88%E5%90%8E%E5%8F%B0%E7%A8%8B%E5%BA%8F%E7%AE%A1%E7%90%86%EF%BC%89/</url>
       <content type="html"><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>工作管理指的是在当个登陆终端中同时管理多个工作的行为。<br><a id="more"></a></p>
@@ -3402,6 +3329,79 @@ NWFXOTVMbUY1cktoNkxlZjVMcTY2SyswNkwrSDZZS2o1THFiNWI2QTVMcUw0NENDNUx1SzVwbWE1WktN
 <p>使用jsp:Bean标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page language=&quot;java&quot; import=&quot;java.util.*&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;jsp:useBean id=&quot;user&quot; class=&quot;Bean.JavaBean&quot; scope=&quot;page&quot; /&gt;</div><div class="line">&lt;jsp:setProperty name=&quot;user&quot; property=&quot;*&quot; /&gt;</div><div class="line"></div><div class="line">&lt;html&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">  &lt;font color=&apos;red&apos;&gt;</div><div class="line">    &lt;jsp:getProperty property=&quot;name&quot; name=&quot;user&quot;/&gt;</div><div class="line">    &lt;/font&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
 <p>web容器翻译后的Java代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Bean.JavaBean user = null;</div><div class="line">user = (Bean.JavaBean) _jspx_page_context.getAttribute(&quot;user&quot;, javax.servlet.jsp.PageContext.PAGE_SCOPE);</div><div class="line">if (user == null)&#123;</div><div class="line">  user = new Bean.JavaBean();</div><div class="line">  _jspx_page_context.setAttribute(&quot;user&quot;, user, javax.servlet.jsp.PageContext.PAGE_SCOPE);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>采用传统方式的做法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page language=&quot;java&quot; import=&quot;java.util.*,Bean.JavaBean&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;%</div><div class="line">    JavaBean user = (JavaBean)request.getAttribute(&quot;user&quot;);</div><div class="line">    if(user == null)&#123;</div><div class="line">    	user = new JavaBean();</div><div class="line">    &#125;</div><div class="line">    user.setName(request.getParameter(&quot;name&quot;));</div><div class="line">    user.setPassword(request.getParameter(&quot;pwd&quot;));</div><div class="line">    if(user.isValid())&#123;</div><div class="line">    	out.println(&quot;登录成功&quot;);</div><div class="line">    &#125;else&#123;</div><div class="line">    	out.println(&quot;登录失败&quot;);</div><div class="line">    &#125;</div><div class="line">    %&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html</div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> JSP </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> JSP </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[JSP入门---常见标签元素的使用]]></title>
+      <url>/2017/04/10/JSP%E5%85%A5%E9%97%A8-%E5%B8%B8%E8%A7%81%E6%A0%87%E7%AD%BE%E5%85%83%E7%B4%A0%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+      <content type="html"><![CDATA[<h1 id="Scriptlet元素"><a href="#Scriptlet元素" class="headerlink" title="Scriptlet元素"></a>Scriptlet元素</h1><p><em>&lt;% %&gt;</em>  用于运行Java代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;%	</div><div class="line">	out.println(&quot;hello&quot;);</div><div class="line">%&gt;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="声明（Decalaration）元素"><a href="#声明（Decalaration）元素" class="headerlink" title="声明（Decalaration）元素"></a>声明（Decalaration）元素</h1><p><strong>&lt;%! %&gt;</strong><br>可以声名函数和变量，作为Servlet的方法和成员。声明的变量会被翻译到_jspService()方法的外面（类成员，方法）</p>
+<p><code>&lt;% %&gt;</code> 也可以声明变量,声明的变量是_jspService()一部分，是一个局部变量</p>
+<p>由于对象只创建一次，当不断访问以下代码时，data的值会递增，但是data2的值始终为1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;%! int data = 1; %&gt;		// 成员变量</div><div class="line"></div><div class="line">&lt;%</div><div class="line">int data2 = 1;			// 方法中的局部变量</div><div class="line">out.println(data++);		</div><div class="line">out.println(data2++);</div><div class="line">%&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="表达式元素"><a href="#表达式元素" class="headerlink" title="表达式元素"></a>表达式元素</h1><p><strong>&lt;%= %&gt;</strong></p>
+<ul>
+<li><strong>字符串变量，或者可以转换成字符串的表达式</strong> </li>
+<li><strong>“=” 号的前面不能有空格</strong> </li>
+<li><strong>表达式后不加分号</strong> </li>
+<li><strong>&lt;%=date %&gt;翻译时会被转换为out.println(date);</strong> </li>
+</ul>
+<p>传入参数Bgcolor，会显示指定颜色的文字<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;% </div><div class="line">		String color = request.getParameter(&quot;Bgcolor&quot;);</div><div class="line">%&gt;</div><div class="line"></div><div class="line">&lt;font color=&lt;%=color %&gt; size=5 &gt;&lt;%=color %&gt;&lt;/font&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>PS:当输出的&lt;%或%&gt;时，&lt;% 用 &amp;lt;% 表示，%&gt;用%&amp;gt; 或者 %\&gt;表示</strong></p>
+<h1 id="注释元素"><a href="#注释元素" class="headerlink" title="注释元素"></a>注释元素</h1><p>JSP注释:  &lt;%– –%&gt;<br>java注释: &lt;%//   %&gt;<br>java注释: &lt;%/<em> </em>/%&gt;</p>
+<h1 id="指示-Directive-元素"><a href="#指示-Directive-元素" class="headerlink" title="指示(Directive)元素"></a>指示(Directive)元素</h1><p><strong>&lt;%@ Directive属性=”属性值”%&gt;</strong><br>常见的指示类型有page、include、taglib</p>
+<h2 id="page属性"><a href="#page属性" class="headerlink" title="page属性"></a>page属性</h2><p>常见属性值如下:</p>
+<ul>
+<li><strong>import=”java.util.*” 相当于Java中的import</strong></li>
+<li><strong>contentType=”Text/html;charset=utf-8” 指定contentType</strong></li>
+<li><strong>pageEncoding=”UTF-8” 指定转义时的编码</strong></li>
+<li><strong>language=”java” 默认是Java</strong></li>
+<li><strong>errorPage=”error.jsp” 指定发生错误时的跳转页面</strong></li>
+<li><strong>iserrorPage=”true/false” 错误页面</strong></li>
+</ul>
+<h3 id="可以使用多条指令语句单独设置每个属性，也可以使用同一条指令语句设置该指令的多个属性"><a href="#可以使用多条指令语句单独设置每个属性，也可以使用同一条指令语句设置该指令的多个属性" class="headerlink" title="可以使用多条指令语句单独设置每个属性，也可以使用同一条指令语句设置该指令的多个属性"></a>可以使用多条指令语句单独设置每个属性，也可以使用同一条指令语句设置该指令的多个属性</h3><blockquote>
+<p>&lt;%@ page contentType=“text/html;charset=utf-8” %&gt;<br>&lt;%@ page import=“java.io.<em>”  %&gt;<br>&lt;%@ page contentType=”text/html;charset=utf-8”  import=”java.io.</em>“  %&gt;</p>
+</blockquote>
+<p><strong>&lt;%@ page import=”java.util.Date, java.io.*”  %&gt; 等同于</strong></p>
+<blockquote>
+<p> &lt;%@ page import=“java.util.Date”  %&gt;<br> &lt;%@ page import=“java.io.*”  %&gt;</p>
+</blockquote>
+<p><strong>&lt;%@ page contentType=“text/html;charset=UTF-8” %&gt; 会被翻译为：</strong></p>
+<blockquote>
+<p>response.setContentType(“text/html;charset=UTF-8”)</p>
+</blockquote>
+<ul>
+<li><strong>在使用errorPage时，不是所有的错误都能转发。只有抛出异常的错误才能被转发</strong></li>
+<li><strong>错误页面必须要指定isErrorPage=”true”</strong></li>
+</ul>
+<h3 id="错误转发案例"><a href="#错误转发案例" class="headerlink" title="错误转发案例"></a>错误转发案例</h3><p>发生错误的页面 hello.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page errorPage=&quot;error.jsp&quot; %&gt;</div><div class="line"></div><div class="line"> &lt;% String color = request.getParameter(&quot;Bgcolor&quot;); %&gt;</div><div class="line"> &lt;font color=&lt;%=color %&gt; size=5 &gt;&lt;%=color %&gt;&lt;/font&gt;</div><div class="line"> &lt;%Date today = new Date(); %&gt;</div><div class="line"> &lt;font color=&lt;%=color %&gt;&gt;今天是&lt;%=today %&gt;&lt;/font&gt;</div><div class="line">	</div><div class="line"> &lt;%--抛出异常--%&gt;</div><div class="line"> &lt;%=1/0 %&gt;</div></pre></td></tr></table></figure></p>
+<p>错误页面 error.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page isErrorPage=&quot;true&quot;%&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="include"><a href="#include" class="headerlink" title="include"></a>include</h2><p><strong>&lt;%@include file=”URL” %&gt;</strong><br>在翻译时将其他jsp文件包括到当前文件中。翻译后只会生成一个Servlet。</p>
+<p><strong>不能向URL中用GET方法传递参数，例如：</strong></p>
+<blockquote>
+<p>&lt;%@ include file=”includes/Include_Header.jsp?Bgcolor=red” %&gt;    错误</p>
+</blockquote>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><p>将页面分成3部分，使用include将头部和尾部包括进来</p>
+<p>IncludeTest.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page language=&quot;java&quot; import=&quot;java.util.*&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;%@ include file=&quot;includes/Include_Header.jsp&quot; %&gt;</div><div class="line">    &lt;p&gt;这是页面主体&lt;/p&gt;</div><div class="line">&lt;%@ include file=&quot;includes/Include_Footer.jsp&quot; %&gt;</div></pre></td></tr></table></figure></p>
+<p>Include_Header.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;%</div><div class="line">String path = request.getContextPath();</div><div class="line">String basePath = request.getScheme()+&quot;://&quot;+request.getServerName()+&quot;:&quot;+request.getServerPort()+path+&quot;/&quot;;</div><div class="line">%&gt;</div><div class="line"></div><div class="line">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;base href=&quot;&lt;%=basePath%&gt;&quot;&gt;</div><div class="line">    </div><div class="line">    &lt;title&gt;My JSP &apos;IncludeTest.jsp&apos; starting page&lt;/title&gt;</div><div class="line">    </div><div class="line">	&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;</div><div class="line">	&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;</div><div class="line">	&lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot;&gt;    </div><div class="line">	&lt;meta http-equiv=&quot;keywords&quot; content=&quot;keyword1,keyword2,keyword3&quot;&gt;</div><div class="line">	&lt;meta http-equiv=&quot;description&quot; content=&quot;This is my page&quot;&gt;</div><div class="line">	&lt;!--</div><div class="line">	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles.css&quot;&gt;</div><div class="line">	--&gt;</div><div class="line"></div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">  &lt;p&gt;这是页面的Header部分&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>Include_Footer.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;p&gt;这是页面的Footer部分&lt;/p&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>显示结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">这是页面的Header部分</div><div class="line">这是页面主体</div><div class="line">这是页面的Footer部分</div></pre></td></tr></table></figure></p>
 ]]></content>
       
         <categories>
