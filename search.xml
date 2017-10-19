@@ -3,6 +3,148 @@
   
     
     <entry>
+      <title><![CDATA[Shell---常用命令、常用环境变量、PS1、语系变量、位置变量、预定义变量、数值运算]]></title>
+      <url>/2017/10/19/Shell-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E3%80%81%E5%B8%B8%E7%94%A8%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E3%80%81PS1%E3%80%81%E8%AF%AD%E7%B3%BB%E5%8F%98%E9%87%8F%E3%80%81%E4%BD%8D%E7%BD%AE%E5%8F%98%E9%87%8F%E3%80%81%E9%A2%84%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F%E3%80%81%E6%95%B0%E5%80%BC%E8%BF%90%E7%AE%97/</url>
+      <content type="html"><![CDATA[<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><p><strong>set</strong> 查询所有正在运行的变量</p>
+<ul>
+<li>-u 当查看不存在的变量时会提示报错</li>
+</ul>
+<p><strong>unset</strong> 删除变量(不是删除值，不需要加\$) </p>
+<blockquote>
+<p>unset name </p>
+</blockquote>
+<p><strong>env</strong> 只查看环境变量<br><strong>export</strong> 声明环境变量 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export 变量名=变量值</div><div class="line">export 变量名</div></pre></td></tr></table></figure>
+<h1 id="常用环境变量"><a href="#常用环境变量" class="headerlink" title="常用环境变量"></a>常用环境变量</h1><ul>
+<li>HOSTNAME: 主机名</li>
+<li>SHELL：当前shell</li>
+<li>TERM: 终端环境</li>
+<li>HISTSIZE: 历史命令条数</li>
+<li>SSH_CLIENT：记录客户端ip</li>
+<li>SSH_TTY：ssh连接的终端</li>
+<li>USER:当前登录的用户</li>
+</ul>
+<h2 id="PS1-变量"><a href="#PS1-变量" class="headerlink" title="PS1 变量"></a>PS1 变量</h2><ul>
+<li>\d:日期”星期 月 日”</li>
+<li>\H:显示完整的主机名</li>
+<li>\t:显示24小时制时间 “HH:MM:SS”</li>
+<li>\A:显示24小时制时间 “HH:MM”</li>
+<li>\u:显示当前用户名</li>
+<li>\w:显示当前所在目录的完整名称</li>
+<li>\W:显示当前所在目录的最后一个目录</li>
+<li>\$:提示符</li>
+</ul>
+<h1 id="语系变量"><a href="#语系变量" class="headerlink" title="语系变量"></a>语系变量</h1><ul>
+<li>locale 查询正在使用系统语系</li>
+<li>locale -a 查看支持的所有语系</li>
+<li><p><code>/etc/sysconfig/i18n</code> 默认语系环境（下次开机后的环境）</p>
+</li>
+<li><p>LANG：定义系统主语系的变量</p>
+</li>
+<li>LC_ALL:定义整个语系的变量</li>
+</ul>
+<h1 id="位置变量"><a href="#位置变量" class="headerlink" title="位置变量"></a>位置变量</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">位置参数变量</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\$n</td>
+<td style="text-align:left">n为数字，\$0代表命令本身，\$1 ~ \$9 代表第一到第九个参数。十以上的参数需要用大括号包含，如${10}</td>
+</tr>
+<tr>
+<td style="text-align:center">\$*</td>
+<td style="text-align:left">代表命令行中的所有参数（不包括\$0），把所有参数当成一个整体</td>
+</tr>
+<tr>
+<td style="text-align:center">\$@</td>
+<td style="text-align:left">代表命令好中的所有参数（不包括\$0），把所有参数区分对待</td>
+</tr>
+<tr>
+<td style="text-align:center">\$#</td>
+<td style="text-align:left">代表命令行中所有参数的个数</td>
+</tr>
+</tbody>
+</table>
+<h1 id="预定义变量"><a href="#预定义变量" class="headerlink" title="预定义变量"></a>预定义变量</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">预定义变量</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\$?</td>
+<td style="text-align:left">最后一次执行的命令的返回状态。如果这个 变量的值是0，证明上一个命令正确执行；如果这个变量的值为非零（由命令自己决定），则证明上一个命令执行不正确</td>
+</tr>
+<tr>
+<td style="text-align:center">\$\$</td>
+<td style="text-align:left">当前进程的进程号（PID）</td>
+</tr>
+<tr>
+<td style="text-align:center">\$!</td>
+<td style="text-align:left">后台运行的最后一个进程的进程号(PID)</td>
+</tr>
+</tbody>
+</table>
+<h1 id="read-用户输入"><a href="#read-用户输入" class="headerlink" title="read 用户输入"></a>read 用户输入</h1><p><strong>read [选项] [变量名]</strong></p>
+<ul>
+<li>-p “提示信息”：在等待read输入时，输出提示信息</li>
+<li>-t 秒数 ：等待用户输入，制定等待时间</li>
+<li>-n 字符数：直接受指定的字符数，就会执行</li>
+<li>-s ：隐藏输入的数据</li>
+</ul>
+<hr>
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h2 id="declare-声明变量类型"><a href="#declare-声明变量类型" class="headerlink" title="declare 声明变量类型"></a>declare 声明变量类型</h2><p><strong>declare [+/-] [选项] 变量名</strong></p>
+<ul>
+<li>-：给变量设定类型属性</li>
+<li>+：取消变量的类型属性</li>
+<li>-a:数组型</li>
+<li>-i:整数型</li>
+<li>-x:环境变量</li>
+<li>-r:只读变量</li>
+<li>-p:显示指定变量的被声明类型</li>
+</ul>
+<p>使用下标访问数组</p>
+<ul>
+<li>array[0] : 访问第一个</li>
+<li>array ： 访问第一个</li>
+<li>array[*] :访问所有的元素</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># 整形</div><div class="line"> a=1</div><div class="line"> b=2</div><div class="line"> declare -i c=$a+$b</div><div class="line"> echo $c</div><div class="line">---</div><div class="line">3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">array[0]=a</div><div class="line">array[1]=b</div><div class="line"></div><div class="line">declare -a array[3]=$&#123;array[0]&#125;$&#123;array[1]&#125;</div><div class="line"></div><div class="line">echo &quot;array[0]&quot;:$&#123;array[0]&#125;</div><div class="line">echo &quot;array&quot;:$&#123;array&#125;</div><div class="line">echo &quot;array[*]&quot;:$&#123;array[*]&#125;</div><div class="line">echo &quot;array[2]&quot;:$&#123;array[2]&#125;</div></pre></td></tr></table></figure>
+<p>declare -p 查看变量的所有类型。如果不加变量名就表示显示所有变量的所有类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# declare -p c</div><div class="line">declare -i c=&quot;3&quot;</div></pre></td></tr></table></figure></p>
+<h2 id="数值运算"><a href="#数值运算" class="headerlink" title="数值运算"></a>数值运算</h2><h3 id="expr-或-let-数值运算工具"><a href="#expr-或-let-数值运算工具" class="headerlink" title="expr 或 let 数值运算工具"></a>expr 或 let 数值运算工具</h3><ul>
+<li><strong>result=$(expr $num1+$num2)</strong> 或 <strong>result=&#96;expr $num1+$num2&#96;</strong></li>
+<li><strong>let “result=$num1+$num2”</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# a=1</div><div class="line">[root@localhost test]# b=2</div><div class="line">[root@localhost test]# c=$(expr $a+$b)</div><div class="line">[root@localhost test]# echo $c</div><div class="line">3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# let &quot;d=$a+$b&quot;</div></pre></td></tr></table></figure>
+<h3 id="运算式-或-运算式"><a href="#运算式-或-运算式" class="headerlink" title="\$((运算式)) 或 \$[运算式]"></a>\$((运算式)) 或 \$[运算式]</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# c=$(($a+$b))</div><div class="line">[root@localhost test]# d=$[$a+$b]</div></pre></td></tr></table></figure>
+<h3 id="变量测试"><a href="#变量测试" class="headerlink" title="变量测试"></a>变量测试</h3><p>较复杂。。。<br><img src="http://otbrtx8bw.bkt.clouddn.com/Linux_shell_%E5%8F%98%E9%87%8F%E6%A3%80%E6%B5%8B.jpg" alt=""></p>
+<hr>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[我记得]]></title>
       <url>/2017/08/28/%E6%88%91%E8%AE%B0%E5%BE%97/</url>
       <content type="html"><![CDATA[<div style=""><br><center><br><p style="font-size:40px">我记得</p><br>叶赛宁<br></center><br><br><hr><br><center><br>我记得，亲爱的，记得 　　<br><br>你那柔发的闪光； 　　<br><a id="more"></a><br>命运使我离开了你， 　　<br><br>我的心沉重而悲伤。 　　<br><br>我记得那些秋夜， 　　<br><br>白桦树叶簌簌响； 　　<br><br>愿白昼变得短暂， 　　<br><br>愿月光光照得时间更长。 　　<br><br>我记得你对我说过： 　　<br><br>“美好的年华就要变成以往， 　　<br><br>你会忘记我，亲爱的， 　　<br><br>和别的女友成对成双。” 　　<br><br>今天菩提树又开花了， 　　<br><br>引起我心中无限惆怅； 　　<br><br>那时我是何等的温柔， 　　<br><br>把花瓣撒落到你的鬈发上。 　　<br><br>啊，爱恋别人心中愁烦， 　　<br><br>我的心不会变凉， 　　<br><br>它会从别人身上想起你， 　　<br><br>像读本心爱的小说那样欢畅。<br><br></center><br><br><br></div>]]></content>
@@ -4800,6 +4942,38 @@ unalias                            临时删除别名
     </entry>
     
     <entry>
+      <title><![CDATA[不同编码类型的总结]]></title>
+      <url>/2016/09/11/%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%80%BB%E7%BB%93/</url>
+      <content type="html"><![CDATA[<h2 id="1-ASCII"><a href="#1-ASCII" class="headerlink" title="1.ASCII"></a>1.ASCII</h2><p>计算机一开始在美国使用，字符编码也只包括英文字母。ANSCII编码由一个字节表示所有符号。一个字节可以表示的所有可能是256（2的8次方）种，对于美国人来说，26个英文字母，加上常用的符号，也只是用了127个。如果大家都用英文，那这套编码完全够用。<a id="more"></a>但是不同国家的文字不同，如果加上其他国家的语言符号，那一个字节是不够的，之后ASCII做出了改进，将256种情况剩余的可能用来表示其他字符。一直排到了第255种可能，从128到255表示的字符成为“扩展字符集”，然而，新增的字符并不能解决所有问题。<br><img src="http://i.imgur.com/Ks9A740.jpg" alt=""></p>
+<h2 id="2-GB2312"><a href="#2-GB2312" class="headerlink" title="2.GB2312"></a>2.GB2312</h2><p>计算机开始在我国普及时，ASCII中已经没有可以利用的字节状态来表示汉字。于是，我们将扩展字符集删除，将127后的字符状态重新编码。小于127的字符状态的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节称之为高字节，后面一个字节称之为低字节，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，我们还把数学符号、罗马希腊的字母、日文的假名们都编进去了，连在 ASCII 里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的”全角”字符，而原来在127号以下的那些就叫”半角”字符了。 </p>
+<p>后来GB2312也无法满足人们的需要，随后出现了GBK标准，再后来，还是不够用，于是出现了GB18030。这个标准几乎可以表示所有的中文字符，此标准在2006年5月1日被作为在中国境内所有软件产品支持的强制规格。 </p>
+<h2 id="3-Unicode"><a href="#3-Unicode" class="headerlink" title="3.Unicode"></a>3.Unicode</h2><p>不只是我国，很多国家都制定了相应的符合本国文化的字符编码标准。这些标准再本国内可以正常使用，但是如果是不同国家之间通过文本文件的交流，就很有可能导致乱码。这时，国际标准化组织（osi）出现了，OSI致力于将全世界所有的字符用统一的标准编码，消除不同国家之间交流的障碍。</p>
+<p>OSI将所有字符用两个字节表示，包括ANCSI中的前127个字符，所以对于钱127个字符来说，本来8位就可以表示的字符现在用16位来表示，这其实是一种资源的浪费。</p>
+<h2 id="4-UTF-8"><a href="#4-UTF-8" class="headerlink" title="4.UTF-8"></a>4.UTF-8</h2><p>可以看出，Unicode虽然是一个很好的字符编码方式，但由于所有字符都用两个字节表示导致的资源的浪费，促使了UTF-8的出现，UTF-8编码中的第一个字节仍与ASCII兼容，这使得原来处理ASCII字符的软件无须或只须做少部份修改，即可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。互联网工程工作小组（IETF）要求所有互联网协议都必须支持UTF-8编码。<br>UTF-8有如下特点： </p>
+<blockquote>
+<p><1>  前128个US-ASCII字符只需一个字节编码（与ANCSI相同）。 </1></p>
+<p><2>  带有附加符号的拉丁文、希腊文、西里尔字母、亚美尼亚语、希伯来文、阿拉伯文、叙利亚文及它拿字母则需要二个字节编码。 </2></p>
+<p><3>  其他基本多文种平面（BMP）中的字符（这包含了大部分常用字）使用三个字节编码。 </3></p>
+<p><4>  其他极少使用的Unicode辅助平面的字符使用四字节编码。 </4></p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 技术 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[日期类]]></title>
       <url>/2016/09/11/%E6%97%A5%E6%9C%9F%E7%B1%BB/</url>
       <content type="html"><![CDATA[<h4 id="Date类"><a href="#Date类" class="headerlink" title="Date类"></a>Date类</h4><p>从1970.1.1.0点开始到某个时刻的毫秒数，类型是long<br>1970年之前用负数表示</p>
@@ -4837,38 +5011,6 @@ Date d2 = df2.parse(str2);
         <tags>
             
             <tag> Java </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[不同编码类型的总结]]></title>
-      <url>/2016/09/11/%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%80%BB%E7%BB%93/</url>
-      <content type="html"><![CDATA[<h2 id="1-ASCII"><a href="#1-ASCII" class="headerlink" title="1.ASCII"></a>1.ASCII</h2><p>计算机一开始在美国使用，字符编码也只包括英文字母。ANSCII编码由一个字节表示所有符号。一个字节可以表示的所有可能是256（2的8次方）种，对于美国人来说，26个英文字母，加上常用的符号，也只是用了127个。如果大家都用英文，那这套编码完全够用。<a id="more"></a>但是不同国家的文字不同，如果加上其他国家的语言符号，那一个字节是不够的，之后ASCII做出了改进，将256种情况剩余的可能用来表示其他字符。一直排到了第255种可能，从128到255表示的字符成为“扩展字符集”，然而，新增的字符并不能解决所有问题。<br><img src="http://i.imgur.com/Ks9A740.jpg" alt=""></p>
-<h2 id="2-GB2312"><a href="#2-GB2312" class="headerlink" title="2.GB2312"></a>2.GB2312</h2><p>计算机开始在我国普及时，ASCII中已经没有可以利用的字节状态来表示汉字。于是，我们将扩展字符集删除，将127后的字符状态重新编码。小于127的字符状态的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节称之为高字节，后面一个字节称之为低字节，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，我们还把数学符号、罗马希腊的字母、日文的假名们都编进去了，连在 ASCII 里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的”全角”字符，而原来在127号以下的那些就叫”半角”字符了。 </p>
-<p>后来GB2312也无法满足人们的需要，随后出现了GBK标准，再后来，还是不够用，于是出现了GB18030。这个标准几乎可以表示所有的中文字符，此标准在2006年5月1日被作为在中国境内所有软件产品支持的强制规格。 </p>
-<h2 id="3-Unicode"><a href="#3-Unicode" class="headerlink" title="3.Unicode"></a>3.Unicode</h2><p>不只是我国，很多国家都制定了相应的符合本国文化的字符编码标准。这些标准再本国内可以正常使用，但是如果是不同国家之间通过文本文件的交流，就很有可能导致乱码。这时，国际标准化组织（osi）出现了，OSI致力于将全世界所有的字符用统一的标准编码，消除不同国家之间交流的障碍。</p>
-<p>OSI将所有字符用两个字节表示，包括ANCSI中的前127个字符，所以对于钱127个字符来说，本来8位就可以表示的字符现在用16位来表示，这其实是一种资源的浪费。</p>
-<h2 id="4-UTF-8"><a href="#4-UTF-8" class="headerlink" title="4.UTF-8"></a>4.UTF-8</h2><p>可以看出，Unicode虽然是一个很好的字符编码方式，但由于所有字符都用两个字节表示导致的资源的浪费，促使了UTF-8的出现，UTF-8编码中的第一个字节仍与ASCII兼容，这使得原来处理ASCII字符的软件无须或只须做少部份修改，即可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。互联网工程工作小组（IETF）要求所有互联网协议都必须支持UTF-8编码。<br>UTF-8有如下特点： </p>
-<blockquote>
-<p><1>  前128个US-ASCII字符只需一个字节编码（与ANCSI相同）。 </1></p>
-<p><2>  带有附加符号的拉丁文、希腊文、西里尔字母、亚美尼亚语、希伯来文、阿拉伯文、叙利亚文及它拿字母则需要二个字节编码。 </2></p>
-<p><3>  其他基本多文种平面（BMP）中的字符（这包含了大部分常用字）使用三个字节编码。 </3></p>
-<p><4>  其他极少使用的Unicode辅助平面的字符使用四字节编码。 </4></p>
-</blockquote>
-]]></content>
-      
-        <categories>
-            
-            <category> 技术 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 技术 </tag>
             
         </tags>
         
