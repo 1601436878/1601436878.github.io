@@ -3,25 +3,25 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Linux中常见配置文件 | Twilight&#39;s Blog</title>
+    <title>Shell---Shell常用命令（tr、sed、cut） | Twilight&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content="Linux" />
     
-    <meta name="description" content="sourcesource 配置文件 或 . 配置文件使配置文件生效 常见配置文件： /etc/profile /etc/profile.d/*.sh ~/.bash_profile ~/.bashrc /etc/bashrc  文件的作用及关系如下:  其他配置文件 ~/.bash_logout 退出登陆时自动执行， ~/.bash_history 保存历史命令，当前登陆的历史命令保存在内存中，退">
+    <meta name="description" content="trtr 命令用于转换或删除文件中的字符。从标准输入设备读取数据，经过字符串转译后，将结果输出到标准输出设备。 tr [-cdst][--help][--version][第一字符集][第二字符集] 参数：  -c, –complement：反选设定字符。也就是符合 SET1 的部份不做处理，不符合的剩余部份才进行转换 -d, –delete：删除指令字符 -s, –squeeze-repeats">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux中常见配置文件">
-<meta property="og:url" content="http://yoursite.com/2017/10/26/Linux中常见配置文件/index.html">
+<meta property="og:title" content="Shell---Shell常用命令（tr、sed、cut）">
+<meta property="og:url" content="http://yoursite.com/2017/10/28/Shell-Shell常用命令（tr、sed、cut）/index.html">
 <meta property="og:site_name" content="Twilight&#39;s Blog">
-<meta property="og:description" content="sourcesource 配置文件 或 . 配置文件使配置文件生效 常见配置文件： /etc/profile /etc/profile.d/*.sh ~/.bash_profile ~/.bashrc /etc/bashrc  文件的作用及关系如下:  其他配置文件 ~/.bash_logout 退出登陆时自动执行， ~/.bash_history 保存历史命令，当前登陆的历史命令保存在内存中，退">
-<meta property="og:image" content="http://otbrtx8bw.bkt.clouddn.com/Linux%E4%B8%AD%E5%B8%B8%E8%A7%81%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.jpg">
-<meta property="og:updated_time" content="2017-10-28T01:58:36.585Z">
+<meta property="og:description" content="trtr 命令用于转换或删除文件中的字符。从标准输入设备读取数据，经过字符串转译后，将结果输出到标准输出设备。 tr [-cdst][--help][--version][第一字符集][第二字符集] 参数：  -c, –complement：反选设定字符。也就是符合 SET1 的部份不做处理，不符合的剩余部份才进行转换 -d, –delete：删除指令字符 -s, –squeeze-repeats">
+<meta property="og:image" content="http://otbrtx8bw.bkt.clouddn.com/Shell---Shell%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%EF%BC%88tr%E3%80%81sed%E3%80%81cut%EF%BC%89.jpg">
+<meta property="og:updated_time" content="2017-10-28T03:52:55.902Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux中常见配置文件">
-<meta name="twitter:description" content="sourcesource 配置文件 或 . 配置文件使配置文件生效 常见配置文件： /etc/profile /etc/profile.d/*.sh ~/.bash_profile ~/.bashrc /etc/bashrc  文件的作用及关系如下:  其他配置文件 ~/.bash_logout 退出登陆时自动执行， ~/.bash_history 保存历史命令，当前登陆的历史命令保存在内存中，退">
-<meta name="twitter:image" content="http://otbrtx8bw.bkt.clouddn.com/Linux%E4%B8%AD%E5%B8%B8%E8%A7%81%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.jpg">
+<meta name="twitter:title" content="Shell---Shell常用命令（tr、sed、cut）">
+<meta name="twitter:description" content="trtr 命令用于转换或删除文件中的字符。从标准输入设备读取数据，经过字符串转译后，将结果输出到标准输出设备。 tr [-cdst][--help][--version][第一字符集][第二字符集] 参数：  -c, –complement：反选设定字符。也就是符合 SET1 的部份不做处理，不符合的剩余部份才进行转换 -d, –delete：删除指令字符 -s, –squeeze-repeats">
+<meta name="twitter:image" content="http://otbrtx8bw.bkt.clouddn.com/Shell---Shell%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%EF%BC%88tr%E3%80%81sed%E3%80%81cut%EF%BC%89.jpg">
     
 
     
@@ -139,14 +139,14 @@
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-Linux中常见配置文件" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Shell-Shell常用命令（tr、sed、cut）" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Linux中常见配置文件
+        Shell---Shell常用命令（tr、sed、cut）
         </h1>
     
 
@@ -156,8 +156,8 @@
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2017/10/26/Linux中常见配置文件/" class="article-date">
-            <time datetime="2017-10-26T11:52:57.000Z" itemprop="datePublished">2017-10-26</time>
+        <a href="/2017/10/28/Shell-Shell常用命令（tr、sed、cut）/" class="article-date">
+            <time datetime="2017-10-28T03:46:18.000Z" itemprop="datePublished">2017-10-28</time>
         </a>
     </div>
 
@@ -171,25 +171,47 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="source"><a href="#source" class="headerlink" title="source"></a>source</h1><p><code>source 配置文件</code> 或 <code>. 配置文件</code><br>使配置文件生效</p>
-<h1 id="常见配置文件："><a href="#常见配置文件：" class="headerlink" title="常见配置文件："></a>常见配置文件：</h1><ul>
-<li>/etc/profile</li>
-<li>/etc/profile.d/*.sh</li>
-<li>~/.bash_profile</li>
-<li>~/.bashrc</li>
-<li>/etc/bashrc</li>
+            <h1 id="tr"><a href="#tr" class="headerlink" title="tr"></a>tr</h1><p>tr 命令用于转换或删除文件中的字符。从标准输入设备读取数据，经过字符串转译后，将结果输出到标准输出设备。<br> <code>tr [-cdst][--help][--version][第一字符集][第二字符集]</code></p>
+<p>参数：</p>
+<ul>
+<li>-c, –complement：反选设定字符。也就是符合 SET1 的部份不做处理，不符合的剩余部份才进行转换</li>
+<li>-d, –delete：删除指令字符</li>
+<li>-s, –squeeze-repeats：缩减连续重复的字符成指定的单个字符</li>
+<li>-t, –truncate-set1：削减 SET1 指定范围，使之与 SET2 设定长度相等</li>
+<li>–help：显示程序用法信息</li>
+<li>–version：显示程序本身的版本信息  </li>
 </ul>
-<p>文件的作用及关系如下:</p>
-<p><img src="http://otbrtx8bw.bkt.clouddn.com/%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%8F%8A%E6%B5%81%E7%A8%8B.jpg" alt=""></p>
-<h1 id="其他配置文件"><a href="#其他配置文件" class="headerlink" title="其他配置文件"></a>其他配置文件</h1><ul>
-<li>~/.bash_logout 退出登陆时自动执行，</li>
-<li>~/.bash_history 保存历史命令，当前登陆的历史命令保存在内存中，退出后保存到文件中。</li>
-<li>/etc/issue  本地终端登陆之前，显示的信息</li>
-<li>/etc/issue.net 远程终端的登陆时，显示的信息</li>
-<li>/etc/motd 在登陆之后显示信息，不管本地还是远程</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># 将所有小写字符转换成大写</div><div class="line">cat testfile |tr a-z A-Z </div><div class="line"></div><div class="line"># 压缩多个空格为1个</div><div class="line">echo &quot;fdas     fadsfaf&quot; | tr -s &quot; &quot;</div><div class="line"></div><div class="line"># 把文件中的数字0-9替换为a-j</div><div class="line">cat file | tr [0-9] [a-j]</div><div class="line"></div><div class="line"># 删除文件file中出现的换行&apos;\n&apos;、制表&apos;\t&apos;字符</div><div class="line">cat file | tr -d &quot;\n\t&quot;</div></pre></td></tr></table></figure>
+<h1 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h1><p><code>sed [-nefri] ‘command’ 输入文本</code></p>
+<ul>
+<li>-n∶使用安静(silent)模式。在一般 sed 的用法中，所有来自 STDIN的资料一般都会被列出到萤幕上。但如果加上 -n 参数后，则只有经过sed 特殊处理的那一行(或者动作)才会被列出来。</li>
+<li>-e∶直接在指令列模式上进行 sed 的动作编辑；</li>
+<li>-f∶直接将 sed 的动作写在一个档案内， -f filename 则可以执行 filename 内的sed 动作；</li>
+<li>-r∶sed 的动作支援的是延伸型正规表示法的语法。(预设是基础正规表示法语法)</li>
+<li>-i∶直接修改读取的档案内容，而不是由萤幕输出。       </li>
 </ul>
-<p>常见转义符：<br><img src="http://otbrtx8bw.bkt.clouddn.com/%E6%AC%A2%E8%BF%8E%E7%95%8C%E9%9D%A2%E5%8F%82%E6%95%B0.png" alt=""></p>
-<p>PS： 对于 <code>/etc/issue.net</code>,转义符不起作用，只能显示普通文本.。由/etc/ssh/sshd_config  控制。Banner有参数时 <code>Banner /etc/issue.net</code> 才能显示</p>
+<ul>
+<li>a  ∶新增， a 的后面可以接字串，而这些字串会在新的一行出现(目前的下一行)</li>
+<li>c  ∶取代， c 的后面可以接字串，这些字串可以取代 n1,n2 之间的行！</li>
+<li>d  ∶删除，d后面不接参数</li>
+<li>i  ∶插入， i 的后面可以接字串，而这些字串会在新的一行出现(目前的上一行)；</li>
+<li>p  ∶列印，亦即将某个选择的资料印出。通常 p 会与参数 sed -n 一起运作</li>
+<li>s  ∶取代，可以直接进行取代的工作，例如 1,20s/old/new/g 就是啦！</li>
+</ul>
+<h2 id="替换一行中的某部分"><a href="#替换一行中的某部分" class="headerlink" title="替换一行中的某部分"></a>替换一行中的某部分</h2><ul>
+<li>格式： <code>sed &#39;s/要替换的字符串/新的字符串/g&#39;</code>  （要替换的字符串可以用正则表达式）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"># ab 为文件名</div><div class="line">    删除某行</div><div class="line">     [root@localhost ruby] # sed &apos;1d&apos; ab             #删除第一行 </div><div class="line">     [root@localhost ruby] # sed &apos;$d&apos; ab             #删除最后一行</div><div class="line">     [root@localhost ruby] # sed &apos;1,2d&apos; ab           #删除第一行到第二行</div><div class="line">     [root@localhost ruby] # sed &apos;2,$d&apos; ab           #删除第二行到最后一行</div><div class="line"></div><div class="line">　　显示某行</div><div class="line">.    [root@localhost ruby] # sed -n &apos;1p&apos; ab          #显示第一行 (如果不加-n就会全部显示)</div><div class="line">     [root@localhost ruby] # sed -n &apos;$p&apos; ab          #显示最后一行</div><div class="line">     [root@localhost ruby] # sed -n &apos;1,2p&apos; ab        #显示第一行到第二行</div><div class="line">     [root@localhost ruby] # sed -n &apos;2,$p&apos; ab        #显示第二行到最后一行</div><div class="line"></div><div class="line">　　使用模式进行查询</div><div class="line">     [root@localhost ruby] # sed -n &apos;/ruby/p&apos; ab    #查询包括关键字ruby所在所有行</div><div class="line">     [root@localhost ruby] # sed -n &apos;/\$/p&apos; ab      #查询包括关键字$所在所有行，使用反斜线\屏蔽特殊含义</div><div class="line"></div><div class="line">	#第一行后增加字符串&quot;drink tea&quot;</div><div class="line">	sed &apos;1a drink tea&apos; ab  </div><div class="line">	</div><div class="line">	#第一行到第三行后增加字符串&quot;drink tea&quot;</div><div class="line">	sed &apos;1,3a drink tea&apos; ab </div><div class="line">	</div><div class="line">	#第一行后增加多行，使用换行符\n</div><div class="line">	sed &apos;1a drink tea\nor coffee&apos; ab   </div><div class="line">	</div><div class="line">	#第一行代替为Hi</div><div class="line">	sed &apos;1c Hi&apos; ab    </div><div class="line">	</div><div class="line">	#第一行到第二行代替为Hi            </div><div class="line">	sed &apos;1,2c Hi&apos; ab             </div><div class="line">	</div><div class="line">	#替换ruby为bird</div><div class="line">	sed -n &apos;/ruby/p&apos; ab | sed &apos;s/ruby/bird/g&apos; </div><div class="line">	</div><div class="line">	# 替换 \#!为23333   </div><div class="line">	cat cal.sh | sed -n &quot;s/#\!/23333/g&quot; </div><div class="line">	</div><div class="line">	# 将\#!替换成空，即删除这两个字符</div><div class="line">	cat cal.sh | sed &quot;s/#\!//g&quot; </div><div class="line">	</div><div class="line">	#在文件ab中最后一行直接输入&quot;bye&quot;</div><div class="line">	sed -i &apos;$a bye&apos; ab</div></pre></td></tr></table></figure>
+<h1 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h1><p>cut 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出。如果不指定 File 参数，cut 命令将读取标准输入。必须指定 -b、-c 或 -f 标志之一。<br><strong>不能处理多空格为分隔符的行</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cut  [-bn] [file]</div><div class="line">cut [-c] [file]</div><div class="line">cut [-df] [file]</div></pre></td></tr></table></figure></p>
+<ul>
+<li>-b ：以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。</li>
+<li>-c ：以字符为单位进行分割。</li>
+<li>-d ：自定义分隔符，默认为制表符。</li>
+<li>-f ：与-d一起使用，指定显示哪个区域。</li>
+<li>-n ：取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的范围之内，该字符将被写出；否则，该字符将被排除</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 提取每行的第三个字符</div><div class="line">who | cut -b 3</div><div class="line"></div><div class="line"># 提取第3，第4、第5和第8个字节</div><div class="line">who|cut -b 3-5,8</div><div class="line"></div><div class="line"># 以 `:`为分隔符，选取第一个</div><div class="line">cat /etc/passwd | cut -d &quot;:&quot; -f 1</div></pre></td></tr></table></figure>
+<p>当有多个空格为分隔符时，可用awk命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 选出第一列（以多个空格分隔）</div><div class="line">[root@localhost sh]# ll | awk &apos;&#123;print $1&#125;&apos;</div><div class="line">-rwxr-xr-x.</div><div class="line">-rwxr-xr-x.</div><div class="line">-rwxr-xr-x.</div></pre></td></tr></table></figure></p>
 
         </div>
         <footer class="article-footer">
@@ -255,7 +277,7 @@
     <section id="comments">
     
         
-    <div id="SOHUCS" sid="http://yoursite.com/2017/10/26/Linux中常见配置文件/"></div>
+    <div id="SOHUCS" sid="http://yoursite.com/2017/10/28/Shell-Shell常用命令（tr、sed、cut）/"></div>
 
 
     
@@ -292,20 +314,10 @@
         
 <nav id="article-nav">
     
-        <a href="/2017/10/27/Shell-条件判断和判断参数/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">més nou</strong>
-        <p class="article-nav-title">
-        
-            Shell---条件判断和判断参数
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2017/10/19/Shell-常用命令、常用环境变量、PS1、语系变量、位置变量、预定义变量、数值运算/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/10/28/Shell-for循环/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">antic</strong>
-        <p class="article-nav-title">Shell---常用命令、常用环境变量、PS1、语系变量、位置变量、预定义变量、数值运算</p>
+        <p class="article-nav-title">Shell---for循环</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
