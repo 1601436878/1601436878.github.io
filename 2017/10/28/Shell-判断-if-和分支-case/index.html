@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Shell---判断(if)和分支(case) | Twilight&#39;s Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Linux" />
+    
+    <meta name="description" content="if 判断单分支if条件语句语法：123if [ 条件判断式 ];then	# do somethingfi 或者1234if [ 条件判断式 ]	then	# do somethingfi 案例一，获取当前用户名，当然用 whoami 也可：123456#!/bin/bashtest=`env | grep &amp;quot;USER&amp;quot; | cut -d &amp;quot;=&amp;quot; -f 2">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shell---判断(if)和分支(case)">
+<meta property="og:url" content="http://yoursite.com/2017/10/28/Shell-判断-if-和分支-case/index.html">
+<meta property="og:site_name" content="Twilight&#39;s Blog">
+<meta property="og:description" content="if 判断单分支if条件语句语法：123if [ 条件判断式 ];then	# do somethingfi 或者1234if [ 条件判断式 ]	then	# do somethingfi 案例一，获取当前用户名，当然用 whoami 也可：123456#!/bin/bashtest=`env | grep &amp;quot;USER&amp;quot; | cut -d &amp;quot;=&amp;quot; -f 2">
+<meta property="og:image" content="http://otbrtx8bw.bkt.clouddn.com/Shell---%E5%88%A4%E6%96%AD%28if%29%E5%92%8C%E5%88%86%E6%94%AF%28case%29.jpg">
+<meta property="og:updated_time" content="2017-10-28T01:59:07.836Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Shell---判断(if)和分支(case)">
+<meta name="twitter:description" content="if 判断单分支if条件语句语法：123if [ 条件判断式 ];then	# do somethingfi 或者1234if [ 条件判断式 ]	then	# do somethingfi 案例一，获取当前用户名，当然用 whoami 也可：123456#!/bin/bashtest=`env | grep &amp;quot;USER&amp;quot; | cut -d &amp;quot;=&amp;quot; -f 2">
+<meta name="twitter:image" content="http://otbrtx8bw.bkt.clouddn.com/Shell---%E5%88%A4%E6%96%AD%28if%29%E5%92%8C%E5%88%86%E6%94%AF%28case%29.jpg">
+    
+
+    
+
+    
+        <link rel="icon" href="http://otbr0lg40.bkt.clouddn.com/faicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">wangchao</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Inici</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/CSS/">CSS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/HTML/">HTML</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/JSP/">JSP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Linux/">Linux</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/MySQL/">MySQL</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Servlet/">Servlet</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/jQuery/">jQuery</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/技术/">技术</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常/">日常</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/随笔/">随笔</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">Quant a</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cercar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'categories',
+            TAGS: 'etiquetes',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Linux/">Linux</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-Shell-判断-if-和分支-case" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Shell---判断(if)和分支(case)
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2017/10/28/Shell-判断-if-和分支-case/" class="article-date">
+            <time datetime="2017-10-28T01:33:01.000Z" itemprop="datePublished">2017-10-28</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Linux/">Linux</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="if-判断"><a href="#if-判断" class="headerlink" title="if 判断"></a>if 判断</h1><h2 id="单分支if条件语句"><a href="#单分支if条件语句" class="headerlink" title="单分支if条件语句"></a>单分支if条件语句</h2><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if [ 条件判断式 ];then</div><div class="line">	# do something</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if [ 条件判断式 ]</div><div class="line">	then</div><div class="line">	# do something</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>案例一，获取当前用户名，当然用 <code>whoami</code> 也可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">test=`env | grep &quot;USER&quot; | cut -d &quot;=&quot; -f 2`</div><div class="line">if [ test==&quot;root&quot; ];then</div><div class="line">        echo &quot;This user is root&quot;</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>案例二，检查磁盘容量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">rate=`df -h | grep &quot;sda1&quot; | awk &apos;&#123; print $5 &#125;&apos; | cut -d &quot;%&quot; -f 1`</div><div class="line"></div><div class="line">if [ $rate -gt &quot;10&quot; ];then</div><div class="line">                echo &quot;/ is Full&quot;</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>PS： </p>
+<ul>
+<li>条件判断式就是test命令判断，可以用test命令替代，中括号中间必须有空格</li>
+<li>-gt 当变量值为空时会报错</li>
+</ul>
+<h2 id="双分支if"><a href="#双分支if" class="headerlink" title="双分支if"></a>双分支if</h2><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">if [ 条件判断式 ]</div><div class="line">	then </div><div class="line">		...</div><div class="line">	else </div><div class="line">		...</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>案例三，判断目录的属性：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">read -t 30 -p &quot;input a dir:&quot; dir</div><div class="line"></div><div class="line">if [ -d $dir ]</div><div class="line">        then</div><div class="line">                echo &quot;This is a directory&quot;</div><div class="line">        else</div><div class="line">                echo &quot;no no no &quot;</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>案例四，判断tomcat服务是否开启：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">test=`ps aux | grep tomcat | grep -v grep`</div><div class="line"></div><div class="line">if [ -n &quot;$test&quot; ]</div><div class="line">        then</div><div class="line">                echo &quot;tomcat is running&quot;</div><div class="line">        else</div><div class="line">                echo &quot;tomcat is not running&quot;</div><div class="line">               /etc/init.d/tomcat start</div><div class="line">#                service tomcat start  不建议使用</div><div class="line">                echo &quot;tomcat is started&quot;</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>PS：</p>
+<ul>
+<li>if判断中的变量最好加上引号，因为如果变量的值中包含空格，将出现<code>too many arguments</code> 错误，所以还是写成 <code>if [ -n &quot;$test&quot; ]</code> 较安全</li>
+</ul>
+<h1 id="多分支if"><a href="#多分支if" class="headerlink" title="多分支if"></a>多分支if</h1><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">if [ 条件判断 ]</div><div class="line">	then </div><div class="line">		# do something</div><div class="line">elif [ 条件判断 ]</div><div class="line">	then </div><div class="line">		# do something</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">else </div><div class="line">	# do something</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>案例五，简易计算器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">read -p &quot;please input num1:&quot; num1</div><div class="line">read -p &quot;please input operator:&quot; op</div><div class="line">read -p &quot;please input num2:&quot; num2</div><div class="line"></div><div class="line">if [ -z &quot;$num1&quot; -o -z &quot;$num2&quot; -o -z &quot;$op&quot; ]</div><div class="line">        then</div><div class="line">                echo &quot;value shoud not be null&quot;</div><div class="line">                exit 2</div><div class="line">        else</div><div class="line">                # 把所有数字替换成空,如果替换后不为空，则表示变量中不符合规范 </div><div class="line">                test1=`echo $num1 | sed &apos;s/[0-9]//g&apos;`</div><div class="line">                test2=`echo $num2 | sed &apos;s/[0-9]//g&apos;`</div><div class="line"></div><div class="line">                if [ -n &quot;$test1&quot; -o -n &quot;$test2&quot; ];then</div><div class="line">                        echo &quot;数值格式错误&quot;</div><div class="line">                        exit 4</div><div class="line">                fi</div><div class="line"></div><div class="line">                if [ &quot;$op&quot; == &quot;+&quot; ]</div><div class="line">                        then</div><div class="line">                                result=$(($num1+$num2))</div><div class="line">                elif [ &quot;$op&quot; == &quot;-&quot; ]</div><div class="line">                        then</div><div class="line">                                result=$(($num1-$num2))</div><div class="line">                elif [ &quot;$op&quot; == &quot;*&quot; ]</div><div class="line">                        then</div><div class="line">                                result=$(($num1*$num2))</div><div class="line">                elif [ &quot;$op&quot; == &quot;/&quot; ]</div><div class="line">                        then</div><div class="line">                                let &quot;result=$num1/$num2&quot;</div><div class="line">                else</div><div class="line">                        echo &quot;operator is wrong&quot;</div><div class="line">                        exit 3</div><div class="line">                fi</div><div class="line"></div><div class="line">fi</div><div class="line"></div><div class="line">echo $&#123;num1&#125;$&#123;op&#125;$&#123;num2&#125;=$&#123;result&#125;</div></pre></td></tr></table></figure></p>
+<p>案例六，判断文件类型：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">read -p &quot;请输入文件或目录名：&quot; path</div><div class="line"></div><div class="line">if [ -z &quot;$path&quot; ]</div><div class="line">        then</div><div class="line">                echo &quot;请输入内容！&quot;</div><div class="line">                exit 10</div><div class="line">elif [ ! -e &quot;$path&quot; ]</div><div class="line">        then</div><div class="line">                echo &quot;文件或目录不存在&quot;</div><div class="line">                exit 11</div><div class="line">elif [ -f &quot;$path&quot; ]</div><div class="line">        then</div><div class="line">                echo &quot;输入的是一个文件&quot;</div><div class="line">elif [ -d &quot;$path&quot; ]</div><div class="line">        then</div><div class="line">                echo &quot;输入的是一个目录&quot;</div><div class="line">else</div><div class="line">        echo &quot;输入的式其他类型的文件&quot;</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<h1 id="case-分支"><a href="#case-分支" class="headerlink" title="case 分支"></a>case 分支</h1><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">case $变量名 in</div><div class="line">	&quot;值1&quot;)</div><div class="line">		// do something,变量的值等于值1</div><div class="line">		;;</div><div class="line">	&quot;值2&quot;)</div><div class="line">		// do something，变量的值等于值2</div><div class="line">		;;</div><div class="line"></div><div class="line">	...</div><div class="line">	</div><div class="line">	*)</div><div class="line">		// do something，变量的值与上面都不同</div><div class="line">	;;</div><div class="line">esca</div></pre></td></tr></table></figure></p>
+<p>案例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">read -p &quot;请输入 yes/no&quot; result</div><div class="line"></div><div class="line">case &quot;$result&quot; in</div><div class="line">        &quot;yes&quot;)</div><div class="line">                echo &quot;你输入的式yes&quot;</div><div class="line">                ;;</div><div class="line">        &quot;no&quot;)</div><div class="line">                echo &quot;你输入的是no&quot;</div><div class="line">                ;;</div><div class="line">        *)</div><div class="line">                echo &quot;请输入正确的选择&quot;</div><div class="line">esac</div></pre></td></tr></table></figure></p>
+
+        </div>
+        <footer class="article-footer">
+            
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone">QQ空间</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="SOHUCS" sid="http://yoursite.com/2017/10/28/Shell-判断-if-和分支-case/"></div>
+
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>seguir:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/1601436878" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="http://weibo.com/u/5644719826" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/10/28/Shell-for循环/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">més nou</strong>
+        <p class="article-nav-title">
+        
+            Shell---for循环
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/10/27/Shell-条件判断和判断参数/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">antic</strong>
+        <p class="article-nav-title">Shell---条件判断和判断参数</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/28/Shell-for循环/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://otbrtx8bw.bkt.clouddn.com/Shell---for%E5%BE%AA%E7%8E%AF.jpg)" alt="Shell---for循环" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Linux/">Linux</a></p>
+                            <p class="item-title"><a href="/2017/10/28/Shell-for循环/" class="title">Shell---for循环</a></p>
+                            <p class="item-date"><time datetime="2017-10-28T01:37:15.000Z" itemprop="datePublished">2017-10-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/28/Shell-判断-if-和分支-case/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://otbrtx8bw.bkt.clouddn.com/Shell---%E5%88%A4%E6%96%AD%28if%29%E5%92%8C%E5%88%86%E6%94%AF%28case%29.jpg)" alt="Shell---判断(if)和分支(case)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Linux/">Linux</a></p>
+                            <p class="item-title"><a href="/2017/10/28/Shell-判断-if-和分支-case/" class="title">Shell---判断(if)和分支(case)</a></p>
+                            <p class="item-date"><time datetime="2017-10-28T01:33:01.000Z" itemprop="datePublished">2017-10-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/27/Shell-条件判断和判断参数/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://otbrtx8bw.bkt.clouddn.com/Shell---%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E5%92%8C%E5%88%A4%E6%96%AD%E5%8F%82%E6%95%B0.jpg)" alt="Shell---条件判断和判断参数" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Linux/">Linux</a></p>
+                            <p class="item-title"><a href="/2017/10/27/Shell-条件判断和判断参数/" class="title">Shell---条件判断和判断参数</a></p>
+                            <p class="item-date"><time datetime="2017-10-27T01:39:37.000Z" itemprop="datePublished">2017-10-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/26/Linux中常见配置文件/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://otbrtx8bw.bkt.clouddn.com/Linux%E4%B8%AD%E5%B8%B8%E8%A7%81%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.jpg)" alt="Linux中常见配置文件" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Linux/">Linux</a></p>
+                            <p class="item-title"><a href="/2017/10/26/Linux中常见配置文件/" class="title">Linux中常见配置文件</a></p>
+                            <p class="item-date"><time datetime="2017-10-26T11:52:57.000Z" itemprop="datePublished">2017-10-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/19/Shell-常用命令、常用环境变量、PS1、语系变量、位置变量、预定义变量、数值运算/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://otbrtx8bw.bkt.clouddn.com/Shell1.jpg)" alt="Shell---常用命令、常用环境变量、PS1、语系变量、位置变量、预定义变量、数值运算" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Linux/">Linux</a></p>
+                            <p class="item-title"><a href="/2017/10/19/Shell-常用命令、常用环境变量、PS1、语系变量、位置变量、预定义变量、数值运算/" class="title">Shell---常用命令、常用环境变量、PS1、语系变量、位置变量、预定义变量、数值运算</a></p>
+                            <p class="item-date"><time datetime="2017-10-19T09:37:28.000Z" itemprop="datePublished">2017-10-19</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">arxius</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">etiqueta cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/CSS/" style="font-size: 18.75px;">CSS</a> <a href="/tags/HTML/" style="font-size: 12.5px;">HTML</a> <a href="/tags/JSP/" style="font-size: 15px;">JSP</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 11.25px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 16.25px;">MySQL</a> <a href="/tags/Servlet/" style="font-size: 18.75px;">Servlet</a> <a href="/tags/jQuery/" style="font-size: 17.5px;">jQuery</a> <a href="/tags/技术/" style="font-size: 11.25px;">技术</a> <a href="/tags/日常/" style="font-size: 10px;">日常</a> <a href="/tags/随笔/" style="font-size: 13.75px;">随笔</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://blog.csdn.net/twilight_karl">Twilight</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://yz0515.com">YZ&#39;Blog</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://github.com/1601436878">Github</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://hemiaomiao.me/">HeMiaomiao</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://baka233.me/">hfuu&#39;s Blog</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://i.getshell.cn/">中国好利鹏</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 wangchao</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+				<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+				
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cysVH2p6S"></script>
+    <script type="text/javascript">
+        (function() {
+            var appid = 'cysVH2p6S';
+            var conf = '7d191ef850d424bb873df33179309db5';
+            var width = window.innerWidth || document.documentElement.clientWidth;
+            if (width < 960) {
+                window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+            } else {
+                var loadJs = function(d, a) {
+                    var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+                    var b = document.createElement("script");
+                    b.setAttribute("type", "text/javascript");
+                    b.setAttribute("charset", "UTF-8");
+                    b.setAttribute("src", d);
+                    if (typeof a === "function") {
+                        if (window.attachEvent) {
+                            b.onreadystatechange = function() {
+                                var e = b.readyState;
+                                if (e === "loaded" || e === "complete") {
+                                    b.onreadystatechange = null;
+                                    a()
+                                }
+                            }
+                        } else {
+                            b.onload = a
+                        }
+                    }
+                    c.appendChild(b)
+                };
+                loadJs("https://changyan.sohu.com/upload/changyan.js", function() {
+                    window.changyan.api.config({
+                        appid: appid,
+                        conf: conf
+                    })
+                });
+            }
+        })();
+    </script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

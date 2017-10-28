@@ -3,6 +3,155 @@
   
     
     <entry>
+      <title><![CDATA[Shell---for循环]]></title>
+      <url>/2017/10/28/Shell-for%E5%BE%AA%E7%8E%AF/</url>
+      <content type="html"><![CDATA[<h1 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h1><p>语法一：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">for 变量 in value1 value2 value3...</div><div class="line">	do </div><div class="line">		// do something</div><div class="line">	done</div></pre></td></tr></table></figure>
+<p>语法二 ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">for (( 初始值;循环控制条件;变量变化 ))</div><div class="line">	do</div><div class="line">		// do something</div><div class="line">	done</div></pre></td></tr></table></figure></p>
+<p>案例一：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">for i in 1 2 3 4 5</div><div class="line">        do</div><div class="line">                echo $i</div><div class="line">        done</div></pre></td></tr></table></figure></p>
+<p>案例二：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">result=0</div><div class="line">for ((i=1;i&lt;=100;i=i+1))</div><div class="line">        do</div><div class="line">                result=$(($result+$i))</div><div class="line">        done</div><div class="line">echo $result</div></pre></td></tr></table></figure></p>
+<p>案例三，批量添加用户：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">read -p &quot;请输入用户名：&quot; name</div><div class="line">read -p &quot;请输入创建用户的数量&quot; number</div><div class="line">read -p &quot;请输入密码：&quot; password</div><div class="line"></div><div class="line">if [ -n &quot;$name&quot; -a -n &quot;$number&quot; -a -n &quot;$password&quot; ]</div><div class="line">        then</div><div class="line">                # 判断数量是否是数字</div><div class="line">                flag=`echo $number | sed &quot;s/[0-9]//g&quot; `</div><div class="line">                if [ -n flag ]</div><div class="line">                        then</div><div class="line">                        for (( i=1;i&lt;=$number;i=i+1 ))</div><div class="line">                                        do</div><div class="line">                                                /usr/sbin/useradd $name$i</div><div class="line">                                                echo $passwd | /usr/bin/passwd --stdin $name$i</div><div class="line">                                                echo &quot;成功添加用户$name$i,密码$passwd\n&quot;        </div><div class="line">                                        done</div><div class="line">                fi</div><div class="line">else</div><div class="line">        echo &quot;不能为空&quot;</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>案例四，批量删除用户：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line"># 批量删除用户</div><div class="line">read -p &quot;请输入需要删除的用户名:&quot; name</div><div class="line"></div><div class="line">list=$(cat /etc/passwd | grep $name | cut -d &quot;:&quot; -f 1)</div><div class="line"></div><div class="line">for i in $list</div><div class="line">        do</div><div class="line">                userdel $i</div><div class="line">        done</div></pre></td></tr></table></figure></p>
+<h1 id="while-和-util"><a href="#while-和-util" class="headerlink" title="while 和 util"></a>while 和 util</h1><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 条件满足时执行循环</div><div class="line">while [ 条件判断式 ]</div><div class="line">	do </div><div class="line">		// do something</div><div class="line">	done</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 条件满足时退出循环</div><div class="line">until [  条件判断式 ]</div><div class="line">	do </div><div class="line">		// do something</div><div class="line">	done</div></pre></td></tr></table></figure>
+<p>案例五：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[root@localhost sh]# vim while.sh </div><div class="line"></div><div class="line">#!/bin/bash</div><div class="line"></div><div class="line"># 测试while循环</div><div class="line"></div><div class="line">i=1</div><div class="line">s=0</div><div class="line">while [ &quot;$i&quot; -le 100 ]</div><div class="line">        do</div><div class="line">                s=$(( $s+$i ))</div><div class="line">                i=$(( $i+1 ))</div><div class="line">        done</div><div class="line">echo $s</div></pre></td></tr></table></figure></p>
+<p>案例六：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">i=1</div><div class="line">s=0</div><div class="line"></div><div class="line">until [ &quot;$i&quot; -gt 100 ]</div><div class="line">        do</div><div class="line">                s=$(( $s+$i ))</div><div class="line">                i=$(( $i+1 ))</div><div class="line">        done</div><div class="line">echo $s</div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Shell---判断(if)和分支(case)]]></title>
+      <url>/2017/10/28/Shell-%E5%88%A4%E6%96%AD-if-%E5%92%8C%E5%88%86%E6%94%AF-case/</url>
+      <content type="html"><![CDATA[<h1 id="if-判断"><a href="#if-判断" class="headerlink" title="if 判断"></a>if 判断</h1><h2 id="单分支if条件语句"><a href="#单分支if条件语句" class="headerlink" title="单分支if条件语句"></a>单分支if条件语句</h2><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if [ 条件判断式 ];then</div><div class="line">	# do something</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if [ 条件判断式 ]</div><div class="line">	then</div><div class="line">	# do something</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>案例一，获取当前用户名，当然用 <code>whoami</code> 也可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">test=`env | grep &quot;USER&quot; | cut -d &quot;=&quot; -f 2`</div><div class="line">if [ test==&quot;root&quot; ];then</div><div class="line">        echo &quot;This user is root&quot;</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>案例二，检查磁盘容量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">rate=`df -h | grep &quot;sda1&quot; | awk &apos;&#123; print $5 &#125;&apos; | cut -d &quot;%&quot; -f 1`</div><div class="line"></div><div class="line">if [ $rate -gt &quot;10&quot; ];then</div><div class="line">                echo &quot;/ is Full&quot;</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>PS： </p>
+<ul>
+<li>条件判断式就是test命令判断，可以用test命令替代，中括号中间必须有空格</li>
+<li>-gt 当变量值为空时会报错</li>
+</ul>
+<h2 id="双分支if"><a href="#双分支if" class="headerlink" title="双分支if"></a>双分支if</h2><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">if [ 条件判断式 ]</div><div class="line">	then </div><div class="line">		...</div><div class="line">	else </div><div class="line">		...</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>案例三，判断目录的属性：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">read -t 30 -p &quot;input a dir:&quot; dir</div><div class="line"></div><div class="line">if [ -d $dir ]</div><div class="line">        then</div><div class="line">                echo &quot;This is a directory&quot;</div><div class="line">        else</div><div class="line">                echo &quot;no no no &quot;</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>案例四，判断tomcat服务是否开启：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">test=`ps aux | grep tomcat | grep -v grep`</div><div class="line"></div><div class="line">if [ -n &quot;$test&quot; ]</div><div class="line">        then</div><div class="line">                echo &quot;tomcat is running&quot;</div><div class="line">        else</div><div class="line">                echo &quot;tomcat is not running&quot;</div><div class="line">               /etc/init.d/tomcat start</div><div class="line">#                service tomcat start  不建议使用</div><div class="line">                echo &quot;tomcat is started&quot;</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>PS：</p>
+<ul>
+<li>if判断中的变量最好加上引号，因为如果变量的值中包含空格，将出现<code>too many arguments</code> 错误，所以还是写成 <code>if [ -n &quot;$test&quot; ]</code> 较安全</li>
+</ul>
+<h1 id="多分支if"><a href="#多分支if" class="headerlink" title="多分支if"></a>多分支if</h1><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">if [ 条件判断 ]</div><div class="line">	then </div><div class="line">		# do something</div><div class="line">elif [ 条件判断 ]</div><div class="line">	then </div><div class="line">		# do something</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">else </div><div class="line">	# do something</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>案例五，简易计算器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">read -p &quot;please input num1:&quot; num1</div><div class="line">read -p &quot;please input operator:&quot; op</div><div class="line">read -p &quot;please input num2:&quot; num2</div><div class="line"></div><div class="line">if [ -z &quot;$num1&quot; -o -z &quot;$num2&quot; -o -z &quot;$op&quot; ]</div><div class="line">        then</div><div class="line">                echo &quot;value shoud not be null&quot;</div><div class="line">                exit 2</div><div class="line">        else</div><div class="line">                # 把所有数字替换成空,如果替换后不为空，则表示变量中不符合规范 </div><div class="line">                test1=`echo $num1 | sed &apos;s/[0-9]//g&apos;`</div><div class="line">                test2=`echo $num2 | sed &apos;s/[0-9]//g&apos;`</div><div class="line"></div><div class="line">                if [ -n &quot;$test1&quot; -o -n &quot;$test2&quot; ];then</div><div class="line">                        echo &quot;数值格式错误&quot;</div><div class="line">                        exit 4</div><div class="line">                fi</div><div class="line"></div><div class="line">                if [ &quot;$op&quot; == &quot;+&quot; ]</div><div class="line">                        then</div><div class="line">                                result=$(($num1+$num2))</div><div class="line">                elif [ &quot;$op&quot; == &quot;-&quot; ]</div><div class="line">                        then</div><div class="line">                                result=$(($num1-$num2))</div><div class="line">                elif [ &quot;$op&quot; == &quot;*&quot; ]</div><div class="line">                        then</div><div class="line">                                result=$(($num1*$num2))</div><div class="line">                elif [ &quot;$op&quot; == &quot;/&quot; ]</div><div class="line">                        then</div><div class="line">                                let &quot;result=$num1/$num2&quot;</div><div class="line">                else</div><div class="line">                        echo &quot;operator is wrong&quot;</div><div class="line">                        exit 3</div><div class="line">                fi</div><div class="line"></div><div class="line">fi</div><div class="line"></div><div class="line">echo $&#123;num1&#125;$&#123;op&#125;$&#123;num2&#125;=$&#123;result&#125;</div></pre></td></tr></table></figure></p>
+<p>案例六，判断文件类型：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">read -p &quot;请输入文件或目录名：&quot; path</div><div class="line"></div><div class="line">if [ -z &quot;$path&quot; ]</div><div class="line">        then</div><div class="line">                echo &quot;请输入内容！&quot;</div><div class="line">                exit 10</div><div class="line">elif [ ! -e &quot;$path&quot; ]</div><div class="line">        then</div><div class="line">                echo &quot;文件或目录不存在&quot;</div><div class="line">                exit 11</div><div class="line">elif [ -f &quot;$path&quot; ]</div><div class="line">        then</div><div class="line">                echo &quot;输入的是一个文件&quot;</div><div class="line">elif [ -d &quot;$path&quot; ]</div><div class="line">        then</div><div class="line">                echo &quot;输入的是一个目录&quot;</div><div class="line">else</div><div class="line">        echo &quot;输入的式其他类型的文件&quot;</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<h1 id="case-分支"><a href="#case-分支" class="headerlink" title="case 分支"></a>case 分支</h1><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">case $变量名 in</div><div class="line">	&quot;值1&quot;)</div><div class="line">		// do something,变量的值等于值1</div><div class="line">		;;</div><div class="line">	&quot;值2&quot;)</div><div class="line">		// do something，变量的值等于值2</div><div class="line">		;;</div><div class="line"></div><div class="line">	...</div><div class="line">	</div><div class="line">	*)</div><div class="line">		// do something，变量的值与上面都不同</div><div class="line">	;;</div><div class="line">esca</div></pre></td></tr></table></figure></p>
+<p>案例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">read -p &quot;请输入 yes/no&quot; result</div><div class="line"></div><div class="line">case &quot;$result&quot; in</div><div class="line">        &quot;yes&quot;)</div><div class="line">                echo &quot;你输入的式yes&quot;</div><div class="line">                ;;</div><div class="line">        &quot;no&quot;)</div><div class="line">                echo &quot;你输入的是no&quot;</div><div class="line">                ;;</div><div class="line">        *)</div><div class="line">                echo &quot;请输入正确的选择&quot;</div><div class="line">esac</div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Shell---条件判断和判断参数]]></title>
+      <url>/2017/10/27/Shell-%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E5%92%8C%E5%88%A4%E6%96%AD%E5%8F%82%E6%95%B0/</url>
+      <content type="html"><![CDATA[<h1 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h1><p>两种方式表示判断：</p>
+<ul>
+<li>test -e 文件名</li>
+<li>[ -e 文件名 ]             // 中括号中间有空格</li>
+</ul>
+<p>以上的命令在命令行中执行，不能看到结果，需要用<code>$?</code>查看上一次执行的结果</p>
+<p>一种可以直接输出结果的方式：</p>
+<ul>
+<li><strong> [ -d /root ] &amp;&amp; echo “yes”  || echo “no” </strong></li>
+<li><strong> test -e /root &amp;&amp; echo “yes”  || echo “no” </strong></li>
+</ul>
+<h2 id="按照文件类型判断"><a href="#按照文件类型判断" class="headerlink" title="按照文件类型判断"></a>按照文件类型判断</h2><p>相关参数如下:<br><img src="http://otbrtx8bw.bkt.clouddn.com/Linux---%E5%88%A4%E6%96%AD%E5%8F%82%E6%95%B0.PNG" alt=""></p>
+<h2 id="权限判断"><a href="#权限判断" class="headerlink" title="权限判断"></a>权限判断</h2><p>只要有相应权限就为真，不分用户</p>
+<p><img src="http://otbrtx8bw.bkt.clouddn.com/Linux--%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E5%88%A4%E6%96%AD.PNG" alt=""></p>
+<h2 id="文件属性的比较"><a href="#文件属性的比较" class="headerlink" title="文件属性的比较"></a>文件属性的比较</h2><p><img src="http://otbrtx8bw.bkt.clouddn.com/%E4%B8%A4%E4%B8%AA%E6%96%87%E4%BB%B6%E7%9A%84%E6%AF%94%E8%BE%83.PNG" alt=""></p>
+<h2 id="两个整数数值的比较"><a href="#两个整数数值的比较" class="headerlink" title="两个整数数值的比较"></a>两个整数数值的比较</h2><p><img src="http://otbrtx8bw.bkt.clouddn.com/%E6%95%B4%E6%95%B0%E4%B9%8B%E9%97%B4%E7%9A%84%E6%AF%94%E8%BE%83.PNG" alt=""></p>
+<h2 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h2><p><img src="http://otbrtx8bw.bkt.clouddn.com/Linux---%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%AF%94%E8%BE%83.PNG" alt=""></p>
+<h2 id="多重条件"><a href="#多重条件" class="headerlink" title="多重条件"></a>多重条件</h2><p><img src="http://otbrtx8bw.bkt.clouddn.com/Linux---%E5%A4%9A%E9%87%8D%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD.PNG" alt=""></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Linux中常见配置文件]]></title>
+      <url>/2017/10/26/Linux%E4%B8%AD%E5%B8%B8%E8%A7%81%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</url>
+      <content type="html"><![CDATA[<h1 id="source"><a href="#source" class="headerlink" title="source"></a>source</h1><p><code>source 配置文件</code> 或 <code>. 配置文件</code><br>使配置文件生效</p>
+<h1 id="常见配置文件："><a href="#常见配置文件：" class="headerlink" title="常见配置文件："></a>常见配置文件：</h1><ul>
+<li>/etc/profile</li>
+<li>/etc/profile.d/*.sh</li>
+<li>~/.bash_profile</li>
+<li>~/.bashrc</li>
+<li>/etc/bashrc</li>
+</ul>
+<p>文件的作用及关系如下:</p>
+<p><img src="http://otbrtx8bw.bkt.clouddn.com/%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%8F%8A%E6%B5%81%E7%A8%8B.jpg" alt=""></p>
+<h1 id="其他配置文件"><a href="#其他配置文件" class="headerlink" title="其他配置文件"></a>其他配置文件</h1><ul>
+<li>~/.bash_logout 退出登陆时自动执行，</li>
+<li>~/.bash_history 保存历史命令，当前登陆的历史命令保存在内存中，退出后保存到文件中。</li>
+<li>/etc/issue  本地终端登陆之前，显示的信息</li>
+<li>/etc/issue.net 远程终端的登陆时，显示的信息</li>
+<li>/etc/motd 在登陆之后显示信息，不管本地还是远程</li>
+</ul>
+<p>常见转义符：<br><img src="http://otbrtx8bw.bkt.clouddn.com/%E6%AC%A2%E8%BF%8E%E7%95%8C%E9%9D%A2%E5%8F%82%E6%95%B0.png" alt=""></p>
+<p>PS： 对于 <code>/etc/issue.net</code>,转义符不起作用，只能显示普通文本.。由/etc/ssh/sshd_config  控制。Banner有参数时 <code>Banner /etc/issue.net</code> 才能显示</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Shell---常用命令、常用环境变量、PS1、语系变量、位置变量、预定义变量、数值运算]]></title>
       <url>/2017/10/19/Shell-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E3%80%81%E5%B8%B8%E7%94%A8%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E3%80%81PS1%E3%80%81%E8%AF%AD%E7%B3%BB%E5%8F%98%E9%87%8F%E3%80%81%E4%BD%8D%E7%BD%AE%E5%8F%98%E9%87%8F%E3%80%81%E9%A2%84%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F%E3%80%81%E6%95%B0%E5%80%BC%E8%BF%90%E7%AE%97/</url>
       <content type="html"><![CDATA[<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><p><strong>set</strong> 查询所有正在运行的变量</p>
@@ -4942,38 +5091,6 @@ unalias                            临时删除别名
     </entry>
     
     <entry>
-      <title><![CDATA[不同编码类型的总结]]></title>
-      <url>/2016/09/11/%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%80%BB%E7%BB%93/</url>
-      <content type="html"><![CDATA[<h2 id="1-ASCII"><a href="#1-ASCII" class="headerlink" title="1.ASCII"></a>1.ASCII</h2><p>计算机一开始在美国使用，字符编码也只包括英文字母。ANSCII编码由一个字节表示所有符号。一个字节可以表示的所有可能是256（2的8次方）种，对于美国人来说，26个英文字母，加上常用的符号，也只是用了127个。如果大家都用英文，那这套编码完全够用。<a id="more"></a>但是不同国家的文字不同，如果加上其他国家的语言符号，那一个字节是不够的，之后ASCII做出了改进，将256种情况剩余的可能用来表示其他字符。一直排到了第255种可能，从128到255表示的字符成为“扩展字符集”，然而，新增的字符并不能解决所有问题。<br><img src="http://i.imgur.com/Ks9A740.jpg" alt=""></p>
-<h2 id="2-GB2312"><a href="#2-GB2312" class="headerlink" title="2.GB2312"></a>2.GB2312</h2><p>计算机开始在我国普及时，ASCII中已经没有可以利用的字节状态来表示汉字。于是，我们将扩展字符集删除，将127后的字符状态重新编码。小于127的字符状态的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节称之为高字节，后面一个字节称之为低字节，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，我们还把数学符号、罗马希腊的字母、日文的假名们都编进去了，连在 ASCII 里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的”全角”字符，而原来在127号以下的那些就叫”半角”字符了。 </p>
-<p>后来GB2312也无法满足人们的需要，随后出现了GBK标准，再后来，还是不够用，于是出现了GB18030。这个标准几乎可以表示所有的中文字符，此标准在2006年5月1日被作为在中国境内所有软件产品支持的强制规格。 </p>
-<h2 id="3-Unicode"><a href="#3-Unicode" class="headerlink" title="3.Unicode"></a>3.Unicode</h2><p>不只是我国，很多国家都制定了相应的符合本国文化的字符编码标准。这些标准再本国内可以正常使用，但是如果是不同国家之间通过文本文件的交流，就很有可能导致乱码。这时，国际标准化组织（osi）出现了，OSI致力于将全世界所有的字符用统一的标准编码，消除不同国家之间交流的障碍。</p>
-<p>OSI将所有字符用两个字节表示，包括ANCSI中的前127个字符，所以对于钱127个字符来说，本来8位就可以表示的字符现在用16位来表示，这其实是一种资源的浪费。</p>
-<h2 id="4-UTF-8"><a href="#4-UTF-8" class="headerlink" title="4.UTF-8"></a>4.UTF-8</h2><p>可以看出，Unicode虽然是一个很好的字符编码方式，但由于所有字符都用两个字节表示导致的资源的浪费，促使了UTF-8的出现，UTF-8编码中的第一个字节仍与ASCII兼容，这使得原来处理ASCII字符的软件无须或只须做少部份修改，即可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。互联网工程工作小组（IETF）要求所有互联网协议都必须支持UTF-8编码。<br>UTF-8有如下特点： </p>
-<blockquote>
-<p><1>  前128个US-ASCII字符只需一个字节编码（与ANCSI相同）。 </1></p>
-<p><2>  带有附加符号的拉丁文、希腊文、西里尔字母、亚美尼亚语、希伯来文、阿拉伯文、叙利亚文及它拿字母则需要二个字节编码。 </2></p>
-<p><3>  其他基本多文种平面（BMP）中的字符（这包含了大部分常用字）使用三个字节编码。 </3></p>
-<p><4>  其他极少使用的Unicode辅助平面的字符使用四字节编码。 </4></p>
-</blockquote>
-]]></content>
-      
-        <categories>
-            
-            <category> 技术 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 技术 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[日期类]]></title>
       <url>/2016/09/11/%E6%97%A5%E6%9C%9F%E7%B1%BB/</url>
       <content type="html"><![CDATA[<h4 id="Date类"><a href="#Date类" class="headerlink" title="Date类"></a>Date类</h4><p>从1970.1.1.0点开始到某个时刻的毫秒数，类型是long<br>1970年之前用负数表示</p>
@@ -5011,6 +5128,38 @@ Date d2 = df2.parse(str2);
         <tags>
             
             <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[不同编码类型的总结]]></title>
+      <url>/2016/09/11/%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%80%BB%E7%BB%93/</url>
+      <content type="html"><![CDATA[<h2 id="1-ASCII"><a href="#1-ASCII" class="headerlink" title="1.ASCII"></a>1.ASCII</h2><p>计算机一开始在美国使用，字符编码也只包括英文字母。ANSCII编码由一个字节表示所有符号。一个字节可以表示的所有可能是256（2的8次方）种，对于美国人来说，26个英文字母，加上常用的符号，也只是用了127个。如果大家都用英文，那这套编码完全够用。<a id="more"></a>但是不同国家的文字不同，如果加上其他国家的语言符号，那一个字节是不够的，之后ASCII做出了改进，将256种情况剩余的可能用来表示其他字符。一直排到了第255种可能，从128到255表示的字符成为“扩展字符集”，然而，新增的字符并不能解决所有问题。<br><img src="http://i.imgur.com/Ks9A740.jpg" alt=""></p>
+<h2 id="2-GB2312"><a href="#2-GB2312" class="headerlink" title="2.GB2312"></a>2.GB2312</h2><p>计算机开始在我国普及时，ASCII中已经没有可以利用的字节状态来表示汉字。于是，我们将扩展字符集删除，将127后的字符状态重新编码。小于127的字符状态的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节称之为高字节，后面一个字节称之为低字节，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，我们还把数学符号、罗马希腊的字母、日文的假名们都编进去了，连在 ASCII 里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的”全角”字符，而原来在127号以下的那些就叫”半角”字符了。 </p>
+<p>后来GB2312也无法满足人们的需要，随后出现了GBK标准，再后来，还是不够用，于是出现了GB18030。这个标准几乎可以表示所有的中文字符，此标准在2006年5月1日被作为在中国境内所有软件产品支持的强制规格。 </p>
+<h2 id="3-Unicode"><a href="#3-Unicode" class="headerlink" title="3.Unicode"></a>3.Unicode</h2><p>不只是我国，很多国家都制定了相应的符合本国文化的字符编码标准。这些标准再本国内可以正常使用，但是如果是不同国家之间通过文本文件的交流，就很有可能导致乱码。这时，国际标准化组织（osi）出现了，OSI致力于将全世界所有的字符用统一的标准编码，消除不同国家之间交流的障碍。</p>
+<p>OSI将所有字符用两个字节表示，包括ANCSI中的前127个字符，所以对于钱127个字符来说，本来8位就可以表示的字符现在用16位来表示，这其实是一种资源的浪费。</p>
+<h2 id="4-UTF-8"><a href="#4-UTF-8" class="headerlink" title="4.UTF-8"></a>4.UTF-8</h2><p>可以看出，Unicode虽然是一个很好的字符编码方式，但由于所有字符都用两个字节表示导致的资源的浪费，促使了UTF-8的出现，UTF-8编码中的第一个字节仍与ASCII兼容，这使得原来处理ASCII字符的软件无须或只须做少部份修改，即可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。互联网工程工作小组（IETF）要求所有互联网协议都必须支持UTF-8编码。<br>UTF-8有如下特点： </p>
+<blockquote>
+<p><1>  前128个US-ASCII字符只需一个字节编码（与ANCSI相同）。 </1></p>
+<p><2>  带有附加符号的拉丁文、希腊文、西里尔字母、亚美尼亚语、希伯来文、阿拉伯文、叙利亚文及它拿字母则需要二个字节编码。 </2></p>
+<p><3>  其他基本多文种平面（BMP）中的字符（这包含了大部分常用字）使用三个字节编码。 </3></p>
+<p><4>  其他极少使用的Unicode辅助平面的字符使用四字节编码。 </4></p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 技术 </tag>
             
         </tags>
         
