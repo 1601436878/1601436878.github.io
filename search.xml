@@ -3,15 +3,6 @@
   
     
     <entry>
-      <title><![CDATA[test]]></title>
-      <url>/2017/12/17/test/</url>
-      <content type="html"><![CDATA[<p>测试脚本</p>
-]]></content>
-      
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Shell---Shell常用命令（tr、sed、cut）]]></title>
       <url>/2017/10/28/Shell-Shell%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%EF%BC%88tr%E3%80%81sed%E3%80%81cut%EF%BC%89/</url>
       <content type="html"><![CDATA[<h1 id="tr"><a href="#tr" class="headerlink" title="tr"></a>tr</h1><p>tr 命令用于转换或删除文件中的字符。从标准输入设备读取数据，经过字符串转译后，将结果输出到标准输出设备。<br> <code>tr [-cdst][--help][--version][第一字符集][第二字符集]</code></p>
