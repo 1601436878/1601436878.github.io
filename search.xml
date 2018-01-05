@@ -3,6 +3,165 @@
   
     
     <entry>
+      <title><![CDATA[Centos7安装Hadoop]]></title>
+      <url>/2018/01/05/Centos7%E5%AE%89%E8%A3%85Hadoop/</url>
+      <content type="html"><![CDATA[<h1 id="修改-Centos7为字符界面"><a href="#修改-Centos7为字符界面" class="headerlink" title="修改 Centos7为字符界面"></a>修改 Centos7为字符界面</h1><p>Centos7取消了之前的 inittab文件的作用，改用命令实现，</p>
+<ul>
+<li><code>systemctl get-default</code> ： 获得默认启动方式</li>
+<li><code>systemctl set-default multi-user.target</code> ： 设置字符界面启动方式(level3)</li>
+<li><code>systemctl set-default graphical.target</code> ： 设置图形化启动方式(level5)</li>
+</ul>
+<h1 id="修改主机名"><a href="#修改主机名" class="headerlink" title="修改主机名"></a>修改主机名</h1><ul>
+<li>Centos7 中 ：<code>hostnamectl set-hostname xxx</code></li>
+<li>Centos6 修改 network文件即可 ：<code>vim /etc/sysconfig/network</code></li>
+</ul>
+<h2 id="修改hosts文件保证三台机器可以ping通"><a href="#修改hosts文件保证三台机器可以ping通" class="headerlink" title="修改hosts文件保证三台机器可以ping通"></a>修改hosts文件保证三台机器可以ping通</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hadoop-master 192.168.178.1</div><div class="line">slave1 192.168.178.1</div><div class="line">slave2 192.168.178.1</div></pre></td></tr></table></figure>
+<h1 id="安装SSH"><a href="#安装SSH" class="headerlink" title="安装SSH"></a>安装SSH</h1><h2 id="检查是否已经安装ssh"><a href="#检查是否已经安装ssh" class="headerlink" title="检查是否已经安装ssh"></a>检查是否已经安装ssh</h2><ul>
+<li><code>rpm –qa | grep openssh</code></li>
+<li><code>rpm –qa | grep rsync</code></li>
+</ul>
+<h2 id="如果没有安装-ssh-和-rsync，用下面的命令安装"><a href="#如果没有安装-ssh-和-rsync，用下面的命令安装" class="headerlink" title="如果没有安装 ssh 和 rsync，用下面的命令安装"></a>如果没有安装 ssh 和 rsync，用下面的命令安装</h2><ul>
+<li>yum install ssh </li>
+<li>yum install rsync</li>
+<li>service sshd restart </li>
+</ul>
+<h1 id="配置无密码登陆"><a href="#配置无密码登陆" class="headerlink" title="配置无密码登陆"></a>配置无密码登陆</h1><ul>
+<li><p>机器上生成密码对</p>
+<blockquote>
+<p>ssh-keygen –t rsa</p>
+</blockquote>
+</li>
+<li><p>把 id_rsa.pub 追加到授权的 key 里面 去 </p>
+<blockquote>
+<p>cat id_rsa.pub &gt;&gt; authorized_keys</p>
+</blockquote>
+</li>
+<li><p>修改文件”authorized_keys”权限 </p>
+<blockquote>
+<p>chmod 600 authorized_keys </p>
+</blockquote>
+</li>
+<li><p>修改 SSH 配置文件 <code>/etc/ssh/sshd_config</code> (所有机器都要配)</p>
+<blockquote>
+<p>RSAAuthentication yes<br>PubkeyAuthentication yes<br>AuthorizedKeysFile      .ssh/authorized_keys</p>
+</blockquote>
+</li>
+<li><p>重启ssh服务</p>
+<blockquote>
+<p>service sshd restart</p>
+</blockquote>
+</li>
+<li><p>将公钥复制到所有slave机器上</p>
+<blockquote>
+<p>scp id_rsa.pub hadoop@slave1:/home/hadoop/</p>
+</blockquote>
+</li>
+<li><p>追加 authorized_keys</p>
+<blockquote>
+<p>cp id_rsa.pub .ssh<br>cat id_rsa.pub &gt;&gt; .ssh/authorized_keys<br>chmod 600 .ssh/authorized_keys<br>service sshd restart</p>
+</blockquote>
+</li>
+<li><p>验证是否成功 <code>ssh slave1</code> 如果可以直接登陆则表示成功</p>
+<blockquote>
+<p>[hadoop@localhost .ssh]$ ssh slave1<br>Last login: Fri Jan  5 21:11:48 2018 from hadoop-master</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="Java-环境安装"><a href="#Java-环境安装" class="headerlink" title="Java 环境安装"></a>Java 环境安装</h1><ul>
+<li><p>卸载已安装的java</p>
+<blockquote>
+<p>rpm -qa | grep java<br>rpm -e –nodeps java-1.8.0-openjdk-1.8.0.102-4.b14.el7.x86_64<br>rpm -e –nodeps javapackages-tools-3.4.1-11.el7.noarch<br>rpm -e –nodeps java-1.8.0-openjdk-headless-1.8.0.102-4.b14.el7.x86_64<br>rpm -e –nodeps tzdata-java-2016g-2.el7.noarch<br>rpm -e –nodeps java-1.7.0-openjdk-1.7.0.111-2.6.7.8.el7.x86_64<br>rpm -e –nodeps java-1.7.0-openjdk-headless-1.7.0.111-2.6.7.8.el7.x86_64</p>
+</blockquote>
+</li>
+<li><p>安装java</p>
+<blockquote>
+<p>tar -zxvf jdk-8u131-linux-x64.tar.gz<br>mv jdk1.8.0_131/ jdk1.8<br>vim /etc/profile</p>
+<p>// 添加以下内容<br># set java environment<br>export JAVA_HOME=/usr/jdk1.8<br>export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib<br>export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin</p>
+<p>使配置文件生效<br>source /etc/profile</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="安装Hadoop"><a href="#安装Hadoop" class="headerlink" title="安装Hadoop"></a>安装Hadoop</h1><ul>
+<li><p>解压 hadoop-2.7.0.tar.gz，并重命名</p>
+<blockquote>
+<p>tar zxvf  hadoop-2.7.5.tar.gz<br>mv hadoop-2.7.0 hadoop</p>
+</blockquote>
+</li>
+<li><p>在<code>/usr/hadoop</code>下面创建tmp文件夹</p>
+<blockquote>
+<p>mkdir tmp </p>
+</blockquote>
+</li>
+<li><p>配置 <code>/etc/profile</code> 文件</p>
+<blockquote>
+<p>vim /etc/profile</p>
+<p>添加以下内容<br>export HADOOP_INSTALL=/usr/hadoop<br>export PATH=${HADOOP_INSTALL}/bin:${HADOOP_INSTALL}/sbin${PATH}<br>export HADOOP_MAPRED_HOME=${HADOOP_INSTALL}<br>export HADOOP_COMMON_HOME=${HADOOP_INSTALL}<br>export HADOOP_HDFS_HOME=${HADOOP_INSTALL}<br>export YARN_HOME=${HADOOP_INSTALLL}<br>export HADOOP_COMMON_LIB_NATIVE_DIR=${HADOOP_INSTALL}/lib/natvie<br>export HADOOP_OPTS=”-Djava.library.path=${HADOOP_INSTALL}/lib:${HADOOP_INSTALL}/lib/native” </p>
+<p>使生效<br>source /etc/profile</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="配置hadoop"><a href="#配置hadoop" class="headerlink" title="配置hadoop"></a>配置hadoop</h2><ul>
+<li><p>配置 <code>hadoop-env.sh</code>,配置java环境变量</p>
+<blockquote>
+<p>export JAVA_HOME=/usr/java/jdk1.8</p>
+</blockquote>
+</li>
+<li><p>配置<code>core-site.xml</code>文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// 内容如下</div><div class="line">&lt;configuration&gt;</div><div class="line">&lt;property&gt;</div><div class="line">  &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</div><div class="line">  &lt;value&gt;/usr/hadoop/tmp&lt;/value&gt;</div><div class="line">  &lt;description&gt;A base for other temporary directories.&lt;/description&gt;</div><div class="line">  &lt;/property&gt;</div><div class="line">  &lt;property&gt;</div><div class="line">  &lt;name&gt;fs.default.name&lt;/name&gt;</div><div class="line">  &lt;value&gt;hdfs://hadoop-master:9000&lt;/value&gt;</div><div class="line"> &lt;/property&gt;</div><div class="line">&lt;/configuration&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置<code>mapred-site.xml</code>文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;configuration&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">           &lt;name&gt;mapreduce.framework.name&lt;/name&gt;</div><div class="line">           &lt;value&gt;yarn&lt;/value&gt;</div><div class="line">           &lt;final&gt;true&lt;/final&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line"></div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;mapreduce.jobtracker.http.address&lt;/name&gt;</div><div class="line">        &lt;value&gt;hadoop-master:50030&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt;</div><div class="line">        &lt;value&gt;hadoop-master:10020&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;mapreduce.jobhistory.webapp.address&lt;/name&gt;</div><div class="line">        &lt;value&gt;hadoop-master:19888&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">        &lt;property&gt;</div><div class="line">                &lt;name&gt;mapred.job.tracker&lt;/name&gt;</div><div class="line">                &lt;value&gt;http://hadoop-master:9001&lt;/value&gt;</div><div class="line">        &lt;/property&gt;</div><div class="line">&lt;/configuration&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置<code>yarn-site.xml</code>文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">&lt;configuration&gt;</div><div class="line">        &lt;property&gt;</div><div class="line">                &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;</div><div class="line">                &lt;value&gt;hadoop-master&lt;/value&gt;</div><div class="line">        &lt;/property&gt;</div><div class="line"></div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</div><div class="line">        &lt;value&gt;mapreduce_shuffle&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;yarn.resourcemanager.address&lt;/name&gt;</div><div class="line">        &lt;value&gt;hadoop-master:8032&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;yarn.resourcemanager.scheduler.address&lt;/name&gt;</div><div class="line">        &lt;value&gt;hadoop-master:8030&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;yarn.resourcemanager.resource-tracker.address&lt;/name&gt;</div><div class="line">        &lt;value&gt;hadoop-master:8031&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;yarn.resourcemanager.admin.address&lt;/name&gt;</div><div class="line">        &lt;value&gt;hadoop-master:8033&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;yarn.resourcemanager.webapp.address&lt;/name&gt;</div><div class="line">        &lt;value&gt;hadoop-master:8088&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">&lt;/configuration&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>将hadoop传入slave中</p>
+<blockquote>
+<p>scp -r /usr/hadoop root@slave1:/usr/</p>
+</blockquote>
+</li>
+<li><p>修改Master主机上的slaves文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">vim /usr/hadoop/etc/hadoop/slaves</div><div class="line"></div><div class="line">将内容改为：</div><div class="line"></div><div class="line">slave1</div><div class="line">slave2</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="启动hadoop"><a href="#启动hadoop" class="headerlink" title="启动hadoop"></a>启动hadoop</h2><ul>
+<li><p>关闭防火墙</p>
+<blockquote>
+<p>systemctl stop firewalld.service</p>
+<p>关闭防火墙开机自启<br>systemctl disable firewalld.service</p>
+</blockquote>
+</li>
+<li><p>格式化</p>
+<blockquote>
+<p>hadoop namenode -format</p>
+</blockquote>
+</li>
+<li><p>启动hadoop</p>
+<blockquote>
+<p>/usr/hadoop/sbin/start-all.sh</p>
+</blockquote>
+</li>
+<li><p>验证，<code>jps</code>， 若出现下列信息表示安装成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">主节点：</div><div class="line">[hadoop@hadoop-master usr]$ jps</div><div class="line">13138 Jps</div><div class="line">12563 SecondaryNameNode</div><div class="line">12708 ResourceManager</div><div class="line">12375 NameNode</div><div class="line"></div><div class="line">从节点：</div><div class="line">[root@slave1 ~]# jps</div><div class="line">12786 Jps</div><div class="line">12205 DataNode</div><div class="line">12317 NodeManager</div></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Hadoop </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Hadoop </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[《活着》---感]]></title>
       <url>/2017/12/24/%E3%80%8A%E6%B4%BB%E7%9D%80%E3%80%8B-%E6%84%9F/</url>
       <content type="html"><![CDATA[<blockquote>
