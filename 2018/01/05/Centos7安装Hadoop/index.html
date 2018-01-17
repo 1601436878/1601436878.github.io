@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Twilight&#39;s Blog">
 <meta property="og:description" content="修改 Centos7为字符界面Centos7取消了之前的 inittab文件的作用，改用命令实现，  systemctl get-default ： 获得默认启动方式 systemctl set-default multi-user.target ： 设置字符界面启动方式(level3) systemctl set-default graphical.target ： 设置图形化启动方式(leve">
 <meta property="og:image" content="http://otbrtx8bw.bkt.clouddn.com/Centos7%E5%AE%89%E8%A3%85Hadoop.jpg">
-<meta property="og:updated_time" content="2018-01-05T15:33:44.623Z">
+<meta property="og:updated_time" content="2018-01-14T02:11:12.864Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Centos7安装Hadoop">
 <meta name="twitter:description" content="修改 Centos7为字符界面Centos7取消了之前的 inittab文件的作用，改用命令实现，  systemctl get-default ： 获得默认启动方式 systemctl set-default multi-user.target ： 设置字符界面启动方式(level3) systemctl set-default graphical.target ： 设置图形化启动方式(leve">
@@ -75,7 +75,7 @@
                                     <a class="main-nav-list-link" href="/">Home</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/CSS/">CSS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/HTML/">HTML</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Hadoop/">Hadoop</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/JSP/">JSP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Linux/">Linux</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/MySQL/">MySQL</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Servlet/">Servlet</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/jQuery/">jQuery</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/技术/">技术</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常/">日常</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/随笔/">随笔</a></li></ul>
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/CSS/">CSS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/HTML/">HTML</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Hadoop/">Hadoop</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Hibernate/">Hibernate</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/JSP/">JSP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Linux/">Linux</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/MySQL/">MySQL</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Servlet/">Servlet</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/jQuery/">jQuery</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/技术/">技术</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常/">日常</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/随笔/">随笔</a></li></ul>
                                     
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">About</a>
@@ -140,7 +140,18 @@
 </div>
                         <div class="main-body-content">
                             <article id="post-Centos7安装Hadoop" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+	
+	<!-- Table of Contents -->
+	
+	<div id="toc" class="toc-article">
+	<strong class="toc-title">文章目录</strong>
+	<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#修改-Centos7为字符界面"><span class="toc-number">1.</span> <span class="toc-text">修改 Centos7为字符界面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#修改主机名"><span class="toc-number">2.</span> <span class="toc-text">修改主机名</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#修改hosts文件保证三台机器可以ping通"><span class="toc-number">2.1.</span> <span class="toc-text">修改hosts文件保证三台机器可以ping通</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装SSH"><span class="toc-number">3.</span> <span class="toc-text">安装SSH</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#检查是否已经安装ssh"><span class="toc-number">3.1.</span> <span class="toc-text">检查是否已经安装ssh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果没有安装-ssh-和-rsync，用下面的命令安装"><span class="toc-number">3.2.</span> <span class="toc-text">如果没有安装 ssh 和 rsync，用下面的命令安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置无密码登陆"><span class="toc-number">4.</span> <span class="toc-text">配置无密码登陆</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-环境安装"><span class="toc-number">5.</span> <span class="toc-text">Java 环境安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装Hadoop"><span class="toc-number">6.</span> <span class="toc-text">安装Hadoop</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置hadoop"><span class="toc-number">6.1.</span> <span class="toc-text">配置hadoop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动hadoop"><span class="toc-number">6.2.</span> <span class="toc-text">启动hadoop</span></a></li></ol></li></ol>
+	</div>
+	
+	
+	<div style="clear:both"></div>
+
+	<div class="article-inner">
         
             <header class="article-header">
                 
@@ -241,9 +252,8 @@
 </li>
 <li><p>安装java</p>
 <blockquote>
-<p>tar -zxvf jdk-8u131-linux-x64.tar.gz<br>mv jdk1.8.0_131/ jdk1.8<br>vim /etc/profile</p>
-<p>// 添加以下内容<br># set java environment<br>export JAVA_HOME=/usr/jdk1.8<br>export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib<br>export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin</p>
-<p>使配置文件生效<br>source /etc/profile</p>
+<p>解压<br>tar -zxvf jdk-8u131-linux-x64.tar.gz<br>将目录名改为 jdk1.8<br>mv jdk1.8.0_131/ jdk1.8<br>编辑环境变量<br>vim /etc/profile<br><br><br>// 添加以下内容<br># set java environment<br>export JAVA_HOME=/usr/jdk1.8<br>export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib<br>export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin</p>
+<p><br><br>使配置文件生效<br>source /etc/profile</p>
 </blockquote>
 </li>
 </ul>
@@ -260,9 +270,7 @@
 </li>
 <li><p>配置 <code>/etc/profile</code> 文件</p>
 <blockquote>
-<p>vim /etc/profile</p>
-<p>添加以下内容<br>export HADOOP_INSTALL=/usr/hadoop<br>export PATH=${HADOOP_INSTALL}/bin:${HADOOP_INSTALL}/sbin${PATH}<br>export HADOOP_MAPRED_HOME=${HADOOP_INSTALL}<br>export HADOOP_COMMON_HOME=${HADOOP_INSTALL}<br>export HADOOP_HDFS_HOME=${HADOOP_INSTALL}<br>export YARN_HOME=${HADOOP_INSTALLL}<br>export HADOOP_COMMON_LIB_NATIVE_DIR=${HADOOP_INSTALL}/lib/natvie<br>export HADOOP_OPTS=”-Djava.library.path=${HADOOP_INSTALL}/lib:${HADOOP_INSTALL}/lib/native” </p>
-<p>使生效<br>source /etc/profile</p>
+<p>vim /etc/profile<br> <br><br>添加以下内容<br>export HADOOP_INSTALL=/usr/hadoop<br>export PATH=${HADOOP_INSTALL}/bin:${HADOOP_INSTALL}/sbin${PATH}<br>export HADOOP_MAPRED_HOME=${HADOOP_INSTALL}<br>export HADOOP_COMMON_HOME=${HADOOP_INSTALL}<br>export HADOOP_HDFS_HOME=${HADOOP_INSTALL}<br>export YARN_HOME=${HADOOP_INSTALLL}<br>export HADOOP_COMMON_LIB_NATIVE_DIR=${HADOOP_INSTALL}/lib/natvie<br>export HADOOP_OPTS=”-Djava.library.path=${HADOOP_INSTALL}/lib:${HADOOP_INSTALL}/lib/native”<br><br><br>使生效<br>source /etc/profile</p>
 </blockquote>
 </li>
 </ul>
@@ -412,6 +420,16 @@
         
 <nav id="article-nav">
     
+        <a href="/2018/01/09/Hibernate-映射/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Hibernate 映射
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
     
         <a href="/2017/12/24/《活着》-感/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
@@ -430,6 +448,26 @@
         <h3 class="widget-title">recents</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/01/09/Hibernate-映射/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://otbrtx8bw.bkt.clouddn.com/hibernate%E6%98%A0%E5%B0%84-publisher.PNG)" alt="Hibernate 映射" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Hibernate/">Hibernate</a></p>
+                            <p class="item-title"><a href="/2018/01/09/Hibernate-映射/" class="title">Hibernate 映射</a></p>
+                            <p class="item-date"><time datetime="2018-01-09T07:42:21.000Z" itemprop="datePublished">2018-01-09</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -511,26 +549,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/10/28/Shell-判断-if-和分支-case/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://otbrtx8bw.bkt.clouddn.com/Shell---%E5%88%A4%E6%96%AD%28if%29%E5%92%8C%E5%88%86%E6%94%AF%28case%29.jpg)" alt="Shell---判断(if)和分支(case)" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Linux/">Linux</a></p>
-                            <p class="item-title"><a href="/2017/10/28/Shell-判断-if-和分支-case/" class="title">Shell---判断(if)和分支(case)</a></p>
-                            <p class="item-date"><time datetime="2017-10-28T01:33:01.000Z" itemprop="datePublished">2017-10-28</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -540,7 +558,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -550,7 +568,7 @@
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/CSS/" style="font-size: 18.75px;">CSS</a> <a href="/tags/HTML/" style="font-size: 12.5px;">HTML</a> <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/JSP/" style="font-size: 15px;">JSP</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 11.25px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 16.25px;">MySQL</a> <a href="/tags/Servlet/" style="font-size: 18.75px;">Servlet</a> <a href="/tags/jQuery/" style="font-size: 17.5px;">jQuery</a> <a href="/tags/技术/" style="font-size: 11.25px;">技术</a> <a href="/tags/日常/" style="font-size: 10px;">日常</a> <a href="/tags/随笔/" style="font-size: 13.75px;">随笔</a>
+            <a href="/tags/CSS/" style="font-size: 18.75px;">CSS</a> <a href="/tags/HTML/" style="font-size: 12.5px;">HTML</a> <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/Hibernate/" style="font-size: 10px;">Hibernate</a> <a href="/tags/JSP/" style="font-size: 15px;">JSP</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 11.25px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 16.25px;">MySQL</a> <a href="/tags/Servlet/" style="font-size: 18.75px;">Servlet</a> <a href="/tags/jQuery/" style="font-size: 17.5px;">jQuery</a> <a href="/tags/技术/" style="font-size: 11.25px;">技术</a> <a href="/tags/日常/" style="font-size: 10px;">日常</a> <a href="/tags/随笔/" style="font-size: 13.75px;">随笔</a>
         </div>
     </div>
 
@@ -608,6 +626,7 @@
                 </h1>
                 <p>&copy; 2018 wangchao</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+				<p>备案号：皖ICP备18001034号-1</p>
 				<!--
 					<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
 				-->

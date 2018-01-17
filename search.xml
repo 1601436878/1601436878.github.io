@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title><![CDATA[Hibernate 映射]]></title>
+      <url>/2018/01/09/Hibernate-%E6%98%A0%E5%B0%84/</url>
+      <content type="html"><![CDATA[<p>表的结构如下：<br>出版社表 publisher<br><img src="http://otbrtx8bw.bkt.clouddn.com/hibernate%E6%98%A0%E5%B0%84-publisher.PNG" alt=""></p>
+<p>书籍表 book<br><img src="http://otbrtx8bw.bkt.clouddn.com/hibernate%E6%98%A0%E5%B0%84-book%E8%A1%A8.PNG" alt=""></p>
+<h1 id="单向-N-1-关联"><a href="#单向-N-1-关联" class="headerlink" title="单向 N-1 关联"></a>单向 N-1 关联</h1><h2 id="无连接表的单向-N-1-关联"><a href="#无连接表的单向-N-1-关联" class="headerlink" title="无连接表的单向 N-1 关联"></a>无连接表的单向 N-1 关联</h2><p>JoinColumn 表示book表中的外键字段的名字<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@ManyToOne(targetEntity=Publisher.class,fetch=FetchType.EAGER)</div><div class="line">@JoinColumn(name=&quot;publisherid&quot;)</div><div class="line">private Publisher publish;</div></pre></td></tr></table></figure></p>
+<h2 id="有连接表的单向-N-1-关联"><a href="#有连接表的单向-N-1-关联" class="headerlink" title="有连接表的单向 N-1 关联"></a>有连接表的单向 N-1 关联</h2><h1 id="单向-1-1-关联"><a href="#单向-1-1-关联" class="headerlink" title="单向 1-1 关联"></a>单向 1-1 关联</h1><h2 id="外键单向-1-1-关联"><a href="#外键单向-1-1-关联" class="headerlink" title="外键单向 1-1 关联"></a>外键单向 1-1 关联</h2><h2 id="有连接表的单向-1-1-关联"><a href="#有连接表的单向-1-1-关联" class="headerlink" title="有连接表的单向 1-1 关联"></a>有连接表的单向 1-1 关联</h2><h1 id="单向-1-N"><a href="#单向-1-N" class="headerlink" title="单向 1-N"></a>单向 1-N</h1><h2 id="无连接表的-1-N-关联"><a href="#无连接表的-1-N-关联" class="headerlink" title="无连接表的 1-N 关联"></a>无连接表的 1-N 关联</h2><h2 id="有连接表的-1-N-关联"><a href="#有连接表的-1-N-关联" class="headerlink" title="有连接表的 1-N 关联"></a>有连接表的 1-N 关联</h2><h1 id="双向-1-N-关联"><a href="#双向-1-N-关联" class="headerlink" title="双向 1-N 关联"></a>双向 1-N 关联</h1><h2 id="无连接表的双向-1-N"><a href="#无连接表的双向-1-N" class="headerlink" title="无连接表的双向 1-N"></a>无连接表的双向 1-N</h2><h2 id="有连接表的双向-1-N"><a href="#有连接表的双向-1-N" class="headerlink" title="有连接表的双向 1-N"></a>有连接表的双向 1-N</h2><h1 id="双向-N-N-关联"><a href="#双向-N-N-关联" class="headerlink" title="双向 N-N 关联"></a>双向 N-N 关联</h1><h1 id="双向-1-1-关联"><a href="#双向-1-1-关联" class="headerlink" title="双向 1-1 关联"></a>双向 1-1 关联</h1><h2 id="外键双向-1-1-关联"><a href="#外键双向-1-1-关联" class="headerlink" title="外键双向 1-1 关联"></a>外键双向 1-1 关联</h2><h2 id="有连接表的-双向-1-1-关联"><a href="#有连接表的-双向-1-1-关联" class="headerlink" title="有连接表的 双向 1-1 关联"></a>有连接表的 双向 1-1 关联</h2>]]></content>
+      
+        <categories>
+            
+            <category> Hibernate </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Hibernate </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Centos7安装Hadoop]]></title>
       <url>/2018/01/05/Centos7%E5%AE%89%E8%A3%85Hadoop/</url>
       <content type="html"><![CDATA[<h1 id="修改-Centos7为字符界面"><a href="#修改-Centos7为字符界面" class="headerlink" title="修改 Centos7为字符界面"></a>修改 Centos7为字符界面</h1><p>Centos7取消了之前的 inittab文件的作用，改用命令实现，</p>
@@ -75,9 +98,8 @@
 </li>
 <li><p>安装java</p>
 <blockquote>
-<p>tar -zxvf jdk-8u131-linux-x64.tar.gz<br>mv jdk1.8.0_131/ jdk1.8<br>vim /etc/profile</p>
-<p>// 添加以下内容<br># set java environment<br>export JAVA_HOME=/usr/jdk1.8<br>export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib<br>export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin</p>
-<p>使配置文件生效<br>source /etc/profile</p>
+<p>解压<br>tar -zxvf jdk-8u131-linux-x64.tar.gz<br>将目录名改为 jdk1.8<br>mv jdk1.8.0_131/ jdk1.8<br>编辑环境变量<br>vim /etc/profile<br><br><br>// 添加以下内容<br># set java environment<br>export JAVA_HOME=/usr/jdk1.8<br>export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib<br>export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin</p>
+<p><br><br>使配置文件生效<br>source /etc/profile</p>
 </blockquote>
 </li>
 </ul>
@@ -94,9 +116,7 @@
 </li>
 <li><p>配置 <code>/etc/profile</code> 文件</p>
 <blockquote>
-<p>vim /etc/profile</p>
-<p>添加以下内容<br>export HADOOP_INSTALL=/usr/hadoop<br>export PATH=${HADOOP_INSTALL}/bin:${HADOOP_INSTALL}/sbin${PATH}<br>export HADOOP_MAPRED_HOME=${HADOOP_INSTALL}<br>export HADOOP_COMMON_HOME=${HADOOP_INSTALL}<br>export HADOOP_HDFS_HOME=${HADOOP_INSTALL}<br>export YARN_HOME=${HADOOP_INSTALLL}<br>export HADOOP_COMMON_LIB_NATIVE_DIR=${HADOOP_INSTALL}/lib/natvie<br>export HADOOP_OPTS=”-Djava.library.path=${HADOOP_INSTALL}/lib:${HADOOP_INSTALL}/lib/native” </p>
-<p>使生效<br>source /etc/profile</p>
+<p>vim /etc/profile<br> <br><br>添加以下内容<br>export HADOOP_INSTALL=/usr/hadoop<br>export PATH=${HADOOP_INSTALL}/bin:${HADOOP_INSTALL}/sbin${PATH}<br>export HADOOP_MAPRED_HOME=${HADOOP_INSTALL}<br>export HADOOP_COMMON_HOME=${HADOOP_INSTALL}<br>export HADOOP_HDFS_HOME=${HADOOP_INSTALL}<br>export YARN_HOME=${HADOOP_INSTALLL}<br>export HADOOP_COMMON_LIB_NATIVE_DIR=${HADOOP_INSTALL}/lib/natvie<br>export HADOOP_OPTS=”-Djava.library.path=${HADOOP_INSTALL}/lib:${HADOOP_INSTALL}/lib/native”<br><br><br>使生效<br>source /etc/profile</p>
 </blockquote>
 </li>
 </ul>
