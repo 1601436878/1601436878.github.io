@@ -1475,6 +1475,37 @@ a.article-title:hover {
 .lg-outer .lg-thumb-item {
   border-radius: 0 !important;
 }
+.toc-article {
+  background: #faf9f8;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  margin: 1.5em 0 1.5em 1.5em;
+  padding: 1.2em 1em 0 1em;
+  max-width: 28%;
+}
+.toc-title {
+  font-size: 120%;
+}
+#toc {
+  line-height: 1em;
+  font-size: 0.9em;
+  float: left;
+}
+.toc {
+  padding: 0;
+  margin: 1em;
+  line-height: 1.8em;
+}
+li {
+  list-style-type: none;
+}
+.toc-child {
+  margin-left: 1em;
+}
+.toc-item a {
+  text-decoration: none;
+  color: #0080ff;
+}
 #comments {
   padding: 30px 30px 20px;
 }
