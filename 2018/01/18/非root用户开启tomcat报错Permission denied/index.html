@@ -3,23 +3,25 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Java线程 | Twilight&#39;s Blog</title>
+    <title>非root用户开启tomcat报错Permission denied | Twilight&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="Java" />
+        <meta name="keywords" content="Linux" />
     
-    <meta name="description" content="Callable 可以返回值  ExecutorServersExecutorServers ser = ExevuteServers.newFixedThread()Future result = sesr.submit(类);ser.shutdownNow();停止线程">
-<meta name="keywords" content="Java">
+    <meta name="description" content="开启tomcat失败，报错提示 Permission denied 报错信息如下： 123456789101112Caused by: java.net.SocketException: Permission denied        at sun.nio.ch.Net.bind0(Native Method)        at sun.nio.ch.Net.bind(Net.java:433">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java线程">
-<meta property="og:url" content="http://yoursite.com/2016/12/04/Java线程/index.html">
+<meta property="og:title" content="非root用户开启tomcat报错Permission denied">
+<meta property="og:url" content="http://yoursite.com/2018/01/18/非root用户开启tomcat报错Permission denied/index.html">
 <meta property="og:site_name" content="Twilight&#39;s Blog">
-<meta property="og:description" content="Callable 可以返回值  ExecutorServersExecutorServers ser = ExevuteServers.newFixedThread()Future result = sesr.submit(类);ser.shutdownNow();停止线程">
-<meta property="og:updated_time" content="2016-12-07T13:44:46.789Z">
+<meta property="og:description" content="开启tomcat失败，报错提示 Permission denied 报错信息如下： 123456789101112Caused by: java.net.SocketException: Permission denied        at sun.nio.ch.Net.bind0(Native Method)        at sun.nio.ch.Net.bind(Net.java:433">
+<meta property="og:image" content="http://otbrtx8bw.bkt.clouddn.com/%E9%9D%9Eroot%E7%94%A8%E6%88%B7%E5%BC%80%E5%90%AFtomcat%E5%A4%B1%E8%B4%A5.jpg">
+<meta property="og:updated_time" content="2018-01-18T03:14:14.854Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java线程">
-<meta name="twitter:description" content="Callable 可以返回值  ExecutorServersExecutorServers ser = ExevuteServers.newFixedThread()Future result = sesr.submit(类);ser.shutdownNow();停止线程">
+<meta name="twitter:title" content="非root用户开启tomcat报错Permission denied">
+<meta name="twitter:description" content="开启tomcat失败，报错提示 Permission denied 报错信息如下： 123456789101112Caused by: java.net.SocketException: Permission denied        at sun.nio.ch.Net.bind0(Native Method)        at sun.nio.ch.Net.bind(Net.java:433">
+<meta name="twitter:image" content="http://otbrtx8bw.bkt.clouddn.com/%E9%9D%9Eroot%E7%94%A8%E6%88%B7%E5%BC%80%E5%90%AFtomcat%E5%A4%B1%E8%B4%A5.jpg">
     
 
     
@@ -133,11 +135,11 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/Java/">Java</a>
+    <a class="page-title-link" href="/categories/Linux/">Linux</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-Java线程" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-非root用户开启tomcat报错Permission denied" class="article article-single article-type-post" itemscope itemprop="blogPost">
 	
 	<!-- Table of Contents -->
 	
@@ -150,7 +152,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-        Java线程
+        非root用户开启tomcat报错Permission denied
         </h1>
     
 
@@ -160,48 +162,28 @@
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2016/12/04/Java线程/" class="article-date">
-            <time datetime="2016-12-03T16:32:00.000Z" itemprop="datePublished">2016-12-04</time>
+        <a href="/2018/01/18/非root用户开启tomcat报错Permission denied/" class="article-date">
+            <time datetime="2018-01-18T02:57:34.000Z" itemprop="datePublished">2018-01-18</time>
         </a>
     </div>
 
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Java/">Java</a>
+        <a class="tag-link" href="/tags/Linux/">Linux</a>
     </div>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><strong>Callable 可以返回值</strong></p>
-<blockquote>
-<p>ExecutorServers<br>ExecutorServers ser = ExevuteServers.newFixedThread()<br>Future result = sesr.submit(类);<br>ser.shutdownNow();<br>停止线程</p>
-</blockquote>
-<a id="more"></a>
-<p>线程类中定义线程体使用的标志<br>线程提内使用该标志<br>提供对外的方法改变该标识<br>外部调用方法改变标识</p>
-<blockquote>
-<p>run (){<br>while(flag){<br>}<br>}</p>
-</blockquote>
-<p><strong>阻塞</strong><br></p>
-<blockquote>
-<p>join()合并线程<br><br>yeild()暂停当前正在执行的线程，执行其他线程static<br><br>sleep()暂停，不释放锁<br><br>–&gt;    与时间相关<br><br>–&gt;    模拟网络延时<br><br>system.currentTimeMillis()当前时间</p>
-</blockquote>
-<hr>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div></pre></td><td class="code"><pre><div class="line">    //join 合并线程，执行当前线程时加入另一个线程，并等待另一个线程执行完毕</div><div class="line">    </div><div class="line">    import java.util.Locale.Category;</div><div class="line">    </div><div class="line">    public class Test1 &#123;</div><div class="line">    	public static void main(String [] args) throws InterruptedException&#123;</div><div class="line">    		home m = new home();</div><div class="line">    		</div><div class="line">    		Thread cat = new Thread(m);	</div><div class="line">    		cat.setName("cat");</div><div class="line">    		cat.start();</div><div class="line">    		</div><div class="line">    		for(int i = 0 ; i&lt; 10; i++)&#123;</div><div class="line">    			cat.join();</div><div class="line">    			System.out.println("main");</div><div class="line">    		&#125;</div><div class="line">    	&#125;</div><div class="line">    &#125;</div><div class="line">    class home implements Runnable&#123;</div><div class="line">    	public void run() &#123;</div><div class="line">    		for (int i = 0 ; i &lt; 10 ; i++)&#123;</div><div class="line">    			System.out.println("This is "+Thread.currentThread().getName()+i);</div><div class="line">    			try &#123;</div><div class="line">    				Thread.sleep(200);</div><div class="line">    			&#125; catch (InterruptedException e) &#123;</div><div class="line">    				// TODO Auto-generated catch block</div><div class="line">    				e.printStackTrace();</div><div class="line">    			&#125;</div><div class="line">    </div><div class="line">    		&#125;</div><div class="line">    	&#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">-------------------------------------------------------------------------------</div><div class="line">    // yield 暂停本线程执行其他线程（虽然在我电脑上试没有任何反应。。。）</div><div class="line">    		for(int i = 0 ; i&lt; 10; i++)&#123;</div><div class="line">    //			if(i%2==0)</div><div class="line">    			Thread.yield();</div><div class="line">    			System.out.println("main");</div><div class="line">    		&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">#### 优先级</div><div class="line"></div><div class="line">*MAX_PRIOIRTY 10&lt;br/&gt;</div><div class="line">NORM_PRIOIRTY 5&lt;br/&gt;</div><div class="line">MIN_PRIOIRTY 1*</div><div class="line"></div><div class="line">&gt;isAlive() 判断线程是否还活着</div><div class="line">&gt;Thread.currentThread()当前线程 static</div><div class="line">&gt;getName() </div><div class="line"></div><div class="line">*setPriority()</div><div class="line">优先级代表概率，不是绝对的先后顺序*</div><div class="line"></div><div class="line"></div><div class="line">####**线程的同步与锁定**</div><div class="line">多个线程访问同一资源：线程安全</div><div class="line"></div><div class="line">StringBuffer--append</div><div class="line">hashtable</div><div class="line">1.同步块/同步方法</div><div class="line"></div><div class="line">同步方法：</div><div class="line"></div><div class="line">```java</div><div class="line">    package 线程;</div><div class="line">    </div><div class="line">    import java.util.*;</div><div class="line">    </div><div class="line">    import One.sss;</div><div class="line">    </div><div class="line">    public class tongbu &#123;</div><div class="line">    	public static void main(String [] args) throws InterruptedException&#123;</div><div class="line">    		a m = new a();</div><div class="line">    		</div><div class="line">    		Thread cat = new Thread(m);</div><div class="line">    		Thread dog = new Thread(m);</div><div class="line">    		</div><div class="line">    		cat.setName("cat");</div><div class="line">    		dog.setName("dog");</div><div class="line">    		</div><div class="line">    		cat.start();</div><div class="line">    		dog.start();</div><div class="line">    		</div><div class="line">    	&#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    class a implements Runnable&#123;</div><div class="line">    	int s =10;</div><div class="line">    	@Override</div><div class="line">    	public  void run() &#123;</div><div class="line">    		// TODO Auto-generated method stub</div><div class="line">    			test1();</div><div class="line">    	&#125;</div><div class="line">    	</div><div class="line">    	private synchronized void test1()&#123;</div><div class="line">    		for (int i = 0 ; i &lt; 10 ; i++)&#123;</div><div class="line">    			if (s&lt;=0)</div><div class="line">    				break;</div><div class="line">    			System.out.println(Thread.currentThread().getName()+"get"+s--);</div><div class="line">    			try &#123;</div><div class="line">    				Thread.sleep(200);</div><div class="line">    			&#125; catch (InterruptedException e) &#123;</div><div class="line">    				// TODO Auto-generated catch block</div><div class="line">    				e.printStackTrace();</div><div class="line">    			&#125;</div><div class="line">    		&#125;</div><div class="line">    	&#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<hr>
-<p>同步块：<br><br>synchronize(引用类型)<br><br>{ 同步的部分 }</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">   <span class="comment">//同步块，参数为引用`</span></div><div class="line"><span class="function"><span class="keyword">private</span>  <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">synchronized</span>(<span class="keyword">this</span>)&#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; <span class="number">10</span> ; i++)&#123;</div><div class="line">			<span class="keyword">if</span> (s&lt;=<span class="number">0</span>)</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			System.out.println(Thread.currentThread().getName()+<span class="string">"get"</span>+s--);</div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				Thread.sleep(<span class="number">200</span>);</div><div class="line">			&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">				<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>锁定范围难把握<br><br>线程安全的效率相对低下</p>
-</blockquote>
-<h3 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h3><p>一个类只有一个对象<br>双重检查<br>1、懒汉式：<br>将构造器设为私有。避免外部直接创建对象<br>声明私有的静态属性<br>对外部提供访问属性的静态方法，确保对象的存在<br>锁定静态的信息（XXX.class）</p>
-<p>2、饿汉式<br>将构造器设为私有。避免外部直接创建对象<br>声明私有的静态属性，同时创建对象<br>对外部提供访问属性的静态方法<br>RunTime</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    <span class="comment">//懒汉式</span></div><div class="line">    <span class="comment">//可以满足要求但是效率不高</span></div><div class="line">    <span class="keyword">package</span> 线程;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 单例 </span>&#123;</div><div class="line">    	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</div><div class="line">    		test s1 = <span class="keyword">new</span> test();</div><div class="line">    		test s2 = <span class="keyword">new</span> test();</div><div class="line">    		</div><div class="line">    		s1.start();</div><div class="line">    		s2.start();</div><div class="line">    	&#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Single</span> </span>&#123;</div><div class="line">    </div><div class="line">    	<span class="keyword">private</span> <span class="keyword">static</span> Single data = <span class="keyword">null</span>;</div><div class="line">    	<span class="comment">// 私有的构造函数</span></div><div class="line">    	<span class="function"><span class="keyword">private</span> <span class="title">Single</span><span class="params">()</span></span>&#123;</div><div class="line">    	&#125;</div><div class="line">    	</div><div class="line">    	<span class="comment">//提供外界访问的函数</span></div><div class="line">    	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Single <span class="title">getInstance</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException</span>&#123;</div><div class="line">    		<span class="keyword">if</span>(<span class="keyword">null</span> == data)&#123;</div><div class="line">    			Thread.sleep(<span class="number">1000</span>);</div><div class="line">    			data = <span class="keyword">new</span> Single();</div><div class="line">    		&#125;</div><div class="line">    		<span class="keyword">return</span> data;</div><div class="line">    	&#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">test</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</div><div class="line">    	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">    		<span class="keyword">try</span> &#123;</div><div class="line">    			System.out.println(Single.getInstance());</div><div class="line">    		&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">    			<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">    			e.printStackTrace();</div><div class="line">    		&#125;</div><div class="line">    <span class="comment">//		System.out.println(b);</span></div><div class="line">    	&#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">--------------------------------------------------------------</div><div class="line"></div><div class="line">    <span class="comment">//可以使用块同步</span></div><div class="line">    	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Single <span class="title">getInstance2</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException</span>&#123;</div><div class="line">    		<span class="keyword">synchronized</span>(Single.class)&#123;</div><div class="line">    			<span class="keyword">if</span>(<span class="keyword">null</span> == data)&#123;</div><div class="line">    				Thread.sleep(<span class="number">1000</span>);</div><div class="line">    				data = <span class="keyword">new</span> Single();</div><div class="line">    			&#125;</div><div class="line">    			<span class="keyword">return</span> data;</div><div class="line">    		&#125;</div><div class="line">    	&#125;</div><div class="line"></div><div class="line">--------------------------------------------------------------</div><div class="line"></div><div class="line">    <span class="comment">//双重检查</span></div><div class="line">    	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Single <span class="title">getInstance3</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</div><div class="line">    		<span class="keyword">if</span> (<span class="keyword">null</span> == data) &#123;</div><div class="line">    			<span class="keyword">synchronized</span> (Single.class) &#123;</div><div class="line">    				<span class="keyword">if</span> (<span class="keyword">null</span> == data) &#123;</div><div class="line">    					Thread.sleep(<span class="number">1000</span>);</div><div class="line">    					data = <span class="keyword">new</span> Single();</div><div class="line">    				&#125;</div><div class="line">    			&#125;</div><div class="line">    		&#125;</div><div class="line">    		<span class="keyword">return</span> data;</div><div class="line">    	&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>饿汉式<br><br>private static Single data = new Single();<br><br>声明时创建</p>
-</blockquote>
+            <p>开启tomcat失败，报错提示 <code>Permission denied</code> 报错信息如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Caused by: java.net.SocketException: Permission denied</div><div class="line">        at sun.nio.ch.Net.bind0(Native Method)</div><div class="line">        at sun.nio.ch.Net.bind(Net.java:433)</div><div class="line">        at sun.nio.ch.Net.bind(Net.java:425)</div><div class="line">        at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)</div><div class="line">        at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)</div><div class="line">        at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:210)</div><div class="line">        at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:1082)</div><div class="line">        at org.apache.tomcat.util.net.AbstractJsseEndpoint.init(AbstractJsseEndpoint.java:267)</div><div class="line">        at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:581)</div><div class="line">        at org.apache.coyote.http11.AbstractHttp11Protocol.init(AbstractHttp11Protocol.java:66)</div><div class="line">        at org.apache.catalina.connector.Connector.initInternal(Connector.java:993)</div></pre></td></tr></table></figure>
+<p>原因是在Centos7 中，非root用户不能开启1024以下的端口。比如我用twilight用户开启tomcat，就会报错。解决方法是通过iptables防火墙重定向端口，将80端口重定向到8080端口上去。<br>在Centos7中，默认的防火墙是 firewalld 需要先挂关闭它，再使用iptables防火墙。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">关闭firewall防火墙</div><div class="line">systemctl stop firewalld.service</div><div class="line">关闭firewall开机自启</div><div class="line">systemctl disable firewalld.service</div></pre></td></tr></table></figure></p>
+<p>接着安装iptables<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install iptables-services</div></pre></td></tr></table></figure></p>
+<p>开放端口：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 查看现有的iptables 规则</div><div class="line">iptables -L -n</div><div class="line"></div><div class="line">// 开放端口，临时的，重启会失效</div><div class="line">iptables -I OUTPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT</div><div class="line">iptables -I INPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT</div></pre></td></tr></table></figure></p>
+<p>将80 端口 重定向到8080<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080</div></pre></td></tr></table></figure></p>
+<p>永久保存iptable配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 保存</div><div class="line">iptables-save &gt; /etc/sysconfig/iptables</div></pre></td></tr></table></figure></p>
 
         </div>
         <footer class="article-footer">
@@ -267,7 +249,7 @@
     <section id="comments">
     
         
-    <div id="SOHUCS" sid="http://yoursite.com/2016/12/04/Java线程/"></div>
+    <div id="SOHUCS" sid="http://yoursite.com/2018/01/18/非root用户开启tomcat报错Permission denied/"></div>
 
 
     
@@ -304,20 +286,10 @@
         
 <nav id="article-nav">
     
-        <a href="/2016/12/10/网络编程/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">newer</strong>
-        <p class="article-nav-title">
-        
-            Java网络编程
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2016/11/30/IO流(2)/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/01/09/Hibernate-映射/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">IO流（2）</p>
+        <p class="article-nav-title">Hibernate 映射</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
