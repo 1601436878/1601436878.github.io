@@ -3,23 +3,25 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Servlet 使用RequestDispathcher调派请求 | Twilight&#39;s Blog</title>
+    <title>非root用户开启tomcat失败 | Twilight&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="Servlet" />
+        <meta name="keywords" content="Linux" />
     
-    <meta name="description" content="RequestDispathcher使用HttpServletRequest的getRequestDispatcher(“Servlet-URL”) 获得对象  RequestDispatcher dispatch = req.getRequestDispatcher(“/Test1”);  include()将另一个servlet包括进进目前的操作流程中。">
-<meta name="keywords" content="Servlet">
+    <meta name="description" content="开启tomcat失败，报错提示 Permission denied 报错信息如下： 123456789101112Caused by: java.net.SocketException: Permission denied        at sun.nio.ch.Net.bind0(Native Method)        at sun.nio.ch.Net.bind(Net.java:433">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Servlet 使用RequestDispathcher调派请求">
-<meta property="og:url" content="http://yoursite.com/2017/04/09/Servlet-使用RequestDispathcher调派请求/index.html">
+<meta property="og:title" content="非root用户开启tomcat失败">
+<meta property="og:url" content="http://yoursite.com/2018/01/18/非root用户开启tomcat失败/index.html">
 <meta property="og:site_name" content="Twilight&#39;s Blog">
-<meta property="og:description" content="RequestDispathcher使用HttpServletRequest的getRequestDispatcher(“Servlet-URL”) 获得对象  RequestDispatcher dispatch = req.getRequestDispatcher(“/Test1”);  include()将另一个servlet包括进进目前的操作流程中。">
-<meta property="og:updated_time" content="2017-04-10T11:57:55.961Z">
+<meta property="og:description" content="开启tomcat失败，报错提示 Permission denied 报错信息如下： 123456789101112Caused by: java.net.SocketException: Permission denied        at sun.nio.ch.Net.bind0(Native Method)        at sun.nio.ch.Net.bind(Net.java:433">
+<meta property="og:image" content="http://otbrtx8bw.bkt.clouddn.com/%E9%9D%9Eroot%E7%94%A8%E6%88%B7%E5%BC%80%E5%90%AFtomcat%E5%A4%B1%E8%B4%A5.jpg">
+<meta property="og:updated_time" content="2018-01-18T03:02:39.611Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Servlet 使用RequestDispathcher调派请求">
-<meta name="twitter:description" content="RequestDispathcher使用HttpServletRequest的getRequestDispatcher(“Servlet-URL”) 获得对象  RequestDispatcher dispatch = req.getRequestDispatcher(“/Test1”);  include()将另一个servlet包括进进目前的操作流程中。">
+<meta name="twitter:title" content="非root用户开启tomcat失败">
+<meta name="twitter:description" content="开启tomcat失败，报错提示 Permission denied 报错信息如下： 123456789101112Caused by: java.net.SocketException: Permission denied        at sun.nio.ch.Net.bind0(Native Method)        at sun.nio.ch.Net.bind(Net.java:433">
+<meta name="twitter:image" content="http://otbrtx8bw.bkt.clouddn.com/%E9%9D%9Eroot%E7%94%A8%E6%88%B7%E5%BC%80%E5%90%AFtomcat%E5%A4%B1%E8%B4%A5.jpg">
     
 
     
@@ -133,11 +135,11 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/Servlet/">Servlet</a>
+    <a class="page-title-link" href="/categories/Linux/">Linux</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-Servlet-使用RequestDispathcher调派请求" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-非root用户开启tomcat失败" class="article article-single article-type-post" itemscope itemprop="blogPost">
 	
 	<!-- Table of Contents -->
 	
@@ -150,7 +152,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-        Servlet 使用RequestDispathcher调派请求
+        非root用户开启tomcat失败
         </h1>
     
 
@@ -160,46 +162,28 @@
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2017/04/09/Servlet-使用RequestDispathcher调派请求/" class="article-date">
-            <time datetime="2017-04-09T13:54:35.000Z" itemprop="datePublished">2017-04-09</time>
+        <a href="/2018/01/18/非root用户开启tomcat失败/" class="article-date">
+            <time datetime="2018-01-18T02:57:34.000Z" itemprop="datePublished">2018-01-18</time>
         </a>
     </div>
 
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Servlet/">Servlet</a>
+        <a class="tag-link" href="/tags/Linux/">Linux</a>
     </div>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="RequestDispathcher"><a href="#RequestDispathcher" class="headerlink" title="RequestDispathcher"></a>RequestDispathcher</h1><p>使用HttpServletRequest的getRequestDispatcher(“Servlet-URL”) 获得对象</p>
-<blockquote>
-<p>RequestDispatcher dispatch = req.getRequestDispatcher(“/Test1”);</p>
-</blockquote>
-<h2 id="include"><a href="#include" class="headerlink" title="include()"></a>include()</h2><p>将另一个servlet包括进进目前的操作流程中。<br><a id="more"></a><br>以下代码会输出<br><em>Dispatch</em><br><em>Test1 </em><br><em>Done</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/Dispatch</div><div class="line">	protected void doGet(HttpServletRequest req, HttpServletResponse resp)</div><div class="line">			throws ServletException, IOException &#123;</div><div class="line">			</div><div class="line">		PrintWriter output = resp.getWriter();</div><div class="line">		output.println(&quot;Dispatch&lt;br/&gt;&quot;);</div><div class="line">		RequestDispatcher dispatch = req.getRequestDispatcher(&quot;/Test1&quot;);</div><div class="line">		dispatch.include(req, resp);;</div><div class="line">		</div><div class="line">		output.println(&quot;Done&lt;br/&gt;&quot;);</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/Test1</div><div class="line">	protected void doGet(HttpServletRequest req, HttpServletResponse resp)</div><div class="line">			throws ServletException, IOException &#123;</div><div class="line">			PrintWriter output = resp.getWriter();</div><div class="line">			output.println(&quot;Test1&lt;br/&gt;&quot;);</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<h2 id="forward"><a href="#forward" class="headerlink" title="forward()"></a>forward()</h2><p>将请求转发给另一个servlet，只是服务器端的转发，对于客户端并无任何影响</p>
-<p><strong>PS:调用forWard()之前不能有任何相应确认，如果设置了相应但还未确认(例如println()后还没有flush())，则所有相应会被忽略.如果已经有相应确认，会报出<i>java.lang.IllegalStateException<i>异常</i></i></strong></p>
-<p>以下代码会转向Test1，而忽略之forward之前的println输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">PrintWriter output = resp.getWriter();</div><div class="line">output.println(&quot;Dispatch&lt;br/&gt;&quot;);</div><div class="line">RequestDispatcher dispatch = req.getRequestDispatcher(&quot;/Test1&quot;);</div><div class="line">dispatch.forward(req, resp);;</div><div class="line"></div><div class="line">output.println(&quot;Done&lt;br/&gt;&quot;);</div></pre></td></tr></table></figure></p>
-<p>以下代码会直接报错，因为已经有相应确认<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">PrintWriter output = resp.getWriter();</div><div class="line">output.println(&quot;Dispatch&lt;br/&gt;&quot;);</div><div class="line">output.flush();	</div><div class="line">RequestDispatcher dispatch = req.getRequestDispatcher(&quot;/Test1&quot;);</div><div class="line">dispatch.forward(req, resp);;</div><div class="line"></div><div class="line">output.println(&quot;Done&lt;br/&gt;&quot;);</div></pre></td></tr></table></figure></p>
-<h2 id="请求范围属性"><a href="#请求范围属性" class="headerlink" title="请求范围属性"></a>请求范围属性</h2><p>当调派请求的过程中有需要共享的属性，可以使用HttpServletRequest的方法</p>
-<ol><br><li> <strong>setAttribute() 指定名称与对象</strong> </li><br><li> <strong>getAttribute() 指定名称获取对象</strong> </li><br><li> <strong>getAttributeNames() 获取所有属性名称</strong> </li><br><li> <strong>removeAttribute() 移除属性</strong> </li><br></ol>
-
-
-<p>以下代码的Test1通过getAttribute(“name”)获取到name的集合，需要通过强制转换后才能使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/Dispatch</div><div class="line">	protected void doGet(HttpServletRequest req, HttpServletResponse resp)</div><div class="line">			throws ServletException, IOException &#123;</div><div class="line">		PrintWriter output = resp.getWriter();</div><div class="line">		List&lt;String&gt; list = new  ArrayList&lt;&gt;();</div><div class="line">		list.add(&quot;Tom&quot;);</div><div class="line">		list.add(&quot;jerry&quot;);</div><div class="line"></div><div class="line">		req.setAttribute(&quot;name&quot;, list);		// 传入字符串和对象</div><div class="line"></div><div class="line">		RequestDispatcher dispatch = req.getRequestDispatcher(&quot;/Test1&quot;);</div><div class="line">		dispatch.forward(req, resp);</div><div class="line">		</div><div class="line">		output.println(&quot;Done&lt;br/&gt;&quot;);</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/Test1</div><div class="line">	protected void doGet(HttpServletRequest req, HttpServletResponse resp)</div><div class="line">			throws ServletException, IOException &#123;</div><div class="line">			PrintWriter output = resp.getWriter();</div><div class="line">			output.println(&quot;Test1&lt;br/&gt;&quot;);</div><div class="line">			List name = (List)req.getAttribute(&quot;name&quot;);</div><div class="line">			output.println(name.get(1)+&quot;&lt;/br/&gt;&quot;);</div><div class="line">			</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<h1 id="sendRedirect"><a href="#sendRedirect" class="headerlink" title="sendRedirect()"></a>sendRedirect()</h1><p>要求浏览器重新请求一个URL，客户端的地址栏会改变<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">protected void doGet(HttpServletRequest req, HttpServletResponse resp)</div><div class="line">		throws ServletException, IOException &#123;</div><div class="line">	String url = req.getParameter(&quot;url&quot;);</div><div class="line">	resp.sendRedirect(url);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在跳转之前不可以有相应被确认,否则会产生<em>java.lang.IllegalStateException</em> 异常<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">protected void doGet(HttpServletRequest req, HttpServletResponse resp)</div><div class="line">		throws ServletException, IOException &#123;</div><div class="line">	PrintWriter output = resp.getWriter();</div><div class="line">	output.println(&quot;2333&quot;);</div><div class="line">	output.flush();</div><div class="line">	String url = req.getParameter(&quot;url&quot;);</div><div class="line">	resp.sendRedirect(url);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>跳转时可以附带参数,方式类比于GET方式的URL<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String name = req.getParameter(&quot;name&quot;);</div><div class="line">PrintWriter output = resp.getWriter();</div><div class="line">resp.sendRedirect(&quot;http://localhost:8080/Test/Redirect_Para?name=&quot;+name);</div></pre></td></tr></table></figure></p>
-<p>PS:</p>
-<font color="red"><b><br><ol><br><li>只能用转向方式来访问WEB-INF目录下的JSP,不用采用重定向的方式请求该目录里面的任何资源</li><br><li>同一个请求周期中，HttpServletResponse的getWriter()与getOutputStream()只能择一使用，否则会丢出IllegalStateException</li><br><ol><br><b></b></ol></ol></b></font>
-
-
-
+            <p>开启tomcat失败，报错提示 <code>Permission denied</code> 报错信息如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Caused by: java.net.SocketException: Permission denied</div><div class="line">        at sun.nio.ch.Net.bind0(Native Method)</div><div class="line">        at sun.nio.ch.Net.bind(Net.java:433)</div><div class="line">        at sun.nio.ch.Net.bind(Net.java:425)</div><div class="line">        at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)</div><div class="line">        at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)</div><div class="line">        at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:210)</div><div class="line">        at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:1082)</div><div class="line">        at org.apache.tomcat.util.net.AbstractJsseEndpoint.init(AbstractJsseEndpoint.java:267)</div><div class="line">        at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:581)</div><div class="line">        at org.apache.coyote.http11.AbstractHttp11Protocol.init(AbstractHttp11Protocol.java:66)</div><div class="line">        at org.apache.catalina.connector.Connector.initInternal(Connector.java:993)</div></pre></td></tr></table></figure>
+<p>原因是在Centos7 中，非root用户不能开启1024以下的端口。比如我用twilight用户开启tomcat，就会报错。解决方法是通过iptables防火墙重定向端口，将80端口重定向到8080端口上去。<br>在Centos7中，默认的防火墙是 firewalld 需要先挂关闭它，再使用iptables防火墙。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">关闭firewall防火墙</div><div class="line">systemctl stop firewalld.service</div><div class="line">关闭firewall开机自启</div><div class="line">systemctl disable firewalld.service</div></pre></td></tr></table></figure></p>
+<p>接着安装iptables<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install iptables-services</div></pre></td></tr></table></figure></p>
+<p>开放端口：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 查看现有的iptables 规则</div><div class="line">iptables -L -n</div><div class="line"></div><div class="line">// 开放端口，临时的，重启会失效</div><div class="line">iptables -I OUTPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT</div><div class="line">iptables -I INPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT</div></pre></td></tr></table></figure></p>
+<p>将80 端口 重定向到8080<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080</div></pre></td></tr></table></figure></p>
+<p>永久保存iptable配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 保存</div><div class="line">iptables-save &gt; /etc/sysconfig/iptables</div></pre></td></tr></table></figure></p>
 
         </div>
         <footer class="article-footer">
@@ -265,7 +249,7 @@
     <section id="comments">
     
         
-    <div id="SOHUCS" sid="http://yoursite.com/2017/04/09/Servlet-使用RequestDispathcher调派请求/"></div>
+    <div id="SOHUCS" sid="http://yoursite.com/2018/01/18/非root用户开启tomcat失败/"></div>
 
 
     
@@ -302,20 +286,10 @@
         
 <nav id="article-nav">
     
-        <a href="/2017/04/10/JSP入门-常见标签元素的使用/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">newer</strong>
-        <p class="article-nav-title">
-        
-            JSP入门---常见标签元素的使用
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2017/04/08/Servlet上传文件/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/01/09/Hibernate-映射/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">Servlet  上传文件</p>
+        <p class="article-nav-title">Hibernate 映射</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
