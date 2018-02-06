@@ -43,7 +43,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 0.15rem;
+  height: 0.1rem;
   -webkit-transform: translateX(-101%);
           transform: translateX(-101%);
   -webkit-animation: side-top ease 6s infinite;
